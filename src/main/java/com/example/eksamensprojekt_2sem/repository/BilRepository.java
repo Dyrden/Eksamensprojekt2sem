@@ -1,4 +1,4 @@
 package com.example.eksamensprojekt_2sem.repository;
 
-public class TempRepositoryClass {
+public class BilRepository {
 }
