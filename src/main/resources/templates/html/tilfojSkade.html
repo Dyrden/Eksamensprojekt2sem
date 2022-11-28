@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/tilfojSkade.css}" href="../../static/css/tilfojSkade.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<div class="container">
+  <form id="contact" action="" method="post">
+    <h3>Registrer Skade</h3>
+    <h4>Indtast skade, fejl eller anden omkostning</h4>
+    <fieldset>
+      <input placeholder="Skadens placering" type="text" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Skadens pris" type="text" tabindex="2" required>
+    </fieldset>
+    <fieldset>
+      <textarea placeholder="Beskriv venligst skaden...." tabindex="3" required></textarea>
+    </fieldset>
+    <fieldset>
+      <div class="flex">
+        <button class="inline" name="submit" type="submit" id="annuller" data-submit="...Sending">Annuller</button>
+        <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Indsend</button>
+      </div>
+    </fieldset>
+  </form>
+
+
+</div>
+
+</body>
+</html>
