@@ -14,4 +14,5 @@ public class RapportRepository {
 
     @Value("${JDBCPassword}")
     private String pass;
+
 }
