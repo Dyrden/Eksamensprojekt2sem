@@ -14,4 +14,6 @@ public class AftaleRepository {
 
     @Value("${JDBCPassword}")
     private String pass;
+
+
 }

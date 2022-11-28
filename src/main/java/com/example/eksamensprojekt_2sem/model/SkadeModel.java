@@ -40,10 +40,9 @@ public class SkadeModel {
 
     @Override
     public String toString() {
-        return "SkadeModel{" +
+        return
             "skadensPlacering='" + skadensPlacering + '\'' +
             ", skadensBeskrivelse='" + skadensBeskrivelse + '\'' +
-            ", skadensPris=" + skadensPris +
-            '}';
+            ", skadensPris=" + skadensPris;
     }
 }
