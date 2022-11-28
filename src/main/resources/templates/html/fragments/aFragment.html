@@ -6,8 +6,8 @@
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
 </head>
 <body>
-<div>
-    <img class="logocorner" src="/static/images/hondalogo.png" th:src="@{/images/hondalogo.png}" width="155,04" height="32,64">
+<div th:fragment="logo">
+    <img class="logocorner" src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="140" height="70">
 </div>
     <ul th:fragment="navbar-standard" class="menubarcorner">
         <li><a href="/html/dataRegistrering">Home</a></li>

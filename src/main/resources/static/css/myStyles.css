@@ -30,13 +30,14 @@ li a:hover {
 
 logo {
 }
+
 .logocorner {
     position: absolute;
     left: 8px;
     top: 18px;
 }
 
-nav.menubarcorner{
+ul.menubarcorner{
     position: relative;
     left: 200px;
 }
