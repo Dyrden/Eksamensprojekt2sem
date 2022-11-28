@@ -24,5 +24,6 @@ public class AftaleController {
     @GetMapping("/data")
     public String showData(){
         return "html/dataRegistrering";
+
     }
 }
