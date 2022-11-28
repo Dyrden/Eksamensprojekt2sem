@@ -10,10 +10,10 @@
     <img class="logocorner" src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="140" height="70">
 </div>
     <ul th:fragment="navbar-standard" class="menubarcorner">
-        <li><a href="/html/dataRegistrering">Home</a></li>
-        <li><a href="/html/dataRegistrering">Data indregistrering</a></li>
-        <li><a href="/html/skadeOgUdbedring">Skades rapport</a></li>
-        <li><a href="#about">Forretnings udviklere</a></li>
+        <li><a th:href="@{'/'}">Home</a></li>
+        <li><a th:href="@{'/dataRegistrering/'}">Data indregistrering</a></li>
+        <li><a th:href="@{'/skadeOgUdbedring/'}">Skades rapport</a></li>
+        <li><a th:href="@{'/forretningsUdviklere/'}">Forretnings udviklere</a></li>
     </ul>
 </body>
 </html>
