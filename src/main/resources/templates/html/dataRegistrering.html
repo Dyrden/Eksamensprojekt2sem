@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Data registrering</title>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
+</head>
+<body>
+
+<table class="center" table style="background-color: cornflowerblue; margin-top:50px">
+    <tr>
+        <th>Bil Mærke</th>
+        <th>Model</th>
+        <th>Vognnummer</th>
+        <th>Registreringsnummer</th>
+        <th>Book</th>
+    </tr>
+    <tr th:each="b : ${biler}">
+        <td> <span th:text="${b.name}">Name</span> </td>
+        <td> <span th:text="${b.userId}">id</span> </td>
+        <td> <span th:text="${b.vognNummer}">id</span> </td>
+        <td> <span th:text="${b.registeringsNummer}">id</span> </td>
+        <td> <span> <a th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </span> </td>
+    </tr>
+</table>
+
+</body>
+</html>

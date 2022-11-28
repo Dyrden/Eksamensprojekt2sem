@@ -4,18 +4,18 @@ import java.util.List;
 
 public class BilModel {
 
-    private int bilID;
-    private int stelID;
+    private int vognNummer;
+    private int stelNummer;
     private String model;
     private String farve;
     private boolean udlejningsStatus;
     private double antalKilometer;
     private List<AftaleModel> aftaler;
 
-    public BilModel(int bilID, int stelID, String model, String farve, boolean udlejningsStatus,
+    public BilModel(int vognNummer, int stelNummer, String model, String farve, boolean udlejningsStatus,
                     double antalKilometer, List<AftaleModel> aftaler){
-        this.bilID = bilID;
-        this.stelID = stelID;
+        this.vognNummer = vognNummer;
+        this.stelNummer = stelNummer;
         this.model = model;
         this.farve = farve;
         this.udlejningsStatus = udlejningsStatus;
@@ -23,11 +23,11 @@ public class BilModel {
         this.aftaler = aftaler;
     }
 
-    public void setBilID(int bilID){
-        this.bilID = bilID;
+    public void setVognNummer(int vognNummer){
+        this.vognNummer = vognNummer;
     }
-    public void setStelID(int stelID){
-        this.stelID = stelID;
+    public void setStelNummer(int stelNummer){
+        this.stelNummer = stelNummer;
     }
     public void setModel(String model){
         this.model = model;
@@ -44,11 +44,11 @@ public class BilModel {
     public void setAftaler(List<AftaleModel> aftaler){
         this.aftaler = aftaler;
     }
-    public int getBilID(){
-        return bilID;
+    public int getVognNummer(){
+        return vognNummer;
     }
-    public int getStelID(){
-        return stelID;
+    public int getStelNummer(){
+        return stelNummer;
     }
     public String getModel(){
         return model;
@@ -67,8 +67,8 @@ public class BilModel {
     }
 
     public String toString(){
-        return "BilID: "+bilID+ "\n" +
-                "StelID: "+stelID+ "\n" +
+        return "BilID: "+ vognNummer + "\n" +
+                "StelID: "+ stelNummer + "\n" +
                 "Model: "+model+ "\n" +
                 "Farve: "+farve+ "\n" +
                 "Udlejningsstatus: "+udlejningsStatus+ "\n" +
