@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Wishlist</title>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
 </head>
 <body>
-
+<div>
+    <img class="logocorner" src="/static/images/hondalogo.png" th:src="@{/images/hondalogo.png}" width="155,04" height="32,64">
+</div>
+<div>
+    <ul class="menubarcorner">
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">Wishlist</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#about">About us</a></li>
+    </ul>
+</div>
 </body>
 </html>
