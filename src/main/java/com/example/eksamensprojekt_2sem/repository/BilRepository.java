@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BilRepository {
+/*
 
     @Value("${JBDCUrl}")
     private String db_URL;
@@ -14,4 +15,6 @@ public class BilRepository {
 
     @Value("${JDBCPassword}")
     private String pass;
+
+ */
 }

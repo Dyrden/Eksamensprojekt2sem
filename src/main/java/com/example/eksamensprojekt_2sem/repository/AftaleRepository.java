@@ -2,9 +2,9 @@ package com.example.eksamensprojekt_2sem.repository;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
-
 @Repository
 public class AftaleRepository {
+/*
 
     @Value("${JBDCUrl}")
     private String db_URL;
@@ -15,5 +15,5 @@ public class AftaleRepository {
     @Value("${JDBCPassword}")
     private String pass;
 
-
+*/
 }

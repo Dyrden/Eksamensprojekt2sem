@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class RapportRepository {
+/*
 
     @Value("${JBDCUrl}")
     private String db_URL;
@@ -14,5 +15,7 @@ public class RapportRepository {
 
     @Value("${JDBCPassword}")
     private String pass;
+
+ */
 
 }
