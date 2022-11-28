@@ -1,33 +1,49 @@
 package com.example.eksamensprojekt_2sem.model;
 
 public class SkadeModel {
-    private String navn;
-    private double pris;
+    private String skadensPlacering;
+    private String skadensBeskrivelse;
+    private double skadensPris;
 
-    public SkadeModel(String navn, double pris){
-        this.navn = navn;
-        this.pris = pris;
+    public SkadeModel(String skadensPlacering, String skadensBeskrivelse, double skadensPris) {
+        this.skadensPlacering = skadensPlacering;
+        this.skadensBeskrivelse = skadensBeskrivelse;
+        this.skadensPris = skadensPris;
+    }
+    public SkadeModel(){
+
     }
 
-    public String getNavn() {
-        return navn;
+    public String getSkadensPlacering() {
+        return skadensPlacering;
     }
 
-    public void setNavn(String navn) {
-        this.navn = navn;
+    public void setSkadensPlacering(String skadensPlacering) {
+        this.skadensPlacering = skadensPlacering;
     }
 
-    public double getPris() {
-        return pris;
+    public String getSkadensBeskrivelse() {
+        return skadensBeskrivelse;
     }
 
-    public void setPris(double pris) {
-        this.pris = pris;
+    public void setSkadensBeskrivelse(String skadensBeskrivelse) {
+        this.skadensBeskrivelse = skadensBeskrivelse;
     }
 
-    public String toString(){
-        return "Navn: "+navn+ "\n" +
-                "Pris: "+pris;
+    public double getSkadensPris() {
+        return skadensPris;
+    }
 
+    public void setSkadensPris(double skadensPris) {
+        this.skadensPris = skadensPris;
+    }
+
+    @Override
+    public String toString() {
+        return "SkadeModel{" +
+            "skadensPlacering='" + skadensPlacering + '\'' +
+            ", skadensBeskrivelse='" + skadensBeskrivelse + '\'' +
+            ", skadensPris=" + skadensPris +
+            '}';
     }
 }
