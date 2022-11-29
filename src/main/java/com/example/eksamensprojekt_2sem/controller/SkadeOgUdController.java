@@ -11,5 +11,10 @@ public class SkadeOgUdController {
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
+    @GetMapping("/tilfoej")
+    public String tilfoejSkade(){
+        return "html/skadeOgUdbedring/tilfoejSkade";
+    }
+
 
 }
