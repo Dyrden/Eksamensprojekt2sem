@@ -25,6 +25,13 @@
 </table>
 
 <table class="center" table style="background-color: cornflowerblue; margin-top:50px">
+  <form action="/tilfoej" method="post">
+    <tr>
+      <td><button type="submit">Gå til Skader</button></td>
+    </tr>
+
+  </form>
+  <!--
   <tr>
     <th>Skadens placering</th>
     <th>Skadens beskrivelse</th>
@@ -36,8 +43,9 @@
     <td> <span th:text="${b.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
     <td> <span th:text="${b.skadensPris}">skadensPris</span> </td>
     <td> <span> <a th:href="@{'/sletSkade/' + ${b.vognNummer}}">Slet skade</a> </span> </td>
-  </tr>
+  </tr> -->
 </table>
+
 
 
 </body>
