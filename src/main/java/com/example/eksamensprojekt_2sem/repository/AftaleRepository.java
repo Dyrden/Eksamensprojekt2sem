@@ -4,16 +4,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 @Repository
 public class AftaleRepository {
-/*
 
-    @Value("${JBDCUrl}")
+    @Value("${JDBCUrl}")
     private String db_URL;
 
-    @Value("${JBDCUsername}")
+    @Value("${JDBCUsername}")
     private String uid;
 
     @Value("${JDBCPassword}")
     private String pass;
 
-*/
 }
