@@ -8,6 +8,6 @@ public class DataRegController {
 
     @GetMapping("/dataRegistering")
     public String visDataReg(){
-        return "html/dataRegistering";
+        return "html/dataRegistrering";
     }
 }
