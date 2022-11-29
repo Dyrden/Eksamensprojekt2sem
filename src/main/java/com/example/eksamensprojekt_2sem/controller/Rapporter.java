@@ -6,6 +6,6 @@ public class Rapporter {
 
   @GetMapping("/seRapporter")
   public String visForretningsUdviklere(){
-    return "html/seRapporter";
+    return "html/rapporter";
   }
 }
