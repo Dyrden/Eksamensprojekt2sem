@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 public class BilRepository {
     public void visAlleBiler(String s){
         PSTSCreator.makeStatement("CALL VisAlleBiler()");
-
     }
     public void visUdlejetBiler(String s){
         PSTSCreator.makeStatement("CALL VisUdlejedeBiler()");
