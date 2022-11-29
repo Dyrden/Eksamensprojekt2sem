@@ -5,13 +5,12 @@ import java.sql.SQLException;
 
 
 public class PSTSCreator {
-    public static PreparedStatement makeStatement(String s){
-        PreparedStatement preparedStatement = null;
+    public static void makeStatement(String s){
+        //laver en skabelon for Prepared statements, fordi DRY
         try {
-            preparedStatement = ConnectionSingleton.connect().prepareStatement(s);
+           PreparedStatement preparedStatement = ConnectionSingleton.connect().prepareStatement(s);
         } catch (SQLException e){
             e.printStackTrace();
         }
-        return preparedStatement;
     }
 }
