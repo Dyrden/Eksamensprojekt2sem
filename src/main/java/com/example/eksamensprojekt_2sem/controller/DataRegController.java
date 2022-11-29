@@ -10,4 +10,9 @@ public class DataRegController {
     public String visDataReg(){
         return "html/dataRegistrering/dataRegistrering";
     }
+
+    @GetMapping("/kundeBooking")
+    public String kundeBooking(){
+        return "html/dataRegistrering/kundebooking";
+    }
 }
