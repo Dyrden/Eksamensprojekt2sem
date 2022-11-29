@@ -35,6 +35,14 @@
     <h3>Bilens skader</h3>
   </div>
 <table class="center">
+<table class="center" table style="background-color: cornflowerblue; margin-top:50px">
+  <form action="/tilfoej" method="post">
+    <tr>
+      <td><button type="submit">Gå til Skader</button></td>
+    </tr>
+
+  </form>
+  <!--
   <tr>
     <th>Skadens placering</th>
     <th>Skadens beskrivelse</th>
@@ -46,13 +54,14 @@
     <td> <span th:text="${b.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
     <td> <span th:text="${b.skadensPris}">skadensPris</span> </td>
     <td> <span> <a th:href="@{'/sletSkade/' + ${b.vognNummer}}">Slet skade</a> </span> </td>
-  </tr>
+  </tr> -->
 </table>
 </div>
 <div id="blaaKnap">
   <button placeholder="Registrer ny skade" type="submit">  <a th:class="htmlLink" th:href="@{'/tilfojSkade/'}">Registrer ny skade</a>
   </button>
 </div>
+
 
 </body>
 </html>

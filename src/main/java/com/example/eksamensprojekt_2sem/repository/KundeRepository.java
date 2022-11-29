@@ -6,14 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class KundeRepository {
 
-    @Value("${JDBCUrl}")
-    private String db_URL;
-
-    @Value("${JDBCUsername}")
-    private String uid;
-
-    @Value("${JDBCPassword}")
-    private String pass;
-
 
 }
