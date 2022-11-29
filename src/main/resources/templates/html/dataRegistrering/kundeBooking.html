@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kundeBooking</title>
+    <link rel="stylesheet" th:href="@{/css/tilfojSkade.css}" href="../../../static/css/tilfojSkade.css"/>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div th:replace="html/fragments/aFragment:: logo"> </div>
+<ul th:replace="html/fragments/aFragment:: navbar-standard" class="active"></ul>
+
+<table table class="bilInfo">
+    <tr>
+        <th>Bil Mærke</th>
+        <th>Model</th>
+        <th>Vognnummer</th>
+        <th>Registreringsnummer</th>
+    </tr>
+    <tr th:each="b : ${biler}">
+        <td> <span th:text="${b.name}">Name</span> </td>
+        <td> <span th:text="${b.userId}">id</span> </td>
+        <td> <span th:text="${b.vognNummer}">id</span> </td>
+        <td> <span th:text="${b.registeringsNummer}">id</span> </td>
+    </tr>
+</table>
+<div class="flex">
+<div class="container">
+    <form id="contact" action="" method="post">
+        <h3>Bilens specifikationer</h3>
+        <h4>Indtast venligst bilens specifikation</h4>
+        <fieldset>
+            <input placeholder="Fuld udstyr" type="checkbox" tabindex="1" required autofocus>
+            <a>Fuld udstyr</a>
+        </fieldset>
+        <fieldset>
+            <input placeholder="Farve" type="text" tabindex="2" required>
+        </fieldset>
+        <fieldset>
+            <input placeholder="booking Start" type="date" tabindex="3" required></input>
+            <input placeholder="Booking slut" type="date" tabindex="3" required></input>
+        </fieldset>
+    </form>
+</div>
+<div class="container">
+    <form id="contact" action="" method="post">
+        <h3>Kunde informationer</h3>
+        <h4>Indtast venligst kundens information</h4>
+        <fieldset>
+            <input placeholder="Fornavn" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input placeholder="Efternavn" type="text" tabindex="2" required>
+        </fieldset>
+        <fieldset>
+            <input placeholder="E-mail" type="text" tabindex="3" required></input>
+        </fieldset>
+        <fieldset>
+            <input placeholder="tlf nummer" type="text" tabindex="4" required></input>
+        </fieldset>
+        <fieldset>
+            <input placeholder="cpr nummer" type="text" tabindex="5" required></input>
+        </fieldset>
+        <fieldset>
+            <div class="flex">
+                <button class="inline" name="submit" type="submit" id="lol-submit" data-submit="...Sending">Søg</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+    </div>
+</body>
+</html>

@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class DataRegController {
 
-    @GetMapping("/dataRegistering")
+    @GetMapping("/dataRegistrering")
     public String visDataReg(){
-        return "html/dataRegistrering";
+        return "html/dataRegistrering/dataRegistrering";
+    }
+
+    @GetMapping("/kundeBooking")
+    public String kundeBooking(){
+        return "html/dataRegistrering/kundebooking";
     }
 }

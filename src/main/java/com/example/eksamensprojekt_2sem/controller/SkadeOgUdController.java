@@ -8,7 +8,7 @@ public class SkadeOgUdController {
 
     @GetMapping("/skadeOgUdbedring")
     public String visSkadeOgUd(){
-        return "html/skadeOgUdbedring";
+        return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
 
