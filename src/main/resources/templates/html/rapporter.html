@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rapporter</title>
+</head>
+<body>
+<div th:replace="html/fragments/aFragment:: logo"> </div>
+<ul th:replace="/html/fragments/aFragment:: navbar-standard" class="active"></ul>
+
+
+<table class="center" table style="background-color: cornflowerblue; margin-top:50px">
+  <tr>
+    <th>Bil Mærke</th>
+    <th>Model</th>
+    <th>Vognnummer</th>
+    <th>Registreringsnummer</th>
+    <th>Rediger</th>
+    <th>Rapport</th>
+  </tr>
+  <tr th:each="b : ${biler}">
+    <td> <span th:text="${b.name}">Name</span> </td>
+    <td> <span th:text="${b.userId}">id</span> </td>
+    <td> <span th:text="${b.vognNummer}">id</span> </td>
+    <td> <span th:text="${b.registeringsNummer}">id</span> </td>
+    <td> <span> <a th:href="@{'/redigerRapport/' + ${b.vognNummer}}">rediger rapport</a> </span> </td>
+    <td> <span> <a th:href="@{'/seRapport/' + ${b.vognNummer}}">se Rapport</a> </span> </td>
+  </tr>
+</table>
+</body>
+</html>
