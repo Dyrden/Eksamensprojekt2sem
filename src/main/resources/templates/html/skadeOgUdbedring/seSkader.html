@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Skade og Udbedring</title>
+  <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+  <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+  <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+
+</head>
+<body>
+<div th:replace="html/fragments/aFragment:: logo"> </div>
+<ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
+
+<div th:class="bilInfo">
+  <div class="table-title">
+    <h3>Bilens informationer</h3>
+  </div>
+<table class="center">
+  <tr>
+    <th>Bil Mærke</th>
+    <th>Model</th>
+    <th>Vognnummer</th>
+    <th>Registreringsnummer</th>
+  </tr>
+  <tr th:each="b : ${biler}">
+    <td> <span th:text="${b.name}">Name</span> </td>
+    <td> <span th:text="${b.userId}">id</span> </td>
+    <td> <span th:text="${b.vognNummer}">id</span> </td>
+    <td> <span th:text="${b.registeringsNummer}">id</span> </td>
+  </tr>
+</table>
+
+  <div class="table-title">
+    <h3>Bilens skader</h3>
+  </div>
+<table class="center">
+  <tr>
+    <th>Skadens placering</th>
+    <th>Skadens beskrivelse</th>
+    <th>Skadens pris</th>
+    <th>Slet skade</th>
+  </tr>
+  <tr th:each="b : ${bil}">
+    <td> <span th:text="${b.skadensPlacering}">skadensPlacering</span> </td>
+    <td> <span th:text="${b.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
+    <td> <span th:text="${b.skadensPris}">skadensPris</span> </td>
+    <td> <span> <a th:href="@{'/sletSkade/' + ${b.vognNummer}}">Slet skade</a> </span> </td>
+  </tr>
+</table>
+</div>
+<div id="blaaKnap">
+  <button placeholder="Registrer ny skade" type="submit">  <a th:class="htmlLink" th:href="@{'/tilfoejSkade/'}">Registrer ny skade</a>
+  </button>
+</div>
+
+
+</body>
+</html>

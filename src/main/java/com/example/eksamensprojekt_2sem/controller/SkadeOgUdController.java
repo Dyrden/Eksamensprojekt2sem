@@ -12,6 +12,11 @@ public class SkadeOgUdController {
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
+    @GetMapping("/seSkader")
+    public String visSkader(){
+        return "html/skadeOgUdbedring/seSkader";
+    }
+
     @PostMapping("/tilfoej")
     public String tilfoejSkade(){
         return "html/skadeOgUdbedring/tilfoejSkade";
