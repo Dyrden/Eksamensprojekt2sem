@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-  <link rel="stylesheet" th:href="@{/css/tilfojSkade.css}" href="../../../static/css/tilfojSkade.css"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Skade og Udbedring</title>
+  <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+  <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+  <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+  <link rel="stylesheet" th:href="@{/css/tilfojSkade.css}" href="../../static/css/tilfojSkade.css"/>
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: logo"> </div>
-<ul th:replace="/html/fragments/aFragment:: navbar-standard" class="active"></ul>
+<ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
 
 <div class="container">
   <form id="contact" action="" method="post">

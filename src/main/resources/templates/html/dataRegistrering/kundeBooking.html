@@ -5,6 +5,9 @@
     <title>kundeBooking</title>
     <link rel="stylesheet" th:href="@{/css/tilfojSkade.css}" href="../../../static/css/tilfojSkade.css"/>
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+    <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -12,7 +15,8 @@
 <div th:replace="html/fragments/aFragment:: logo"> </div>
 <ul th:replace="html/fragments/aFragment:: navbar-standard" class="active"></ul>
 
-<table table class="bilInfo">
+<div th:class="bilInfo">
+<table th:class="bilInfo">
     <tr>
         <th>Bil Mærke</th>
         <th>Model</th>
@@ -26,17 +30,27 @@
         <td> <span th:text="${b.registeringsNummer}">id</span> </td>
     </tr>
 </table>
+</div>
+
 <div class="flex">
 <div class="container">
     <form id="contact" action="" method="post">
         <h3>Bilens specifikationer</h3>
         <h4>Indtast venligst bilens specifikation</h4>
         <fieldset>
-            <input placeholder="Fuld udstyr" type="checkbox" tabindex="1" required autofocus>
-            <a>Fuld udstyr</a>
+            <label for="udstyr">Vælg udstyr:</label>
+            <select name="udstyr" id="udstyr">
+                <option value="minimal udstyr">minimal udstyr</option>
+                <option value="fuld udstyr">fuld udstyr</option>
+            </select>
         </fieldset>
         <fieldset>
-            <input placeholder="Farve" type="text" tabindex="2" required>
+            <label for="farve">Vælg farve:</label>
+            <select name="farve" id="farve">
+                <option value="blå">blå</option>
+                <option value="sort">sort</option>
+                <option value="hvid">hvid</option>
+            </select>
         </fieldset>
         <fieldset>
             <input placeholder="booking Start" type="date" tabindex="3" required></input>

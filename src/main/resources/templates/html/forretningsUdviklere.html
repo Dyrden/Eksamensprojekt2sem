@@ -2,13 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Forretnings udviklere</title>
-  <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
+  <title>Skade og Udbedring</title>
+  <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+  <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+  <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+
 </head>
 <body>
-<ul th:replace="/html/fragments/aFragment:: navbar-standard" class="active"></ul>
+<div th:replace="html/fragments/aFragment:: logo"> </div>
+<ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
 
-<table class="center" table style="background-color: cornflowerblue; margin-top:50px">
+<table th:class="bilInfo">
   <tr>
     <th>Bil Mærke</th>
     <th>Model</th>

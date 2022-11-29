@@ -1,0 +1,56 @@
+/* Fundet inspiration fra https://codepen.io/kazzkiq/pen/qEMjaw/ */
+body {
+    font-family: Helvetica Neue, Helvetica, sans-serif;
+    background: #e8e6e5;
+}
+.skew-menu {
+    text-align: center;
+    margin-top: 25px;
+    margin-left: 300px;
+}
+.skew-menu ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transform: skew(-25deg);
+    position: sticky;
+}
+.skew-menu ul li {
+    background: #fff;
+    float: left;
+    border-right: 10px solid #eee;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    transition: all 0.3s linear;
+    font-family:"Open Sans", Helvetica, Arial, sans-serif;
+    font-weight:300;
+    font-size: 16px;
+    line-height:30px;
+    color:black;
+    font-weight: bolder;
+}
+.skew-menu ul li:first-child {
+    border-radius: 7px 0 0 7px;
+}
+.skew-menu ul li:last-child {
+    border-right: none;
+    border-radius: 0 7px 7px 0;
+}
+.skew-menu ul li:hover {
+    background: #eee;
+    color: #d36e36;
+}
+.skew-menu ul li a {
+    display: block;
+    padding: 1em 2em;
+    color: inherit;
+    text-decoration: none;
+    transform: skew(25deg);
+}
+.logocorner {
+    position: absolute;
+    left: 50px;
+    top: 10px;
+scale: 130%;
+}

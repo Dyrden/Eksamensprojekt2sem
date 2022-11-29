@@ -1,0 +1,46 @@
+.bilInfo{
+    margin-top: 50px;
+    margin-left: 77px;
+}
+
+.bilInfo table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    border-radius: 5px;
+}
+.bilInfo table.center {
+    margin-left:auto;
+    margin-right:auto;
+}
+.bilInfo td, th {
+    background-color: #f8b38e;
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    width: 10%;
+}
+
+.bilInfo tr:nth-child(even) {
+    background-color: white;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    width: 10%;
+}
+
+div.table-title {
+    display: block;
+    margin: auto;
+    max-width: 600px;
+    padding: 5px;
+    width: 100%;
+}
+.table-title h3 {
+    color: #000000;
+    font-size: 30px;
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+}

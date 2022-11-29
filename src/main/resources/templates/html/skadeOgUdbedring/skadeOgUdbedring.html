@@ -4,12 +4,19 @@
   <meta charset="UTF-8">
   <title>Skade og Udbedring</title>
   <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+  <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+  <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: logo"> </div>
-<ul th:replace="/html/fragments/aFragment:: navbar-standard" class="active"></ul>
+<ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
 
-<table class="center" table style="background-color: cornflowerblue; margin-top:50px">
+<div th:class="bilInfo">
+  <div class="table-title">
+    <h3>Bilens informationer</h3>
+  </div>
+<table class="center">
   <tr>
     <th>Bil Mærke</th>
     <th>Model</th>
@@ -24,7 +31,10 @@
   </tr>
 </table>
 
-<table class="center" table style="background-color: cornflowerblue; margin-top:50px">
+  <div class="table-title">
+    <h3>Bilens skader</h3>
+  </div>
+<table class="center">
   <tr>
     <th>Skadens placering</th>
     <th>Skadens beskrivelse</th>
@@ -38,7 +48,11 @@
     <td> <span> <a th:href="@{'/sletSkade/' + ${b.vognNummer}}">Slet skade</a> </span> </td>
   </tr>
 </table>
-
+</div>
+<div id="blaaKnap">
+  <button placeholder="Registrer ny skade" type="submit">  <a th:class="htmlLink" th:href="@{'/tilfojSkade/'}">Registrer ny skade</a>
+  </button>
+</div>
 
 </body>
 </html>

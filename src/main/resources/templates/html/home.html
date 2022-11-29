@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Irrelevant</title>
+  <title>Skade og Udbedring</title>
   <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+  <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+  <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: logo"> </div>
-<ul th:replace="/html/fragments/aFragment:: navbar-standard" class="active"></ul>
+<ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
 
+<div th:class="home-picture-placement">
+  <img src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="200,2" height="100,1" th:class="home-picture">
+</div>
 </body>
 </html>
