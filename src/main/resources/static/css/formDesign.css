@@ -122,3 +122,24 @@ fieldset {
     display: -webkit-flex;
     display: flex;
 }
+
+.bilBookingFormFlex{
+    justify-content: center;
+    margin: auto;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.bilSpecifikationsBox{
+    margin-left: 20px;
+    background:#F9F9F9;
+    padding:25px;
+}
+.kundeInformationBox{
+    margin-right: 20px;
+    background:#F9F9F9;
+    padding:25px;
+}

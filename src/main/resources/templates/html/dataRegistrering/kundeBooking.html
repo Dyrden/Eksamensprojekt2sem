@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>kundeBooking</title>
-    <link rel="stylesheet" th:href="@{/css/tilfojSkade.css}" href="../../../static/css/tilfojSkade.css"/>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
     <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
     <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
@@ -32,9 +32,10 @@
 </table>
 </div>
 
-<div class="flex">
-    <form id="contact" action="/nyBooking" method="post">
-    <div class="container">
+<div class="bilBookingFormFlex">
+    <form action="/nyBooking" method="post">
+    <div class="container flex">
+        <div id="contact" class="bilSpecifikationsBox">
         <h3>Bilens specifikationer</h3>
         <h4>Indtast venligst bilens specifikation</h4>
         <fieldset>
@@ -46,8 +47,8 @@
         </fieldset>
         <fieldset>
             <label for="farve">Vælg farve:</label>
-            <select name="FarveID" id="farve">
-                <option value="blå">blå</option>
+            <select name="farve" id="farve">
+                <option value="blaa">blaa</option>
                 <option value="sort">sort</option>
                 <option value="hvid">hvid</option>
             </select>
@@ -68,8 +69,8 @@
                 <option value="3">4</option>
             </select>
         </fieldset>
-</div>
-<div class="container">
+        </div>
+        <div id="contact" class="kundeInformationBox">
         <h3>Kunde informationer</h3>
         <h4>Indtast venligst kundens information</h4>
         <fieldset>
@@ -92,7 +93,8 @@
                 <button class="inline" name="submit" type="submit" id="send-kundeinfo" data-submit="...Sending">Søg</button>
             </div>
         </fieldset>
-</div>
+        </div>
+    </div>
     </form>
 </div>
 </body>

@@ -56,7 +56,6 @@ public class DataRegController {
         System.out.println(forNavn + " " + efterNavn + " " + cpr);
 
         return "redirect:" + vognNummer;
-
     }
 
     @PostMapping("/nyBooking+{vognNummer}")
