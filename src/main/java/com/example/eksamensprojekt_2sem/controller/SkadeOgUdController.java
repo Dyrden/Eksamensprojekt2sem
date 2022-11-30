@@ -12,6 +12,11 @@ public class SkadeOgUdController {
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
+    @PostMapping("/udbedring")
+    public String reUdbedring(){
+        return "redirect:/skadeOgUdbedring";
+    }
+
     @GetMapping("/seSkader")
     public String visSkader(){
         return "html/skadeOgUdbedring/seSkader";
