@@ -6,21 +6,31 @@ public class BilModel {
 
     private int vognNummer;
     private int stelNummer;
+    private String maerke;
     private String model;
     private String farve;
     private boolean udlejningsStatus;
     private double antalKilometer;
     private List<AftaleModel> aftaler;
 
-    public BilModel(int vognNummer, int stelNummer, String model, String farve, boolean udlejningsStatus,
+    public BilModel(int vognNummer, int stelNummer, String maerke, String model, String farve, boolean udlejningsStatus,
                     double antalKilometer, List<AftaleModel> aftaler){
         this.vognNummer = vognNummer;
         this.stelNummer = stelNummer;
+        this.maerke = maerke;
         this.model = model;
         this.farve = farve;
         this.udlejningsStatus = udlejningsStatus;
         this.antalKilometer = antalKilometer;
         this.aftaler = aftaler;
+    }
+
+    public String getMaerke() {
+        return maerke;
+    }
+
+    public void setMaerke(String maerke) {
+        this.maerke = maerke;
     }
 
     public void setVognNummer(int vognNummer){
