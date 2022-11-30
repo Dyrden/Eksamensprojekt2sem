@@ -39,14 +39,14 @@
         <h4>Indtast venligst bilens specifikation</h4>
         <fieldset>
             <label for="udstyr">Vælg udstyr:</label>
-            <select name="udstyr" id="udstyr">
+            <select name="udstyrsnivauID" id="udstyr">
                 <option value="minimal udstyr">minimal udstyr</option>
                 <option value="fuld udstyr">fuld udstyr</option>
             </select>
         </fieldset>
         <fieldset>
             <label for="farve">Vælg farve:</label>
-            <select name="farve" id="farve">
+            <select name="FarveID" id="farve">
                 <option value="blå">blå</option>
                 <option value="sort">sort</option>
                 <option value="hvid">hvid</option>
@@ -54,11 +54,11 @@
         </fieldset>
         <fieldset>
             <label for="startDato">Vælg start udlejningsdato</label>
-            <input id="startDato" type="date" tabindex="3" required>
+            <input name="udlejningsStartDato" id="startDato" type="date" tabindex="3" required>
         </fieldset>
         <fieldset>
             <label for="slutDato">Vælg slut udlejningsdato</label>
-            <input id="slutDato" type="date" tabindex="3" required>
+            <input name="udeljningsSlutDato" id="slutDato" type="date" tabindex="3" required>
         </fieldset>
     </form>
 </div>
@@ -67,23 +67,23 @@
         <h3>Kunde informationer</h3>
         <h4>Indtast venligst kundens information</h4>
         <fieldset>
-            <input placeholder="Fornavn" type="text" tabindex="1" required autofocus>
+            <input name="fornavn" placeholder="Fornavn" type="text" tabindex="1" required autofocus>
         </fieldset>
         <fieldset>
-            <input placeholder="Efternavn" type="text" tabindex="2" required>
+            <input name="efternavn" placeholder="Efternavn" type="text" tabindex="2" required>
         </fieldset>
         <fieldset>
-            <input placeholder="E-mail" type="text" tabindex="3" required></input>
+            <input name="email" placeholder="E-mail" type="text" tabindex="3" required></input>
         </fieldset>
         <fieldset>
-            <input placeholder="tlf nummer" type="text" tabindex="4" required></input>
+            <input name="tlf" placeholder="tlf nummer" type="text" tabindex="4" required></input>
         </fieldset>
         <fieldset>
-            <input placeholder="cpr nummer" type="text" tabindex="5" required></input>
+            <input name="CPR" placeholder="cpr nummer" type="text" tabindex="5" required></input>
         </fieldset>
         <fieldset>
             <div class="flex">
-                <button class="inline" name="submit" type="submit" id="lol-submit" data-submit="...Sending">Søg</button>
+                <button class="inline" name="submit" type="submit" id="send-kundeinfo" data-submit="...Sending">Søg</button>
             </div>
         </fieldset>
     </form>
