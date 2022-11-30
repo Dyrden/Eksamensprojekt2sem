@@ -30,22 +30,14 @@ public class DataRegController {
     @PostMapping("/nyBooking")
     public String nyBooking(
         RedirectAttributes attributes,
-        @RequestParam("udstyr") String udstyr,
-        @RequestParam("farve") String farve,
-        @RequestParam("udlejningsStartDato") String udlejningsStartDato,
-        @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,
-        @RequestParam("udleveringsStedID") String udleveringsStedID,
+
         @RequestParam("fornavn") String forNavn,
         @RequestParam("efternavn") String efterNavn,
         @RequestParam("email") String email,
         @RequestParam("tlf") String tlf,
         @RequestParam("CPR") String cpr,
         @RequestParam("vognNummer") String vognNummer) {
-        attributes.addAttribute("udstyr", udstyr);
-        attributes.addAttribute("farve", farve);
-        attributes.addAttribute("udlejningsStartDato", udlejningsStartDato);
-        attributes.addAttribute("udeljningsSlutDato", udeljningsSlutDato);
-        attributes.addAttribute("udleveringsStedID", udleveringsStedID);
+
         attributes.addAttribute("fornavn", forNavn);
         attributes.addAttribute("efternavn", efterNavn);
         attributes.addAttribute("email", email);
@@ -62,22 +54,14 @@ public class DataRegController {
     @PostMapping("/nyBooking+{vognNummer}")
     public String nyBookingGet(
         RedirectAttributes attributes,
-        @RequestParam("udstyr") String udstyr,
-        @RequestParam("farve") String farve,
-        @RequestParam("udlejningsStartDato") String udlejningsStartDato,
-        @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,
-        @RequestParam("udleveringsStedID") String udleveringsStedID,
+
         @RequestParam("fornavn") String forNavn,
         @RequestParam("efternavn") String efterNavn,
         @RequestParam("email") String email,
         @RequestParam("tlf") String tlf,
         @RequestParam("CPR") String cpr,
         @RequestParam("vognNummer") String vognNummer) {
-        attributes.addAttribute("udstyr", udstyr);
-        attributes.addAttribute("farve", farve);
-        attributes.addAttribute("udlejningsStartDato", udlejningsStartDato);
-        attributes.addAttribute("udeljningsSlutDato", udeljningsSlutDato);
-        attributes.addAttribute("udleveringsStedID", udleveringsStedID);
+
         attributes.addAttribute("fornavn", forNavn);
         attributes.addAttribute("efternavn", efterNavn);
         attributes.addAttribute("email", email);
