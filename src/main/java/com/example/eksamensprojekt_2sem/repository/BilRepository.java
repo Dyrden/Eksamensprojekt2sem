@@ -18,7 +18,7 @@ public class BilRepository {
 
     }
 
-    public int selectBilVognNummer(int vognNummer){
+    public int selectBilUdfraVognNummer(int vognNummer){
         vognNummer = 0;
         return vognNummer;
     }

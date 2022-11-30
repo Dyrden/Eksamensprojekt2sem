@@ -33,8 +33,8 @@
 </div>
 
 <div class="flex">
-<div class="container">
-    <form id="contact">
+    <form id="contact" action="/nyBooking" method="post">
+    <div class="container">
         <h3>Bilens specifikationer</h3>
         <h4>Indtast venligst bilens specifikation</h4>
         <fieldset>
@@ -68,10 +68,8 @@
                 <option value="3">4</option>
             </select>
         </fieldset>
-    </form>
 </div>
 <div class="container">
-    <form id="contact" action="/nyBooking" method="post">
         <h3>Kunde informationer</h3>
         <h4>Indtast venligst kundens information</h4>
         <fieldset>
@@ -94,8 +92,8 @@
                 <button class="inline" name="submit" type="submit" id="send-kundeinfo" data-submit="...Sending">Søg</button>
             </div>
         </fieldset>
+</div>
     </form>
 </div>
-    </div>
 </body>
 </html>
