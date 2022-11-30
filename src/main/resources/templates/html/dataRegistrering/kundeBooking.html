@@ -34,12 +34,12 @@
 
 <div class="flex">
 <div class="container">
-    <form id="contact" action="" method="post">
+    <form id="contact" action="/nyBooking" method="post">
         <h3>Bilens specifikationer</h3>
         <h4>Indtast venligst bilens specifikation</h4>
         <fieldset>
             <label for="udstyr">Vælg udstyr:</label>
-            <select name="udstyrsnivauID" id="udstyr">
+            <select name="udstyr" id="udstyr">
                 <option value="minimal udstyr">minimal udstyr</option>
                 <option value="fuld udstyr">fuld udstyr</option>
             </select>
@@ -59,6 +59,14 @@
         <fieldset>
             <label for="slutDato">Vælg slut udlejningsdato</label>
             <input name="udeljningsSlutDato" id="slutDato" type="date" tabindex="3" required>
+        </fieldset>
+        <fieldset>
+            <label for="udleveringsStedID">Vælg udleveringssted</label>
+            <select name="udleveringsStedID" id="udleveringsStedID">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">4</option>
+            </select>
         </fieldset>
     </form>
 </div>
