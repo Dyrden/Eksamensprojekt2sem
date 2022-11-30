@@ -17,7 +17,7 @@ public class SkadeOgUdController {
         return "html/skadeOgUdbedring/seSkader";
     }
 
-    @PostMapping("/tilfoej")
+    @GetMapping("/tilfoejSkade")
     public String tilfoejSkade(){
         return "html/skadeOgUdbedring/tilfoejSkade";
     }
