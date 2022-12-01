@@ -8,16 +8,16 @@ import java.sql.SQLException;
 
 public class ConnectionSingleton {
 
-    private static Connection connection = null;
+    //private static Connection connection = null;
     //kald til gemte værdier, der tilgår DB
-    @Value("${JDBCUrl}")
+    @Value("JDBCUrl")
     private static String db_URL;
+    //private static String db_URL = "jdbc:mysql://team-baever.mysql.database.azure.com:3306/bilabonnement";
 
-    @Value("${JDBCUsername}")
-    private static String uid;
+    //@Value("${JDBCUsername}")
+    //private static String uid;
 
-    @Value("${JDBCPassword}")
-    private static String pass;
+    /*
 static {
 
     try {
@@ -30,7 +30,20 @@ static {
         e.printStackTrace();
     }
 }
+
+     */
 public static Connection connect(){
+    Connection connection = null;
+
+    try {
+        //Skaber en forbindelse til DB
+        connection = DriverManager.getConnection(db_URL, uid, pass);
+
+    } catch (SQLException e) {
+        System.out.println("u dun goofed");
+        e.printStackTrace();
+    }
+
     return connection;
 }
 }
