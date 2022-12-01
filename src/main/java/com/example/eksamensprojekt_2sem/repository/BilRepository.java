@@ -66,8 +66,8 @@ public class BilRepository {
                 try {
                 bilModel.setVognNummer(resultSet.getInt(1));
                 bilModel.setStelNummer(resultSet.getInt(2));
-                bilModel.setMaerke(resultSet.getString(3));
-                bilModel.setModel(resultSet.getString(4));
+                bilModel.setMaerkeID(resultSet.getInt(3));
+                bilModel.setModelID(resultSet.getInt(4));
                 }catch (NullPointerException e){
                     System.out.println("i got nothing");
                 }
