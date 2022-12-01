@@ -39,12 +39,14 @@
     display: contents;
     font-size: 50px;
     font-weight: 400;
+    text-transform: uppercase;
+
 }
 
 #bilSpecifikation h4 {
     margin:5px 0 15px;
     display:block;
-    font-size:13px;
+    font-size:15px;
 }
 
 fieldset {
@@ -61,6 +63,11 @@ fieldset {
     background:#FFF;
     margin:0 0 5px;
     padding:10px;
+}
+
+#bilSpecifikation label{
+    font-size: 15px;
+    margin-top: 10px;
 }
 
 #bilSpecifikation input[type="text"]:hover, #bilSpecifikation input[type="email"]:hover, #bilSpecifikation input[type="tel"]:hover, #bilSpecifikation input[type="url"]:hover, #bilSpecifikation textarea:hover {
@@ -149,12 +156,13 @@ fieldset {
     display: contents;
     font-size: 50px;
     font-weight: 400;
+    text-transform: uppercase;
 }
 
 #kundeinfo h4 {
     margin:5px 0 15px;
     display:block;
-    font-size:13px;
+    font-size:15px;
 }
 
 #kundeinfo input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea {

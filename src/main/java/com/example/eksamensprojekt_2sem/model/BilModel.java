@@ -24,7 +24,11 @@ public class BilModel {
         this.antalKilometer = antalKilometer;
         this.aftaler = aftaler;
     }
-
+    public BilModel(int vognNummer, int stelNummer, String maerke){
+        this.vognNummer = vognNummer;
+        this.stelNummer = stelNummer;
+        this.maerke = maerke;
+    }
     public String getMaerke() {
         return maerke;
     }

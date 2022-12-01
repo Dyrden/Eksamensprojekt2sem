@@ -9,7 +9,7 @@ body {
     margin-left: 300px;
 }
 .skew-menu ul {
-    display: flex;
+    display: -webkit-box;
     margin: 0;
     padding: 0;
     list-style: none;
