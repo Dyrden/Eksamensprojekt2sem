@@ -27,22 +27,25 @@ public class BilRepository {
     public List<BilModel> visAlleBiler(){
         List<BilModel> biler = new LinkedList<>();
         try {
-       ResultSet resultSet = SQLManager.execute("CALL VisAlleBiler()",dbUrl,uID,pass);
+       ResultSet resultSet = SQLManager.execute("CALL visallebiler()",dbUrl,uID,pass);
 
             while (resultSet.next()) {
-                int vognNummer = resultSet.getInt(1);
-                int stelNummer = resultSet.getInt(2);
-             int maerkeID = resultSet.getInt(3);
-             int modelID = resultSet.getInt(4);
-             int statusID = resultSet.getInt(5);
-             int farveID = resultSet.getInt(6);
-             double staalPris = resultSet.getInt(7);
-             double registreringsAfgift = resultSet.getInt(8);
-             double CO2Udledning = resultSet.getInt(9);
-             int produktionsaar = resultSet.getInt(10);
-             int distance = resultSet.getInt(11);
+                String vognNummer = resultSet.getString(1);
+                String stelNummer = resultSet.getString(2);
+             String maerke = resultSet.getString(3);
+             String model = resultSet.getString(4);
+             String energiType = resultSet.getString(5);
+             String gearboks = resultSet.getString(6);
+             String udstyr = resultSet.getString(7);
+             String status = resultSet.getString(8);
+             String farve = resultSet.getString(9);
+             double staalPris = resultSet.getInt(10);
+             double registreringsAfgift = resultSet.getInt(11);
+             double CO2Udledning = resultSet.getInt(12);
+             int produktionsaar = resultSet.getInt(13);
+             int distance = resultSet.getInt(14);
 
-                biler.add(new BilModel(vognNummer, stelNummer,maerkeID, modelID, statusID, farveID,
+                biler.add(new BilModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
                                             staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance));
             }
 
@@ -79,8 +82,8 @@ public class BilRepository {
                     SQLManager.execute("CALL VisSpecifikBil('vognnummer')",dbUrl,uID,pass);
             while (resultSet.next()){
                 try {
-                bilModel.setVognNummer(resultSet.getInt(1));
-                bilModel.setStelNummer(resultSet.getInt(2));
+                bilModel.setVognNummer(resultSet.getString(1));
+                bilModel.setStelNummer(resultSet.getString(2));
                 bilModel.setMaerkeID(resultSet.getInt(3));
                 bilModel.setModelID(resultSet.getInt(4));
                 }catch (NullPointerException e){
