@@ -24,18 +24,33 @@ public class BilRepository {
     private String pass;
     public BilRepository(){}
 
-    public Object visAlleBiler(String s){
-        List<BilModel> bilModeler = new LinkedList<>();
+    public List<BilModel> visAlleBiler(){
+        List<BilModel> biler = new LinkedList<>();
         try {
        ResultSet resultSet = SQLManager.execute("CALL VisAlleBiler()",dbUrl,uID,pass);
-        while (resultSet.next()){
 
-        }
+            while (resultSet.next()) {
+                int vognNummer = resultSet.getInt(1);
+                int stelNummer = resultSet.getInt(2);
+             int maerkeID = resultSet.getInt(3);
+             int modelID = resultSet.getInt(4);
+             int statusID = resultSet.getInt(5);
+             int farveID = resultSet.getInt(6);
+             double staalPris = resultSet.getInt(7);
+             double registreringsAfgift = resultSet.getInt(8);
+             double CO2Udledning = resultSet.getInt(9);
+             int produktionsaar = resultSet.getInt(10);
+             int distance = resultSet.getInt(11);
+
+                biler.add(new BilModel(vognNummer, stelNummer,maerkeID, modelID, statusID, farveID,
+                                            staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance));
+            }
+
         } catch (SQLException e){
             e.printStackTrace();
         }
 
-        return bilModeler;
+        return biler;
 
     }
     public Object visUdlejetBiler(String s){

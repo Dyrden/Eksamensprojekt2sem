@@ -15,9 +15,7 @@ public class BilModel {
     private double CO2Udledning;
     private int produktionsaar;
     private int distance;
-    private List<AftaleModel> aftaler;
-
-    public BilModel(int vognNummer, int stelNummer, int maerkeID, int modelID, int statusID, int farveID, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance, List<AftaleModel> aftaler) {
+    public BilModel(int vognNummer, int stelNummer, int maerkeID, int modelID, int statusID, int farveID, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
         this.vognNummer = vognNummer;
         this.stelNummer = stelNummer;
         this.maerkeID = maerkeID;
@@ -29,7 +27,6 @@ public class BilModel {
         this.CO2Udledning = CO2Udledning;
         this.produktionsaar = produktionsaar;
         this.distance = distance;
-        this.aftaler = aftaler;
     }
 
     public BilModel() {

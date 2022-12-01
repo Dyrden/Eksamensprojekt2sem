@@ -13,7 +13,9 @@ public class DataRegController {
     private BilRepository bilRepository = new BilRepository();
 
     @GetMapping("/dataRegistrering")
-    public String visDataReg(){
+    public String visDataReg(Model model){
+        model.addAttribute("biler", bilRepository.visAlleBiler());
+
         return "html/dataRegistrering/dataRegistrering";
     }
 
