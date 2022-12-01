@@ -1,5 +1,6 @@
 package com.example.eksamensprojekt_2sem.controller;
 
+import com.example.eksamensprojekt_2sem.model.BrugerModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,21 +25,22 @@ public class DataRegController {
         return "html/dataRegistrering/dataRegistrering";
     }
 
+    @GetMapping("/bookBil/{vognNummer}")
+    public String bookBil(@PathVariable("vognNummer") String vognNummer, Model model) {
+        model.addAttribute("bil", bilRepository.selectBilUdfraVognNummer(vognNummer));
+        return "html/dataRegistrering/kundeBooking";
+    }
+
+    //Bliver ikke brugt længere. Kun til CSS
     @GetMapping("/kundeBooking")
     public String kundeBooking(){
         return "html/dataRegistrering/kundebooking";
-    }
-    @GetMapping("/bookBil/{id}")
-    public String bookBil(@PathVariable("vognNummer") int vognNummer, Model model) {
-        model.addAttribute("bil", bilRepository.selectBilUdfraVognNummer(vognNummer));
-        return "html/dataRegistrering/kundeBooking";
     }
 
     @PostMapping("/nyBooking")
     public String nyBooking(
         RedirectAttributes attributes,
         @RequestParam("udstyr") String udstyr,
-        @RequestParam("farve") String farve,
         @RequestParam("udlejningsStartDato") String udlejningsStartDato,
         @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,
         @RequestParam("udleveringsStedID") String udleveringsStedID,
@@ -49,7 +51,6 @@ public class DataRegController {
         @RequestParam("CPR") String cpr,
         @RequestParam("vognNummer") String vognNummer) {
         attributes.addAttribute("udstyr", udstyr);
-        attributes.addAttribute("farve", farve);
         attributes.addAttribute("udlejningsStartDato", udlejningsStartDato);
         attributes.addAttribute("udeljningsSlutDato", udeljningsSlutDato);
         attributes.addAttribute("udleveringsStedID", udleveringsStedID);
@@ -65,11 +66,11 @@ public class DataRegController {
         return "redirect:" + vognNummer;
     }
 
-    @PostMapping("/nyBooking+{vognNummer}")
+    @GetMapping("/nyBooking+{vognNummer}")
     public String nyBookingGet(
-        RedirectAttributes attributes,
+        Model model,
+        @PathVariable("vognNummer") String vognNummer,
         @RequestParam("udstyr") String udstyr,
-        @RequestParam("farve") String farve,
         @RequestParam("udlejningsStartDato") String udlejningsStartDato,
         @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,
         @RequestParam("udleveringsStedID") String udleveringsStedID,
@@ -77,20 +78,19 @@ public class DataRegController {
         @RequestParam("efternavn") String efterNavn,
         @RequestParam("email") String email,
         @RequestParam("tlf") String tlf,
-        @RequestParam("CPR") String cpr,
-        @RequestParam("vognNummer") String vognNummer) {
-        attributes.addAttribute("udstyr", udstyr);
-        attributes.addAttribute("farve", farve);
-        attributes.addAttribute("udlejningsStartDato", udlejningsStartDato);
-        attributes.addAttribute("udeljningsSlutDato", udeljningsSlutDato);
-        attributes.addAttribute("udleveringsStedID", udleveringsStedID);
-        attributes.addAttribute("fornavn", forNavn);
-        attributes.addAttribute("efternavn", efterNavn);
-        attributes.addAttribute("email", email);
-        attributes.addAttribute("tlf", tlf);
-        attributes.addAttribute("email", cpr);
-        attributes.addAttribute("vognNummer", vognNummer);
+        @RequestParam("CPR") String cpr) {
+        model.addAttribute("udstyr", udstyr);
+        model.addAttribute("udlejningsStartDato", udlejningsStartDato);
+        model.addAttribute("udeljningsSlutDato", udeljningsSlutDato);
+        model.addAttribute("udleveringsStedID", udleveringsStedID);
+        model.addAttribute("fornavn", forNavn);
+        model.addAttribute("efternavn", efterNavn);
+        model.addAttribute("email", email);
+        model.addAttribute("tlf", tlf);
+        model.addAttribute("email", cpr);
 
+        // har skrevet for at teste om den funere, 1 skal være ID
+        BrugerModel kunde = new BrugerModel(vognNummer,forNavn, efterNavn, email, tlf, cpr );
 
         System.out.println(forNavn + " " + efterNavn + " " + cpr);
 

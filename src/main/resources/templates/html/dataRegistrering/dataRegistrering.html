@@ -21,10 +21,10 @@
         <th>Book</th>
     </tr>
     <tr th:each="b : ${biler}">
-        <td> <span th:text="${b.vognNummer}">VognNummer</span> </td>
-        <td> <span th:text="${b.stelNummer}">StelNummer</span> </td>
-        <td> <span th:text="${b.maerkeID}">Mærke</span> </td>
-        <td> <span th:text="${b.farveID}">farve</span> </td>
+        <td> <span th:text="${b.maerke}">Maerke</span> </td>
+        <td> <span th:text="${b.model}">Model</span> </td>
+        <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
+        <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
         <td> <span> <a th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </span> </td>
     </tr>
 </table>

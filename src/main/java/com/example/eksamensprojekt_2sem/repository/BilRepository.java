@@ -65,9 +65,11 @@ public class BilRepository {
 
     }
 
-    public int selectBilUdfraVognNummer(int vognNummer){
-        vognNummer = 0;
-        return vognNummer;
+    public BilModel selectBilUdfraVognNummer(String vognNummerID){
+      BilModel bil = new BilModel();
+
+        ResultSet resultSet = SQLManager.execute("SELECT * FROM bilabonnement.bil WHERE vognNummerID =?;",dbUrl,uID,pass);
+        return bil;
     }
 
     public Object visSpecifikBil(String s){

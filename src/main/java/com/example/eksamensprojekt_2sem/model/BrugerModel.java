@@ -1,14 +1,14 @@
 package com.example.eksamensprojekt_2sem.model;
 
 public class BrugerModel {
-  private int id;
+  private String id;
   private String fornavn;
   private String efternavn;
   private String email;
-  private int tlf;
-  private int cpr;
+  private String tlf;
+  private String cpr;
 
-  public BrugerModel(int id, String fornavn, String efternavn, String email, int tlf, int cpr) {
+  public BrugerModel(String id, String fornavn, String efternavn, String email, String tlf, String cpr) {
     this.id = id;
     this.fornavn = fornavn;
     this.efternavn = efternavn;
@@ -17,14 +17,11 @@ public class BrugerModel {
     this.cpr = cpr;
   }
 
-  public BrugerModel() {
-  }
-
-  public int getId() {
+  public String getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(String id) {
     this.id = id;
   }
 
@@ -52,30 +49,31 @@ public class BrugerModel {
     this.email = email;
   }
 
-  public int getTlf() {
+  public String getTlf() {
     return tlf;
   }
 
-  public void setTlf(int tlf) {
+  public void setTlf(String tlf) {
     this.tlf = tlf;
   }
 
-  public int getCpr() {
+  public String getCpr() {
     return cpr;
   }
 
-  public void setCpr(int cpr) {
+  public void setCpr(String cpr) {
     this.cpr = cpr;
   }
 
   @Override
   public String toString() {
-    return
-        "id=" + id +
-        "fornavn='" + fornavn + '\'' +
-        "efternavn='" + efternavn + '\'' +
-        "email='" + email + '\'' +
-        "tlf=" + tlf +
-        "cpr=" + cpr;
+    return "BrugerModel{" +
+        "id='" + id + '\'' +
+        ", fornavn='" + fornavn + '\'' +
+        ", efternavn='" + efternavn + '\'' +
+        ", email='" + email + '\'' +
+        ", tlf='" + tlf + '\'' +
+        ", cpr='" + cpr + '\'' +
+        '}';
   }
 }
