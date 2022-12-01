@@ -1,22 +1,28 @@
 package com.example.eksamensprojekt_2sem.service;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+@Repository
 public class ConnectionSingleton {
 
     //private static Connection connection = null;
     //kald til gemte værdier, der tilgår DB
-    @Value("JDBCUrl")
-    private static String db_URL;
+    @Value("${JDBCUrl}")
+    private String db_URL;
     //private static String db_URL = "jdbc:mysql://team-baever.mysql.database.azure.com:3306/bilabonnement";
 
-    //@Value("${JDBCUsername}")
-    //private static String uid;
+    @Value("${JDBCUsername}")
+    private String uid;
+    //private static String uid = "Control";
 
+    @Value("${JDBCPassword}")
+    private static String pass;
+    //private static String pass = "BeaverDen523#";
     /*
 static {
 
@@ -32,7 +38,7 @@ static {
 }
 
      */
-public static Connection connect(){
+public static Connection connect(String db_URL, String uid, String pass){
     Connection connection = null;
 
     try {
@@ -46,4 +52,6 @@ public static Connection connect(){
 
     return connection;
 }
+
+
 }

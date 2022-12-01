@@ -6,15 +6,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BookingRepository {
     public void visAktiveBookinger(String s){
-        SQLManager.makeStatement("CALL VisAktiveBookninger()");
+        //SQLManager.makeStatement("CALL VisAktiveBookninger()");
 
     }
     public void visBookingHistorik(String s){
-        SQLManager.makeStatement("CALL VisBookningHistorik()");
+        //SQLManager.makeStatement("CALL VisBookningHistorik()");
 
     }
     public void LavBooking(String s){
-        SQLManager.makeStatement("CALL LavBookning()");
+        //SQLManager.makeStatement("CALL LavBookning()");
 
     }
 
