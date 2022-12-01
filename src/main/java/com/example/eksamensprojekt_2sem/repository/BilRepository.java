@@ -2,6 +2,7 @@ package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.BilModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
@@ -12,10 +13,20 @@ import java.util.List;
 
 @Repository
 public class BilRepository {
+
+    @Value("${JDBCUrl}")
+    private String dbUrl;
+
+    @Value("${JDBCUsername}")
+    private String uID;
+
+    @Value("${JDBCPassword}")
+    private String pass;
+    public BilRepository(){}
     public Object visAlleBiler(String s){
         List<BilModel> bilModeler = new LinkedList<>();
         try {
-       ResultSet resultSet = SQLManager.execute(("CALL VisAlleBiler()"));
+       ResultSet resultSet = SQLManager.execute("CALL VisAlleBiler()",dbUrl,uID,pass);
         while (resultSet.next()){
 
         }
@@ -27,11 +38,11 @@ public class BilRepository {
 
     }
     public Object visUdlejetBiler(String s){
-        return SQLManager.makeStatement("CALL VisUdlejedeBiler()");
+        return SQLManager.makeStatement("CALL VisUdlejedeBiler()",dbUrl,uID,pass);
 
     }
     public Object LavBil(String s){
-        return SQLManager.makeStatement("CALL LavBil()");
+        return SQLManager.makeStatement("CALL LavBil()",dbUrl,uID,pass);
 
     }
 
@@ -41,7 +52,7 @@ public class BilRepository {
     }
 
     public Object visSpecifikBil(String s){
-        return SQLManager.makeStatement("CALL VisSpecifikBil('vognnummer')");
+        return SQLManager.makeStatement("CALL VisSpecifikBil('vognnummer')",dbUrl,uID,pass);
     }
 
     public Object sUVisning(String s){
@@ -49,7 +60,7 @@ public class BilRepository {
         try {
 
             ResultSet resultSet =
-                    SQLManager.execute("CALL VisSpecifikBil('vognnummer')");
+                    SQLManager.execute("CALL VisSpecifikBil('vognnummer')",dbUrl,uID,pass);
             while (resultSet.next()){
                 try {
                 bilModel.setVognNummer(resultSet.getInt(1));
