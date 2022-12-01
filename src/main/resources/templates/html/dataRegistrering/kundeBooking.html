@@ -34,8 +34,8 @@
 
 <div class="bilBookingFormFlex">
     <form action="/nyBooking" method="post">
-    <div class="container flex">
-        <div id="contact" class="bilSpecifikationsBox">
+    <div class="container bilBookingFormFlex">
+        <div id="bilSpecifikation">
         <h3>Bilens specifikationer</h3>
         <h4>Indtast venligst bilens specifikation</h4>
         <fieldset>
@@ -70,7 +70,7 @@
             </select>
         </fieldset>
         </div>
-        <div id="contact" class="kundeInformationBox">
+        <div id="kundeinfo">
         <h3>Kunde informationer</h3>
         <h4>Indtast venligst kundens information</h4>
         <fieldset>
@@ -89,7 +89,7 @@
             <input name="CPR" placeholder="cpr nummer" type="text" tabindex="5" required></input>
         </fieldset>
         <fieldset>
-            <div class="flex">
+            <div class="bilBookingFormFlex">
                 <button class="inline" name="submit" type="submit" id="send-kundeinfo" data-submit="...Sending">Søg</button>
             </div>
         </fieldset>
