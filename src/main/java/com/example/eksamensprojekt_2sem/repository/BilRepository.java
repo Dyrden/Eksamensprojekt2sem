@@ -4,20 +4,34 @@ import com.example.eksamensprojekt_2sem.model.BilModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 @Repository
 public class BilRepository {
-    public void visAlleBiler(String s){
-        SQLManager.makeStatement("CALL VisAlleBiler()");
-    }
-    public void visUdlejetBiler(String s){
-        SQLManager.makeStatement("CALL VisUdlejedeBiler()");
+    public Object visAlleBiler(String s){
+        List<BilModel> bilModeler = new LinkedList<>();
+        try {
+       ResultSet resultSet = SQLManager.execute(("CALL VisAlleBiler()"));
+        while (resultSet.next()){
+
+        }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return bilModeler;
 
     }
-    public void LavBil(String s){
-        SQLManager.makeStatement("CALL LavBil()");
+    public Object visUdlejetBiler(String s){
+        return SQLManager.makeStatement("CALL VisUdlejedeBiler()");
+
+    }
+    public Object LavBil(String s){
+        return SQLManager.makeStatement("CALL LavBil()");
 
     }
 
@@ -26,8 +40,8 @@ public class BilRepository {
         return vognNummer;
     }
 
-    public void visSpecifikBil(String s){
-        SQLManager.makeStatement("CALL VisSpecifikBil('vognnummer')");
+    public Object visSpecifikBil(String s){
+        return SQLManager.makeStatement("CALL VisSpecifikBil('vognnummer')");
     }
 
     public Object sUVisning(String s){
