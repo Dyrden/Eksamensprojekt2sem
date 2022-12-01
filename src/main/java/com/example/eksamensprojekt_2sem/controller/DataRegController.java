@@ -27,7 +27,7 @@ public class DataRegController {
 
     @GetMapping("/bookBil/{vognNummer}")
     public String bookBil(@PathVariable("vognNummer") String vognNummer, Model model) {
-        model.addAttribute("bil", bilRepository.selectBilUdfraVognNummer(vognNummer));
+       // model.addAttribute("bil", bilRepository.selectBilUdfraVognNummer(vognNummer));
         return "html/dataRegistrering/kundeBooking";
     }
 

@@ -1,12 +1,13 @@
 /* Fundet inspiration fra https://codepen.io/kazzkiq/pen/qEMjaw/ */
 body {
     font-family: Helvetica Neue, Helvetica, sans-serif;
-    background: #e8e6e5;
+    background: #f3f0ee;
 }
 .skew-menu {
     text-align: center;
     margin-top: 25px;
     margin-left: 300px;
+    margin-bottom: 40px;
 }
 .skew-menu ul {
     display: -webkit-box;
@@ -28,7 +29,6 @@ body {
     font-size: 16px;
     line-height:30px;
     color:black;
-    font-weight: bolder;
 }
 .skew-menu ul li:first-child {
     border-radius: 7px 0 0 7px;

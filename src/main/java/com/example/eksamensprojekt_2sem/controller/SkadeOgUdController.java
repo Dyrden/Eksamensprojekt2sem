@@ -17,7 +17,7 @@ public class SkadeOgUdController {
     }
 
     @GetMapping("/skadeOgUdbedring")
-    public String visSkadeOgUd(Model model ,String s){
+    public String visSkadeOgUd(Model model){
         model.addAttribute("biler", bilRepository.visAlleBiler());
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }

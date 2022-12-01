@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Skade og Udbedring</title>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
-    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
     <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
 
 </head>
 <body>
@@ -15,22 +16,28 @@
 <div class="table-title">
     <h3>Væg venligst den bil du vil se skaderne på</h3>
 </div>
-<table th:class="bilInfo">
-    <tr>
-        <th>Vognnummer</th>
-        <th>Registreringsnummer</th>
-        <th>Bil Mærke</th>
-        <th>Model</th>
-        <th>Se skader</th>
-    </tr>
-    <tr th:each="b : ${biler}">
-        <td> <span th:text="${b.vognNummer}">id</span> </td>
-        <td> <span th:text="${b.registeringsNummer}">id</span> </td>
-        <td> <span th:text="${b.name}">Name</span> </td>
-        <td> <span th:text="${b.userId}">id</span> </td>
-        <td> <span> <a th:href="@{'/seSkader/' + ${b.vognNummer}}">Se skader</a> </span> </td>
-    </tr>
-</table>
+<div th:class="searchFieldPosition">
+    <div>
+        <input type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
+    </div>
+    <table th:class="bilInfo">
+        <tr>
+            <th>Bil Mærke</th>
+            <th>Model</th>
+            <th>Vognnummer</th>
+            <th>Registreringsnummer</th>
+            <th>Se skader</th>
+        </tr>
+        <tr th:each="b : ${biler}">
+            <td> <span th:text="${b.maerke}">Maerke</span> </td>
+            <td> <span th:text="${b.model}">Model</span> </td>
+            <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
+            <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
+            <td> <span> <a th:href="@{'/seSkader/' + ${b.vognNummer}}">Se skader</a> </span> </td>
+        </tr>
+    </table>
+</div>
+</div>
 <div id="blaaKnap">
     <button placeholder="Se skade for bil" type="submit">  <a th:class="htmlLink" th:href="@{'/seSkader/'}">Registrer ny skade</a>
     </button>

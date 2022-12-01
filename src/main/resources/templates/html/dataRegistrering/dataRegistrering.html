@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Skade og Udbedring</title>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
-    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
     <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: logo"> </div>
 <ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
 
-<table th:class="bilInfo">
+<div class="table-title">
+    <h3>Væg venligst den bil du vil booke for en kunde</h3>
+</div>
+<div th:class="searchFieldPosition">
+    <div>
+        <input type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
+    </div>
+    <table th:class="bilInfo">
     <tr>
         <th>Bil Mærke</th>
         <th>Model</th>
@@ -28,6 +36,7 @@
         <td> <span> <a th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </span> </td>
     </tr>
 </table>
-
+</div>
+</div>
 </body>
 </html>
