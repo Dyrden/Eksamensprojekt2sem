@@ -4,18 +4,103 @@ import java.util.List;
 
 public class BilModel {
 
-    private int vognNummer;
-    private int stelNummer;
+    private String vognNummer;
+    private String stelNummer;
     private int maerkeID;
+    private String maerke;
     private int modelID;
+    private String model;
+
+    private String energiType;
+
+    private String gearboks;
+
+    private String udstyr;
+
+    public String getMaerke() {
+        return maerke;
+    }
+
+    public void setMaerke(String maerke) {
+        this.maerke = maerke;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getEnergiType() {
+        return energiType;
+    }
+
+    public void setEnergiType(String energiType) {
+        this.energiType = energiType;
+    }
+
+    public String getGearboks() {
+        return gearboks;
+    }
+
+    public void setGearboks(String gearboks) {
+        this.gearboks = gearboks;
+    }
+
+    public String getUdstyr() {
+        return udstyr;
+    }
+
+    public void setUdstyr(String udstyr) {
+        this.udstyr = udstyr;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getFarve() {
+        return farve;
+    }
+
+    public void setFarve(String farve) {
+        this.farve = farve;
+    }
+
     private int statusID;
+    private String status;
     private int farveID;
+    private String farve;
     private double staalPris;
     private double registreringsAfgift;
     private double CO2Udledning;
     private int produktionsaar;
     private int distance;
-    public BilModel(int vognNummer, int stelNummer, int maerkeID, int modelID, int statusID, int farveID, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
+
+    public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
+        this.vognNummer = vognNummer;
+        this.stelNummer = stelNummer;
+        this.maerke = maerke;
+        this.model = model;
+        this.energiType = energiType;
+        this.gearboks = gearboks;
+        this.udstyr = udstyr;
+        this.status = status;
+        this.farve = farve;
+        this.staalPris = staalPris;
+        this.registreringsAfgift = registreringsAfgift;
+        this.CO2Udledning = CO2Udledning;
+        this.produktionsaar = produktionsaar;
+        this.distance = distance;
+    }
+
+    public BilModel(String vognNummer, String stelNummer, int maerkeID, int modelID, int statusID, int farveID, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
         this.vognNummer = vognNummer;
         this.stelNummer = stelNummer;
         this.maerkeID = maerkeID;
@@ -29,22 +114,38 @@ public class BilModel {
         this.distance = distance;
     }
 
+    public BilModel(String vognNummer, String stelNummer, String maerke, String model, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
+        this.vognNummer = vognNummer;
+        this.stelNummer = stelNummer;
+        this.maerke = maerke;
+        this.model = model;
+        this.status = status;
+        this.farve = farve;
+        this.staalPris = staalPris;
+        this.registreringsAfgift = registreringsAfgift;
+        this.CO2Udledning = CO2Udledning;
+        this.produktionsaar = produktionsaar;
+        this.distance = distance;
+    }
+
+
+
     public BilModel() {
     }
 
-    public int getVognNummer() {
+    public String getVognNummer() {
         return vognNummer;
     }
 
-    public void setVognNummer(int vognNummer) {
+    public void setVognNummer(String vognNummer) {
         this.vognNummer = vognNummer;
     }
 
-    public int getStelNummer() {
+    public String getStelNummer() {
         return stelNummer;
     }
 
-    public void setStelNummer(int stelNummer) {
+    public void setStelNummer(String stelNummer) {
         this.stelNummer = stelNummer;
     }
 
@@ -122,17 +223,25 @@ public class BilModel {
 
     @Override
     public String toString() {
-        return
-            "vognNummer=" + vognNummer +
-            "stelNummer=" + stelNummer +
-            "maerkeID=" + maerkeID +
-            "modelID=" + modelID +
-            "statusID=" + statusID +
-            "farveID=" + farveID +
-            "staalPris=" + staalPris +
-            "registreringsAfgift=" + registreringsAfgift +
-            "CO2Udledning=" + CO2Udledning +
-            "produktionsaar=" + produktionsaar +
-            "disctance=" + distance;
+        return "BilModel{" +
+            "vognNummer='" + vognNummer + '\'' +
+            ", stelNummer='" + stelNummer + '\'' +
+            ", maerkeID=" + maerkeID +
+            ", maerke='" + maerke + '\'' +
+            ", modelID=" + modelID +
+            ", model='" + model + '\'' +
+            ", energiType='" + energiType + '\'' +
+            ", gearboks='" + gearboks + '\'' +
+            ", udstyr='" + udstyr + '\'' +
+            ", statusID=" + statusID +
+            ", status='" + status + '\'' +
+            ", farveID=" + farveID +
+            ", farve='" + farve + '\'' +
+            ", staalPris=" + staalPris +
+            ", registreringsAfgift=" + registreringsAfgift +
+            ", CO2Udledning=" + CO2Udledning +
+            ", produktionsaar=" + produktionsaar +
+            ", distance=" + distance +
+            '}';
     }
 }

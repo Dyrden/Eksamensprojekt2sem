@@ -23,6 +23,9 @@ public class ConnectionSingleton {
     @Value("${JDBCPassword}")
     private static String pass;
     //private static String pass = "BeaverDen523#";
+
+    private static Connection connection = null;
+
     /*
 static {
 
@@ -38,20 +41,20 @@ static {
 }
 
      */
-public static Connection connect(String db_URL, String uid, String pass){
-    Connection connection = null;
-
-    try {
-        //Skaber en forbindelse til DB
-        connection = DriverManager.getConnection(db_URL, uid, pass);
-
-    } catch (SQLException e) {
-        System.out.println("u dun goofed");
-        e.printStackTrace();
+    public static Connection connect(String db_URL, String uid, String pass) {
+        if (connection == null) {
+            try {
+                //Skaber en forbindelse til DB
+                connection = DriverManager.getConnection(db_URL, uid, pass);
+            } catch (SQLException e) {
+                System.out.println("u dun goofed");
+                e.printStackTrace();
+            }
+            return connection;
+        } else {
+            return connection;
+        }
     }
-
-    return connection;
-}
 
 
 }

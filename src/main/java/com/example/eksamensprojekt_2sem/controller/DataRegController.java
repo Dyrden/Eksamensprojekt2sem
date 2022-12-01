@@ -10,7 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class DataRegController {
-    private BilRepository bilRepository = new BilRepository();
+    private BilRepository bilRepository;
+
+    public DataRegController(BilRepository bilRepository) {
+        this.bilRepository = bilRepository;
+    }
+
 
     @GetMapping("/dataRegistrering")
     public String visDataReg(Model model){
