@@ -14,10 +14,10 @@ public class BilModel {
     private double registreringsAfgift;
     private double CO2Udledning;
     private int produktionsaar;
-    private int disctance;
+    private int distance;
     private List<AftaleModel> aftaler;
 
-    public BilModel(int vognNummer, int stelNummer, int maerkeID, int modelID, int statusID, int farveID, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int disctance, List<AftaleModel> aftaler) {
+    public BilModel(int vognNummer, int stelNummer, int maerkeID, int modelID, int statusID, int farveID, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance, List<AftaleModel> aftaler) {
         this.vognNummer = vognNummer;
         this.stelNummer = stelNummer;
         this.maerkeID = maerkeID;
@@ -28,7 +28,7 @@ public class BilModel {
         this.registreringsAfgift = registreringsAfgift;
         this.CO2Udledning = CO2Udledning;
         this.produktionsaar = produktionsaar;
-        this.disctance = disctance;
+        this.distance = distance;
         this.aftaler = aftaler;
     }
 
@@ -115,12 +115,12 @@ public class BilModel {
         this.produktionsaar = produktionsaar;
     }
 
-    public int getDisctance() {
-        return disctance;
+    public int getDistance() {
+        return distance;
     }
 
-    public void setDisctance(int disctance) {
-        this.disctance = disctance;
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 
     @Override
@@ -136,6 +136,6 @@ public class BilModel {
             "registreringsAfgift=" + registreringsAfgift +
             "CO2Udledning=" + CO2Udledning +
             "produktionsaar=" + produktionsaar +
-            "disctance=" + disctance;
+            "disctance=" + distance;
     }
 }
