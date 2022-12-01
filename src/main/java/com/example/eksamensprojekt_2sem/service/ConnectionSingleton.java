@@ -12,17 +12,7 @@ public class ConnectionSingleton {
 
     //private static Connection connection = null;
     //kald til gemte værdier, der tilgår DB
-    @Value("${JDBCUrl}")
-    private String db_URL;
-    //private static String db_URL = "jdbc:mysql://team-baever.mysql.database.azure.com:3306/bilabonnement";
 
-    @Value("${JDBCUsername}")
-    private String uid;
-    //private static String uid = "Control";
-
-    @Value("${JDBCPassword}")
-    private static String pass;
-    //private static String pass = "BeaverDen523#";
     /*
 static {
 
@@ -38,12 +28,16 @@ static {
 }
 
      */
-public static Connection connect(String db_URL, String uid, String pass){
+public static Connection connect(){
     Connection connection = null;
 
     try {
         //Skaber en forbindelse til DB
+        String db_URL = System.getenv("JDBCUrl");
+        String uid = System.getenv("JDBCUsername");
+        String pass = System.getenv("JDBCPassword");
         connection = DriverManager.getConnection(db_URL, uid, pass);
+
 
     } catch (SQLException e) {
         System.out.println("u dun goofed");

@@ -10,7 +10,7 @@ public class SQLManager {
         //laver en skabelon for Prepared statements, fordi DRY
         PreparedStatement preparedStatement = null;
         try {
-            preparedStatement = ConnectionSingleton.connect(db_URL,uid,pass).prepareStatement(s);
+            preparedStatement = ConnectionSingleton.connect().prepareStatement(s);
         } catch (SQLException e){
             e.printStackTrace();
         }
