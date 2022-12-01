@@ -23,6 +23,7 @@ public class BilRepository {
     @Value("${JDBCPassword}")
     private String pass;
     public BilRepository(){}
+
     public Object visAlleBiler(String s){
         List<BilModel> bilModeler = new LinkedList<>();
         try {
@@ -49,28 +50,6 @@ public class BilRepository {
     public int selectBilUdfraVognNummer(int vognNummer){
         vognNummer = 0;
         return vognNummer;
-    }
-    public List<BilModel> getAllCars() {
-
-
-        List<BilModel> wishlists = new LinkedList<>();
-        try {
-            Connection conn = DriverManager.getConnection(db_url, uid, pas);
-            PreparedStatement psts = conn.prepareStatement(pstsGetAll);
-            ResultSet resultSet = psts.executeQuery();
-            while (resultSet.next()) {
-                int vognNummer = resultSet.getInt(1);
-                int stelNummer = resultSet.getInt(2);
-                String maerke= resultSet.getString(3);
-                wishlists.add(new BilModel(vognNummer,stelNummer, maerke));
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Couldn't connect to db");
-            e.printStackTrace();
-        }
-        System.out.println(wishlists);
-        return wishlists;
     }
 
     public Object visSpecifikBil(String s){

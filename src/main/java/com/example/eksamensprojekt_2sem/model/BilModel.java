@@ -6,89 +6,136 @@ public class BilModel {
 
     private int vognNummer;
     private int stelNummer;
-    private String maerke;
-    private String model;
-    private String farve;
-    private boolean udlejningsStatus;
-    private double antalKilometer;
+    private int maerkeID;
+    private int modelID;
+    private int statusID;
+    private int farveID;
+    private double staalPris;
+    private double registreringsAfgift;
+    private double CO2Udledning;
+    private int produktionsaar;
+    private int disctance;
     private List<AftaleModel> aftaler;
 
-    public BilModel(int vognNummer, int stelNummer, String maerke, String model, String farve, boolean udlejningsStatus,
-                    double antalKilometer, List<AftaleModel> aftaler){
+    public BilModel(int vognNummer, int stelNummer, int maerkeID, int modelID, int statusID, int farveID, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int disctance, List<AftaleModel> aftaler) {
         this.vognNummer = vognNummer;
         this.stelNummer = stelNummer;
-        this.maerke = maerke;
-        this.model = model;
-        this.farve = farve;
-        this.udlejningsStatus = udlejningsStatus;
-        this.antalKilometer = antalKilometer;
+        this.maerkeID = maerkeID;
+        this.modelID = modelID;
+        this.statusID = statusID;
+        this.farveID = farveID;
+        this.staalPris = staalPris;
+        this.registreringsAfgift = registreringsAfgift;
+        this.CO2Udledning = CO2Udledning;
+        this.produktionsaar = produktionsaar;
+        this.disctance = disctance;
         this.aftaler = aftaler;
     }
-    public BilModel(int vognNummer, int stelNummer, String maerke){
-        this.vognNummer = vognNummer;
-        this.stelNummer = stelNummer;
-        this.maerke = maerke;
-    }
-    public String getMaerke() {
-        return maerke;
+
+    public BilModel() {
     }
 
-    public void setMaerke(String maerke) {
-        this.maerke = maerke;
-    }
-
-    public void setVognNummer(int vognNummer){
-        this.vognNummer = vognNummer;
-    }
-    public void setStelNummer(int stelNummer){
-        this.stelNummer = stelNummer;
-    }
-    public void setModel(String model){
-        this.model = model;
-    }
-    public void setFarve(String farve){
-        this.farve = farve;
-    }
-    public void setUdlejningsStatus(boolean udlejningsStatus){
-        this.udlejningsStatus = udlejningsStatus;
-    }
-    public void setAntalKilometer(double antalKilometer){
-        this.antalKilometer = antalKilometer;
-    }
-    public void setAftaler(List<AftaleModel> aftaler){
-        this.aftaler = aftaler;
-    }
-    public int getVognNummer(){
+    public int getVognNummer() {
         return vognNummer;
     }
-    public int getStelNummer(){
+
+    public void setVognNummer(int vognNummer) {
+        this.vognNummer = vognNummer;
+    }
+
+    public int getStelNummer() {
         return stelNummer;
     }
-    public String getModel(){
-        return model;
-    }
-    public String getFarve(){
-        return farve;
-    }
-    public boolean getUdlejningsStatus(){
-        return udlejningsStatus;
-    }
-    public double getAntalKilometer(){
-        return antalKilometer;
-    }
-    public List<AftaleModel> getAftaler(){
-        return aftaler;
+
+    public void setStelNummer(int stelNummer) {
+        this.stelNummer = stelNummer;
     }
 
-    public String toString(){
-        return "BilID: "+ vognNummer + "\n" +
-                "StelID: "+ stelNummer + "\n" +
-                "Model: "+model+ "\n" +
-                "Farve: "+farve+ "\n" +
-                "Udlejningsstatus: "+udlejningsStatus+ "\n" +
-                "Antal Kilometer: "+antalKilometer+ "\n" +
-                "Aftaler: "+aftaler;
-
+    public int getMaerkeID() {
+        return maerkeID;
     }
 
+    public void setMaerkeID(int maerkeID) {
+        this.maerkeID = maerkeID;
+    }
+
+    public int getModelID() {
+        return modelID;
+    }
+
+    public void setModelID(int modelID) {
+        this.modelID = modelID;
+    }
+
+    public int getStatusID() {
+        return statusID;
+    }
+
+    public void setStatusID(int statusID) {
+        this.statusID = statusID;
+    }
+
+    public int getFarveID() {
+        return farveID;
+    }
+
+    public void setFarveID(int farveID) {
+        this.farveID = farveID;
+    }
+
+    public double getStaalPris() {
+        return staalPris;
+    }
+
+    public void setStaalPris(double staalPris) {
+        this.staalPris = staalPris;
+    }
+
+    public double getRegistreringsAfgift() {
+        return registreringsAfgift;
+    }
+
+    public void setRegistreringsAfgift(double registreringsAfgift) {
+        this.registreringsAfgift = registreringsAfgift;
+    }
+
+    public double getCO2Udledning() {
+        return CO2Udledning;
+    }
+
+    public void setCO2Udledning(double CO2Udledning) {
+        this.CO2Udledning = CO2Udledning;
+    }
+
+    public int getProduktionsaar() {
+        return produktionsaar;
+    }
+
+    public void setProduktionsaar(int produktionsaar) {
+        this.produktionsaar = produktionsaar;
+    }
+
+    public int getDisctance() {
+        return disctance;
+    }
+
+    public void setDisctance(int disctance) {
+        this.disctance = disctance;
+    }
+
+    @Override
+    public String toString() {
+        return
+            "vognNummer=" + vognNummer +
+            "stelNummer=" + stelNummer +
+            "maerkeID=" + maerkeID +
+            "modelID=" + modelID +
+            "statusID=" + statusID +
+            "farveID=" + farveID +
+            "staalPris=" + staalPris +
+            "registreringsAfgift=" + registreringsAfgift +
+            "CO2Udledning=" + CO2Udledning +
+            "produktionsaar=" + produktionsaar +
+            "disctance=" + disctance;
+    }
 }
