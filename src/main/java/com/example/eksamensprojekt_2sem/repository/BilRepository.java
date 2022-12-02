@@ -113,10 +113,12 @@ public class BilRepository {
 
     public Object visSpecifikBil(String vognNummer){
       BilModel bil = null;
-      try{
-          ResultSet resultSet = SQLManager.execute
-                  ("CALL FindSpecifikBilFraVognNum('?')",dbUrl,uID,pass);
-          while (resultSet.next()){
+        try{
+            PreparedStatement psts = SQLManager.makeStatement
+                    ("CALL FindSpecifikBilFraVognNum('?')",dbUrl,uID,pass);
+            psts.setString(1,vognNummer);
+            ResultSet resultSet = psts.executeQuery();
+            while (resultSet.next()){
               bil.setMaerkeID(resultSet.getInt(1));
               bil.setModelID(resultSet.getInt(2));
               bil.setVognNummer(resultSet.getString(3));
