@@ -112,9 +112,23 @@ public class BilRepository {
     }
 
     public Object visSpecifikBil(String vognNummer){
-      ResultSet resultSet = SQLManager.execute("CALL FindSpecifikBilFraVognNum('?')",dbUrl,uID,pass);
+      BilModel bil = null;
+      try{
+          ResultSet resultSet = SQLManager.execute
+                  ("CALL FindSpecifikBilFraVognNum('?')",dbUrl,uID,pass);
+          while (resultSet.next()){
+              bil.setMaerkeID(resultSet.getInt(1));
+              bil.setModelID(resultSet.getInt(2));
+              bil.setVognNummer(resultSet.getString(3));
+              bil.setStelNummer(resultSet.getString(4));
 
-        return SQLManager.execute("CALL FindSpecifikBilFraVognNum('?')",dbUrl,uID,pass);
+          }
+      } catch (SQLException e){
+          e.printStackTrace();
+      }
+      return bil;
+
+
     }
 
     public Object sUVisning(String s){
@@ -122,7 +136,7 @@ public class BilRepository {
         try {
 
             ResultSet resultSet =
-                    SQLManager.execute("CALL VisSpecifikBil('vognnummer')",dbUrl,uID,pass);
+                    SQLManager.execute("CALL VisSpecifikBil('?')",dbUrl,uID,pass);
             while (resultSet.next()){
                 try {
                 bilModel.setVognNummer(resultSet.getString(1));

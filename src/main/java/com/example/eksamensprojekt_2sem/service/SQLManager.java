@@ -20,8 +20,6 @@ public class SQLManager {
     public static ResultSet execute(String s, String db_URL, String uid, String pass){
         ResultSet resultSet = null;
         try {
-
-
             PreparedStatement psts = makeStatement(s,db_URL,uid,pass);
             resultSet = psts.executeQuery();
         }catch (SQLException e){
@@ -31,9 +29,8 @@ public class SQLManager {
     }
 
     public static void update(String s,String db_URL, String uid, String pass){
+        //metode der
         try {
-
-
             PreparedStatement psts = makeStatement(s,db_URL,uid,pass);
             psts.executeUpdate();
         }catch (SQLException e){
