@@ -56,6 +56,45 @@ public class BilRepository {
         return biler;
 
     }
+  public BilModel visSpecifikBilTest(String vognNummerID){
+    List<BilModel> biler = new LinkedList<>();
+    BilModel bil = new BilModel();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL visallebiler()",dbUrl,uID,pass);
+
+      while (resultSet.next()) {
+        String vognNummer = resultSet.getString(1);
+        String stelNummer = resultSet.getString(2);
+        String maerke = resultSet.getString(3);
+        String model = resultSet.getString(4);
+        String energiType = resultSet.getString(5);
+        String gearboks = resultSet.getString(6);
+        String udstyr = resultSet.getString(7);
+        String status = resultSet.getString(8);
+        String farve = resultSet.getString(9);
+        double staalPris = resultSet.getInt(10);
+        double registreringsAfgift = resultSet.getInt(11);
+        double CO2Udledning = resultSet.getInt(12);
+        int produktionsaar = resultSet.getInt(13);
+        int distance = resultSet.getInt(14);
+
+        biler.add(new BilModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
+            staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance));
+      }
+      for (int i = 0; i < biler.size(); i++) {
+        if (biler.get(i).getVognNummer().equals(vognNummerID)){
+          bil = biler.get(i);
+        }
+      }
+
+    } catch (SQLException e){
+      e.printStackTrace();
+    }
+
+    System.out.println(bil.getVognNummer());
+    return bil;
+
+  }
     public Object visUdlejetBiler(String s){
         return SQLManager.makeStatement("CALL VisUdlejedeBiler()",dbUrl,uID,pass);
 
@@ -72,8 +111,10 @@ public class BilRepository {
         return bil;
     }
 
-    public Object visSpecifikBil(String s){
-        return SQLManager.makeStatement("CALL VisSpecifikBil('vognnummer')",dbUrl,uID,pass);
+    public Object visSpecifikBil(String vognNummer){
+      ResultSet resultSet = SQLManager.execute("CALL FindSpecifikBilFraVognNum('?')",dbUrl,uID,pass);
+
+        return SQLManager.execute("CALL FindSpecifikBilFraVognNum('?')",dbUrl,uID,pass);
     }
 
     public Object sUVisning(String s){

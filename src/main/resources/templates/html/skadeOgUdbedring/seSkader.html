@@ -24,10 +24,10 @@
     <th>Registreringsnummer</th>
   </tr>
   <tr th:each="b : ${biler}">
-    <td> <span th:text="${b.name}">Name</span> </td>
-    <td> <span th:text="${b.userId}">id</span> </td>
-    <td> <span th:text="${b.vognNummer}">id</span> </td>
-    <td> <span th:text="${b.registeringsNummer}">id</span> </td>
+    <td> <span th:text="${b.maerke}">Bil Mærke</span> </td>
+    <td> <span th:text="${b.model}">Model</span> </td>
+    <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
+    <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
   </tr>
 </table>
 
@@ -41,7 +41,7 @@
     <th>Skadens pris</th>
     <th>Slet skade</th>
   </tr>
-  <tr th:each="b : ${bil}">
+  <tr th:each="b : ${biler}">
     <td> <span th:text="${b.skadensPlacering}">skadensPlacering</span> </td>
     <td> <span th:text="${b.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
     <td> <span th:text="${b.skadensPris}">skadensPris</span> </td>

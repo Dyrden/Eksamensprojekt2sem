@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SkadeOgUdController {
@@ -33,8 +34,9 @@ public class SkadeOgUdController {
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
-    @GetMapping("/seSkader")
-    public String visSkader(){
+    @GetMapping("/seSkader/{vognNummer}")
+    public String visSkader(@PathVariable("vognNummer") String vognNummer, Model model){
+model.addAttribute("bil", bilRepository.visSpecifikBilTest(vognNummer));
         return "html/skadeOgUdbedring/seSkader";
     }
 
