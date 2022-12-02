@@ -18,6 +18,7 @@ public class SQLManager {
     }
 
     public static ResultSet execute(String s, String db_URL, String uid, String pass){
+        //metode der modtager info fra DB
         ResultSet resultSet = null;
         try {
             PreparedStatement psts = makeStatement(s,db_URL,uid,pass);
@@ -29,7 +30,7 @@ public class SQLManager {
     }
 
     public static void update(String s,String db_URL, String uid, String pass){
-        //metode der
+        //metode der sender info til DB
         try {
             PreparedStatement psts = makeStatement(s,db_URL,uid,pass);
             psts.executeUpdate();
