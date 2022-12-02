@@ -12,20 +12,24 @@
 <div th:replace="html/fragments/aFragment:: logo"> </div>
 <ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
 
+<h1 th:each="b : ${samledeIndtaegt}">Samlede indtægter for denne måned
+  <span th:text="${samledeIndtaegt}">samlede intaegt</span>kr.
+</h1>
+
 <table th:class="bilInfo">
   <tr>
-    <th>Bil Mærke</th>
-    <th>Model</th>
-    <th>Vognnummer</th>
-    <th>Registreringsnummer</th>
-    <th>Indtægt</th>
+    <th>id</th>
+    <th>brugerID</th>
+    <th>type</th>
+    <th>udleveringsSted</th>
+    <th>maanedspris</th>
   </tr>
-  <tr th:each="b : ${biler}">
-    <td> <span th:text="${b.bilmaerke}">Name</span> </td>
-    <td> <span th:text="${b.userId}">id</span> </td>
-    <td> <span th:text="${b.vognNummer}">id</span> </td>
-    <td> <span th:text="${b.registeringsNummer}">id</span> </td>
-    <td> <span th:text="${b.indtaegt}">id</span> </td>
+  <tr th:each="b : ${bookedeBiler}">
+    <td> <span th:text="${b.id}">id</span> </td>
+    <td> <span th:text="${b.brugerID}">brugerID</span> </td>
+    <td> <span th:text="${b.abonnementsType}">type</span> </td>
+    <td> <span th:text="${b.udleveringsSted}">udleveringsSted</span> </td>
+    <td> <span th:text="${b.maanedspris}">maanedspris</span> </td>
   </tr>
 </table>
 

@@ -56,47 +56,6 @@ public class BilRepository {
         return biler;
 
     }
-  public int visSpecifikBilTest(String vognNummerID){
-    List<BilModel> biler = new LinkedList<>();
-    BilModel bil = new BilModel();
-    int bilNummer = 0;
-    try {
-      ResultSet resultSet = SQLManager.execute("CALL visallebiler()",dbUrl,uID,pass);
-
-      while (resultSet.next()) {
-        String vognNummer = resultSet.getString(1);
-        String stelNummer = resultSet.getString(2);
-        String maerke = resultSet.getString(3);
-        String model = resultSet.getString(4);
-        String energiType = resultSet.getString(5);
-        String gearboks = resultSet.getString(6);
-        String udstyr = resultSet.getString(7);
-        String status = resultSet.getString(8);
-        String farve = resultSet.getString(9);
-        double staalPris = resultSet.getInt(10);
-        double registreringsAfgift = resultSet.getInt(11);
-        double CO2Udledning = resultSet.getInt(12);
-        int produktionsaar = resultSet.getInt(13);
-        int distance = resultSet.getInt(14);
-
-        biler.add(new BilModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
-            staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance));
-      }
-      for (int i = 0; i < biler.size(); i++) {
-        if (biler.get(i).getVognNummer().equals(vognNummerID)){
-          bil = biler.get(i);
-          bilNummer = i;
-        }
-      }
-
-    } catch (SQLException e){
-      e.printStackTrace();
-    }
-
-    System.out.println(bil.getVognNummer());
-    return bilNummer;
-
-  }
     public Object visUdlejetBiler(String s){
         return SQLManager.makeStatement("CALL VisUdlejedeBiler()",dbUrl,uID,pass);
 
@@ -106,12 +65,6 @@ public class BilRepository {
 
     }
 
-    public BilModel selectBilUdfraVognNummer(String vognNummerID){
-      BilModel bil = new BilModel();
-
-        ResultSet resultSet = SQLManager.execute("SELECT * FROM bilabonnement.bil WHERE vognNummerID =?;",dbUrl,uID,pass);
-        return bil;
-    }
 
     public Object visSpecifikBil(String vognNummer){
       BilModel bil = new BilModel();
