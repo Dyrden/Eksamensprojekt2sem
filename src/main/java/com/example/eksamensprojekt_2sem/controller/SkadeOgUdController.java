@@ -1,5 +1,6 @@
 package com.example.eksamensprojekt_2sem.controller;
 
+import com.example.eksamensprojekt_2sem.model.BilModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,14 +30,16 @@ public class SkadeOgUdController {
     }
 
     @GetMapping("visSpecifikBil/{stelNummer}")
-    public String visSpecifikBil(@PathVariable("stelNummer") String s, Model model){
+    public String visSpecifikBilWeb(@PathVariable("stelNummer") String s, Model model){
         model.addAttribute("specifikBil", bilRepository.sUVisning(s));
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
     @GetMapping("/seSkader/{vognNummer}")
     public String visSkader(@PathVariable("vognNummer") String vognNummer, Model model){
-model.addAttribute("bil", bilRepository.visSpecifikBilTest(vognNummer));
+        model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
+        BilModel bilen = (BilModel)bilRepository.visSpecifikBil(vognNummer);
+        System.out.println(bilen);
         return "html/skadeOgUdbedring/seSkader";
     }
 

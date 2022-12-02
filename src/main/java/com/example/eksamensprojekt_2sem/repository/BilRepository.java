@@ -56,9 +56,10 @@ public class BilRepository {
         return biler;
 
     }
-  public BilModel visSpecifikBilTest(String vognNummerID){
+  public int visSpecifikBilTest(String vognNummerID){
     List<BilModel> biler = new LinkedList<>();
     BilModel bil = new BilModel();
+    int bilNummer = 0;
     try {
       ResultSet resultSet = SQLManager.execute("CALL visallebiler()",dbUrl,uID,pass);
 
@@ -84,6 +85,7 @@ public class BilRepository {
       for (int i = 0; i < biler.size(); i++) {
         if (biler.get(i).getVognNummer().equals(vognNummerID)){
           bil = biler.get(i);
+          bilNummer = i;
         }
       }
 
@@ -92,7 +94,7 @@ public class BilRepository {
     }
 
     System.out.println(bil.getVognNummer());
-    return bil;
+    return bilNummer;
 
   }
     public Object visUdlejetBiler(String s){
@@ -112,20 +114,31 @@ public class BilRepository {
     }
 
     public Object visSpecifikBil(String vognNummer){
-      BilModel bil = null;
+      BilModel bil = new BilModel();
       try{
           ResultSet resultSet = SQLManager.execute
-                  ("CALL FindSpecifikBilFraVognNum('?')",dbUrl,uID,pass);
+                  ("CALL FindSpecifikBilFraVognNum('"+vognNummer+"')",dbUrl,uID,pass);
           while (resultSet.next()){
-              bil.setMaerkeID(resultSet.getInt(1));
-              bil.setModelID(resultSet.getInt(2));
-              bil.setVognNummer(resultSet.getString(3));
-              bil.setStelNummer(resultSet.getString(4));
-
+            bil.setVognNummer(resultSet.getString(1));
+            bil.setStelNummer(resultSet.getString(2));
+              bil.setMaerke(resultSet.getString(3));
+              bil.setModel(resultSet.getString(4));
+              bil.setEnergiType(resultSet.getString(5));
+              bil.setGearboks(resultSet.getString(6));
+              bil.setUdstyr(resultSet.getString(7));
+              bil.setStatus(resultSet.getString(8));
+              bil.setFarve(resultSet.getString(9));
+              bil.setStaalPris(resultSet.getDouble(10));
+              bil.setRegistreringsAfgift(resultSet.getDouble(11));
+              bil.setCO2Udledning(resultSet.getDouble(12));
+              bil.setProduktionsaar(resultSet.getInt(13));
+              bil.setDistance(resultSet.getInt(14));
           }
+        System.out.println(bil);
       } catch (SQLException e){
           e.printStackTrace();
       }
+
       return bil;
 
 

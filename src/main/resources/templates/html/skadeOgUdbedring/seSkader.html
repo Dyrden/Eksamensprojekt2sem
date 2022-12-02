@@ -23,7 +23,7 @@
     <th>Vognnummer</th>
     <th>Registreringsnummer</th>
   </tr>
-  <tr th:each="b : ${biler}">
+  <tr th:each="b : ${bil}">
     <td> <span th:text="${b.maerke}">Bil Mærke</span> </td>
     <td> <span th:text="${b.model}">Model</span> </td>
     <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
