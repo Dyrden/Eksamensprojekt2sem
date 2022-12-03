@@ -43,6 +43,7 @@ public class SkadeOgUdController {
         //Her henter vi den valgte bils rapport
         //Så kan vi efterfølgende bruge rapportens id til at modtage skaderne
         RapportModel rapport = rapportRepository.hentRapportFraVognNummer(vognNummer);
+        model.addAttribute("rapport", rapportRepository.hentRapportFraVognNummer(vognNummer));
 
         //Når vi nu har bilens rapport, så kan vi tilgå rapporten
         //vi henter alle skaderne fra rapportens id.

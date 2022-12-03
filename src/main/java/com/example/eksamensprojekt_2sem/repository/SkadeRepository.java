@@ -21,20 +21,18 @@ public class SkadeRepository {
 
   public List<SkadeModel> skafSkaderFraRapport(int id){
     List<SkadeModel> skader = new LinkedList<>();
-    SkadeModel skade = new SkadeModel();
     try{
       ResultSet resultSet = SQLManager.execute
           ("CALL skafSkaderFraRapport('"+id+"')",dbUrl,uID,pass);
       while (resultSet.next()){
-        skade.setId(resultSet.getInt(1));
-        skade.setSkadensPlacering(resultSet.getString(2));
-        skade.setSkadensBeskrivelse(resultSet.getString(3));
-        skade.setSkadensPris(resultSet.getDouble(4));
-        skade.setRapportID(resultSet.getInt(5));
+       int skadeid = (resultSet.getInt(1));
+       String skadensPlacering = (resultSet.getString(2));
+       String skadensBeskrivelse = (resultSet.getString(3));
+       double skadensPris = (resultSet.getDouble(4));
+       int rapportID= (resultSet.getInt(5));
 
-        skader.add(skade);
+        skader.add(new SkadeModel(skadeid, skadensPlacering, skadensBeskrivelse, skadensPris, rapportID));
       }
-      System.out.println(skade);
     } catch (SQLException e){
       e.printStackTrace();
     }
