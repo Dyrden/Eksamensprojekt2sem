@@ -1,5 +1,6 @@
 package com.example.eksamensprojekt_2sem.repository;
 
+import com.example.eksamensprojekt_2sem.model.RapportModel;
 import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,9 +43,18 @@ public class SkadeRepository {
   public void tilfoejSkade(String placering, String beskrivelse, double pris, int rapportID){
 
       ResultSet resultSet = SQLManager.execute
-          ("CALL TilfoejSkade('"+placering+"','"+beskrivelse+"',"+pris+","+rapportID+")",dbUrl,uID,pass);
+          ("CALL TilfoejSkade('"+beskrivelse+"','"+placering+"',"+pris+","+rapportID+")",dbUrl,uID,pass);
 
       System.out.println(placering+beskrivelse+pris+rapportID);
+  }
+
+  public void sletSkade(int skadeID){
+
+
+    ResultSet resultSet = SQLManager.execute
+        ("CALL SletSkade("+skadeID+")",dbUrl,uID,pass);
+
+
   }
 
 }

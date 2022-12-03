@@ -2,6 +2,7 @@ package com.example.eksamensprojekt_2sem.controller;
 
 import com.example.eksamensprojekt_2sem.model.BilModel;
 import com.example.eksamensprojekt_2sem.model.RapportModel;
+import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
 import com.example.eksamensprojekt_2sem.repository.RapportRepository;
 import com.example.eksamensprojekt_2sem.repository.SkadeRepository;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class SkadeOgUdController {
@@ -72,9 +75,16 @@ public class SkadeOgUdController {
 
         skadeRepository.tilfoejSkade(skadePlacering, skadensBeskrivelse, skadensPris, rapportID);
 
-        //redirect tilbage til seSkader med vognnummer
+        //redirect tilbage til seSkader med vognnummer måske man kunne buge session
         return "redirect:/seskader";
     }
 
+    @GetMapping("/sletSkade/{skadeId}")
+    public String deleteWishList(@PathVariable("skadeId") int skadeId) {
+        skadeRepository.sletSkade(skadeId);
+
+        //redirect tilbage til seSkader med vognNummer, måske man kunne bruge session
+        return "redirect:/seSkader";
+    }
 
 }
