@@ -1,6 +1,7 @@
 package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.RapportModel;
+import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -26,16 +27,7 @@ public RapportModel hentRapportFraVognNummer(String vognNummer){
     while (resultSet.next()){
       rapport.setId(resultSet.getInt(1));
       rapport.setDato(resultSet.getString(2));
-      rapport.setVognNummer(resultSet.getString(4));
-      rapport.setMaerkeID(resultSet.getInt(5));
-      rapport.setModelID(resultSet.getInt(6));
-      rapport.setStatusID(resultSet.getInt(7));
-      rapport.setFarveID(resultSet.getInt(8));
-      rapport.setStaalPris(resultSet.getString(9));
-      rapport.setRegistreringsAfgift(resultSet.getString(10));
-      rapport.setCO2Udledning(resultSet.getString(11));
-      rapport.setProduktionsaar(resultSet.getString(12));
-      rapport.setDistance(resultSet.getString(13));
+      rapport.setVognNummer(resultSet.getString(3));
 
     }
     System.out.println(rapport);
@@ -45,4 +37,6 @@ public RapportModel hentRapportFraVognNummer(String vognNummer){
 
   return rapport;
 }
+
+
 }

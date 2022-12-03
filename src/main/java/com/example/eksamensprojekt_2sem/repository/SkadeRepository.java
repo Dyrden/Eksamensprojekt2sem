@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class SkadeRepository {
   @Value("${JDBCUrl}")
@@ -17,9 +19,26 @@ public class SkadeRepository {
   @Value("${JDBCPassword}")
   private String pass;
 
-  public SkadeModel hentSkaderFraVognNummer(String vognNummer){
+  public List<SkadeModel> skafSkaderFraRapport(int id){
+    List<SkadeModel> skader = new LinkedList<>();
     SkadeModel skade = new SkadeModel();
-    //lav metoden efter rapporten er lavet
-    return skade;
+    try{
+      ResultSet resultSet = SQLManager.execute
+          ("CALL skafSkaderFraRapport('"+id+"')",dbUrl,uID,pass);
+      while (resultSet.next()){
+        skade.setId(resultSet.getInt(1));
+        skade.setSkadensPlacering(resultSet.getString(2));
+        skade.setSkadensBeskrivelse(resultSet.getString(3));
+        skade.setSkadensPris(resultSet.getDouble(4));
+        skade.setRapportID(resultSet.getInt(5));
+
+        skader.add(skade);
+      }
+      System.out.println(skade);
+    } catch (SQLException e){
+      e.printStackTrace();
+    }
+
+    return skader;
   }
 }

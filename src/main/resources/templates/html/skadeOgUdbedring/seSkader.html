@@ -41,11 +41,11 @@
     <th>Skadens pris</th>
     <th>Slet skade</th>
   </tr>
-  <tr th:each="b : ${biler}">
-    <td> <span th:text="${b.skadensPlacering}">skadensPlacering</span> </td>
-    <td> <span th:text="${b.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
-    <td> <span th:text="${b.skadensPris}">skadensPris</span> </td>
-    <td> <span> <a th:href="@{'/sletSkade/' + ${b.vognNummer}}">Slet skade</a> </span> </td>
+  <tr th:each="s : ${skader}">
+    <td> <span th:text="${s.skadensPlacering}">skadensPlacering</span> </td>
+    <td> <span th:text="${s.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
+    <td> <span th:text="${s.skadensPris}">skadensPris</span> kr. </td>
+    <td> <span> <a th:href="@{'/sletSkade/' + ${s.id}}">Slet skade</a> </span> </td>
   </tr>
 </table>
 </div>
