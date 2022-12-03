@@ -28,8 +28,9 @@
     </fieldset>
     <fieldset>
       <div class="flex">
-        <button placeholder="annuller" type="submit" th:href="@{'/udbedring/'}">Annuller
+        <button placeholder="annuller" type="submit" th:href="@{'/skadeOgUdbedring/'}">Annuller
         </button>
+        <input type="hidden" id="wishId" name="rapportID" th:attr="value=${rapportID}">
         <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Indsend</button>
       </div>
     </fieldset>

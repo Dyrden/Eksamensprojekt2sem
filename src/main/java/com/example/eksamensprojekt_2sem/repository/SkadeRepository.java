@@ -41,4 +41,12 @@ public class SkadeRepository {
 
     return skader;
   }
+  public void tilfoejSkade(String placering, String beskrivelse, double pris, int rapportID){
+
+      ResultSet resultSet = SQLManager.execute
+          ("CALL TilfoejSkade('"+placering+"','"+beskrivelse+"',"+pris+","+rapportID+")",dbUrl,uID,pass);
+
+      System.out.println(placering+beskrivelse+pris+rapportID);
+  }
+
 }

@@ -52,9 +52,27 @@ public class SkadeOgUdController {
         return "html/skadeOgUdbedring/seSkader";
     }
 
-    @GetMapping("/tilfoejSkade")
-    public String tilfoejSkade(){
+    @GetMapping("/tilfoejSkade/{vognNummer}")
+    public String tilfoejSkade(@PathVariable("vognNummer") String vognNummer, Model model){
+        RapportModel rapport = rapportRepository.hentRapportFraVognNummer(vognNummer);
+        model.addAttribute("rapportID", rapport.getId());
+        System.out.println(model.addAttribute("rapportID", rapport.getId()));
+
         return "html/skadeOgUdbedring/tilfoejSkade";
+    }
+
+    @PostMapping("/tilfoej")
+    public String tilfoejSkadePost(Model model,
+                                   @RequestParam("skade_placering") String skadePlacering,
+                                   @RequestParam("skade_pris") double skadensPris,
+                                   @RequestParam("skade_beskrivelse") String skadensBeskrivelse,
+                                   @RequestParam("rapportID") int rapportID) {
+
+
+        skadeRepository.tilfoejSkade(skadePlacering, skadensBeskrivelse, skadensPris, rapportID);
+
+        //redirect tilbage til seSkader med vognnummer
+        return "redirect:/seskader";
     }
 
 
