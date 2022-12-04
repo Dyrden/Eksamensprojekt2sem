@@ -17,8 +17,8 @@ public class DataRegController {
         this.bilRepository = bilRepository;
     }
 
-
     @GetMapping("/dataRegistrering")
+    //Ferhat er ansvarlig for denne metode
     public String visDataReg(Model model){
         model.addAttribute("biler", bilRepository.visAlleBiler());
 
@@ -26,6 +26,7 @@ public class DataRegController {
     }
 
     @GetMapping("/bookBil/{vognNummer}")
+    //Ferhat er ansvarlig for denne metode
     public String bookBil(@PathVariable("vognNummer") String vognNummer, Model model) {
             model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
             return "html/dataRegistrering/kundeBooking";
@@ -36,7 +37,6 @@ public class DataRegController {
     public String kundeBooking(){
         return "html/dataRegistrering/kundebooking";
     }
-
     @PostMapping("/nyBooking")
     public String nyBooking(
         RedirectAttributes attributes,
@@ -65,7 +65,7 @@ public class DataRegController {
 
         return "redirect:" + vognNummer;
     }
-
+    //Ferhat er ansvarlig for denne metode
     @GetMapping("/nyBooking+{vognNummer}")
     public String nyBookingGet(
         Model model,

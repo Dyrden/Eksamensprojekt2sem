@@ -23,6 +23,7 @@ public class SkadeOgUdController {
     private SkadeRepository skadeRepository = new SkadeRepository();
 
     @GetMapping("/skadeOgUdbedring")
+    //Ferhat er ansvarlig for denne metode
     public String visSkadeOgUd(Model model){
         model.addAttribute("biler", bilRepository.visAlleBiler());
         return "html/skadeOgUdbedring/skadeOgUdbedring";
@@ -34,12 +35,14 @@ public class SkadeOgUdController {
     }
 
     @GetMapping("visSpecifikBil/{stelNummer}")
+    //Ferhat er ansvarlig for denne metode
     public String visSpecifikBilWeb(@PathVariable("stelNummer") String s, Model model){
         model.addAttribute("specifikBil", bilRepository.sUVisning(s));
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
     @GetMapping("/seSkader/{vognNummer}")
+    //Ferhat er ansvarlig for denne metode
     public String visSkader(@PathVariable("vognNummer") String vognNummer, Model model){
         model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
 
@@ -57,6 +60,7 @@ public class SkadeOgUdController {
     }
 
     @GetMapping("/tilfoejSkade/{vognNummer}")
+    //Ferhat er ansvarlig for denne metode
     public String tilfoejSkade(@PathVariable("vognNummer") String vognNummer, Model model){
         RapportModel rapport = rapportRepository.hentRapportFraVognNummer(vognNummer);
         model.addAttribute("rapportID", rapport.getId());
@@ -66,6 +70,7 @@ public class SkadeOgUdController {
     }
 
     @PostMapping("/tilfoej")
+    //Ferhat er ansvarlig for denne metode
     public String tilfoejSkadePost(Model model,
                                    @RequestParam("skade_placering") String skadePlacering,
                                    @RequestParam("skade_pris") double skadensPris,
@@ -80,6 +85,7 @@ public class SkadeOgUdController {
     }
 
     @GetMapping("/sletSkade/{skadeId}")
+    //Ferhat er ansvarlig for denne metode
     public String deleteWishList(@PathVariable("skadeId") int skadeId) {
         skadeRepository.sletSkade(skadeId);
 

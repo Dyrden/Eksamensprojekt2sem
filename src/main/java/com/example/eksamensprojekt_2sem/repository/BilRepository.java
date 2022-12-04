@@ -25,6 +25,7 @@ public class BilRepository {
     public BilRepository(){}
 
     public List<BilModel> visAlleBiler(){
+      //Mark er ansvarlig for denne metode
         List<BilModel> biler = new LinkedList<>();
         try {
        ResultSet resultSet = SQLManager.execute("CALL visallebiler()",dbUrl,uID,pass);
@@ -68,6 +69,8 @@ public class BilRepository {
 
 
     public Object visSpecifikBil(String vognNummer){
+      //Ferhat og Kristian er ansvarlig for denne metode
+
       BilModel bil = new BilModel();
       try{
           ResultSet resultSet = SQLManager.execute

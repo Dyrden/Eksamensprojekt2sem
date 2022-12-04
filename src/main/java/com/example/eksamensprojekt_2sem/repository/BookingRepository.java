@@ -24,6 +24,7 @@ public class BookingRepository {
     private String pass;
 
     public List<BookingModel> visAlleBookinger(){
+        //Ferhat er ansvarlig for denne metode
         List<BookingModel> bookinger = new LinkedList<>();
         BookingModel booking = new BookingModel();
         try {
@@ -50,6 +51,9 @@ public class BookingRepository {
     }
 
     public double visSamletIndtaegt(){
+        //Ferhat er ansvarlig for denne metode
+        //Den viser ligenu samledeindtægt for alle biler
+
         List<BookingModel> bookinger = new LinkedList<>();
         BookingModel booking = new BookingModel();
         double indtaegt = 0;
@@ -76,6 +80,7 @@ public class BookingRepository {
 
     }
     public List<BilModel> visAktiveBookinger(){
+        //Ferhat er ansvarlig for denne metode
         List<BilModel> biler = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL VisAktiveBookingBiler()",dbUrl,uID,pass);
