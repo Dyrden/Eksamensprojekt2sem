@@ -20,7 +20,7 @@
     width: 10%;
 }
 .bilInfo th{
-    background-color: #f8b38e;
+    background-color: #259bca;
 
 }.bilInfo td{
     background-color: #f6f3f2;
@@ -86,7 +86,7 @@ div.table-title {
     width: 10%;
 }
 #SkadeTable th {
-    background-color: #f8b38e;
+    background-color: #259bca;
 }
 
 #SkadeTable td{
@@ -111,4 +111,6 @@ div.table-title {
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
+
 }
+

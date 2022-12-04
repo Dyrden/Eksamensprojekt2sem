@@ -1,7 +1,8 @@
 /* Fundet inspiration fra https://codepen.io/kazzkiq/pen/qEMjaw/ */
 body {
     font-family: Helvetica Neue, Helvetica, sans-serif;
-    background: #fff8f1;
+    background: #eaf1fa;
+    margin: 0px;
 }
 .skew-menu {
     text-align: center;
@@ -11,7 +12,7 @@ body {
 }
 
 .skew-menu ul {
-    display: -webkit-box;
+    display: flex;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -21,8 +22,8 @@ body {
 .skew-menu ul li {
     background: #fff;
     float: left;
-    border-right: 10px solid #eee;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-right: 2px solid #eee;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 10%);
     text-transform: uppercase;
     transition: all 0.3s linear;
     font-family:"Open Sans", Helvetica, Arial, sans-serif;
@@ -40,7 +41,7 @@ body {
 }
 .skew-menu ul li:hover {
     background: #eee;
-    color: #d36e36;
+    color: #259bca;
 }
 .skew-menu ul li a {
     display: block;

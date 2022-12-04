@@ -9,18 +9,22 @@
 <body>
 
 <div th:fragment="navigation">
-<div >
-    <img class="logocorner" src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="200,2" height="100,1">
-</div>
-<nav th:class="skew-menu">
-    <ul>
-        <li><a th:href="@{'/'}">Home</a></li>
-        <li><a th:href="@{'/dataRegistrering/'}">Data indregistrering</a></li>
-        <li><a th:href="@{'/skadeOgUdbedring/'}">Skades rapport</a></li>
-        <li><a th:href="@{'/forretningsUdviklere/'}">Forretnings udviklere</a></li>
-        <li><a th:href="@{'/seRapporter/'}">Rapporter</a></li>
-    </ul>
-</nav>
+    <div class="main-menu">
+        <div class="main-menu-content">
+            <a class="main-menu-logo" title="beaver-leasing" href="/start">
+                <img class="logo" src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="200,2" height="100,1" alt="Beaver-leasing">
+            </a>
+            <nav th:class="skew-menu">
+                <ul>
+                    <li><a th:href="@{'/'}">Home</a></li>
+                    <li><a th:href="@{'/dataRegistrering/'}">Data indregistrering</a></li>
+                    <li><a th:href="@{'/skadeOgUdbedring/'}">Skades rapport</a></li>
+                    <li><a th:href="@{'/forretningsUdviklere/'}">Forretnings udviklere</a></li>
+                    <li><a th:href="@{'/seRapporter/'}">Rapporter</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
 </body>
 </html>
