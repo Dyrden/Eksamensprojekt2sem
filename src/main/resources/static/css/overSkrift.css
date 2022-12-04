@@ -1,0 +1,24 @@
+/* inspiration fra: https://codepen.io/antoniasymeonidou/pen/wvPvMve */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.overSkrift span {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 52px;
+    position: absolute;
+    transform: translate(126%, -100%);
+    background-image: linear-gradient(#f8b38e, #f8b38e);
+    background-size: 100% 10px;
+    background-repeat: no-repeat;
+    background-position: 100% 0%;
+    transition: background-size .7s, background-position .5s ease-in-out;
+}
+
+.overSkrift span:hover {
+    background-size: 100% 100%;
+    background-position: 0% 100%;
+    transition: background-position .7s, background-size .5s ease-in-out;
+}
+
+.overSkrift{
+    background-color: white
+}

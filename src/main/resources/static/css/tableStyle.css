@@ -14,11 +14,17 @@
     margin-right:auto;
 }
 .bilInfo td, th {
-    background-color: #f8b38e;
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
     width: 10%;
+}
+.bilInfo th{
+    background-color: #f8b38e;
+
+}.bilInfo td{
+    background-color: #f6f3f2;
+
 }
 
 .bilInfo tr:nth-child(even) {
@@ -27,6 +33,13 @@
     padding: 8px;
     width: 10%;
 }
+.bilInfo td:nth-child(even) {
+    background-color: white;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    width: 10%;
+}
+
 
 div.table-title {
     display: block;
@@ -43,4 +56,59 @@ div.table-title {
     font-family: "Roboto", helvetica, arial, sans-serif;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
     text-transform: uppercase;
+}
+
+.bilInfo th{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+}
+/* ----- Info for table i Skade og Udbedring */
+#SkadeTable {
+    width: 50%;
+    margin-left: 77px;
+}
+
+#SkadeTable table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    border-radius: 5px;
+}
+#SkadeTable table.center {
+    margin-left:auto;
+    margin-right:auto;
+}
+#SkadeTable td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    width: 10%;
+}
+#SkadeTable th {
+    background-color: #f8b38e;
+}
+
+#SkadeTable td{
+     background-color: #f6f3f2;
+
+ }
+
+#SkadeTable tr:nth-child(even) {
+    background-color: white;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    width: 10%;
+}
+#SkadeTable td:nth-child(even) {
+    background-color: white;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    width: 10%;
+}
+
+#SkadeTable th{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
 }

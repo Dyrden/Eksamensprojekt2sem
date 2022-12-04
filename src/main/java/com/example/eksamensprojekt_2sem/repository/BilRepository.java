@@ -56,6 +56,7 @@ public class BilRepository {
         return biler;
 
     }
+
     public Object visUdlejetBiler(String s){
         return SQLManager.makeStatement("CALL VisUdlejedeBiler()",dbUrl,uID,pass);
 

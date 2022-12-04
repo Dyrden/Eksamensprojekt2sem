@@ -17,7 +17,28 @@ public class BilModel {
 
     private String udstyr;
 
-    public String getMaerke() {
+    private double maanedspris;
+
+  public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance, double maanedspris) {
+    this.vognNummer = vognNummer;
+    this.stelNummer = stelNummer;
+    this.maerke = maerke;
+    this.model = model;
+    this.energiType = energiType;
+    this.gearboks = gearboks;
+    this.udstyr = udstyr;
+    this.status = status;
+    this.farve = farve;
+    this.staalPris = staalPris;
+    this.registreringsAfgift = registreringsAfgift;
+    this.CO2Udledning = CO2Udledning;
+    this.produktionsaar = produktionsaar;
+    this.distance = distance;
+    this.maanedspris = maanedspris;
+
+  }
+
+  public String getMaerke() {
         return maerke;
     }
 

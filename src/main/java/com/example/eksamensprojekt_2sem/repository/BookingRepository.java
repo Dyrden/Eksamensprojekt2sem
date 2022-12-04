@@ -23,7 +23,7 @@ public class BookingRepository {
     @Value("${JDBCPassword}")
     private String pass;
 
-    public List<BookingModel> visAktiveBookings(){
+    public List<BookingModel> visAlleBookinger(){
         List<BookingModel> bookinger = new LinkedList<>();
         BookingModel booking = new BookingModel();
         try {
@@ -75,11 +75,40 @@ public class BookingRepository {
         return indtaegt;
 
     }
+    public List<BilModel> visAktiveBookinger(){
+        List<BilModel> biler = new LinkedList<>();
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL VisAktiveBookingBiler()",dbUrl,uID,pass);
 
-    public void visAktiveBookinger(String s){
-        //SQLManager.makeStatement("CALL VisAktiveBookninger()");
+            while (resultSet.next()) {
+                String vognNummer = resultSet.getString(1);
+                String stelNummer = resultSet.getString(2);
+                String maerke = resultSet.getString(3);
+                String model = resultSet.getString(4);
+                String energiType = resultSet.getString(5);
+                String gearboks = resultSet.getString(6);
+                String udstyr = resultSet.getString(7);
+                String status = resultSet.getString(8);
+                String farve = resultSet.getString(9);
+                double staalPris = resultSet.getInt(10);
+                double registreringsAfgift = resultSet.getInt(11);
+                double CO2Udledning = resultSet.getInt(12);
+                int produktionsaar = resultSet.getInt(13);
+                int distance = resultSet.getInt(14);
+                double maanedspris = resultSet.getDouble(15);
+
+                biler.add(new BilModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
+                    staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedspris));
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return biler;
 
     }
+
     public void visBookingHistorik(String s){
         //SQLManager.makeStatement("CALL VisBookningHistorik()");
 

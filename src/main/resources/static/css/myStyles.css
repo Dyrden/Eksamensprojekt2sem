@@ -50,6 +50,7 @@
     color: lightcoral;
     box-shadow: 0 0.4rem #dfd9d9;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .searchField.input:focus {
@@ -63,4 +64,35 @@
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    justify-content: center;}
+    justify-content: center;
+
+}
+
+.beaverIBaggrund{
+    background-image: url(@{/images/beaver.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 50%;
+    background-attachment: inherit;
+    background-position-x: 275px;
+}
+
+.flex{
+    display: flex;
+
+}
+.flexSkade{
+    display: flex;
+    margin-top: 150px;
+    justify-content: space-around;
+}
+
+.stickySearch1{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+}
+.stickySearch2{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 75px;
+}

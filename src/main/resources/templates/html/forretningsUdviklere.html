@@ -9,8 +9,8 @@
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: logo"> </div>
-<ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
+
 
 <h1 th:each="b : ${samledeIndtaegt}">Samlede indtægter for denne måned
   <span th:text="${samledeIndtaegt}">samlede intaegt</span>kr.

@@ -1,7 +1,7 @@
 /* Fundet inspiration fra https://codepen.io/kazzkiq/pen/qEMjaw/ */
 body {
     font-family: Helvetica Neue, Helvetica, sans-serif;
-    background: #f3f0ee;
+    background: #fff8f1;
 }
 .skew-menu {
     text-align: center;
@@ -9,6 +9,7 @@ body {
     margin-left: 300px;
     margin-bottom: 40px;
 }
+
 .skew-menu ul {
     display: -webkit-box;
     margin: 0;
@@ -51,6 +52,12 @@ body {
 .logocorner {
     position: absolute;
     left: 50px;
-    top: 10px;
+    top: 1px;
 scale: 130%;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
 }
