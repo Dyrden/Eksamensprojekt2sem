@@ -170,3 +170,10 @@ body .container .card .box .content a:hover {
     top: 1px;
     scale: 130%;
 }
+
+.bilabonnementLogo{
+    position: absolute;
+    left: 350px;
+    top: 1px;
+    scale: 150%;
+}
