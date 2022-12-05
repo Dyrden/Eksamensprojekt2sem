@@ -35,7 +35,6 @@ public class SkadeOgUdController {
     }
 
     @GetMapping("visSpecifikBil/{stelNummer}")
-    //Ferhat er ansvarlig for denne metode
     public String visSpecifikBilWeb(@PathVariable("stelNummer") String s, Model model){
         model.addAttribute("specifikBil", bilRepository.sUVisning(s));
         return "html/skadeOgUdbedring/skadeOgUdbedring";
