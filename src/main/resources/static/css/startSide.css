@@ -60,13 +60,13 @@ body .container .card .box {
     border-radius: 15px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     overflow: hidden;
     transition: 0.5s;
 }
 
 body .container .card .box:hover {
-    transform: translateY(-50px);
+    transform: translateY(-15px);
 }
 
 body .container .card .box:before {
@@ -81,6 +81,7 @@ body .container .card .box:before {
 
 body .container .card .box .content {
     padding: 20px;
+    padding-bottom: 30px;
     text-align: center;
 }
 
@@ -97,7 +98,8 @@ body .container .card .box .content h3 {
     color: #fff;
     z-index: 1;
     transition: 0.5s;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+    position: inherit;
 }
 
 body .container .card .box .content p {

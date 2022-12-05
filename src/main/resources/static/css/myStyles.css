@@ -117,3 +117,9 @@
     flex-direction: column;
     align-items: center;
 }
+.bilabonnementLogo{
+    position: absolute;
+    left: 350px;
+    top: 1px;
+    scale: 150%;
+}

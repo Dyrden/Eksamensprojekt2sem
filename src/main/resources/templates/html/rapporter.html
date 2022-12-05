@@ -19,7 +19,7 @@
     <th>Model</th>
     <th>Vognnummer</th>
     <th>Registreringsnummer</th>
-    <th>Rediger</th>
+    <th>Skades rapport</th>
     <th>Rapport</th>
   </tr>
   <tr th:each="b : ${biler}">
@@ -27,7 +27,7 @@
     <td> <span th:text="${b.userId}">id</span> </td>
     <td> <span th:text="${b.vognNummer}">id</span> </td>
     <td> <span th:text="${b.registeringsNummer}">id</span> </td>
-    <td> <span> <a th:href="@{'/redigerRapport/' + ${b.vognNummer}}">rediger rapport</a> </span> </td>
+    <td> <span> <a th:href="@{'/redigerRapport/' + ${b.vognNummer}}">skadesrapport</a> </span> </td>
     <td> <span> <a th:href="@{'/seRapport/' + ${b.vognNummer}}">se Rapport</a> </span> </td>
   </tr>
 </table>
