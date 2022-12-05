@@ -24,19 +24,26 @@ public class DataRegController {
 
         return "html/dataRegistrering/dataRegistrering";
     }
-
+    @GetMapping("/kunde")
+    //Ferhat er ansvarlig for denne metode
+    //Gammel kundebooking side. Hvis man hellere vil tage den.
+    public String kunde(Model model){
+        model.addAttribute("biler", bilRepository.visAlleBiler());
+        return "html/dataRegistrering/kundeBookingGammel";
+    }
     @GetMapping("/bookBil/{vognNummer}")
     //Ferhat er ansvarlig for denne metode
     public String bookBil(@PathVariable("vognNummer") String vognNummer, Model model) {
             model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
-            return "html/dataRegistrering/kundeBooking";
+            return "html/dataRegistrering/kundeRegistrering";
     }
 
-    //Bliver ikke brugt længere. Kun til CSS
-    @GetMapping("/kundeBooking")
-    public String kundeBooking(){
-        return "html/dataRegistrering/kundebooking";
+    @GetMapping("/udstyrValg/")
+    public String udstyrValg() {
+
+        return "html/dataRegistrering/udstyrBooking";
     }
+
     @PostMapping("/nyBooking")
     public String nyBooking(
         RedirectAttributes attributes,
@@ -65,7 +72,6 @@ public class DataRegController {
 
         return "redirect:" + vognNummer;
     }
-    //Ferhat er ansvarlig for denne metode
     @GetMapping("/nyBooking+{vognNummer}")
     public String nyBookingGet(
         Model model,

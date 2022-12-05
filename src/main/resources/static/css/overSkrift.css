@@ -9,7 +9,7 @@
     background-image: linear-gradient(#259bca, #259bca);
     background-size: 100% 10px;
     background-repeat: no-repeat;
-    background-position: 100% 0%;
+    background-position: 100% 85%;
     transition: background-size .7s, background-position .5s ease-in-out;
 }
 
@@ -21,4 +21,32 @@
 
 .overSkrift{
     background-color: white
+}
+
+#samletIndtaegt span {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 38px;
+    position: inherit;
+    transform: translate(126%, -100%);
+    background-image: linear-gradient(#259bca, #259bca);
+    background-size: 100% 10px;
+    background-repeat: no-repeat;
+    background-position: 100% 95%;
+    transition: background-size .7s, background-position .5s ease-in-out;
+}
+
+#samletIndtaegt span:hover {
+    background-size: 100% 100%;
+    background-position: 0% 100%;
+    transition: background-position .7s, background-size .5s ease-in-out;
+}
+
+#samletIndtaegt{
+    background-color: white;
+    height: 3rem;
+}
+
+#overskriftPris{
+        background-image: linear-gradient(#25ca4c, #25ca4c);
+
 }

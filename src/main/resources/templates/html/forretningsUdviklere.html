@@ -7,32 +7,42 @@
   <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
   <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
   <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+  <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
 
-
-<h1 th:each="b : ${samledeIndtaegt}">Samlede indtægter for denne måned
-  <span th:text="${samledeIndtaegt}">samlede intaegt</span>kr.
-</h1>
-
+<div th:id="flexForretningsUdviklere">
+<div th:id="samletIndtaegt">
+  <span>Samlede indtægt.</span>
+  <span id="overskriftPris" th:text="${samledeIndtaegt}">samlede intaegt</span>
+  <span> kr.</span>
+</div>
+<div>
 <table th:class="bilInfo">
   <tr>
-    <th>id</th>
-    <th>brugerID</th>
-    <th>type</th>
-    <th>udleveringsSted</th>
+    <th>Booking ID</th>
+    <th>Bruger ID</th>
+    <th>Bil Mærke</th>
+    <th>Bil Model</th>
+    <th>Abonnements type</th>
+    <th>Start udelejning</th>
+    <th>Slut udelejning</th>
     <th>maanedspris</th>
   </tr>
   <tr th:each="b : ${bookedeBiler}">
-    <td> <span th:text="${b.id}">id</span> </td>
-    <td> <span th:text="${b.brugerID}">brugerID</span> </td>
+    <td> <span th:text="${b.id}">Booking ID</span> </td>
+    <td> <span th:text="${b.brugerID}">Bruger ID</span> </td>
+    <td> <span th:text="${bil}">Bil Mærke</span> </td>
+    <td> <span th:text="${bil}">Bil Model</span> </td>
     <td> <span th:text="${b.abonnementsType}">type</span> </td>
-    <td> <span th:text="${b.udleveringsSted}">udleveringsSted</span> </td>
-    <td> <span th:text="${b.maanedspris}">maanedspris</span> </td>
+    <td> <span th:text="${b.startDato}">type</span> </td>
+    <td> <span th:text="${b.slutDato}">udleveringsSted</span> </td>
+    <td> <span th:text="${b.maanedspris}">månedspris</span>0 kr.</td>
   </tr>
 </table>
-
+</div>
+</div>
 </body>
 </html>

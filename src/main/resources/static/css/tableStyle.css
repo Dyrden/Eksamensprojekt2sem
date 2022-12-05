@@ -114,3 +114,50 @@ div.table-title {
 
 }
 
+/* Table for kunder */
+#kundeTable {
+    width: 100%;
+    margin-left: 0;
+}
+
+#kundeTable table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    border-radius: 5px;
+}
+#kundeTable table.center {
+    margin-left:auto;
+    margin-right:auto;
+}
+#kundeTable td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    width: 10%;
+}
+#kundeTable th {
+    background-color: #259bca;
+}
+
+#kundeTable td{
+    background-color: #f6f3f2;
+
+}
+
+#kundeTable tr:nth-child(even) {
+    background-color: white;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    width: 10%;
+}
+#kundeTable td:nth-child(even) {
+    background-color: white;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    width: 10%;
+}
+#scroll {
+    height:350px;
+    overflow:auto;
+}
