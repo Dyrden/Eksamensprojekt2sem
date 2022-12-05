@@ -15,7 +15,7 @@
 
 <div th:id="flexForretningsUdviklere">
 <div th:id="samletIndtaegt">
-  <span>Samlede indtægt.</span>
+  <span>Samlede indtægt for denne måned</span>
   <span id="overskriftPris" th:text="${samledeIndtaegt}">samlede intaegt</span>
   <span> kr.</span>
 </div>
@@ -29,16 +29,16 @@
     <th>Abonnements type</th>
     <th>Start udelejning</th>
     <th>Slut udelejning</th>
-    <th>maanedspris</th>
+    <th>månedspris</th>
   </tr>
   <tr th:each="b : ${bookedeBiler}">
     <td> <span th:text="${b.id}">Booking ID</span> </td>
     <td> <span th:text="${b.brugerID}">Bruger ID</span> </td>
-    <td> <span th:text="${bil}">Bil Mærke</span> </td>
-    <td> <span th:text="${bil}">Bil Model</span> </td>
+    <td> <span th:text="${b.maerke}">Bil Mærke</span> </td>
+    <td> <span th:text="${b.model}">Bil Model</span> </td>
     <td> <span th:text="${b.abonnementsType}">type</span> </td>
-    <td> <span th:text="${b.startDato}">type</span> </td>
-    <td> <span th:text="${b.slutDato}">udleveringsSted</span> </td>
+    <td> <span th:text="${b.slutDato}">type</span> </td>
+    <td> <span th:text="${b.startDato}">udleveringsSted</span> </td>
     <td> <span th:text="${b.maanedspris}">månedspris</span>0 kr.</td>
   </tr>
 </table>

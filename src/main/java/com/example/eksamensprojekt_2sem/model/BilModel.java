@@ -17,7 +17,6 @@ public class BilModel {
 
     private String udstyr;
 
-    private double maanedspris;
 
   public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance, double maanedspris) {
     this.vognNummer = vognNummer;
@@ -34,7 +33,6 @@ public class BilModel {
     this.CO2Udledning = CO2Udledning;
     this.produktionsaar = produktionsaar;
     this.distance = distance;
-    this.maanedspris = maanedspris;
 
   }
 

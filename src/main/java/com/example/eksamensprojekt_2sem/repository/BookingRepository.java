@@ -1,11 +1,13 @@
 package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.BilModel;
+import com.example.eksamensprojekt_2sem.model.BilOgBookingModel;
 import com.example.eksamensprojekt_2sem.model.BookingModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import java.awt.print.Book;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -52,22 +54,15 @@ public class BookingRepository {
 
     public double visSamletIndtaegt(){
         //Ferhat er ansvarlig for denne metode
-        //Den viser ligenu samledeindtægt for alle biler
+        //Den viser ligenu samledeindtægt for bookede biler denne måned
 
-        List<BookingModel> bookinger = new LinkedList<>();
-        BookingModel booking = new BookingModel();
         double indtaegt = 0;
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visAlleBookings()",dbUrl,uID,pass);
+            ResultSet resultSet = SQLManager.execute("CALL visAktiveBookingOgBilData()",dbUrl,uID,pass);
 
             while (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                int brugerID = resultSet.getInt(2);
-                String type = resultSet.getString(3);
-                String sted = resultSet.getString(4);
-                String startDate = resultSet.getString(5);
-                String slutDato = resultSet.getString(6);
-                double maanedsPris = resultSet.getDouble(7);
+
+                double maanedsPris = resultSet.getDouble(15);
 
                 indtaegt += maanedsPris;
             }
@@ -79,11 +74,11 @@ public class BookingRepository {
         return indtaegt;
 
     }
-    public List<BilModel> visAktiveBookinger(){
+    public List<BilOgBookingModel> visAktiveBookinger(){
         //Ferhat er ansvarlig for denne metode
-        List<BilModel> biler = new LinkedList<>();
+        List<BilOgBookingModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL VisAktiveBookingBiler()",dbUrl,uID,pass);
+            ResultSet resultSet = SQLManager.execute("CALL visAktiveBookingOgBilData()",dbUrl,uID,pass);
 
             while (resultSet.next()) {
                 String vognNummer = resultSet.getString(1);
@@ -95,15 +90,21 @@ public class BookingRepository {
                 String udstyr = resultSet.getString(7);
                 String status = resultSet.getString(8);
                 String farve = resultSet.getString(9);
-                double staalPris = resultSet.getInt(10);
-                double registreringsAfgift = resultSet.getInt(11);
-                double CO2Udledning = resultSet.getInt(12);
+                double staalPris = resultSet.getDouble(10);
+                double registreringsAfgift = resultSet.getDouble(11);
+                double CO2Udledning = resultSet.getDouble(12);
                 int produktionsaar = resultSet.getInt(13);
                 int distance = resultSet.getInt(14);
                 double maanedspris = resultSet.getDouble(15);
+                int id = resultSet.getInt(16);
+                int brugerID = resultSet.getInt(17);
+                String type = resultSet.getString(18);
+                String sted = resultSet.getString(19);
+                String startDate = resultSet.getString(20);
+                String slutDato = resultSet.getString(21);
 
-                biler.add(new BilModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
-                    staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedspris));
+                biler.add(new BilOgBookingModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
+                    staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedspris, id, brugerID, type, sted, startDate, slutDato));
             }
 
         } catch (SQLException e){

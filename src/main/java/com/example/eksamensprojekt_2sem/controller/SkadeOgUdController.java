@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -24,8 +25,9 @@ public class SkadeOgUdController {
 
     @GetMapping("/skadeOgUdbedring")
     //Ferhat er ansvarlig for denne metode
-    public String visSkadeOgUd(Model model){
+    public String visSkadeOgUd(Model model, HttpSession session){
         model.addAttribute("biler", bilRepository.visAlleBiler());
+        session.invalidate();
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
@@ -43,7 +45,7 @@ public class SkadeOgUdController {
 
     @GetMapping("/seSkader/{vognNummer}")
     //Ferhat er ansvarlig for denne metode
-    public String visSkader(@PathVariable("vognNummer") String vognNummer, Model model){
+    public String visSkader(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession session){
         model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
 
         //Her henter vi den valgte bils rapport
@@ -55,6 +57,9 @@ public class SkadeOgUdController {
         //vi henter alle skaderne fra rapportens id.
         //Rapportens id har vi fået fra tildigere kode gennem bilens vognNummer
         model.addAttribute("skader",skadeRepository.skafSkaderFraRapport(rapport.getId()));
+
+        //Opretter en session og sætter bil til den bil vi er inde på i skader
+        session.setAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
 
         return "html/skadeOgUdbedring/seSkader";
     }
@@ -71,7 +76,7 @@ public class SkadeOgUdController {
 
     @PostMapping("/tilfoej")
     //Ferhat er ansvarlig for denne metode
-    public String tilfoejSkadePost(Model model,
+    public String tilfoejSkadePost(Model model, HttpSession session,
                                    @RequestParam("skade_placering") String skadePlacering,
                                    @RequestParam("skade_pris") double skadensPris,
                                    @RequestParam("skade_beskrivelse") String skadensBeskrivelse,
@@ -80,17 +85,22 @@ public class SkadeOgUdController {
 
         skadeRepository.tilfoejSkade(skadePlacering, skadensBeskrivelse, skadensPris, rapportID);
 
+        BilModel bil = (BilModel) session.getAttribute("bil");
+
+        String vognNummer = bil.getVognNummer();
         //redirect tilbage til seSkader med vognnummer måske man kunne buge session
-        return "redirect:/seskader";
+        return "redirect:/seSkader/"+vognNummer;
     }
 
     @GetMapping("/sletSkade/{skadeId}")
     //Ferhat er ansvarlig for denne metode
-    public String deleteWishList(@PathVariable("skadeId") int skadeId) {
+    public String deleteWishList(@PathVariable("skadeId") int skadeId, HttpSession session) {
         skadeRepository.sletSkade(skadeId);
+        BilModel bil = (BilModel) session.getAttribute("bil");
 
-        //redirect tilbage til seSkader med vognNummer, måske man kunne bruge session
-        return "redirect:/seSkader";
+        String vognNummer = bil.getVognNummer();
+
+        return "redirect:/seSkader/"+ vognNummer;
     }
 
 }
