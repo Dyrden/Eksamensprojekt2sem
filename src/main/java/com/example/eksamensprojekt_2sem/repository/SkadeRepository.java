@@ -20,7 +20,7 @@ public class SkadeRepository {
   @Value("${JDBCPassword}")
   private String pass;
 
-  public List<SkadeModel> skafSkaderFraRapport(int id){
+  public List<SkadeModel> skafSkaderFraRapport(String id){
     //Ferhat og Kristian er ansvarlig for denne metode
 
     List<SkadeModel> skader = new LinkedList<>();
