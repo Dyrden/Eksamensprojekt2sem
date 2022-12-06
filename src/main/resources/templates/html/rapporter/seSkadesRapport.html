@@ -12,7 +12,7 @@
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
 <div th:id="book">
   <div th:id="page">
-    <div th:id="subpage">Skades Rapport for vogn Nummer: <span th:text="${bil.vognNummer}"></span>
+    <div th:id="subpage">Skades Rapport for vogn Nummer: <span th:text="${bil.vognNummer}"></span> Rapport ID:<span th:text="${skader.get(0).rapportID}"></span>
       <div th:id="vertical">
         <table>
           <caption>Klar til A4 print</caption>
