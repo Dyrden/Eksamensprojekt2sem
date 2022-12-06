@@ -20,12 +20,12 @@ class SQLManagerTest {
 
     @AfterEach
     void tearDown(){
-
+     String s = null;
     }
 
     @Test
     void makeStatement() {
-     String s = "bob";
+     String s = "CALL visTilgængeligeBiler()";
      PreparedStatement preparedStatement = null;
      try {
       preparedStatement = connection.prepareStatement(s);
@@ -37,7 +37,7 @@ class SQLManagerTest {
 
     @Test
     void execute() {
-     String s = "";
+     String s = "CALL visTilgængeligeBiler()";
      ResultSet resultSet = null;
      try {
       PreparedStatement psts = connection.prepareStatement(s);
@@ -51,7 +51,7 @@ class SQLManagerTest {
 
     @Test
     void update() {
-     String s = "bob";
+     String s = "CALL visTilgængeligeBiler()";
      int resultSet = 0;
      try {
       PreparedStatement psts = connection.prepareStatement(s);

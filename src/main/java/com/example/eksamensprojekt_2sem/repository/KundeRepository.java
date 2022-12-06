@@ -28,7 +28,7 @@ public class KundeRepository {
     BrugerModel bruger = new BrugerModel();
 
     try {
-      ResultSet resultSet = SQLManager.execute("CALL visAlleBrugere()",dbUrl,uID,pass);
+      ResultSet resultSet = SQLManager.execute("CALL visAlleBrugere()");
 
       while (resultSet.next()) {
         int id = resultSet.getInt(1);

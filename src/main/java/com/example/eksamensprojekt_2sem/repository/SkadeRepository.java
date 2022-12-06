@@ -26,7 +26,7 @@ public class SkadeRepository {
     List<SkadeModel> skader = new LinkedList<>();
     try{
       ResultSet resultSet = SQLManager.execute
-          ("CALL skafSkaderFraRapport('"+id+"')",dbUrl,uID,pass);
+          ("CALL skafSkaderFraRapport('"+id+"')");
       while (resultSet.next()){
        int skadeid = (resultSet.getInt(1));
        String skadensPlacering = (resultSet.getString(2));
@@ -45,7 +45,7 @@ public class SkadeRepository {
   public void tilfoejSkade(String placering, String beskrivelse, double pris, int rapportID){
     //Ferhat er ansvarlig for denne metode
       ResultSet resultSet = SQLManager.execute
-          ("CALL TilfoejSkade('"+beskrivelse+"','"+placering+"',"+pris+","+rapportID+")",dbUrl,uID,pass);
+          ("CALL TilfoejSkade('"+beskrivelse+"','"+placering+"',"+pris+","+rapportID+")");
 
       System.out.println(placering+beskrivelse+pris+rapportID);
   }
@@ -53,7 +53,7 @@ public class SkadeRepository {
   public void sletSkade(int skadeID){
     //Ferhat er ansvarlig for denne metode
     ResultSet resultSet = SQLManager.execute
-        ("CALL SletSkade("+skadeID+")",dbUrl,uID,pass);
+        ("CALL SletSkade("+skadeID+")");
   }
 
 }
