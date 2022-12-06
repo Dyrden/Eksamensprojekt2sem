@@ -7,17 +7,16 @@
     <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
 </head>
 <body>
-<div th:fragment="logo">
-    <img class="logocorner" src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="200,2" height="100,1">
+
+<div th:fragment="navigation">
+    <div class="main-menu">
+        <div class="main-menu-content">
+            <a class="main-menu-logo" title="beaver-leasing" href="/">
+                <img class="logo" src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="200,2" height="100,1" alt="Beaver-leasing">
+                <img class="bilabonnementLogo" src="/static/images/bilabonnementLogo.svg" th:src="@{/images/bilabonnementLogo.svg}" width="200,2" height="100,1" alt="Bilabonnement">
+            </a>
+        </div>
+    </div>
 </div>
-<nav th:fragment="navbar-standard" th:class="skew-menu">
-    <ul>
-        <li><a th:href="@{'/'}">Home</a></li>
-        <li><a th:href="@{'/dataRegistrering/'}">Data indregistrering</a></li>
-        <li><a th:href="@{'/skadeOgUdbedring/'}">Skades rapport</a></li>
-        <li><a th:href="@{'/forretningsUdviklere/'}">Forretnings udviklere</a></li>
-        <li><a th:href="@{'/seRapporter/'}">Rapporter</a></li>
-    </ul>
-</nav>
 </body>
 </html>

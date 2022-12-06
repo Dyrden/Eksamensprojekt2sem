@@ -1,3 +1,4 @@
+
 .home-picture {
     display: block;
     margin-left: auto;
@@ -47,15 +48,15 @@
     font-size: 1rem;
     width: 13em;
     border-radius: 1rem;
-    color: lightcoral;
+    color: #259bca;
     box-shadow: 0 0.4rem #dfd9d9;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .searchField.input:focus {
-    outline-color: lightcoral;
+    outline-color: #259bca;
 }
-
 .searchFieldPosition{
     margin-top: 5px;
     display: -webkit-box;
@@ -63,4 +64,62 @@
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    justify-content: center;}
+    justify-content: center;
+}
+
+#brugerIDSearchField{
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 13em;
+    border-radius: 1rem;
+    color: #259bca;
+    cursor: pointer;
+    margin-top: 10px;
+}
+#brugerIDSearchField .input:focus {
+    outline-color: #259bca;
+}
+
+.beaverIBaggrund{
+    background-image: url(@{/images/beaver.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 50%;
+    background-attachment: inherit;
+    background-position-x: 275px;
+}
+
+.flex{
+    display: flex;
+
+}
+.flexSkade{
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-around;
+}
+
+.stickySearch1{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+}
+.stickySearch2{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 65px;
+}
+
+#flexForretningsUdviklere{
+    display: flex;
+    margin-top: 150px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.bilabonnementLogo{
+    position: absolute;
+    left: 350px;
+    top: 1px;
+    scale: 150%;
+}

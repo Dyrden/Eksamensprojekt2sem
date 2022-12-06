@@ -1,14 +1,22 @@
 package com.example.eksamensprojekt_2sem.model;
 
 public class BrugerModel {
-  private String id;
+  private int id;
   private String fornavn;
   private String efternavn;
   private String email;
   private String tlf;
   private String cpr;
 
-  public BrugerModel(String id, String fornavn, String efternavn, String email, String tlf, String cpr) {
+  public BrugerModel(String fornavn, String efternavn, String email, String tlf, String cpr) {
+    this.fornavn = fornavn;
+    this.efternavn = efternavn;
+    this.email = email;
+    this.tlf = tlf;
+    this.cpr = cpr;
+  }
+
+  public BrugerModel(int id, String fornavn, String efternavn, String email, String tlf, String cpr) {
     this.id = id;
     this.fornavn = fornavn;
     this.efternavn = efternavn;
@@ -17,11 +25,14 @@ public class BrugerModel {
     this.cpr = cpr;
   }
 
-  public String getId() {
+  public BrugerModel() {
+  }
+
+  public int getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(int id) {
     this.id = id;
   }
 

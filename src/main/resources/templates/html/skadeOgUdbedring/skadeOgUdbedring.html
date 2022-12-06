@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Skade og Udbedring</title>
-    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
     <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
     <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+    <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: logo"> </div>
-<ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
 
-<div class="table-title">
-    <h3>Væg venligst den bil du vil se skaderne på</h3>
-</div>
-<div th:class="searchFieldPosition">
-    <div>
+<div th:class="beaverIBaggrund" th:style="'background-image:url(' + @{/images/beaver.png}">
+
+    <div th:class="overSkrift">
+        <span> Vælg den bil du vil se skader på</span>
+    </div>
+
+    <div th:class="flexSkade">
+
+        <div>
+    <div th:class="stickySearch1">
         <input type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
     </div>
-    <table th:class="bilInfo">
+        <div th:class="stickySearch2">
+        <input type="text" name="text" th:class="searchField" placeholder="Bil mærke">
+    </div>
+</div>
+    <table th:id="SkadeTable">
         <tr>
             <th>Bil Mærke</th>
             <th>Model</th>
@@ -36,6 +45,7 @@
             <td> <span> <a th:href="@{'/seSkader/' + ${b.vognNummer}}">Se skader</a> </span> </td>
         </tr>
     </table>
+
 </div>
 </div>
 <div id="blaaKnap">

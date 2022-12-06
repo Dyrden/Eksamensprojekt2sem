@@ -2,6 +2,7 @@ package com.example.eksamensprojekt_2sem.controller;
 
 import com.example.eksamensprojekt_2sem.model.BrugerModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
+import com.example.eksamensprojekt_2sem.repository.KundeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,29 +13,38 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class DataRegController {
     private BilRepository bilRepository;
+    private KundeRepository kundeRepository = new KundeRepository();
 
     public DataRegController(BilRepository bilRepository) {
         this.bilRepository = bilRepository;
     }
 
-
     @GetMapping("/dataRegistrering")
+    //Ferhat er ansvarlig for denne metode
     public String visDataReg(Model model){
         model.addAttribute("biler", bilRepository.visAlleBiler());
 
         return "html/dataRegistrering/dataRegistrering";
     }
-
+    @GetMapping("/kunde")
+    //Ferhat er ansvarlig for denne metode
+    //Gammel kundebooking side. Hvis man hellere vil tage den.
+    public String kunde(Model model){
+        model.addAttribute("biler", bilRepository.visAlleBiler());
+        return "html/dataRegistrering/kundeBookingGammel";
+    }
     @GetMapping("/bookBil/{vognNummer}")
+    //Ferhat er ansvarlig for denne metode
     public String bookBil(@PathVariable("vognNummer") String vognNummer, Model model) {
-       // model.addAttribute("bil", bilRepository.selectBilUdfraVognNummer(vognNummer));
-        return "html/dataRegistrering/kundeBooking";
+            model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
+            model.addAttribute("brugere", kundeRepository.visAlleBrugere());
+            return "html/dataRegistrering/kundeRegistrering";
     }
 
-    //Bliver ikke brugt længere. Kun til CSS
-    @GetMapping("/kundeBooking")
-    public String kundeBooking(){
-        return "html/dataRegistrering/kundebooking";
+    @GetMapping("/udstyrValg/")
+    public String udstyrValg() {
+
+        return "html/dataRegistrering/udstyrBooking";
     }
 
     @PostMapping("/nyBooking")
@@ -65,7 +75,6 @@ public class DataRegController {
 
         return "redirect:" + vognNummer;
     }
-
     @GetMapping("/nyBooking+{vognNummer}")
     public String nyBookingGet(
         Model model,
@@ -90,7 +99,7 @@ public class DataRegController {
         model.addAttribute("email", cpr);
 
         // har skrevet for at teste om den funere, 1 skal være ID
-        BrugerModel kunde = new BrugerModel(vognNummer,forNavn, efterNavn, email, tlf, cpr );
+        BrugerModel kunde = new BrugerModel(forNavn, efterNavn, email, tlf, cpr );
 
         System.out.println(forNavn + " " + efterNavn + " " + cpr);
 

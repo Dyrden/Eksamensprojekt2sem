@@ -7,11 +7,12 @@
   <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
   <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
   <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../static/css/tilfojSkade.css"/>
+  <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: logo"> </div>
-<ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
+
 
 <div class="container">
   <form id="bilSpecifikation" action="/tilfoej" method="post">
@@ -28,8 +29,9 @@
     </fieldset>
     <fieldset>
       <div class="flex">
-        <button placeholder="annuller" type="submit" th:href="@{'/udbedring/'}">Annuller
+        <button placeholder="annuller" type="submit" th:href="@{'/skadeOgUdbedring/'}">Annuller
         </button>
+        <input type="hidden" id="wishId" name="rapportID" th:attr="value=${rapportID}">
         <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Indsend</button>
       </div>
     </fieldset>

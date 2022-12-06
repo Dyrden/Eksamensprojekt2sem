@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Skade og Udbedring</title>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+    <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+    <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+
+
+</head>
+<body>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
+
+<div th:class="beaverIBaggrund" th:style="'background-image:url(' + @{/images/beaver.png}">
+    <div th:class="bilInfo">
+        <div class="table-title">
+            <div th:class="overSkrift">
+                <span>Registrer kunde</span>
+            </div>
+        </div>
+        <table class="center">
+            <tr>
+                <th>Bil Mærke</th>
+                <th>Model</th>
+                <th>Vognnummer</th>
+                <th>Registreringsnummer</th>
+            </tr>
+            <tr th:each="b : ${bil}">
+                <td> <span th:text="${b.maerke}">Bil Mærke</span> </td>
+                <td> <span th:text="${b.model}">Model</span> </td>
+                <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
+                <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
+            </tr>
+        </table>
+
+
+    <div th:class="flexSkade">
+
+        <div>
+            <div id="kundeinfo">
+                <form action="/nyBruger" method="post">
+                <h3>Kunde informationer</h3>
+                <h4>Indtast venligst kundens information</h4>
+                <fieldset>
+                    <input name="fornavn" placeholder="Fornavn" type="text" tabindex="1" required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input name="efternavn" placeholder="Efternavn" type="text" tabindex="2" required>
+                </fieldset>
+                <fieldset>
+                    <input name="email" placeholder="E-mail" type="text" tabindex="3" required></input>
+                </fieldset>
+                <fieldset>
+                    <input name="tlf" placeholder="tlf nummer" type="text" tabindex="4" required></input>
+                </fieldset>
+                <fieldset>
+                    <input name="CPR" placeholder="cpr nummer" type="text" tabindex="5" required></input>
+                </fieldset>
+                <fieldset>
+                    <div class="bilBookingFormFlex">
+                        <button class="inline" name="submit" type="submit" id="send-kundeinfo" data-submit="...Sending">Registrer kunde og vælg udstyr</button>
+                    </div>
+                </fieldset>
+                    </form>
+            </div>
+
+</div>
+        <div id="findKunde">
+            <h3>Find kunde</h3>
+        <div th:id="brugerIDSearchField">
+            <input type="text" name="text" th:class="searchField" placeholder="indtast CPR">
+        </div>
+
+            <div th:id="scroll">
+    <table th:id="kundeTable">
+        <tr>
+            <th>Bruger ID</th>
+            <th>Fornavn</th>
+            <th>EfterNavn</th>
+            <th>tlf nummer</th>
+            <th>CPR nummer</th>
+            <th>Vælg</th>
+        </tr>
+        <tr th:each="b : ${brugere}">
+            <td> <span th:text="${b.id}">Maerke</span> </td>
+            <td> <span th:text="${b.fornavn}">Model</span> </td>
+            <td> <span th:text="${b.efternavn}">Vognnummer</span> </td>
+            <td> <span th:text="${b.tlf}">Registreringsnummer</span> </td>
+            <td> <span th:text="${b.cpr}">Registreringsnummer</span> </td>
+            <td> <span> <a th:href="@{'/udstyrValg/' + ${b.id}}">Vælg bruger</a> </span> </td>
+        </tr>
+    </table>
+            </div>
+</div>
+    </div>
+        <div id="blaaKnap">
+            <button placeholder="Registrer ny skade" type="submit">  <a th:class="htmlLink" th:href="@{'/udstyrValg/'}">Se næste side TEST knap</a>
+            </button>
+        </div>
+</div>
+
+</body>
+</html>

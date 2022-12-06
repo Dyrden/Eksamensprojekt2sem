@@ -7,30 +7,33 @@
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
     <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
     <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: logo"> </div>
-<ul th:replace="html/fragments/aFragment:: navbar-standard" class="active"></ul>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
+
 
 <div th:class="bilInfo">
-<table th:class="bilInfo">
-    <tr>
-        <th>Bil Mærke</th>
-        <th>Model</th>
-        <th>Vognnummer</th>
-        <th>Registreringsnummer</th>
-    </tr>
-    <tr th:each="b : ${biler}" th>
-        <td> <span th:text="${b.name}">Name</span> </td>
-        <td> <span th:text="${b.userId}">id</span> </td>
-        <td> <span th:text="${b.vognNummer}">id</span> </td>
-        <td> <span th:text="${b.registeringsNummer}">id</span> </td>
-    </tr>
-</table>
-</div>
+    <div class="table-title">
+        <h3>Bilens informationer</h3>
+    </div>
+    <table class="center">
+        <tr>
+            <th>Bil Mærke</th>
+            <th>Model</th>
+            <th>Vognnummer</th>
+            <th>Registreringsnummer</th>
+        </tr>
+        <tr th:each="b : ${bil}">
+            <td> <span th:text="${b.maerke}">Bil Mærke</span> </td>
+            <td> <span th:text="${b.model}">Model</span> </td>
+            <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
+            <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
+        </tr>
+    </table>
 
 <div class="bilBookingFormFlex">
     <form action="/nyBooking" method="post">
@@ -82,7 +85,7 @@
         </fieldset>
         <fieldset>
             <div class="bilBookingFormFlex">
-                <button class="inline" name="submit" type="submit" id="send-kundeinfo" data-submit="...Sending">Søg</button>
+                <button class="inline" name="submit" type="submit" id="send-kundeinfo" data-submit="...Sending">Book</button>
             </div>
         </fieldset>
         </div>

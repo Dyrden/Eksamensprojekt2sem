@@ -8,6 +8,12 @@ public class HomeController {
 
     @GetMapping("/")
     public String visHome(){
+        return "html/startSideTest";
+    }
+
+    @GetMapping("/start")
+    public String start(){
+
         return "html/home";
     }
 

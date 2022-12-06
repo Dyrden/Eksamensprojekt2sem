@@ -6,28 +6,43 @@
   <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
   <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
   <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+  <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+  <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: logo"> </div>
-<ul th:replace="/html/fragments/aFragment:: navbar-standard"></ul>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
 
+<div th:id="flexForretningsUdviklere">
+<div th:id="samletIndtaegt">
+  <span>Samlede indtægt for denne måned</span>
+  <span id="overskriftPris" th:text="${samledeIndtaegt}">samlede intaegt</span>
+  <span> kr.</span>
+</div>
+<div>
 <table th:class="bilInfo">
   <tr>
+    <th>Booking ID</th>
+    <th>Bruger ID</th>
     <th>Bil Mærke</th>
-    <th>Model</th>
-    <th>Vognnummer</th>
-    <th>Registreringsnummer</th>
-    <th>Indtægt</th>
+    <th>Bil Model</th>
+    <th>Abonnements type</th>
+    <th>Start udelejning</th>
+    <th>Slut udelejning</th>
+    <th>månedspris</th>
   </tr>
-  <tr th:each="b : ${biler}">
-    <td> <span th:text="${b.bilmaerke}">Name</span> </td>
-    <td> <span th:text="${b.userId}">id</span> </td>
-    <td> <span th:text="${b.vognNummer}">id</span> </td>
-    <td> <span th:text="${b.registeringsNummer}">id</span> </td>
-    <td> <span th:text="${b.indtaegt}">id</span> </td>
+  <tr th:each="b : ${bookedeBiler}">
+    <td> <span th:text="${b.id}">Booking ID</span> </td>
+    <td> <span th:text="${b.brugerID}">Bruger ID</span> </td>
+    <td> <span th:text="${b.maerke}">Bil Mærke</span> </td>
+    <td> <span th:text="${b.model}">Bil Model</span> </td>
+    <td> <span th:text="${b.abonnementsType}">type</span> </td>
+    <td> <span th:text="${b.slutDato}">type</span> </td>
+    <td> <span th:text="${b.startDato}">udleveringsSted</span> </td>
+    <td> <span th:text="${b.maanedspris}">månedspris</span>0 kr.</td>
   </tr>
 </table>
-
+</div>
+</div>
 </body>
 </html>

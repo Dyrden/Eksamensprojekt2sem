@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Skade og Udbedring</title>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+    <link rel="stylesheet" th:href="@{/css/rapport.css}" href="../../static/css/rapport.css"/>
+
+</head>
+<body>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
+
+<table th:class="vertical">
+    <caption>First Way</caption>
+    <tr th:each="b : ${bil}">
+        <th>Bil Mærke</th>
+        <td th:text="b.vognNummer">data</td>
+    </tr>
+    <tr>
+        <th>Header 2</th>
+        <td>data</td>
+    </tr>
+    <tr>
+        <th>Header 2</th>
+        <td>data</td>
+    </tr>
+</table>
+</body>
+</html>
