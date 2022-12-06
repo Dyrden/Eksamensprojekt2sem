@@ -28,7 +28,7 @@ public class BilRepository {
       //Mark er ansvarlig for denne metode
         List<BilModel> biler = new LinkedList<>();
         try {
-       ResultSet resultSet = SQLManager.execute("CALL visallebiler()",dbUrl,uID,pass);
+       ResultSet resultSet = SQLManager.execute("CALL visTilgængeligeBiler()",dbUrl,uID,pass);
 
             while (resultSet.next()) {
                 String vognNummer = resultSet.getString(1);
