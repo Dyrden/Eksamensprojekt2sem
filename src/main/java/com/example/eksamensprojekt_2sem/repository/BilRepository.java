@@ -27,7 +27,7 @@ public class BilRepository {
     public List<BilModel> visAlleBiler(){
         List<BilModel> biler = new LinkedList<>();
         try {
-       ResultSet resultSet = SQLManager.execute("CALL visallebiler()",dbUrl,uID,pass);
+       ResultSet resultSet = SQLManager.execute("CALL visallebiler()");
 
             while (resultSet.next()) {
                 String vognNummer = resultSet.getString(1);
@@ -60,7 +60,7 @@ public class BilRepository {
     List<BilModel> biler = new LinkedList<>();
     BilModel bil = new BilModel();
     try {
-      ResultSet resultSet = SQLManager.execute("CALL visallebiler()",dbUrl,uID,pass);
+      ResultSet resultSet = SQLManager.execute("CALL visallebiler()");
 
       while (resultSet.next()) {
         String vognNummer = resultSet.getString(1);
@@ -96,18 +96,18 @@ public class BilRepository {
 
   }
     public Object visUdlejetBiler(String s){
-        return SQLManager.makeStatement("CALL VisUdlejedeBiler()",dbUrl,uID,pass);
+        return SQLManager.makeStatement("CALL VisUdlejedeBiler()");
 
     }
     public Object LavBil(String s){
-        return SQLManager.makeStatement("CALL LavBil()",dbUrl,uID,pass);
+        return SQLManager.makeStatement("CALL LavBil()");
 
     }
 
     public BilModel selectBilUdfraVognNummer(String vognNummerID){
       BilModel bil = new BilModel();
 
-        ResultSet resultSet = SQLManager.execute("SELECT * FROM bilabonnement.bil WHERE vognNummerID =?;",dbUrl,uID,pass);
+        ResultSet resultSet = SQLManager.execute("SELECT * FROM bilabonnement.bil WHERE vognNummerID =?;");
         return bil;
     }
 
@@ -115,7 +115,7 @@ public class BilRepository {
       BilModel bil = null;
         try{
             PreparedStatement psts = SQLManager.makeStatement
-                    ("CALL FindSpecifikBilFraVognNum('?')",dbUrl,uID,pass);
+                    ("CALL FindSpecifikBilFraVognNum('?')");
             psts.setString(1,vognNummer);
             ResultSet resultSet = psts.executeQuery();
             while (resultSet.next()){
@@ -138,7 +138,7 @@ public class BilRepository {
         try {
 
             ResultSet resultSet =
-                    SQLManager.execute("CALL VisSpecifikBil('?')",dbUrl,uID,pass);
+                    SQLManager.execute("CALL VisSpecifikBil('?')");
             while (resultSet.next()){
                 try {
                 bilModel.setVognNummer(resultSet.getString(1));

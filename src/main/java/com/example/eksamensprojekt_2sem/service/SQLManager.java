@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 
 public class SQLManager {
-    public static PreparedStatement makeStatement(String s, String db_URL, String uid, String pass){
+    public static PreparedStatement makeStatement(String s){
         //laver en skabelon for Prepared statements, fordi DRY
         PreparedStatement preparedStatement = null;
         try {
@@ -17,11 +17,11 @@ public class SQLManager {
         return preparedStatement;
     }
 
-    public static ResultSet execute(String s, String db_URL, String uid, String pass){
+    public static ResultSet execute(String s){
         //metode der modtager info fra DB
         ResultSet resultSet = null;
         try {
-            PreparedStatement psts = makeStatement(s,db_URL,uid,pass);
+            PreparedStatement psts = makeStatement(s);
             resultSet = psts.executeQuery();
         }catch (SQLException e){
             e.printStackTrace();
@@ -29,10 +29,10 @@ public class SQLManager {
         return resultSet;
     }
 
-    public static void update(String s,String db_URL, String uid, String pass){
+    public static void update(String s){
         //metode der sender info til DB
         try {
-            PreparedStatement psts = makeStatement(s,db_URL,uid,pass);
+            PreparedStatement psts = makeStatement(s);
             psts.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
