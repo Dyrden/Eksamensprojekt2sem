@@ -119,8 +119,10 @@ public class BookingRepository {
         //SQLManager.makeStatement("CALL VisBookningHistorik()");
 
     }
-    public void LavBooking(String s){
-        //SQLManager.makeStatement("CALL LavBookning()");
+    public void LavBooking(String vognNummer, String BrugerID,String abonnementsType){
+        // Format:
+        // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,maanedesPris
+        SQLManager.makeStatement("CALL lavBookning()");
 
     }
 
