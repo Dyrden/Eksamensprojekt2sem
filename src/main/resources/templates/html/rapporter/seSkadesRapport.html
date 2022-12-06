@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Skade og Udbedring</title>
+  <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+  <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+  <link rel="stylesheet" th:href="@{/css/rapport.css}" href="../../static/css/rapport.css"/>
+
+</head>
+<body>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
+<div th:id="book">
+  <div th:id="page">
+    <div th:id="subpage">Skades Rapport for vogn Nummer: <span th:text="${bil.vognNummer}"></span>
+      <div th:id="vertical">
+        <table>
+          <caption>Klar til A4 print</caption>
+          <tr>
+            <th>Skadens placering</th>
+            <th>Skadens beskrivelse</th>
+            <th>Skadens pris</th>
+          </tr>
+          <tr th:each="s : ${skader}">
+            <td> <span th:text="${s.skadensPlacering}">skadensPlacering</span> </td>
+            <td> <span th:text="${s.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
+            <td> <span th:text="${s.skadensPris}">skadensPris</span> kr. </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

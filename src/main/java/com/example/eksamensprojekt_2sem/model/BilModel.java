@@ -16,6 +16,15 @@ public class BilModel {
     private String gearboks;
 
     private String udstyr;
+  private int statusID;
+  private String status;
+  private int farveID;
+  private String farve;
+  private double staalPris;
+  private double registreringsAfgift;
+  private double CO2Udledning;
+  private int produktionsaar;
+  private int distance;
 
 
   public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance, double maanedspris) {
@@ -91,16 +100,6 @@ public class BilModel {
     public void setFarve(String farve) {
         this.farve = farve;
     }
-
-    private int statusID;
-    private String status;
-    private int farveID;
-    private String farve;
-    private double staalPris;
-    private double registreringsAfgift;
-    private double CO2Udledning;
-    private int produktionsaar;
-    private int distance;
 
     public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
         this.vognNummer = vognNummer;

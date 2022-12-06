@@ -1,4 +1,4 @@
-div.vertical {
+#Vertical div {
     margin-left: -85px;
     position: absolute;
     width: 215px;
@@ -13,9 +13,61 @@ div.vertical {
     /* IE 9 */
 }
 
-th.vertical {
-    height: 220px;
+#vertical th{
+    height: 40px;
     line-height: 14px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     text-align: left;
+    font-size: larger;
+    background: gainsboro;
+}
+#vertical td{
+    font-size: larger;
+}
+
+#vertical table, th, td {
+    border: 1px solid;
+}
+#vertical table {
+    width: 80%;
+}
+
+#vertical{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+body {
+    font: 12pt "Tahoma";
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+#page {
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 2cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    size: A4;
+    margin: 0;
+}
+
+#page {
+    margin: 0;
+    border: initial;
+    border-radius: initial;
+    width: initial;
+    min-height: initial;
+    box-shadow: initial;
+    background: initial;
+    page-break-after: always;
+}
+#subpage {
+    padding: 1cm;
+    border: 4px Black solid;
+    height: 237mm;
 }
