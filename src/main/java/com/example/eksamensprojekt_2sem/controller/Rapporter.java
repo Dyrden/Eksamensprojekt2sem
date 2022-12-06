@@ -29,6 +29,7 @@ private SkadeRepository skadeRepository = new SkadeRepository();
     model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
     return "html/rapporter/seRapport";
   }
+  /*
   @GetMapping("/seSkadeRapport/{vognNummer}")
   //Ferhat er ansvarlig for denne metode
   public String visSkader(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession session){
@@ -46,4 +47,6 @@ private SkadeRepository skadeRepository = new SkadeRepository();
 
     return "html/rapporter/seSkadesRapport";
   }
+
+   */
 }
