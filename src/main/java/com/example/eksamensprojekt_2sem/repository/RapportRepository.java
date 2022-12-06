@@ -11,32 +11,38 @@ import java.sql.SQLException;
 
 @Repository
 public class RapportRepository {
-  @Value("${JDBCUrl}")
-  private String dbUrl;
+    @Value("${JDBCUrl}")
+    private String dbUrl;
 
-  @Value("${JDBCUsername}")
-  private String uID;
+    @Value("${JDBCUsername}")
+    private String uID;
 
-  @Value("${JDBCPassword}")
-  private String pass;
-public RapportModel hentRapportFraVognNummer(String vognNummer){
-  RapportModel rapport = new RapportModel();
-  try{
-    ResultSet resultSet = SQLManager.execute
-        ("CALL skafRapporterFraVognNummer('"+vognNummer+"')");
-    while (resultSet.next()){
-      rapport.setId(resultSet.getInt(1));
-      rapport.setDato(resultSet.getString(2));
-      rapport.setVognNummer(resultSet.getString(3));
+    @Value("${JDBCPassword}")
+    private String pass;
 
+    public RapportModel hentRapportFraVognNummer(String vognNummer) {
+        RapportModel rapport = new RapportModel();
+        try {
+            ResultSet resultSet = SQLManager.execute
+                ("CALL skafRapporterFraVognNummer('" + vognNummer + "')");
+            while (resultSet.next()) {
+                rapport.setId(resultSet.getInt(1));
+                rapport.setDato(resultSet.getString(2));
+                rapport.setVognNummer(resultSet.getString(3));
+
+            }
+            System.out.println(rapport);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rapport;
     }
-    System.out.println(rapport);
-  } catch (SQLException e){
-    e.printStackTrace();
-  }
 
-  return rapport;
-}
+    public void tilføjOverskredetKMTilRapport(String vognNummer, int km) {
+        RapportModel rapport = hentRapportFraVognNummer(vognNummer);
+        SQLManager.update("CALL knytOverSkredetKMtilVognNummerRapport(" + rapport.getId() + ")");
+    }
 
 
 }

@@ -34,9 +34,21 @@ public class SkadeOgUdController {
         return "redirect:/skadeOgUdbedring";
     }
 
+
+    @PostMapping("/indtastkm")
+    public String indtastKm(
+        @RequestParam("vognNummer") String vognnummer,
+        @RequestParam("km") int overskredetKM,
+        @RequestParam("stelNummer") String stelnummer){
+        rapportRepository.tilføjOverskredetKMTilRapport(vognnummer, overskredetKM);
+        return "redirect:/visSpecifikBil/" + stelnummer;
+    }
+
+
     @GetMapping("visSpecifikBil/{stelNummer}")
     public String visSpecifikBilWeb(@PathVariable("stelNummer") String s, Model model){
         model.addAttribute("specifikBil", bilRepository.sUVisning(s));
+
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 

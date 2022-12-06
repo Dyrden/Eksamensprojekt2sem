@@ -19,6 +19,8 @@ public class RapportModel {
   private String produktionsaar;
   private String distance;
 
+  private int overskredetKM;
+
   public RapportModel() {
   }
 
@@ -192,6 +194,14 @@ public class RapportModel {
 
   public void setDistance(String distance) {
     this.distance = distance;
+  }
+
+  public int getOverskredetKM() {
+    return overskredetKM;
+  }
+
+  public void setOverskredetKM(int overskredetKM) {
+    this.overskredetKM = overskredetKM;
   }
 
   @Override
