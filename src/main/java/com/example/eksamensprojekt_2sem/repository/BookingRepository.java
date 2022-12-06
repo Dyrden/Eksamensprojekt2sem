@@ -1,8 +1,6 @@
 package com.example.eksamensprojekt_2sem.repository;
 
-import com.example.eksamensprojekt_2sem.model.BilModel;
-import com.example.eksamensprojekt_2sem.model.BilOgBookingModel;
-import com.example.eksamensprojekt_2sem.model.BookingModel;
+import com.example.eksamensprojekt_2sem.model.*;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -10,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.awt.print.Book;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
@@ -119,12 +118,49 @@ public class BookingRepository {
         //SQLManager.makeStatement("CALL VisBookningHistorik()");
 
     }
-    public void LavBooking(String vognNummer, String BrugerID,String abonnementsType){
+    public void lavBooking(String vognNummer, int BrugerID,String abonnementsType,String sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){
         // Format:
-        // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,maanedesPris
-        SQLManager.makeStatement("CALL lavBookning()");
+        // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
+        //SQLManager.execute("CALL lavBookning('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
 
     }
 
+    public List<UdleveringsstedModel> visAlleUdleveringsSteder() {
+        List<UdleveringsstedModel> udleveringssteder = new LinkedList<>();
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL visAlleUdleveringsSteder()");
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String sted = resultSet.getString(2);
+                udleveringssteder.add(new UdleveringsstedModel(id, sted));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return udleveringssteder;
+
+    }
+
+    public List<AbonnementsTypeModel> visAlleAbonnementsTyper() {
+        List<AbonnementsTypeModel> abonnementsTyper = new LinkedList<>();
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL visAlleAbonnementsTyper()");
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String type = resultSet.getString(2);
+                abonnementsTyper.add(new AbonnementsTypeModel(id, type));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return abonnementsTyper;
+
+    }
 
 }

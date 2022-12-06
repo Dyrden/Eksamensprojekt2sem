@@ -1,7 +1,10 @@
 package com.example.eksamensprojekt_2sem.controller;
 
+import com.example.eksamensprojekt_2sem.model.BilModel;
+import com.example.eksamensprojekt_2sem.model.BookingModel;
 import com.example.eksamensprojekt_2sem.model.BrugerModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
+import com.example.eksamensprojekt_2sem.repository.BookingRepository;
 import com.example.eksamensprojekt_2sem.repository.KundeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,11 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 public class DataRegController {
     private BilRepository bilRepository;
     private KundeRepository kundeRepository = new KundeRepository();
+
+    private BookingRepository bookingRepository = new BookingRepository();
 
     public DataRegController(BilRepository bilRepository) {
         this.bilRepository = bilRepository;
@@ -36,6 +43,7 @@ public class DataRegController {
     @GetMapping("/bookBil/{vognNummer}")
     //Ferhat er ansvarlig for denne metode
     public String bookBil(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession sessionBil) {
+            System.out.println(vognNummer);
             model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
             model.addAttribute("brugere", kundeRepository.visAlleBrugere());
             sessionBil.setAttribute("vognNummer",vognNummer);
@@ -46,8 +54,17 @@ public class DataRegController {
     }
 
     @GetMapping("/udstyrValg/{brugerID}") // Skal lige kigge på denne her. (Kristian)
-    public String udstyrValg(@PathVariable("brugerID") int brugerID, HttpSession sessionKundeID) {
+    public String udstyrValg(@PathVariable("brugerID") int brugerID,Model model, HttpSession sessionKundeID, HttpSession sessionBil) {
+
             sessionKundeID.setAttribute("brugerID",brugerID);
+            model.addAttribute("bil",bilRepository.visSpecifikBil((String)sessionBil.getAttribute("vognNummer")));
+            model.addAttribute("udleveringssteder",bookingRepository.visAlleUdleveringsSteder());
+            model.addAttribute("abonnementsTyper",bookingRepository.visAlleAbonnementsTyper());
+
+
+
+        System.out.println("brugerID: " + brugerID);
+
         return "html/dataRegistrering/udstyrBooking";
     }
 
@@ -56,10 +73,11 @@ public class DataRegController {
           /*
         RedirectAttributes attributes,
         */
-        @RequestParam("udstyr") String udstyr,
         @RequestParam("udlejningsStartDato") String udlejningsStartDato,
         @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,
-        @RequestParam("udleveringsStedID") String udleveringsStedID
+        @RequestParam("abonnementsType") String abonnementsType,
+        @RequestParam("udleveringsSted") String udleveringsSted,
+        HttpSession sessionKundeID, HttpSession sessionBil
         //@RequestParam("fornavn") String forNavn,
         //@RequestParam("efternavn") String efterNavn,
         //@RequestParam("email") String email,
@@ -85,7 +103,19 @@ public class DataRegController {
 
         //System.out.println(udlejningsStartDato + "\n" + udeljningsSlutDato);
 
+        BilModel bil = bilRepository.visSpecifikBil((String)sessionBil.getAttribute("vognNummer")); // Caster en session til en stringværdi som kan bruges i metoden, som derefter kan definere BilModel objektet.
+        // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
 
+
+        //Opretter en Booking inde på bookingRepository, som bliver send til Databasen.
+        bookingRepository.lavBooking(
+                bil.getVognNummer(),
+                (int)sessionKundeID.getAttribute("brugerID"),
+                abonnementsType,
+                udleveringsSted,
+                udlejningsStartDato,
+                udeljningsSlutDato,
+                bil.getDistance()); // Bilens "kilometerStart" er den mængde kilometer som bilen har kørt.
 
         return "html/dataRegistrering/successite";
         // return "redirect:/" + vognNummer;

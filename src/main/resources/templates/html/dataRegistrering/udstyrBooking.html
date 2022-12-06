@@ -50,11 +50,17 @@
             <input name="udeljningsSlutDato" id="slutDato" type="date" tabindex="3" required>
           </fieldset>
           <fieldset>
-            <label for="udleveringsStedID">Vælg udleveringssted</label>
-            <select name="udleveringsStedID" id="udleveringsStedID">
-              <option value="1">Tekst</option>
-              <option value="2">Tekst</option>
-              <option value="3">Tekst</option>
+            <label for="abonnementsType">Vælg abonnements type</label>
+            <select name="abonnementsType" id="abonnementsType">
+              <option value="0">Vælg abonnements type.</option>
+              <option th:each="a : ${abonnementsTyper}" th:value="${a.type}" th:text="${a.type}"></option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <label for="udleveringsSted">Vælg udleveringssted</label>
+            <select name="udleveringsSted" id="udleveringsSted">
+              <option value="0">Vælg udleveringssted.</option>
+              <option th:each="u : ${udleveringssteder}" th:value="${u.sted}" th:text="${u.sted}"></option>
             </select>
           </fieldset>
           <fieldset>
