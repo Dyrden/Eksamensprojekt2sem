@@ -86,12 +86,12 @@
             <th>Vælg</th>
         </tr>
         <tr th:each="b : ${brugere}">
-            <td> <span th:text="${b.brugerID}">Maerke</span> </td>
+            <td> <span th:text="${b.id}">Maerke</span> </td>
             <td> <span th:text="${b.fornavn}">Model</span> </td>
             <td> <span th:text="${b.efternavn}">Vognnummer</span> </td>
             <td> <span th:text="${b.tlf}">Registreringsnummer</span> </td>
-            <td> <span th:text="${b.CPR}">Registreringsnummer</span> </td>
-            <td> <span> <a th:href="@{'/udstyrValg/' + ${b.brugerID}}">Se skader</a> </span> </td>
+            <td> <span th:text="${b.cpr}">Registreringsnummer</span> </td>
+            <td> <span> <a th:href="@{'/udstyrValg/' + ${b.id}}">Se skader</a> </span> </td>
         </tr>
     </table>
             </div>
