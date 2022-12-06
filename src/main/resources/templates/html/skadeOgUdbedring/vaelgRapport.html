@@ -15,13 +15,15 @@
 <div th:class="bilInfo">
 <table class="center">
   <tr>
+    <th>Bilens vogn nummer</th>
     <th>Rapport nummer</th>
-    <th>Rapport nummer</th>
+    <th>dato</th>
     <th>Vælg Rapport</th>
   </tr>
   <tr th:each="r : ${rapporter}">
-    <td> <span th:text="${r.vognNummer}">Bil Mærke</span> </td>
-    <td> <span th:text="${r.id}">Registreringsnummer</span> </td>
+    <td> <span th:text="${r.vognNummer}">vogn nummer</span> </td>
+    <td> <span th:text="${r.id}">id</span> </td>
+    <td> <span th:text="${r.dato}">dato</span> </td>
     <td> <span> <a th:href="@{'/seSkader/' + ${r.id}}">Se skader for rapporten</a> </span> </td>  </tr>
 
 </table>
