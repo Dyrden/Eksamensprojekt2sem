@@ -30,7 +30,7 @@ public class BookingRepository {
         List<BookingModel> bookinger = new LinkedList<>();
         BookingModel booking = new BookingModel();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visAlleBookings()",dbUrl,uID,pass);
+            ResultSet resultSet = SQLManager.execute("CALL visAlleBookings()");
 
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
@@ -58,7 +58,7 @@ public class BookingRepository {
 
         double indtaegt = 0;
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visAktiveBookingOgBilData()",dbUrl,uID,pass);
+            ResultSet resultSet = SQLManager.execute("CALL visAktiveBookingOgBilData()");
 
             while (resultSet.next()) {
 
@@ -78,7 +78,7 @@ public class BookingRepository {
         //Ferhat er ansvarlig for denne metode
         List<BilOgBookingModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visAktiveBookingOgBilData()",dbUrl,uID,pass);
+            ResultSet resultSet = SQLManager.execute("CALL visAktiveBookingOgBilData()");
 
             while (resultSet.next()) {
                 String vognNummer = resultSet.getString(1);

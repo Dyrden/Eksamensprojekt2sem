@@ -23,7 +23,7 @@ public RapportModel hentRapportFraVognNummer(String vognNummer){
   RapportModel rapport = new RapportModel();
   try{
     ResultSet resultSet = SQLManager.execute
-        ("CALL skafRapporterFraVognNummer('"+vognNummer+"')",dbUrl,uID,pass);
+        ("CALL skafRapporterFraVognNummer('"+vognNummer+"')");
     while (resultSet.next()){
       rapport.setId(resultSet.getInt(1));
       rapport.setDato(resultSet.getString(2));
