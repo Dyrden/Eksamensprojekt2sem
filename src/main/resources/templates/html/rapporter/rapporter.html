@@ -27,7 +27,7 @@
     <td> <span th:text="${b.model}">model</span> </td>
     <td> <span th:text="${b.vognNummer}">vognnummer</span> </td>
     <td> <span th:text="${b.stelNummer}">stelnummer</span> </td>
-    <td> <span> <a th:href="@{'/seSkadeRapport/' + ${b.vognNummer}}">skadesrapport</a> </span> </td>
+    <td> <span> <a th:href="@{'/vaelgRapportRapporter/' + ${b.vognNummer}}">skadesrapport</a> </span> </td>
     <td> <span> <a th:href="@{'/seRapport/' + ${b.vognNummer}}">se Rapport</a> </span> </td>
   </tr>
 </table>
