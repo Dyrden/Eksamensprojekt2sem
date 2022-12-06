@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 @Repository
 public class RapportRepository {
@@ -17,27 +19,29 @@ public class RapportRepository {
     @Value("${JDBCUsername}")
     private String uID;
 
-    @Value("${JDBCPassword}")
-    private String pass;
+  @Value("${JDBCPassword}")
+  private String pass;
+public List<RapportModel> hentRapportFraVognNummer(String vognNummer){
+  List<RapportModel> rapporter = new LinkedList<>();
+  try{
+    ResultSet resultSet = SQLManager.execute
+        ("CALL skafRapporterFraVognNummer('"+vognNummer+"')");
+    while (resultSet.next()){
+      RapportModel rapport = new RapportModel();
 
-    public RapportModel hentRapportFraVognNummer(String vognNummer) {
-        RapportModel rapport = new RapportModel();
-        try {
-            ResultSet resultSet = SQLManager.execute
-                ("CALL skafRapporterFraVognNummer('" + vognNummer + "')");
-            while (resultSet.next()) {
-                rapport.setId(resultSet.getInt(1));
-                rapport.setDato(resultSet.getString(2));
-                rapport.setVognNummer(resultSet.getString(3));
-
-            }
-            System.out.println(rapport);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return rapport;
+      rapport.setId(resultSet.getInt(1));
+      rapport.setDato(resultSet.getString(2));
+      rapport.setVognNummer(resultSet.getString(3));
+      rapport.setOverSkredetKM(resultSet.getString(4));
+      rapporter.add(rapport);
+      System.out.println(rapport);
     }
+  } catch (SQLException e){
+    e.printStackTrace();
+  }
+
+  return rapporter;
+}
 
     public void tilføjOverskredetKMTilRapport(String vognNummer, int km) {
         RapportModel rapport = hentRapportFraVognNummer(vognNummer);

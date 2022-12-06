@@ -40,6 +40,7 @@
         <th>fra år</th>
         <th>har kørt</th>
         <th>farve</th>
+        <th>Udstyr</th>
         <th>Book</th>
     </tr>
     <tr th:each="b : ${biler}">
@@ -51,6 +52,7 @@
         <td> <span th:text="${b.produktionsaar}">produktionsaar</span> </td>
         <td> <span th:text="${b.distance}">distance</span> km</td>
         <td> <span th:text="${b.farve}">farve</span> </td>
+        <td> <span th:text="${b.udstyr}">farve</span> </td>
         <td> <span> <a th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </span> </td>
     </tr>
 </table>

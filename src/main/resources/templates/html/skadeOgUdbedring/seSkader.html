@@ -72,7 +72,7 @@
         </table>
       </div>
       <div id="bilBookingFormFlex">
-        <button placeholder="Registrer ny skade" type="submit">  <a th:each="b : ${bil}" th:class="htmlLink" th:href="@{'/tilfoejSkade/'+${b.vognNummer}}">Registrer ny skade</a>
+        <button placeholder="Registrer ny skade" type="submit">  <a th:each="s : ${skader}" th:class="htmlLink" th:href="@{'/tilfoejSkade/'+${s.rapportID}}">Registrer ny skade</a>
         </button>
       </div>
     </div>

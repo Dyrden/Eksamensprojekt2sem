@@ -41,7 +41,7 @@ body {
     font: 12pt "Tahoma";
 }
 * {
-    box-sizing: border-box;
+    box-sizing: content-box;
     -moz-box-sizing: border-box;
 }
 #page {
@@ -70,4 +70,7 @@ body {
     padding: 1cm;
     border: 4px Black solid;
     height: 237mm;
+    box-shadow: 18px 18px 8px 6px #0000002b;
+
+
 }

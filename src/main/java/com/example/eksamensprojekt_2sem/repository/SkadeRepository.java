@@ -20,7 +20,7 @@ public class SkadeRepository {
   @Value("${JDBCPassword}")
   private String pass;
 
-  public List<SkadeModel> skafSkaderFraRapport(int id){
+  public List<SkadeModel> skafSkaderFraRapport(String id){
     //Ferhat og Kristian er ansvarlig for denne metode
 
     List<SkadeModel> skader = new LinkedList<>();
@@ -54,6 +54,24 @@ public class SkadeRepository {
     //Ferhat er ansvarlig for denne metode
     ResultSet resultSet = SQLManager.execute
         ("CALL SletSkade("+skadeID+")");
+  }
+
+  public void beregnAntalKM(){
+    int bilensKMTal = 3400; // distance
+    int kilometerStart = 1000; // kilometerStart
+    double betaling = 0; // ekstra betaling
+
+    //Hvor meget bilen har kørt
+    int antalKMKørt = bilensKMTal-kilometerStart; //2400 km kørt
+
+    if (antalKMKørt > 2000){
+      // Hvor bilen er kørt over 2000km
+      int overskredetKM = antalKMKørt-2000; //400 km over grænsen
+
+      //Hvor meget der skal betales
+     betaling = antalKMKørt*0.75; //300 kr.
+    }
+
   }
 
 }
