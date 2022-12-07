@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -26,7 +25,7 @@ public class SkadeOgUdController {
     @GetMapping("/skadeOgUdbedring")
     //Ferhat er ansvarlig for denne metode
     public String visSkadeOgUd(Model model, HttpSession session){
-        model.addAttribute("biler", bilRepository.visAlleBiler());
+        model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
         session.invalidate();
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }

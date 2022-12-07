@@ -18,17 +18,18 @@
         <div th:class="flexSkade">
 
             <div>
-                <div id="kundeinfo">
-                    <div th:class="stickySearch1">
+                <div th:id="searchField">
+                    <h4>Søgefelt</h4>
+                    <div>
                         <input type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
                     </div>
-                    <div th:class="stickySearch2">
+                    <div>
                         <input type="text" name="text" th:class="searchField" placeholder="Bil mærke">
                     </div>
                 </div>
 
             </div>
-            <div id="findKunde">
+            <div th:id="cardTilTable">
                 <h3>Skade og Udbedring</h3>
                 <h4>Vælg den bil du vil se rapporter for. Derefter kan du tilføje skader til rapporten</h4>
                 <div th:id="scroll">
