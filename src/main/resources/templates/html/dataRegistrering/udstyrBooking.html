@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>kundeBooking</title>
+  <title>Booking oplysninger</title>
   <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
   <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
   <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
@@ -42,13 +42,6 @@
           <h3>Bilens specifikationer</h3>
           <h4>Indtast venligst bilens specifikation</h4>
           <fieldset>
-            <label for="udstyr">Vælg udstyr:</label>
-            <select name="udstyr" id="udstyr">
-              <option value="minimal udstyr">minimal udstyr</option>
-              <option value="fuld udstyr">fuld udstyr</option>
-            </select>
-          </fieldset>
-          <fieldset>
             <label for="startDato">Vælg start udlejningsdato</label>
             <input name="udlejningsStartDato" id="startDato" type="date" tabindex="3" required>
           </fieldset>
@@ -57,11 +50,17 @@
             <input name="udeljningsSlutDato" id="slutDato" type="date" tabindex="3" required>
           </fieldset>
           <fieldset>
-            <label for="udleveringsStedID">Vælg udleveringssted</label>
-            <select name="udleveringsStedID" id="udleveringsStedID">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">4</option>
+            <label for="abonnementsType">Vælg abonnements type</label>
+            <select name="abonnementsType" id="abonnementsType">
+              <option value="0">Vælg abonnements type.</option>
+              <option th:each="a : ${abonnementsTyper}" th:value="${a.type}" th:text="${a.type}"></option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <label for="udleveringsSted">Vælg udleveringssted</label>
+            <select name="udleveringsSted" id="udleveringsSted">
+              <option value="0">Vælg udleveringssted.</option>
+              <option th:each="u : ${udleveringssteder}" th:value="${u.sted}" th:text="${u.sted}"></option>
             </select>
           </fieldset>
           <fieldset>

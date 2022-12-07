@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Skade og Udbedring</title>
+  <title>Rapporter</title>
   <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
   <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
   <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
@@ -27,7 +27,7 @@
     <td> <span th:text="${b.model}">model</span> </td>
     <td> <span th:text="${b.vognNummer}">vognnummer</span> </td>
     <td> <span th:text="${b.stelNummer}">stelnummer</span> </td>
-    <td> <span> <a th:href="@{'/seSkadeRapport/' + ${b.vognNummer}}">skadesrapport</a> </span> </td>
+    <td> <span> <a th:href="@{'/vaelgRapportRapporter/' + ${b.vognNummer}}">skadesrapport</a> </span> </td>
     <td> <span> <a th:href="@{'/seRapport/' + ${b.vognNummer}}">se Rapport</a> </span> </td>
   </tr>
 </table>

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 @Repository
 public class RapportRepository {
@@ -19,23 +21,26 @@ public class RapportRepository {
 
   @Value("${JDBCPassword}")
   private String pass;
-public RapportModel hentRapportFraVognNummer(String vognNummer){
-  RapportModel rapport = new RapportModel();
+public List<RapportModel> hentRapportFraVognNummer(String vognNummer){
+  List<RapportModel> rapporter = new LinkedList<>();
   try{
     ResultSet resultSet = SQLManager.execute
         ("CALL skafRapporterFraVognNummer('"+vognNummer+"')");
     while (resultSet.next()){
+      RapportModel rapport = new RapportModel();
+
       rapport.setId(resultSet.getInt(1));
       rapport.setDato(resultSet.getString(2));
       rapport.setVognNummer(resultSet.getString(3));
-
+      rapport.setOverSkredetKM(resultSet.getString(4));
+      rapporter.add(rapport);
+      System.out.println(rapport);
     }
-    System.out.println(rapport);
   } catch (SQLException e){
     e.printStackTrace();
   }
 
-  return rapport;
+  return rapporter;
 }
 
 
