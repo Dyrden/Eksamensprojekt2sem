@@ -27,6 +27,10 @@
     <td> <span> <a th:href="@{'/seSkader/' + ${r.id}}">Se skader for rapporten</a> </span> </td>  </tr>
 
 </table>
+  <div id="blaaKnap">
+    <button placeholder="Registrer ny rapport?" type="submit">  <a th:class="htmlLink" th:href="@{'/seSkader/'}">Registrer ny rapport?</a>
+    </button>
+  </div>
 </div>
 </body>
 </html>
