@@ -8,10 +8,12 @@
   <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
   <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../static/css/tilfojSkade.css"/>
   <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+  <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
+<div th:id="beaverTilfoejSkade" th:style="'background-image:url(' + @{/images/beaverMechanic.png}">
 
 
 <div class="container">
@@ -38,6 +40,7 @@
   </form>
 
 
+</div>
 </div>
 
 </body>

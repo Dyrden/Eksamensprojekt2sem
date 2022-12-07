@@ -9,10 +9,12 @@
   <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
   <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
   <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+  <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
+<div th:id="beaverSeSkader" th:style="'background-image:url(' + @{/images/beaverMechanic.png}">
 
 <div th:class="bilInfo">
 <table class="center">
@@ -29,7 +31,6 @@
     <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
   </tr>
 </table>
-
   <div th:class="flexSkade">
 
     <div>
@@ -82,6 +83,7 @@
   </div>
 </div>
 
+</div>
 </div>
 
 
