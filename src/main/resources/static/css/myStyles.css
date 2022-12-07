@@ -115,9 +115,9 @@
 }
 .bilabonnementLogo{
     position: absolute;
-    left: 350px;
-    top: 1px;
-    scale: 150%;
+    left: -280px;
+    top: -30px;
+    scale: 21%;
 }
 
 #center {
