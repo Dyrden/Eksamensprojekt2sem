@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
 
 .home-picture {
     display: block;
@@ -24,6 +25,8 @@
     padding:10px;
     font-size:15px;
     margin-left: 20px;
+    font-family: "Poppins", sans-serif;
+
 }
 
 #blaaKnap input[type=button],[type="submit"]:hover {
