@@ -64,8 +64,8 @@ public class RapportRepository {
     }
 
 
-    public void tilføjOverskredetKMTilRapport(String rapportID, int km) {
-        SQLManager.update("CALL knytOverSkredetKMtilVognNummerRapport(" + "" + ")");
+    public void tilføjNuværrendeKMTilRapport(String rapportID, int km) {
+        SQLManager.update("CALL knytNuværrendeKMRapport(" + rapportID + ", " + km + ")");
     }
 
 

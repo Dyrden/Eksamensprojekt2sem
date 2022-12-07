@@ -47,11 +47,11 @@ public class SkadeOgUdController {
     }
 
 
-    @PostMapping("/indtastkm/{rapportID}")
+    @PostMapping("/indtastkm")
     public String indtastKm(
         @RequestParam("km") int overskredetKM,
-        @PathVariable("rapportID") String rapportID){
-        rapportRepository.tilføjOverskredetKMTilRapport(rapportID, overskredetKM);
+        @RequestParam("rapportID") String rapportID){
+        rapportRepository.tilføjNuværrendeKMTilRapport(rapportID, overskredetKM);
         return "redirect:/seSkader/" + rapportID;
     }
 
