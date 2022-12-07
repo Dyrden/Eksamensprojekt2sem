@@ -5,7 +5,6 @@ import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -24,7 +23,7 @@ public class BilRepository {
     private String pass;
     public BilRepository(){}
 
-    public List<BilModel> visAlleBiler(){
+    public List<BilModel> visTilgaengeligeBiler(){
       //Mark er ansvarlig for denne metode
         List<BilModel> biler = new LinkedList<>();
         try {

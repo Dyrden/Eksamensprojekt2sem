@@ -1,19 +1,14 @@
 package com.example.eksamensprojekt_2sem.controller;
 
 import com.example.eksamensprojekt_2sem.model.BilModel;
-import com.example.eksamensprojekt_2sem.model.BookingModel;
-import com.example.eksamensprojekt_2sem.model.BrugerModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
 import com.example.eksamensprojekt_2sem.repository.BookingRepository;
 import com.example.eksamensprojekt_2sem.repository.KundeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.util.LinkedList;
-import java.util.List;
 
 @Controller
 public class DataRegController {
@@ -29,7 +24,7 @@ public class DataRegController {
     @GetMapping("/dataRegistrering")
     //Ferhat er ansvarlig for denne metode
     public String visDataReg(Model model){
-        model.addAttribute("biler", bilRepository.visAlleBiler());
+        model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
 
         return "html/dataRegistrering/dataRegistrering";
     }
@@ -37,7 +32,7 @@ public class DataRegController {
     //Ferhat er ansvarlig for denne metode
     //Gammel kundebooking side. Hvis man hellere vil tage den.
     public String kunde(Model model){
-        model.addAttribute("biler", bilRepository.visAlleBiler());
+        model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
         return "html/dataRegistrering/kundeBookingGammel";
     }
     @GetMapping("/bookBil/{vognNummer}")
