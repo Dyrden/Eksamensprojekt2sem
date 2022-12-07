@@ -10,10 +10,14 @@
     <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
     <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
     <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+    <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
+
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
+<div th:id="beaverBookingRegistrering" th:style="'background-image:url(' + @{/images/beaver.png}">
+
 <div th:class="flexSkade">
 
     <div>
@@ -62,5 +66,6 @@
         </div>
     </div>
 </div>
+    </div>
 </body>
 </html>

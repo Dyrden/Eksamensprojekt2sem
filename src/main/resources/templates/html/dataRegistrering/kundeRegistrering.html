@@ -9,13 +9,14 @@
     <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
     <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
     <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+    <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
 
-<div th:class="beaverIBaggrund" th:style="'background-image:url(' + @{/images/beaver.png}">
+<div th:id="beaverKundeRegistrering" th:style="'background-image:url(' + @{/images/beaver.png}">
     <div th:class="bilInfo">
         <div class="table-title">
         </div>
@@ -97,10 +98,6 @@
             </div>
 </div>
     </div>
-        <div id="blaaKnap">
-            <button placeholder="Registrer ny skade" type="submit">  <a th:class="htmlLink" th:href="@{'/udstyrValg/'}">Se næste side TEST knap</a>
-            </button>
-        </div>
 </div>
 
 </body>
