@@ -118,10 +118,10 @@ public class BookingRepository {
         //SQLManager.makeStatement("CALL VisBookningHistorik()");
 
     }
-    public void lavBooking(String vognNummer, int BrugerID,String abonnementsType,String sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){
+    public void lavBooking(String vognNummer, int BrugerID,int abonnementsType,int sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){
         // Format:
         // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
-        //SQLManager.execute("CALL lavBookning('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
+        SQLManager.update("CALL lavBookingNoSubQueries('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
 
     }
 

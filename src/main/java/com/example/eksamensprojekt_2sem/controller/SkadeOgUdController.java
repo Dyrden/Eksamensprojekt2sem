@@ -90,6 +90,7 @@ public class SkadeOgUdController {
 
         skadeRepository.tilfoejSkade(skadePlacering, skadensBeskrivelse, skadensPris, rapportID);
 
+        session.setAttribute("rapportID", rapportID);
         //redirect tilbage til seSkader med vognnummer måske man kunne buge session
         return "redirect:/seSkader/"+rapportID;
     }
@@ -101,8 +102,9 @@ public class SkadeOgUdController {
         BilModel bil = (BilModel) session.getAttribute("bil");
 
         String vognNummer = bil.getVognNummer();
+        int rapportID = (int) session.getAttribute("rapportID");
 
-        return "redirect:/seSkader/"+ vognNummer;
+        return "redirect:/seSkader/"+ rapportID;
     }
     @PostMapping("/udbedring")
     public String reUdbedring(){

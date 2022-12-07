@@ -16,7 +16,7 @@
 
 #blaaKnap button[type="submit"] {
     cursor:pointer;
-    width:15%;
+    width:auto;
     border:none;
     background: #06add9;
     color:#FFF;
@@ -115,4 +115,9 @@
     left: 350px;
     top: 1px;
     scale: 150%;
+}
+
+#center {
+    display: flex;
+    justify-content: center;
 }
