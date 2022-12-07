@@ -18,12 +18,12 @@
     cursor:pointer;
     width:15%;
     border:none;
-    background:#0CF;
+    background: #06add9;
     color:#FFF;
     margin:15px;
     padding:10px;
     font-size:15px;
-    margin-left: 865px;
+    margin-left: 20px;
 }
 
 #blaaKnap button[type="submit"]:hover {
@@ -71,6 +71,15 @@
     background-size: 50%;
     background-attachment: inherit;
     background-position-x: 275px;
+}
+
+.beaverIBaggrundForretning{
+    background-image: url(@{/images/beaver.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 50%;
+    background-attachment: inherit;
+    background-position-x: 149px;
+    background-position-y: 167px;
 }
 
 .flex{
