@@ -75,8 +75,8 @@ public class DataRegController {
         */
         @RequestParam("udlejningsStartDato") String udlejningsStartDato,
         @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,
-        @RequestParam("abonnementsType") String abonnementsType,
-        @RequestParam("udleveringsSted") String udleveringsSted,
+        @RequestParam("abonnementsType") int abonnementsType,
+        @RequestParam("udleveringsSted") int udleveringsSted,
         HttpSession sessionKundeID, HttpSession sessionBil
         //@RequestParam("fornavn") String forNavn,
         //@RequestParam("efternavn") String efterNavn,
@@ -105,7 +105,6 @@ public class DataRegController {
 
         BilModel bil = bilRepository.visSpecifikBil((String)sessionBil.getAttribute("vognNummer")); // Caster en session til en stringværdi som kan bruges i metoden, som derefter kan definere BilModel objektet.
         // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
-
 
         //Opretter en Booking inde på bookingRepository, som bliver send til Databasen.
         bookingRepository.lavBooking(
