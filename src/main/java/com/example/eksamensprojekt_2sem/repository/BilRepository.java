@@ -68,7 +68,7 @@ public class BilRepository {
     }
 
 
-    public Object visSpecifikBil(String vognNummer){
+    public BilModel visSpecifikBil(String vognNummer){
       //Ferhat og Kristian er ansvarlig for denne metode
 
       BilModel bil = new BilModel();
