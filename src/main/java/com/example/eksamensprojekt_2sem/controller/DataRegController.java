@@ -21,18 +21,39 @@ public class DataRegController {
         this.bilRepository = bilRepository;
     }
 
-    @GetMapping("/dataRegistrering")
+    @GetMapping("/bookingRegistrering")
     //Ferhat er ansvarlig for denne metode
-    public String visDataReg(Model model){
-        model.addAttribute("biler", bilRepository.visAlleBiler());
+    public String visBookingRegistrering(Model model){
+        model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
+
+        return "html/dataRegistrering/bookingRegistrering";
+    }
+
+
+    @GetMapping("/dataRegistrering")
+    public String visRegisteringer() {
 
         return "html/dataRegistrering/dataRegistrering";
     }
+
+
+    @GetMapping("/bilRegistrering")
+    public String visBilRegistrering() {
+
+        return "html/dataRegistrering/dataRegistrering";
+    }
+
+
+
+
+
+
+
     @GetMapping("/kunde")
     //Ferhat er ansvarlig for denne metode
     //Gammel kundebooking side. Hvis man hellere vil tage den.
     public String kunde(Model model){
-        model.addAttribute("biler", bilRepository.visAlleBiler());
+        model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
         return "html/dataRegistrering/kundeBookingGammel";
     }
     @GetMapping("/bookBil/{vognNummer}")

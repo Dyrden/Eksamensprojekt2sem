@@ -34,12 +34,13 @@
 
     <div>
       <div id="kundeinfo">
-        <form action="/nyBruger" method="post">
+        <form action="/indtastkm" method="post">
           <h3>Kilometer registrering</h3>
-          <h4>Indtast venligst antal overtrådt km</h4>
+          <h4>Indtast venligst ny kilometer antal</h4>
           <h4>Overkørte km afregnes 0,75 kr./km</h4>
           <fieldset>
-            <input name="kilometer" placeholder="km" type="text" tabindex="1">
+            <input name="km" placeholder="km" type="number" tabindex="1">
+            <input name="rapportID" type="hidden" th:value="${rapportID}">
           </fieldset>
           <fieldset>
             <div class="bilBookingFormFlex">
@@ -50,7 +51,7 @@
       </div>
 
     </div>
-    <div id="findKunde">
+    <div id="skaderTabel">
       <h3>Skader</h3>
       <h4>Registrer skader eller fjern skader som er betalt.</h4>
       <div th:id="scroll">
@@ -65,11 +66,14 @@
             <td> <span th:text="${s.skadensPlacering}">skadensPlacering</span> </td>
             <td> <span th:text="${s.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
             <td> <span th:text="${s.skadensPris}">skadensPris</span> kr. </td>
-            <td> <span> <a th:href="@{'/sletSkade/' + ${s.id}}">Slet skade</a> </span> </td>
+            <td th:id="rodKnap">
+              <button placeholder="Registrer ny rapport?" type="submit">  <a th:class="htmlLink" th:href="@{'/sletSkade/' + ${s.id}}">Slet skade</a>
+              </button>
+         </td>
           </tr>
         </table>
       </div>
-      <div id="bilBookingFormFlex">
+      <div>
         <button placeholder="Registrer ny skade" type="submit">  <a th:each="s : ${skader}" th:class="htmlLink" th:href="@{'/tilfoejSkade/'+${s.rapportID}}">Registrer ny skade</a>
         </button>
       </div>

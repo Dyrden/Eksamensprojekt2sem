@@ -18,12 +18,12 @@
     cursor:pointer;
     width:15%;
     border:none;
-    background:#0CF;
+    background: #06add9;
     color:#FFF;
     margin:15px;
     padding:10px;
     font-size:15px;
-    margin-left: 865px;
+    margin-left: 20px;
 }
 
 #blaaKnap button[type="submit"]:hover {
@@ -41,22 +41,6 @@
     color: white;
 }
 
-.searchField {
-    background-color: #eee;
-    border: none;
-    padding: 1rem;
-    font-size: 1rem;
-    width: 13em;
-    border-radius: 1rem;
-    color: #259bca;
-    box-shadow: 0 0.4rem #dfd9d9;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.searchField.input:focus {
-    outline-color: #259bca;
-}
 .searchFieldPosition{
     margin-top: 5px;
     display: -webkit-box;
@@ -87,6 +71,15 @@
     background-size: 50%;
     background-attachment: inherit;
     background-position-x: 275px;
+}
+
+.beaverIBaggrundForretning{
+    background-image: url(@{/images/beaver.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 50%;
+    background-attachment: inherit;
+    background-position-x: 149px;
+    background-position-y: 167px;
 }
 
 .flex{

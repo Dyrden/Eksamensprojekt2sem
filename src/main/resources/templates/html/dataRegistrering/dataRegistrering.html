@@ -2,62 +2,45 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Skade og Udbedring</title>
+    <title>Data Registrering</title>
+
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
     <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
     <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
     <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
     <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
 
-<div>
-<div th:class="beaverIBaggrund" th:style="'background-image:url(' + @{/images/beaver.png}">
-
-    <div th:class="overSkrift">
-        <span> Vælg den bil du vil booke </span>
-    </div>
-
-    <div th:class="flexSkade">
-
-        <div>
-            <div th:class="stickySearch1">
-                <input type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
-            </div>
-            <div th:class="stickySearch2">
-                <input type="text" name="text" th:class="searchField" placeholder="Bil mærke">
+<div class="container">
+    <div class="card">
+        <div class="box">
+            <div class="content">
+                <h2>01</h2>
+                <h3>Booking</h3>
+                <p>Dette er booking terminalen. Herinde kan du vælge vælge hvilken bil der skal bookes.
+                    Det er også her man registrere nye kunder.</p>
+                <a th:href="@{'/bookingRegistrering/'}">Registrer booking</a>
             </div>
         </div>
-    <table th:id="SkadeTable">
-    <tr>
-        <th>Bil Mærke</th>
-        <th>Model</th>
-        <th>Vognnummer</th>
-        <th>gear</th>
-        <th>brændsstof</th>
-        <th>fra år</th>
-        <th>har kørt</th>
-        <th>farve</th>
-        <th>Udstyr</th>
-        <th>Book</th>
-    </tr>
-    <tr th:each="b : ${biler}">
-        <td> <span th:text="${b.maerke}">Maerke</span> </td>
-        <td> <span th:text="${b.model}">Model</span> </td>
-        <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
-        <td> <span th:text="${b.gearboks}">gearboks</span> </td>
-        <td> <span th:text="${b.energiType}">energiType</span> </td>
-        <td> <span th:text="${b.produktionsaar}">produktionsaar</span> </td>
-        <td> <span th:text="${b.distance}">distance</span> km</td>
-        <td> <span th:text="${b.farve}">farve</span> </td>
-        <td> <span th:text="${b.udstyr}">farve</span> </td>
-        <td> <span> <a th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </span> </td>
-    </tr>
-</table>
+    </div>
 </div>
-</div>
+
+<div class="container">
+    <div class="card">
+        <div class="box">
+            <div class="content">
+                <h2>02</h2>
+                <h3>Bil Reg.</h3>
+                <p>Dette er bil terminalen. Herinde kan du vælge vælge hvilken bil der skal bookes.
+                    Det er også her man registrere nye kunder.</p>
+                <a th:href="@{'/bilRegistrering/'}">Registrer Bil</a>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

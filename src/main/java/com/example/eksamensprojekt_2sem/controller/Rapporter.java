@@ -20,7 +20,7 @@ private SkadeRepository skadeRepository = new SkadeRepository();
 
   @GetMapping("/seRapporter")
   public String visForretningsUdviklere(Model model){
-    model.addAttribute("biler", bilRepository.visAlleBiler());
+    model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
 
     return "html/rapporter/rapporter";
   }
@@ -37,8 +37,8 @@ private SkadeRepository skadeRepository = new SkadeRepository();
 
     //Her henter vi den valgte bils rapport
     //Så kan vi efterfølgende bruge rapportens id til at modtage skaderne
-    List<RapportModel> rapporter = rapportRepository.hentRapportFraVognNummer(vognNummer);
-    model.addAttribute("rapporter", rapportRepository.hentRapportFraVognNummer(vognNummer));
+    List<RapportModel> rapporter = rapportRepository.hentRapporterFraVognNummer(vognNummer);
+    model.addAttribute("rapporter", rapportRepository.hentRapporterFraVognNummer(vognNummer));
 
 
     //Opretter en session og sætter bil til den bil vi er inde på i skader

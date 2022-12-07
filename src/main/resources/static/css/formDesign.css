@@ -87,7 +87,7 @@ fieldset {
     cursor:pointer;
     width:100%;
     border:none;
-    background:#0CF;
+    background:#06add9;
     color:#FFF;
     margin:15px;
     padding:10px;
@@ -142,7 +142,7 @@ fieldset {
     display: flex;
 }
 
-#kundeinfo input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+#kundeinfo input[type="text"], #kundeinfo input[type="email"],#kundeinfo input[type="number"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
 
 #kundeinfo {
     background:#F9F9F9;
@@ -165,7 +165,7 @@ fieldset {
     font-size:15px;
 }
 
-#kundeinfo input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea {
+#kundeinfo input[type="text"], #kundeinfo input[type="email"],#kundeinfo input[type="number"], #kundeinfo input[type="tel"], #kundeinfo input[type="url"], #kundeinfo textarea {
     width:100%;
     border:1px solid #CCC;
     background:#FFF;
@@ -173,7 +173,7 @@ fieldset {
     padding:10px;
 }
 
-#kundeinfo input[type="text"]:hover, #bilSpecifikation input[type="email"]:hover, #bilSpecifikation input[type="tel"]:hover, #bilSpecifikation input[type="url"]:hover, #bilSpecifikation textarea:hover {
+#kundeinfo input[type="text"]:hover, #kundeinfo input[type="email"]:hover, #kundeinfo input[type="number"]:hover, #kundeinfo input[type="tel"]:hover, #kundeinfo input[type="url"]:hover, #kundeinfo textarea:hover {
     -webkit-transition:border-color 0.3s ease-in-out;
     -moz-transition:border-color 0.3s ease-in-out;
     transition:border-color 0.3s ease-in-out;
@@ -188,9 +188,9 @@ fieldset {
 
 #kundeinfo button[type="submit"] {
     cursor:pointer;
-    width:100%;
+    width:auto;
     border:none;
-    background:#0CF;
+    background:#06add9;
     color:#FFF;
     margin:15px;
     padding:10px;
@@ -260,9 +260,9 @@ fieldset {
 
 #findKunde button[type="submit"] {
     cursor:pointer;
-    width:100%;
+    width:auto;
     border:none;
-    background:#0CF;
+    background:#06add9;
     color:#FFF;
     margin:15px;
     padding:10px;
@@ -281,4 +281,236 @@ fieldset {
 #findKunde input:focus, #bilSpecifikation textarea:focus {
     outline:0;
     border:1px solid #999;
+}
+/* find bil */
+#cardTilTable input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#cardTilTable {
+    background: #F9F9F9;
+    padding: 65px;
+    margin: 30px;
+    display: block;
+    margin-right: 80px;
+}
+
+#cardTilTable h3 {
+    color: #F96;
+    display: contents;
+    font-size: 50px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+#cardTilTable h4 {
+    margin:5px 0 15px;
+    display:block;
+    font-size:15px;
+}
+
+#cardTilTable input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea {
+    width:100%;
+    border:1px solid #CCC;
+    background:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+}
+
+#cardTilTable input[type="text"]:hover, #bilSpecifikation input[type="email"]:hover, #bilSpecifikation input[type="tel"]:hover, #bilSpecifikation input[type="url"]:hover, #bilSpecifikation textarea:hover {
+    -webkit-transition:border-color 0.3s ease-in-out;
+    -moz-transition:border-color 0.3s ease-in-out;
+    transition:border-color 0.3s ease-in-out;
+    border:1px solid #AAA;
+}
+
+#cardTilTable textarea {
+    height:100px;
+    max-width:100%;
+    resize:none;
+}
+
+#cardTilTable button[type="submit"] {
+    cursor:pointer;
+    width:100%;
+    border:none;
+    background:#06add9;
+    color:#FFF;
+    margin:15px;
+    padding:10px;
+    font-size:15px;
+}
+
+#cardTilTable button[type="submit"]:hover {
+    background:#09C;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+}
+
+#cardTilTable button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#cardTilTable input:focus, #bilSpecifikation textarea:focus {
+    outline:0;
+    border:1px solid #999;
+}
+/* Search field */
+#searchField input[type="text"], #searchField input[type="email"], #searchField input[type="tel"], #searchField input[type="url"], #searchField textarea, #searchField button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#searchField {
+    background:#F9F9F9;
+    padding:55px;
+    margin:30px;
+    margin-left: 100px;
+    width: max-content;
+
+}
+
+#searchField h3 {
+    color: #F96;
+    display: contents;
+    font-size: 40px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+#searchField h4 {
+    margin:5px 0 15px;
+    display:block;
+    font-size:15px;
+    color: #f58a54;
+
+}
+
+#searchField input[type="text"], #searchField input[type="email"], #searchField input[type="tel"], #searchField input[type="url"], #searchField textarea {
+    width:100%;
+    border:1px solid #CCC;
+    background:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+    margin-top: 10px;
+    border-radius: 1rem;
+    color: #259bca;
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+}
+
+#searchField input[type="text"]:hover, #searchField input[type="email"]:hover, #searchField input[type="tel"]:hover, #searchField input[type="url"]:hover, #bilSpecifikation textarea:hover {
+    -webkit-transition:border-color 0.3s ease-in-out;
+    -moz-transition:border-color 0.3s ease-in-out;
+    transition:border-color 0.3s ease-in-out;
+    border:1px solid #AAA;
+}
+
+#searchField textarea {
+    height:100px;
+    max-width:100%;
+    resize:none;
+}
+
+#searchField button[type="submit"] {
+    cursor:pointer;
+    width:100%;
+    border:none;
+    background:#06add9;
+    color:#FFF;
+    margin:15px;
+    padding:10px;
+    font-size:15px;
+}
+
+#searchField button[type="submit"]:hover {
+    background:#09C;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+}
+
+#searchField button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#searchField input:focus, #searchField textarea:focus {
+    border:1px solid #999;
+    outline-color: #259bca;
+}
+----------------------
+
+#skaderTabel input[type="text"], #skaderTabel input[type="email"], #skaderTabel input[type="tel"], #skaderTabel input[type="url"], #skaderTabel textarea, #skaderTabel button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#skaderTabel {
+    background: #F9F9F9;
+    padding: 75px;
+    margin: 0;
+    margin-left: 50px;
+    display: block;
+    margin-right: 150px;
+}
+
+#skaderTabel h3 {
+    color: #F96;
+    display: contents;
+    font-size: 50px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+#skaderTabel h4 {
+    margin:5px 0 15px;
+    display:block;
+    font-size:15px;
+}
+
+#skaderTabel input[type="text"], #skaderTabel input[type="email"], #skaderTabel input[type="tel"], #skaderTabel input[type="url"], #skaderTabel textarea {
+    width:100%;
+    border:1px solid #CCC;
+    background:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+}
+
+#skaderTabel input[type="text"]:hover, #skaderTabel input[type="email"]:hover, #skaderTabel input[type="tel"]:hover, #skaderTabel input[type="url"]:hover, #skaderTabel textarea:hover {
+    -webkit-transition:border-color 0.3s ease-in-out;
+    -moz-transition:border-color 0.3s ease-in-out;
+    transition:border-color 0.3s ease-in-out;
+    border:1px solid #AAA;
+}
+
+#skaderTabel textarea {
+    height:100px;
+    max-width:100%;
+    resize:none;
+}
+
+#skaderTabel button[type="submit"] {
+    cursor:pointer;
+    width:auto;
+    border:none;
+    background:#06add9;
+    color:#FFF;
+    margin:15px;
+    padding:10px;
+    font-size:15px;
+}
+
+#skaderTabel button[type="submit"]:hover {
+    background:#09C;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+}
+
+#skaderTabel button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#skaderTabel input:focus, #skaderTabel textarea:focus {
+    outline:0;
+    border:1px solid #999;
+}
+
+#rodKnap button[type="submit"]{
+    cursor:pointer;
+    width:auto;
+    border:none;
+    background: #d90606;
+    color:#FFF;
+    margin:15px;
+    padding:10px;
+    font-size:15px;
+
 }
