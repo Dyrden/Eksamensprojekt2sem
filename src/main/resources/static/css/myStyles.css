@@ -116,3 +116,8 @@
     top: 1px;
     scale: 150%;
 }
+
+#center {
+    display: flex;
+    justify-content: center;
+}
