@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Wishlist</title>
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
     <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
 </head>
@@ -19,11 +18,10 @@
             </a>
         </div>
     </div>
-    <div id="blaaKnap">
-        <button placeholder="Tilbage til hjem" type="submit"><a th:class="htmlLink" th:href="@{'/'}">Tilbage til
-            hjem</a>
-        </button>
-    </div>
+
+    <form action="/">
+        <input id="blaaKnap" type="submit" value="Tilbage til hjem">
+    </form>
 </div>
 </body>
 </html>
