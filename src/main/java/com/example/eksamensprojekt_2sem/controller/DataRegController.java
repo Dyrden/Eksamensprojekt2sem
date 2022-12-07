@@ -1,19 +1,14 @@
 package com.example.eksamensprojekt_2sem.controller;
 
 import com.example.eksamensprojekt_2sem.model.BilModel;
-import com.example.eksamensprojekt_2sem.model.BookingModel;
-import com.example.eksamensprojekt_2sem.model.BrugerModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
 import com.example.eksamensprojekt_2sem.repository.BookingRepository;
 import com.example.eksamensprojekt_2sem.repository.KundeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.util.LinkedList;
-import java.util.List;
 
 @Controller
 public class DataRegController {
@@ -42,21 +37,55 @@ public class DataRegController {
     }
     @GetMapping("/bookBil/{vognNummer}")
     //Ferhat er ansvarlig for denne metode
-    public String bookBil(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession sessionBil) {
+    public String bookBil(@PathVariable("vognNummer") String vognNummer,
+                          Model model,
+                          HttpSession sessionBrugerCPR,
+                          HttpSession sessionBil) {
             System.out.println(vognNummer);
+
+            //int brugerCPR = (int)sessionBrugerCPR.getAttribute("brugerCPR");
+
+            if(sessionBrugerCPR.getAttribute("brugerCPR") == null){
+                model.addAttribute("brugere", kundeRepository.visAlleBrugere());
+            } else {
+                model.addAttribute("brugere", kundeRepository.skafBrugerFraCPR((String)sessionBrugerCPR.getAttribute("brugerCPR")));
+                sessionBrugerCPR.setAttribute("brugerCPR",null);
+            }
             model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
-            model.addAttribute("brugere", kundeRepository.visAlleBrugere());
+
+
+
             sessionBil.setAttribute("vognNummer",vognNummer);
 
-
+            System.out.println((String)sessionBrugerCPR.getAttribute("brugerCPR"));
 
             return "html/dataRegistrering/kundeRegistrering";
     }
 
-    @GetMapping("/udstyrValg/{brugerID}") // Skal lige kigge på denne her. (Kristian)
-    public String udstyrValg(@PathVariable("brugerID") int brugerID,Model model, HttpSession sessionKundeID, HttpSession sessionBil) {
+    @PostMapping("/soegKundeMedCPR") //Middleway Getmapping.
+    //Ferhat er ansvarlig for denne metode
+    public String soegKundeMedCPR(
+                          @RequestParam String brugerCPR,
+                          HttpSession sessionBil,
+                          HttpSession sessionBrugerCPR) {
 
-            sessionKundeID.setAttribute("brugerID",brugerID);
+        String vognNummer = (String)sessionBil.getAttribute("vognNummer");
+
+        if(brugerCPR.equals("")) {
+            brugerCPR = null;
+        }
+            sessionBrugerCPR.setAttribute("brugerCPR", brugerCPR);
+
+        //sessionBrugerID.setAttribute("BrugerID",kundeRepository.skafBrugerIDFraCPR(kundeCPR));
+
+        return "redirect:/bookBil/" + vognNummer;
+    }
+
+
+    @GetMapping("/udstyrValg/{brugerID}") // Skal lige kigge på denne her. (Kristian)
+    public String udstyrValg(@PathVariable("brugerID") int brugerID,Model model, HttpSession sessionBrugerID, HttpSession sessionBil) {
+
+            sessionBrugerID.setAttribute("brugerID",brugerID);
             model.addAttribute("bil",bilRepository.visSpecifikBil((String)sessionBil.getAttribute("vognNummer")));
             model.addAttribute("udleveringssteder",bookingRepository.visAlleUdleveringsSteder());
             model.addAttribute("abonnementsTyper",bookingRepository.visAlleAbonnementsTyper());
@@ -68,7 +97,26 @@ public class DataRegController {
         return "html/dataRegistrering/udstyrBooking";
     }
 
-    @PostMapping("/nyBooking")
+    @PostMapping("/nyBruger") // Kristian
+    public String skabNyBruger(@RequestParam("fornavn") String fornavn,
+                               @RequestParam("efternavn") String efternavn,
+                               @RequestParam("email") String email,
+                               @RequestParam("tlf") String tlf,
+                               @RequestParam("CPR") String CPR,
+                               HttpSession sessionBrugerID) {
+
+        kundeRepository.opretKunde(fornavn,efternavn,email,tlf,CPR);
+
+        sessionBrugerID.setAttribute("brugerID",kundeRepository.getNyesteKundeID());
+
+        System.out.println("En bruger blev oprettet!");
+
+
+
+        return "redirect:/udstyrValg/" + (int)sessionBrugerID.getAttribute("brugerID");
+    }
+
+    @PostMapping("/nyBooking") // Kristian
     public String nyBooking(
           /*
         RedirectAttributes attributes,
