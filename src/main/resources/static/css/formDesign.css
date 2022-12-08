@@ -516,7 +516,7 @@ fieldset {
 }
 #blaaKnapTilTable button[type="submit"]{
     cursor:pointer;
-    width:auto;
+    width: max-content;
     border:none;
     background: #0681d9;
     color:#FFF;
