@@ -60,7 +60,9 @@
                     <td> <span th:text="${b.distance}">distance</span> km</td>
                     <td> <span th:text="${b.farve}">farve</span> </td>
                     <td> <span th:text="${b.udstyr}">farve</span> </td>
-                    <td> <span> <a th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </span> </td>
+                    <td th:id="blaaKnapTilTable">
+                        <button type="submit"> <a th:class="htmlLink" th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </button>
+                    </td>
                 </tr>
             </table>
         </div>

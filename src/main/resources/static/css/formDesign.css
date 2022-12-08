@@ -514,6 +514,16 @@ fieldset {
     padding:10px;
     font-size:15px;
 }
+#blaaKnapTilTable button[type="submit"]{
+    cursor:pointer;
+    width:auto;
+    border:none;
+    background: #0681d9;
+    color:#FFF;
+    margin:15px;
+    padding:10px;
+    font-size:15px;
+}
 #alignSearchOgSog{
     display: flex;
     align-items: center;
