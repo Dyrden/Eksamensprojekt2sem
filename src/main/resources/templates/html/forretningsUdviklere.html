@@ -17,20 +17,20 @@
   <div th:class="flexSkade">
     <div>
       <div th:id="searchField">
-        <h4>
-         Samlede indtægt
-        </h4>
-        <h4>
-         for denne måned:
-        </h4>
-        <h4><span th:text="${samledeIndtaegt}">samlede indtægt</span>
-          kr.</h4>
+        <table th:class="bilInfo">
+          <tr>
+            <th>Samlede indtægt denne måned</th>
+          </tr>
+          <tr>
+            <td> <span th:text="${samledeIndtaegt}">samlede indtægt</span> </td>
+          </tr>
+        </table>
       </div>
 
     </div>
     <div th:id="cardTilTable">
       <h3>Forretnings udviklere</h3>
-      <h4>Her kan der ses en oversigt over nogle få nøgtal.</h4>
+      <h4>Her kan der ses en oversigt over alle de biler der er booket denne måned.</h4>
       <div th:id="scroll">
         <table th:id="kundeTable">
           <tr>

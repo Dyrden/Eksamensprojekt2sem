@@ -18,6 +18,7 @@ public class BilOgBookingModel {
   private int produktionsaar;
   private int distance;
   private double maanedspris;
+  private int kilometerStart;
   private int id;
   private int brugerID;
   private int abonnementstypeID;
@@ -50,7 +51,30 @@ public class BilOgBookingModel {
     this.startDato = startDato;
     this.slutDato = slutDato;
   }
-
+  public BilOgBookingModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance, double maanedspris, int kilometerStart, int id, int brugerID, String abonnementsType, String udleveringsSted, String startDato, String slutDato) {
+    this.vognNummer = vognNummer;
+    this.stelNummer = stelNummer;
+    this.maerke = maerke;
+    this.model = model;
+    this.energiType = energiType;
+    this.gearboks = gearboks;
+    this.udstyr = udstyr;
+    this.status = status;
+    this.farve = farve;
+    this.staalPris = staalPris;
+    this.registreringsAfgift = registreringsAfgift;
+    this.CO2Udledning = CO2Udledning;
+    this.produktionsaar = produktionsaar;
+    this.distance = distance;
+    this.maanedspris = maanedspris;
+    this.kilometerStart = kilometerStart;
+    this.id = id;
+    this.brugerID = brugerID;
+    this.abonnementsType = abonnementsType;
+    this.udleveringsSted = udleveringsSted;
+    this.startDato = startDato;
+    this.slutDato = slutDato;
+  }
   public String getVognNummer() {
     return vognNummer;
   }

@@ -4,6 +4,7 @@ import com.example.eksamensprojekt_2sem.model.BilModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
 import com.example.eksamensprojekt_2sem.repository.BookingRepository;
 import com.example.eksamensprojekt_2sem.repository.KundeRepository;
+import org.apache.coyote.http11.HttpOutputBuffer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +24,32 @@ public class DataRegController {
 
     @GetMapping("/bookingRegistrering")
     //Ferhat er ansvarlig for denne metode
-    public String visBookingRegistrering(Model model){
-        model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
+    public String visBookingRegistrering(Model model, HttpSession sessionSoeg){
+
+        System.out.println(sessionSoeg.getAttribute("soegeFelt"));
+
+        if(sessionSoeg.getAttribute("soegeFelt") == null){
+            model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
+        } else {
+            model.addAttribute("biler", bilRepository.chooseCallFromParameter((String)sessionSoeg.getAttribute("soegeFelt")));
+            sessionSoeg.setAttribute("soegeFelt",null);
+        }
+
 
         return "html/dataRegistrering/bookingRegistrering";
+    }
+
+    @PostMapping("/soegBiler") //Middleway Getmapping. // Kristian
+    public String soegBiler(
+            @RequestParam String soegeFelt,
+            HttpSession sessionSoeg) {
+
+        if(soegeFelt.equals("")) {
+            soegeFelt = null;
+        }
+        sessionSoeg.setAttribute("soegeFelt", soegeFelt);
+
+        return "redirect:/bookingRegistrering";
     }
 
 
@@ -45,10 +68,6 @@ public class DataRegController {
 
 
 
-
-
-
-
     @GetMapping("/kunde")
     //Ferhat er ansvarlig for denne metode
     //Gammel kundebooking side. Hvis man hellere vil tage den.
@@ -56,6 +75,8 @@ public class DataRegController {
         model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
         return "html/dataRegistrering/kundeBookingGammel";
     }
+
+
     @GetMapping("/bookBil/{vognNummer}")
     //Ferhat er ansvarlig for denne metode
     public String bookBil(@PathVariable("vognNummer") String vognNummer,
@@ -64,18 +85,14 @@ public class DataRegController {
                           HttpSession sessionBil) {
             System.out.println(vognNummer);
 
-            //int brugerCPR = (int)sessionBrugerCPR.getAttribute("brugerCPR");
-
             if(sessionBrugerCPR.getAttribute("brugerCPR") == null){
                 model.addAttribute("brugere", kundeRepository.visAlleBrugere());
             } else {
                 model.addAttribute("brugere", kundeRepository.skafBrugerFraCPR((String)sessionBrugerCPR.getAttribute("brugerCPR")));
                 sessionBrugerCPR.setAttribute("brugerCPR",null);
             }
+
             model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
-
-
-
             sessionBil.setAttribute("vognNummer",vognNummer);
 
             System.out.println((String)sessionBrugerCPR.getAttribute("brugerCPR"));
@@ -103,7 +120,7 @@ public class DataRegController {
     }
 
 
-    @GetMapping("/udstyrValg/{brugerID}") // Skal lige kigge på denne her. (Kristian)
+    @GetMapping("/udstyrValg/{brugerID}") //Kristian
     public String udstyrValg(@PathVariable("brugerID") int brugerID,Model model, HttpSession sessionBrugerID, HttpSession sessionBil) {
 
             sessionBrugerID.setAttribute("brugerID",brugerID);
@@ -139,43 +156,16 @@ public class DataRegController {
 
     @PostMapping("/nyBooking") // Kristian
     public String nyBooking(
-          /*
-        RedirectAttributes attributes,
-        */
         @RequestParam("udlejningsStartDato") String udlejningsStartDato,
         @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,
         @RequestParam("abonnementsType") int abonnementsType,
         @RequestParam("udleveringsSted") int udleveringsSted,
-        HttpSession sessionKundeID, HttpSession sessionBil
-        //@RequestParam("fornavn") String forNavn,
-        //@RequestParam("efternavn") String efterNavn,
-        //@RequestParam("email") String email,
-        //@RequestParam("tlf") String tlf,
-        //@RequestParam("CPR") String cpr,
-        //@RequestParam("vognNummer") String vognNummer
-        ) {
-        /*
-        attributes.addAttribute("udstyr", udstyr);
-        attributes.addAttribute("udlejningsStartDato", udlejningsStartDato);
-        attributes.addAttribute("udeljningsSlutDato", udeljningsSlutDato);
-        attributes.addAttribute("udleveringsStedID", udleveringsStedID);
-        attributes.addAttribute("fornavn", forNavn);
-        attributes.addAttribute("efternavn", efterNavn);
-        attributes.addAttribute("email", email);
-        attributes.addAttribute("tlf", tlf);
-        attributes.addAttribute("email", cpr);
-        attributes.addAttribute("vognNummer", vognNummer);
-        */
-
-
-        //System.out.println(forNavn + " " + efterNavn + " " + cpr);
-
-        //System.out.println(udlejningsStartDato + "\n" + udeljningsSlutDato);
-
+        HttpSession sessionKundeID, HttpSession sessionBil)
+    {
         BilModel bil = bilRepository.visSpecifikBil((String)sessionBil.getAttribute("vognNummer")); // Caster en session til en stringværdi som kan bruges i metoden, som derefter kan definere BilModel objektet.
         // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
 
-        //Opretter en Booking inde på bookingRepository, som bliver send til Databasen.
+        //Opretter en Booking inde på bookingRepository, som bliver sendt til Databasen.
         bookingRepository.lavBooking(
                 bil.getVognNummer(),
                 (int)sessionKundeID.getAttribute("brugerID"),
@@ -186,46 +176,5 @@ public class DataRegController {
                 bil.getDistance()); // Bilens "kilometerStart" er den mængde kilometer som bilen har kørt.
 
         return "html/dataRegistrering/successite";
-        // return "redirect:/" + vognNummer;
     }
-
-    /*
-    @GetMapping("/nyBooking/{vognNummer}")
-    public String nyBookingGet(
-            Model model,
-            @PathVariable("vognNummer") String vognNummer,
-            @RequestParam("udstyr") String udstyr,
-            @RequestParam("udlejningsStartDato") String udlejningsStartDato,
-            @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,
-            @RequestParam("udleveringsStedID") String udleveringsStedID
-            //RequestParam("fornavn") String forNavn,
-            //@RequestParam("efternavn") String efterNavn,
-            //@RequestParam("email") String email,
-            //@RequestParam("tlf") String tlf,
-            //@RequestParam("CPR") String cpr,
-            )
-            {
-        model.addAttribute("udstyr", udstyr);
-        model.addAttribute("udlejningsStartDato", udlejningsStartDato);
-        model.addAttribute("udeljningsSlutDato", udeljningsSlutDato);
-        model.addAttribute("udleveringsStedID", udleveringsStedID);
-        //model.addAttribute("fornavn", forNavn);
-        //model.addAttribute("efternavn", efterNavn);
-        //model.addAttribute("email", email);
-        //model.addAttribute("tlf", tlf);
-        //model.addAttribute("email", cpr);
-
-        // har skrevet for at teste om den funere, 1 skal være ID
-        //BrugerModel kunde = new BrugerModel(forNavn, efterNavn, email, tlf, cpr );
-
-        //System.out.println(forNavn + " " + efterNavn + " " + cpr);
-
-        //Når booking er gået igennem, skal der komme en bekræftelses side
-        //Siden skal vise informationerne man har valgt
-        return "html/successite";
-
-
-
-    }
-*/
 }

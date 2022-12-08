@@ -70,6 +70,7 @@ public class BookingRepository {
             e.printStackTrace();
         }
 
+
         return indtaegt;
 
     }
@@ -95,12 +96,13 @@ public class BookingRepository {
                 int produktionsaar = resultSet.getInt(13);
                 int distance = resultSet.getInt(14);
                 double maanedspris = resultSet.getDouble(15);
-                int id = resultSet.getInt(16);
-                int brugerID = resultSet.getInt(17);
-                String type = resultSet.getString(18);
-                String sted = resultSet.getString(19);
-                String startDate = resultSet.getString(20);
-                String slutDato = resultSet.getString(21);
+                int kilometerStart = resultSet.getInt(16);
+                int id = resultSet.getInt(17);
+                int brugerID = resultSet.getInt(18);
+                String type = resultSet.getString(19);
+                String sted = resultSet.getString(20);
+                String startDate = resultSet.getString(21);
+                String slutDato = resultSet.getString(22);
 
                 biler.add(new BilOgBookingModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
                     staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedspris, id, brugerID, type, sted, startDate, slutDato));
