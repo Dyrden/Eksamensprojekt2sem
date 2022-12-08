@@ -23,11 +23,14 @@
     <div>
         <div th:id="searchField">
             <h4>Søgefelt</h4>
-            <div>
-                <input type="text" name="text" placeholder="indtast vognnummer">
-            </div>
-            <div>
-                <input type="text" name="text" placeholder="Bil mærke">
+            <p>Søg efter biler med tags, separér med komma.</p>
+            <p>(f.eks. Nissan,Sort)</p>
+
+            <div th:id="brugerIDSearchField">
+                <form action="/soegBiler" method="post">
+                    <input type="text" name="soegeFelt" th:class="searchField" placeholder="Indtast søgeord...">
+                    <input type="submit" value="Søg">
+                </form>
             </div>
         </div>
 
@@ -47,6 +50,7 @@
                     <th>fra år</th>
                     <th>har kørt</th>
                     <th>farve</th>
+                    <th>Månedspris</th>
                     <th>Udstyr</th>
                     <th>Book</th>
                 </tr>
@@ -59,8 +63,11 @@
                     <td> <span th:text="${b.produktionsaar}">produktionsaar</span> </td>
                     <td> <span th:text="${b.distance}">distance</span> km</td>
                     <td> <span th:text="${b.farve}">farve</span> </td>
+                    <td> <span th:text="${b.maanedsPris}">farve</span> </td>
                     <td> <span th:text="${b.udstyr}">farve</span> </td>
-                    <td> <span> <a th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </span> </td>
+                    <td th:id="blaaKnapTilTable">
+                        <button type="submit"> <a th:class="htmlLink" th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </button>
+                    </td>
                 </tr>
             </table>
         </div>

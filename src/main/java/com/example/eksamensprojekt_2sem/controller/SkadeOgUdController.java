@@ -25,7 +25,7 @@ public class SkadeOgUdController {
     @GetMapping("/skadeOgUdbedring")
     //Ferhat er ansvarlig for denne metode
     public String visSkadeOgUd(Model model, HttpSession session){
-        model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
+        model.addAttribute("biler", bilRepository.visInleveretBiler());
         session.invalidate();
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }

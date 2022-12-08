@@ -238,11 +238,12 @@ fieldset {
 }
 
 #findKunde input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea {
-    width:100%;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+    width: auto;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0px 0 0px;
+    padding: 10px;
+    height: 25px;
 }
 
 #findKunde input[type="text"]:hover, #bilSpecifikation input[type="email"]:hover, #bilSpecifikation input[type="tel"]:hover, #bilSpecifikation input[type="url"]:hover, #bilSpecifikation textarea:hover {
@@ -512,5 +513,32 @@ fieldset {
     margin:15px;
     padding:10px;
     font-size:15px;
-
+}
+#blaaKnapTilTable button[type="submit"]{
+    cursor:pointer;
+    width:auto;
+    border:none;
+    background: #0681d9;
+    color:#FFF;
+    margin:15px;
+    padding:10px;
+    font-size:15px;
+}
+#alignSearchOgSog{
+    display: flex;
+    align-items: center;
+}
+#brugerIDSearchField{
+    border: none;
+    padding: 0rem;
+    font-size: 1rem;
+    width: 13em;
+    border-radius: 1rem;
+    color: #259bca;
+    cursor: pointer;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+#brugerIDSearchField .input:focus {
+    outline-color: #259bca;
 }

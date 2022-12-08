@@ -70,7 +70,7 @@
         <div id="findKunde">
             <h3>Find kunde</h3>
         <div th:id="brugerIDSearchField">
-            <form action="/soegKundeMedCPR" method="post">
+            <form th:id="alignSearchOgSog" action="/soegKundeMedCPR" method="post">
             <input type="text" name="brugerCPR" th:class="searchField" placeholder="indtast CPR" minlength="8">
             <input type="submit" value="Søg på kunde">
             </form>
@@ -92,7 +92,9 @@
             <td> <span th:text="${b.efternavn}">Vognnummer</span> </td>
             <td> <span th:text="${b.tlf}">Registreringsnummer</span> </td>
             <td> <span th:text="${b.cpr}">Registreringsnummer</span> </td>
-            <td> <span> <a th:href="@{'/udstyrValg/' + ${b.id}}">Vælg bruger</a> </span> </td>
+            <td th:id="blaaKnapTilTable">
+                <button type="submit"> <a th:class="htmlLink" th:href="@{'/udstyrValg/' + ${b.id}}">Vælg bruger</a> </button>
+            </td>
         </tr>
     </table>
             </div>

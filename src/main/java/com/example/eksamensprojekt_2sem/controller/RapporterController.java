@@ -20,7 +20,7 @@ private SkadeRepository skadeRepository = new SkadeRepository();
 
   @GetMapping("/seRapporter")
   public String visForretningsUdviklere(Model model){
-    model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
+    model.addAttribute("biler", bilRepository.visAlleBiler());
 
     return "html/rapporter/rapporter";
   }
@@ -56,6 +56,7 @@ private SkadeRepository skadeRepository = new SkadeRepository();
     model.addAttribute("skader",skadeRepository.skafSkaderFraRapport(rapportID));
 
     model.addAttribute("bil", session.getAttribute("bil"));
+    model.addAttribute("totalPris", skadeRepository.skafTotalPrisFraRapportID(rapportID));
     return "html/rapporter/seSkadesRapport";
   }
 

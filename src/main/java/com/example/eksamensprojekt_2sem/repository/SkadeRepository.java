@@ -74,4 +74,27 @@ public class SkadeRepository {
 
   }
 
+  public double skafTotalPrisFraRapportID(String id) {
+    //Ferhat og Kristian er ansvarlig for denne metode
+
+    int totalPris = 0;
+    List<SkadeModel> skader = new LinkedList<>();
+    try{
+      ResultSet resultSet = SQLManager.execute
+          ("CALL skafSkaderFraRapport('"+id+"')");
+      while (resultSet.next()){
+        int skadeid = (resultSet.getInt(1));
+        String skadensPlacering = (resultSet.getString(2));
+        String skadensBeskrivelse = (resultSet.getString(3));
+        double skadensPris = (resultSet.getDouble(4));
+        int rapportID= (resultSet.getInt(5));
+
+        totalPris += skadensPris;
+      }
+    } catch (SQLException e){
+      e.printStackTrace();
+    }
+
+    return totalPris;
+  }
 }
