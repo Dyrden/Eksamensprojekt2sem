@@ -5,7 +5,6 @@ import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -24,7 +23,7 @@ public class BilRepository {
     private String pass;
     public BilRepository(){}
 
-    public List<BilModel> visAlleBiler(){
+    public List<BilModel> visTilgaengeligeBiler(){
       //Mark er ansvarlig for denne metode
         List<BilModel> biler = new LinkedList<>();
         try {
@@ -57,6 +56,39 @@ public class BilRepository {
         return biler;
 
     }
+  public List<BilModel> visAlleBiler(){
+    //Mark er ansvarlig for denne metode
+    List<BilModel> biler = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL visAlleBiler()");
+
+      while (resultSet.next()) {
+        String vognNummer = resultSet.getString(1);
+        String stelNummer = resultSet.getString(2);
+        String maerke = resultSet.getString(3);
+        String model = resultSet.getString(4);
+        String energiType = resultSet.getString(5);
+        String gearboks = resultSet.getString(6);
+        String udstyr = resultSet.getString(7);
+        String status = resultSet.getString(8);
+        String farve = resultSet.getString(9);
+        double staalPris = resultSet.getInt(10);
+        double registreringsAfgift = resultSet.getInt(11);
+        double CO2Udledning = resultSet.getInt(12);
+        int produktionsaar = resultSet.getInt(13);
+        int distance = resultSet.getInt(14);
+
+        biler.add(new BilModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
+            staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance));
+      }
+
+    } catch (SQLException e){
+      e.printStackTrace();
+    }
+
+    return biler;
+
+  }
 
     public Object visUdlejetBiler(String s){
         return SQLManager.makeStatement("CALL VisUdlejedeBiler()");

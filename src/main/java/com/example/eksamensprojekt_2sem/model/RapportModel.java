@@ -8,6 +8,8 @@ public class RapportModel {
 
 
 
+  private int overskredetKM;
+
   public RapportModel() {
   }
 
@@ -48,6 +50,14 @@ public class RapportModel {
 
   public void setOverSkredetKM(String overSkredetKM) {
     this.overSkredetKM = overSkredetKM;
+  }
+
+  public int getOverskredetKM() {
+    return overskredetKM;
+  }
+
+  public void setOverskredetKM(int overskredetKM) {
+    this.overskredetKM = overskredetKM;
   }
 
   @Override

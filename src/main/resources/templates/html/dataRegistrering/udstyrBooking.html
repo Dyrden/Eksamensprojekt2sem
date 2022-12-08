@@ -8,6 +8,7 @@
   <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
   <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
   <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+  <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../static/css/beaverPosition.css"/>
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +16,7 @@
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
 
+<div th:id="beaverUdstyrValg" th:style="'background-image:url(' + @{/images/beaver.png}">
 
 <div th:class="bilInfo">
   <div class="table-title">
@@ -53,14 +55,14 @@
             <label for="abonnementsType">Vælg abonnements type</label>
             <select name="abonnementsType" id="abonnementsType">
               <option value="0">Vælg abonnements type.</option>
-              <option th:each="a : ${abonnementsTyper}" th:value="${a.type}" th:text="${a.type}"></option>
+              <option th:each="a : ${abonnementsTyper}" th:value="${a.id}" th:text="${a.type}"></option>
             </select>
           </fieldset>
           <fieldset>
             <label for="udleveringsSted">Vælg udleveringssted</label>
             <select name="udleveringsSted" id="udleveringsSted">
               <option value="0">Vælg udleveringssted.</option>
-              <option th:each="u : ${udleveringssteder}" th:value="${u.sted}" th:text="${u.sted}"></option>
+              <option th:each="u : ${udleveringssteder}" th:value="${u.id}" th:text="${u.sted}"></option>
             </select>
           </fieldset>
           <fieldset>
@@ -73,5 +75,7 @@
       </div>
     </form>
   </div>
+  </div>
+
 </body>
 </html>

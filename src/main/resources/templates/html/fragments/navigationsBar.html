@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
 </head>
 <body>
-<link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
 <div th:fragment="nyNavigationsBar">
-  <div class="main-menu">
-    <div class="main-menu-content">
-      <a class="main-menu-logo" title="Bilabonnement" href="/">
-        <img class="logo" src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="200,2" height="100,1" alt="Bilabonnement">
-      </a>
-      <nav th:class="skew-menu">
-        <ul>
-          <li><a th:href="@{'/'}">Home</a></li>
-          <li><a th:href="@{'/dataRegistrering/'}">Data indregistrering</a></li>
-          <li><a th:href="@{'/skadeOgUdbedring/'}">Skades rapport</a></li>
-          <li><a th:href="@{'/forretningsUdviklere/'}">Forretnings udviklere</a></li>
-          <li><a th:href="@{'/seRapporter/'}">Rapporter</a></li>
-        </ul>
-      </nav>
+    <div class="main-menu">
+        <div class="main-menu-content">
+            <a class="main-menu-logo" title="Bilabonnement" href="/">
+                <img class="logo" src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="200,2"
+                     height="100,1" alt="Bilabonnement">
+            </a>
+            <nav th:class="skew-menu">
+                <ul>
+                    <li><a th:href="@{'/'}">Home</a></li>
+                    <li><a th:href="@{'/dataRegistrering/'}">Data indregistrering</a></li>
+                    <li><a th:href="@{'/skadeOgUdbedring/'}">Skades rapport</a></li>
+                    <li><a th:href="@{'/forretningsUdviklere/'}">Forretnings udviklere</a></li>
+                    <li><a th:href="@{'/seRapporter/'}">Rapporter</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
-  </div>
-  </div>
+</div>
 </body>
 </html>

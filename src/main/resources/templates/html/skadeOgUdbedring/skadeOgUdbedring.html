@@ -8,50 +8,56 @@
     <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
     <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
     <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+    <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
 
-<div th:class="beaverIBaggrund" th:style="'background-image:url(' + @{/images/beaver.png}">
+<div th:id="beaverSkadeOgUdbedring" th:style="'background-image:url(' + @{/images/beaver.png}">
 
-    <div th:class="overSkrift">
-        <span> Vælg den bil du vil se skader på</span>
+        <div th:class="flexSkade">
+
+            <div>
+                <div th:id="searchField">
+                    <h4>Søgefelt</h4>
+                    <div>
+                        <input type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
+                    </div>
+                    <div>
+                        <input type="text" name="text" th:class="searchField" placeholder="Bil mærke">
+                    </div>
+                </div>
+
+            </div>
+            <div th:id="cardTilTable">
+                <h3>Skade og Udbedring</h3>
+                <h4>Vælg den bil du vil se rapporter for. Derefter kan du tilføje skader til rapporten</h4>
+                <div th:id="scroll">
+                    <table th:id="kundeTable">
+                        <tr>
+                            <th>Bil Mærke</th>
+                            <th>Model</th>
+                            <th>Vognnummer</th>
+                            <th>Registreringsnummer</th>
+                            <th>Se skader</th>
+                        </tr>
+                        <tr th:each="b : ${biler}">
+                            <td> <span th:text="${b.maerke}">Maerke</span> </td>
+                            <td> <span th:text="${b.model}">Model</span> </td>
+                            <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
+                            <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
+                            <td> <span> <a th:href="@{'/vaelgRapport/' + ${b.vognNummer}}">Vælg bil</a> </span> </td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div th:class="flexSkade">
-
-        <div>
-    <div th:class="stickySearch1">
-        <input type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
-    </div>
-        <div th:class="stickySearch2">
-        <input type="text" name="text" th:class="searchField" placeholder="Bil mærke">
-    </div>
-</div>
-    <table th:id="SkadeTable">
-        <tr>
-            <th>Bil Mærke</th>
-            <th>Model</th>
-            <th>Vognnummer</th>
-            <th>Registreringsnummer</th>
-            <th>Se skader</th>
-        </tr>
-        <tr th:each="b : ${biler}">
-            <td> <span th:text="${b.maerke}">Maerke</span> </td>
-            <td> <span th:text="${b.model}">Model</span> </td>
-            <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
-            <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
-            <td> <span> <a th:href="@{'/vaelgRapport/' + ${b.vognNummer}}">Vælg Rapport</a> </span> </td>
-        </tr>
-    </table>
-
 </div>
 </div>
-<div id="blaaKnap">
-    <button placeholder="Se skade for bil" type="submit">  <a th:class="htmlLink" th:href="@{'/seSkader/'}">Registrer ny skade</a>
-    </button>
 </div>
-
 </body>
 </html>

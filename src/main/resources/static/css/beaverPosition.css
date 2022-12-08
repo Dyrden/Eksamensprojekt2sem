@@ -1,0 +1,51 @@
+#beaverSkadeOgUdbedring{
+    background-image: url(@{/images/beaver.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 50%;
+    background-attachment: inherit;
+    background-position-x: 120px;
+    background-position-y: 280px;
+
+}
+
+#beaverBookingRegistrering{
+    background-image: url(@{/images/beaver.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 40%;
+    background-attachment: inherit;
+    background-position-x: 0px;
+    background-position-y: 300px;
+}
+#beaverKundeRegistrering{
+    background-image: url(@{/images/beaver.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 10%;
+    background-attachment: inherit;
+    background-position-x: 260px;
+    background-position-y: 0;
+}
+
+#beaverUdstyrValg{
+    background-image: url(@{/images/beaver.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 40%;
+    background-attachment: inherit;
+    background-position-x: 990px;
+    background-position-y: 190px;
+}
+#beaverSeSkader{
+    background-image: url(@{/images/beaverMechanic.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 9%;
+    background-attachment: inherit;
+    background-position-x: 1088px;
+    background-position-y: 0px;
+
+}#beaverTilfoejSkade{
+    background-image: url(@{/images/beaverMechanic.png});
+    background-repeat: no-repeat, repeat;
+     background-size: 40%;
+     background-attachment: inherit;
+     background-position-x: 900px;
+     background-position-y: 20px;
+}

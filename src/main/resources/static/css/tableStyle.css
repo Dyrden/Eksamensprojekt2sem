@@ -1,6 +1,5 @@
 .bilInfo{
-    margin-top: 50px;
-    margin-left: 77px;
+
 }
 
 .bilInfo table {
@@ -8,10 +7,12 @@
     border-collapse: collapse;
     width: 50%;
     border-radius: 5px;
+
 }
 .bilInfo table.center {
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 44px;
 }
 .bilInfo td, th {
     border: 1px solid #dddddd;
@@ -158,6 +159,6 @@ div.table-title {
     width: 10%;
 }
 #scroll {
-    height:350px;
+    height:400px;
     overflow:auto;
 }

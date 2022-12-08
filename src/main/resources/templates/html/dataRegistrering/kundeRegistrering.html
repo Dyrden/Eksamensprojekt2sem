@@ -9,18 +9,16 @@
     <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
     <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
     <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+    <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
 
-<div th:class="beaverIBaggrund" th:style="'background-image:url(' + @{/images/beaver.png}">
+<div th:id="beaverKundeRegistrering" th:style="'background-image:url(' + @{/images/beaver.png}">
     <div th:class="bilInfo">
         <div class="table-title">
-            <div th:class="overSkrift">
-                <span>Registrer kunde</span>
-            </div>
         </div>
         <table class="center">
             <tr>
@@ -43,7 +41,7 @@
         <div>
             <div id="kundeinfo">
                 <form action="/nyBruger" method="post">
-                <h3>Kunde informationer</h3>
+                <h3>Registrer kunde</h3>
                 <h4>Indtast venligst kundens information</h4>
                 <fieldset>
                     <input name="fornavn" placeholder="Fornavn" type="text" tabindex="1" required autofocus>
@@ -72,7 +70,10 @@
         <div id="findKunde">
             <h3>Find kunde</h3>
         <div th:id="brugerIDSearchField">
-            <input type="text" name="text" th:class="searchField" placeholder="indtast CPR">
+            <form th:id="alignSearchOgSog" action="/soegKundeMedCPR" method="post">
+            <input type="text" name="brugerCPR" th:class="searchField" placeholder="indtast CPR" minlength="8">
+            <input type="submit" value="Søg på kunde">
+            </form>
         </div>
 
             <div th:id="scroll">
@@ -97,10 +98,6 @@
             </div>
 </div>
     </div>
-        <div id="blaaKnap">
-            <button placeholder="Registrer ny skade" type="submit">  <a th:class="htmlLink" th:href="@{'/udstyrValg/'}">Se næste side TEST knap</a>
-            </button>
-        </div>
 </div>
 
 </body>

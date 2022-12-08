@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -26,19 +25,19 @@ public class SkadeOgUdController {
     @GetMapping("/skadeOgUdbedring")
     //Ferhat er ansvarlig for denne metode
     public String visSkadeOgUd(Model model, HttpSession session){
-        model.addAttribute("biler", bilRepository.visAlleBiler());
+        model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
         session.invalidate();
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
-    @GetMapping("/vaelgRapport/{vognNummer}")
     //Ferhat er ansvarlig for denne metode
+    @GetMapping("/vaelgRapport/{vognNummer}")
     public String vaelgRapport(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession session){
         model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
 
         //Her henter vi den valgte bils rapport
         //Så kan vi efterfølgende bruge rapportens id til at modtage skaderne
-        List<RapportModel> rapporter = rapportRepository.hentRapportFraVognNummer(vognNummer);
-        model.addAttribute("rapporter", rapportRepository.hentRapportFraVognNummer(vognNummer));
+        List<RapportModel> rapporter = rapportRepository.hentRapporterFraVognNummer(vognNummer);
+        model.addAttribute("rapporter", rapportRepository.hentRapporterFraVognNummer(vognNummer));
 
 
         //Opretter en session og sætter bil til den bil vi er inde på i skader
@@ -46,6 +45,16 @@ public class SkadeOgUdController {
 
         return "html/skadeOgUdbedring/vaelgRapport";
     }
+
+
+    @PostMapping("/indtastkm")
+    public String indtastKm(
+        @RequestParam("km") int overskredetKM,
+        @RequestParam("rapportID") String rapportID){
+        rapportRepository.tilføjNuværrendeKMTilRapport(rapportID, overskredetKM);
+        return "redirect:/seSkader/" + rapportID;
+    }
+
 
 
     @GetMapping("/seSkader/{rapportID}")
@@ -56,7 +65,7 @@ public class SkadeOgUdController {
         //vi henter alle skaderne fra rapportens id.
         //Rapportens id har vi fået fra tildigere kode gennem bilens vognNummer
         model.addAttribute("skader",skadeRepository.skafSkaderFraRapport(rapportID));
-
+        model.addAttribute("rapportID", rapportID);
         model.addAttribute("bil", session.getAttribute("bil"));
         return "html/skadeOgUdbedring/seSkader";
     }
@@ -81,6 +90,7 @@ public class SkadeOgUdController {
 
         skadeRepository.tilfoejSkade(skadePlacering, skadensBeskrivelse, skadensPris, rapportID);
 
+        session.setAttribute("rapportID", rapportID);
         //redirect tilbage til seSkader med vognnummer måske man kunne buge session
         return "redirect:/seSkader/"+rapportID;
     }
@@ -92,8 +102,9 @@ public class SkadeOgUdController {
         BilModel bil = (BilModel) session.getAttribute("bil");
 
         String vognNummer = bil.getVognNummer();
+        int rapportID = (int) session.getAttribute("rapportID");
 
-        return "redirect:/seSkader/"+ vognNummer;
+        return "redirect:/seSkader/"+ rapportID;
     }
     @PostMapping("/udbedring")
     public String reUdbedring(){

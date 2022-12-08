@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Wishlist</title>
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
     <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
 </head>
@@ -12,10 +11,18 @@
     <div class="main-menu">
         <div class="main-menu-content">
             <a class="main-menu-logo" title="beaver-leasing" href="/">
-                <img class="logo" src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="200,2" height="100,1" alt="Beaver-leasing">
-                <img class="bilabonnementLogo" src="/static/images/bilabonnementLogo.svg" th:src="@{/images/bilabonnementLogo.svg}" width="200,2" height="100,1" alt="Bilabonnement">
+                <img class="logo" src="/static/images/hondalogo1.png" th:src="@{/images/hondalogo1.png}" width="200,2"
+                     height="100,1" alt="Beaver-leasing">
+                <img class="bilabonnementLogo" src="/static/images/bilabonnementLogo.png"
+                     th:src="@{/images/bilabonnementLogo.png}" alt="Bilabonnement">
             </a>
         </div>
+    </div>
+
+    <div id="blaaKnap">
+    <form action="/">
+        <input type="submit" value="Tilbage til hjem">
+    </form>
     </div>
 </div>
 </body>

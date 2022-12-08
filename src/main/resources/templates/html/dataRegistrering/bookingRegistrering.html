@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+    <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+    <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+    <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
+
+
+</head>
+<body>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
+<div th:id="beaverBookingRegistrering" th:style="'background-image:url(' + @{/images/beaver.png}">
+
+<div th:class="flexSkade">
+
+    <div>
+        <div th:id="searchField">
+            <h4>Søgefelt</h4>
+            <div>
+                <input type="text" name="text" placeholder="indtast vognnummer">
+            </div>
+            <div>
+                <input type="text" name="text" placeholder="Bil mærke">
+            </div>
+        </div>
+
+    </div>
+    <div th:id="cardTilTable">
+        <h3>Booking af bil</h3>
+        <h4>Vælg den bil du vil booke</h4>
+        <h4>Efterfølgende, kan du registrere en ny kunde, eller vælge en eksisterende kunde</h4>
+        <div th:id="scroll">
+            <table th:id="kundeTable">
+                <tr>
+                    <th>Bil Mærke</th>
+                    <th>Model</th>
+                    <th>Vognnummer</th>
+                    <th>gear</th>
+                    <th>brændsstof</th>
+                    <th>fra år</th>
+                    <th>har kørt</th>
+                    <th>farve</th>
+                    <th>Udstyr</th>
+                    <th>Book</th>
+                </tr>
+                <tr th:each="b : ${biler}">
+                    <td> <span th:text="${b.maerke}">Maerke</span> </td>
+                    <td> <span th:text="${b.model}">Model</span> </td>
+                    <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
+                    <td> <span th:text="${b.gearboks}">gearboks</span> </td>
+                    <td> <span th:text="${b.energiType}">energiType</span> </td>
+                    <td> <span th:text="${b.produktionsaar}">produktionsaar</span> </td>
+                    <td> <span th:text="${b.distance}">distance</span> km</td>
+                    <td> <span th:text="${b.farve}">farve</span> </td>
+                    <td> <span th:text="${b.udstyr}">farve</span> </td>
+                    <td> <span> <a th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </span> </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+    </div>
+</body>
+</html>
