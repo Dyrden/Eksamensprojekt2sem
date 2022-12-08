@@ -33,7 +33,7 @@ public static Connection connect(){
 
     try {
         //Skaber en forbindelse til DB
-        //tak til Claus Bov @kea dat22v1 programmering
+        //tak til Claus Bove @kea dat22v1 programmering
         String db_URL = System.getenv("JDBCUrl");
         String uid = System.getenv("JDBCUsername");
         String pass = System.getenv("JDBCPassword");
@@ -41,7 +41,6 @@ public static Connection connect(){
 
 
     } catch (SQLException e) {
-        System.out.println("u dun goofed");
         e.printStackTrace();
     }
 
