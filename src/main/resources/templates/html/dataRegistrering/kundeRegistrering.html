@@ -92,7 +92,9 @@
             <td> <span th:text="${b.efternavn}">Vognnummer</span> </td>
             <td> <span th:text="${b.tlf}">Registreringsnummer</span> </td>
             <td> <span th:text="${b.cpr}">Registreringsnummer</span> </td>
-            <td> <span> <a th:href="@{'/udstyrValg/' + ${b.id}}">Vælg bruger</a> </span> </td>
+            <td th:id="blaaKnapTilTable">
+                <button type="submit"> <a th:class="htmlLink" th:href="@{'/udstyrValg/' + ${b.id}}">Vælg bruger</a> </button>
+            </td>
         </tr>
     </table>
             </div>

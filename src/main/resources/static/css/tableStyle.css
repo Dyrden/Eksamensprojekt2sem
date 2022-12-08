@@ -63,6 +63,7 @@ div.table-title {
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
+    color: aliceblue;
 }
 /* ----- Info for table i Skade og Udbedring */
 #SkadeTable {
