@@ -75,7 +75,7 @@
         </table>
       </div>
       <div th:id="center">
-        <button placeholder="Registrer ny skade" type="submit">  <a th:each="s : ${skader}" th:class="htmlLink" th:href="@{'/tilfoejSkade/'+${s.rapportID}}">Registrer ny skade</a>
+        <button placeholder="Registrer ny skade" type="submit">  <a th:class="htmlLink" th:href="@{'/tilfoejSkade/'+${rapportID}}">Registrer ny skade</a>
         </button>
       </div>
     </div>
