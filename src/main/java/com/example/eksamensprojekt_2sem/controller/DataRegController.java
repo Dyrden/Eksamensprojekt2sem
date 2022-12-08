@@ -53,20 +53,39 @@ public class DataRegController {
     }
 
 
+
+    // Ansvarlig : Mark Dyrby Denner
+    // Denne URL går hen til dataRegistrering.html og viser 2 muligheder; at gå til bilregistrering eller
+    // bookingRegistrering
     @GetMapping("/dataRegistrering")
-    public String visRegisteringer() {
-
+    public String visRegistreringer() {
         return "html/dataRegistrering/dataRegistrering";
     }
 
 
+    // Ansvarlig : Mark Dyrby Denner
+    // Action / URL der går til bilRegistrering.html hvor vi lægger informationer med fra databasen
+    // som vi så giver brugeren som en "choose-one" mulighed således taste fejl ikke skal håndteres for disse
+    // konstant værdier
     @GetMapping("/bilRegistrering")
-    public String visBilRegistrering() {
+    public String visBilRegistrering(Model model) {
+        model.addAttribute("energiTyper", null);
+        model.addAttribute("farver", null);
+        model.addAttribute("gearbokse", null);
+        model.addAttribute("maerker", null);
+        model.addAttribute("udstyrsniveau", null);
 
-        return "html/dataRegistrering/dataRegistrering";
+        return "html/dataRegistrering/bilRegistrering";
+
     }
 
+    @PostMapping("/indsendBilTilRegistrering")
+    public String indsendBilTilRegistrering() {
+        //meget request param
+        //sql call til INSERT
 
+        return "";
+    }
 
     @GetMapping("/kunde")
     //Ferhat er ansvarlig for denne metode

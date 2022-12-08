@@ -1,0 +1,34 @@
+
+.bilInformationer {
+    display : flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+}
+
+
+
+
+.bilInformationerContainer {
+    margin : 25px;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #1d87b1;
+    width: fit-content;
+
+
+}
+
+.bilInformation {
+    display: flex;
+    flex-direction: row;
+    color: #000000;
+    border-radius: 5px;
+    align-items: center;
+
+
+}
+
