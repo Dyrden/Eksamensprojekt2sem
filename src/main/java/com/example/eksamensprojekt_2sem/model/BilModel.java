@@ -45,6 +45,13 @@ public class BilModel {
 
   }
 
+  public BilModel(String maerke, String model, String vognNummer, String stelNummer){
+      this.maerke = maerke;
+      this.model = model;
+      this.vognNummer = vognNummer;
+      this.stelNummer = stelNummer;
+  }
+
   public String getMaerke() {
         return maerke;
     }

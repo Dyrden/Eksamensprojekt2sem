@@ -90,8 +90,22 @@ public class BilRepository {
 
   }
 
-    public Object visUdlejetBiler(String s){
-        return SQLManager.makeStatement("CALL VisUdlejedeBiler()");
+    public Object visInleveretBiler(){
+        List<BilModel> biler = new LinkedList<>();
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL BilerManglerSkader()");
+            while (resultSet.next()){
+                String maerke = resultSet.getString(1);
+                String model = resultSet.getString(2);
+                String vognNummer = resultSet.getString(3);
+                String stelNummer = resultSet.getString(4);
+                biler.add(new BilModel(maerke,model,vognNummer,stelNummer));
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return biler;
 
     }
     public Object LavBil(String s){
