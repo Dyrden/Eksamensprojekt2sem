@@ -17,53 +17,65 @@
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"></div>
 
+<div class="bilInformationerContainer">
 
-<div class="bilInformationContainer">
-    <div>
-        <label for="bilmaerke">Bil Mærke</label>
-        <input id="bilmaerke" type="text">
+    <div class="bilInformationer">
+        <form action="/bilRegistrering">
+
+            <div class="bilInformation">
+                <label for="bilmaerke">Bil Mærke</label>
+                <input class="inputbox" id="bilmaerke" type="text">
+            </div>
+            <div class="bilInformation">
+                <label for="model">Model </label>
+                <input id="model" type="text">
+
+            </div>
+            <div class="bilInformation">
+                <label for="vognnummer">Vogn Nummer</label>
+                <input id="vognnummer" type="text">
+
+            </div>
+            <div class="bilInformation">
+                <label for="stelNummer">Stelnummer</label>
+                <input id="stelNummer" type="text">
+
+            </div>
+            <div class="bilInformation">
+                <label for="gear">Gear</label>
+                <input id="gear" type="text">
+
+            </div>
+            <div class="bilInformation">
+                <label for="energitype">Energitype</label>
+                <input id="energitype" type="text">
+
+            </div>
+            <div class="bilInformation">
+                <label for="produktionsaar">Produktions år</label>
+                <input id="produktionsaar" type="text">
+
+            </div>
+            <div class="bilInformation">
+                <label for="kilometertal">Kilometertal</label>
+                <input id="kilometertal" type="text">
+
+            </div>
+            <div class="bilInformation">
+                <label for="udstyrniveau">udstyrniveau</label>
+                <input id="udstyrniveau" type="text">
+
+            </div>
+            <div class="bilInformation">
+                <label for="farve">Farve</label>
+                <input id="farve" type="text">
+
+            </div>
+            <div>
+                <input type="submit" value="Opret bil">
+            </div>
+        </form>
     </div>
-    <div>
-        <label for="model">Model </label>
-        <input id="model" type="text">
-
-    </div>
-    <div>
-        <label id="vognnummer">Vogn Nummer</label>
-
-    </div>
-    <div>
-        <label id="StelNummer">Stelnummer</label>
-
-    </div>
-    <div>
-        <label id="gear">Gear</label>
-
-    </div>
-    <div>
-        <label id="energitype">Energitype</label>
-
-    </div>
-    <div>
-        <label id="produktionsaar">Produktions år</label>
-
-    </div>
-    <div>
-        <label id="kilometertal">Kilometertal</label>
-
-    </div>
-    <div>
-        <label id="udstyrniveau">udstyrniveau</label>
-
-    </div>
-    <div>
-        <label id="farve">Farve</label>
-
-    </div>
-
-    <th>farve</th>
-    <th>Udstyr</th>
-    <th>Book</th>
 </div>
 
 </body>
