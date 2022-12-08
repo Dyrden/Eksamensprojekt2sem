@@ -1,6 +1,7 @@
 package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.BilModel;
+import com.example.eksamensprojekt_2sem.model.UdleveringsstedModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -227,5 +228,89 @@ public class BilRepository {
         }
         return biler;
     }
+  public List<String> skafAlleFarver() {
+    List<String> farver = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL visAlleFarver()");
 
+      while (resultSet.next()) {
+       String farve = resultSet.getString(1);
+        farver.add(farve);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return farver;
+
+  }
+  public List<String> skafAlleMaerker() {
+    List<String> maerker = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL skafmaerker()");
+
+      while (resultSet.next()) {
+        String maerke = resultSet.getString(2);
+        maerker.add(maerke);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return maerker;
+
+  }
+  public List<String> skafGearbokse() {
+    List<String> liste = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL skafgearboks()");
+
+      while (resultSet.next()) {
+        String item = resultSet.getString(2);
+        liste.add(item);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return liste;
+
+  }
+  public List<String> skafenergiTyper() {
+    List<String> liste = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL skafenergityper()");
+
+      while (resultSet.next()) {
+        String item = resultSet.getString(2);
+        liste.add(item);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return liste;
+
+  }
+  public List<String> skafUdstyrsNiveau() {
+    List<String> liste = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL skafudstyrsniveau()");
+
+      while (resultSet.next()) {
+        String item = resultSet.getString(2);
+        liste.add(item);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return liste;
+
+  }
 }

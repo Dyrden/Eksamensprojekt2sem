@@ -69,11 +69,11 @@ public class DataRegController {
     // konstant værdier
     @GetMapping("/bilRegistrering")
     public String visBilRegistrering(Model model) {
-        model.addAttribute("energiTyper", null);
-        model.addAttribute("farver", null);
-        model.addAttribute("gearbokse", null);
-        model.addAttribute("maerker", null);
-        model.addAttribute("udstyrsniveau", null);
+        model.addAttribute("energiTyper", bilRepository.skafenergiTyper());
+        model.addAttribute("farver", bilRepository.skafAlleFarver());
+        model.addAttribute("gearbokse", bilRepository.skafGearbokse());
+        model.addAttribute("maerker", bilRepository.skafAlleMaerker());
+        model.addAttribute("udstyrsniveau", bilRepository.skafUdstyrsNiveau());
 
         return "html/dataRegistrering/bilRegistrering";
 
