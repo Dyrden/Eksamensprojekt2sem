@@ -56,6 +56,7 @@ private SkadeRepository skadeRepository = new SkadeRepository();
     model.addAttribute("skader",skadeRepository.skafSkaderFraRapport(rapportID));
 
     model.addAttribute("bil", session.getAttribute("bil"));
+    model.addAttribute("totalPris", skadeRepository.skafTotalPrisFraRapportID(rapportID));
     return "html/rapporter/seSkadesRapport";
   }
 

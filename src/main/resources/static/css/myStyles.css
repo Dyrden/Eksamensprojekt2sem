@@ -111,3 +111,9 @@
     display: flex;
     justify-content: center;
 }
+
+#totalPrisIRapport {
+    display: flex;
+    margin-left: 817px;
+    margin-top: 20px;
+}

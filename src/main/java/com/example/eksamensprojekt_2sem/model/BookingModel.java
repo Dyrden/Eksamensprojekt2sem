@@ -10,6 +10,7 @@ public class BookingModel {
   private String startDato;
   private String slutDato;
   private double maanedspris;
+  private int kilometerStart;
 
   public BookingModel() {
   }
@@ -22,6 +23,27 @@ public class BookingModel {
     this.startDato = startDato;
     this.slutDato = slutDato;
     this.maanedspris = maanedspris;
+  }
+
+  public int getKilometerStart() {
+    return kilometerStart;
+  }
+
+  public void setKilometerStart(int kilometerStart) {
+    this.kilometerStart = kilometerStart;
+  }
+
+  public BookingModel(int id, int brugerID, int abonnementstypeID, String abonnementsType, int udleveringsStedID, String udleveringsSted, String startDato, String slutDato, double maanedspris, int kilometerStart) {
+    this.id = id;
+    this.brugerID = brugerID;
+    this.abonnementstypeID = abonnementstypeID;
+    this.abonnementsType = abonnementsType;
+    this.udleveringsStedID = udleveringsStedID;
+    this.udleveringsSted = udleveringsSted;
+    this.startDato = startDato;
+    this.slutDato = slutDato;
+    this.maanedspris = maanedspris;
+    this.kilometerStart = kilometerStart;
   }
 
   public int getId() {
