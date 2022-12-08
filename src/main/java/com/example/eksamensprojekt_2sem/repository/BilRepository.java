@@ -44,9 +44,10 @@ public class BilRepository {
              double CO2Udledning = resultSet.getInt(12);
              int produktionsaar = resultSet.getInt(13);
              int distance = resultSet.getInt(14);
+             double maanedsPris = resultSet.getDouble(14);
 
                 biler.add(new BilModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
-                                            staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance));
+                                            staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedsPris));
             }
 
         } catch (SQLException e){
@@ -105,7 +106,7 @@ public class BilRepository {
         try {
 
             ResultSet resultSet =
-                    SQLManager.execute("CALL VisSpecifikBil('?')");
+                    SQLManager.execute("CALL VisSpecifikBil('" + s + "')");
             while (resultSet.next()){
                 try {
                 bilModel.setVognNummer(resultSet.getString(1));
@@ -123,5 +124,61 @@ public class BilRepository {
         return bilModel;
     }
 
+
+    public List<BilModel> chooseCallFromParameter(String parameterTekst){
+
+        List<BilModel> biler = new LinkedList<>();
+
+        String[] parametre = parameterTekst.split(","); //parameterText bliver delt op i dens kommaer, op til 5 gange for at være acceptabelt.
+
+        String definéretProcedure = switch (parametre.length) { //En bedre måde på at gøre tingene i en enkel metode i stedet for 5.
+            case 1 -> "CALL skafbileraf1parameter('" + parametre[0] + "')";
+            case 2 -> "CALL skafbileraf2parametre('" + parametre[0] + "','" + parametre[1] + "')";
+            case 3 -> "CALL skafbileraf3parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "')";
+            case 4 -> "CALL skafbileraf4parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "')";
+            case 5 -> "CALL skafbileraf5parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "','" + parametre[4] + "')";
+
+            default -> throw new IllegalStateException("Unexpected value: " + parametre.length);
+        };
+
+        biler = returnerListeBilerAfSpecifikCall(definéretProcedure);
+
+        return biler;
+    }
+
+    private List<BilModel> returnerListeBilerAfSpecifikCall(String definéretProcedure) {
+        List<BilModel> biler = new LinkedList<>();
+
+        try {
+            ResultSet resultSet = SQLManager.execute(definéretProcedure);
+
+            while (resultSet.next()) {
+                String vognNummer = resultSet.getString(1);
+                String stelNummer = resultSet.getString(2);
+                String maerke = resultSet.getString(3);
+                String model = resultSet.getString(4);
+                String energiType = resultSet.getString(5);
+                String gearboks = resultSet.getString(6);
+                String udstyr = resultSet.getString(7);
+                String status = resultSet.getString(8);
+                String farve = resultSet.getString(9);
+                double staalPris = resultSet.getInt(10);
+                double registreringsAfgift = resultSet.getInt(11);
+                double CO2Udledning = resultSet.getInt(12);
+                int produktionsaar = resultSet.getInt(13);
+                int distance = resultSet.getInt(14);
+                double maanedsPris = resultSet.getDouble(14);
+
+                biler.add(new BilModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
+                        staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedsPris));
+            }
+
+        } catch (SQLException e){
+            System.err.println("Ingen biler fundet med søgeparametre.");
+            System.out.println(e.getMessage());
+            return new LinkedList<BilModel>();
+        }
+        return biler;
+    }
 
 }
