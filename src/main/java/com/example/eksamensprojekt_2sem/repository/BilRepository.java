@@ -95,7 +95,7 @@ public class BilRepository {
     public Object visInleveretBiler(){
         List<BilModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL BilerManglerSkader()");
+            ResultSet resultSet = SQLManager.execute("CALL visBilerManglerOvervaagning()");
             while (resultSet.next()){
                 String maerke = resultSet.getString(1);
                 String model = resultSet.getString(2);
