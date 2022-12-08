@@ -8,6 +8,8 @@
   <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
   <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../static/css/overSkrift.css"/>
   <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+  <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+  <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 </head>
 <body>
@@ -24,7 +26,9 @@
     <td> <span th:text="${r.vognNummer}">vogn nummer</span> </td>
     <td> <span th:text="${r.id}">id</span> </td>
     <td> <span th:text="${r.dato}">dato</span> </td>
-    <td> <span> <a th:href="@{'/seSkader/' + ${r.id}}">Se skader for rapporten</a> </span> </td>  </tr>
+    <td th:id="blaaKnapTilTable">
+      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seSkader/' + ${r.id}}">Se skader for rapport</a> </button>
+    </td>
 
 </table>
 

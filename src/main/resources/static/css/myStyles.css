@@ -54,19 +54,6 @@
     justify-content: center;
 }
 
-#brugerIDSearchField{
-    border: none;
-    padding: 1rem;
-    font-size: 1rem;
-    width: 13em;
-    border-radius: 1rem;
-    color: #259bca;
-    cursor: pointer;
-    margin-top: 10px;
-}
-#brugerIDSearchField .input:focus {
-    outline-color: #259bca;
-}
 
 .beaverIBaggrund{
     background-image: url(@{/images/beaver.png});
