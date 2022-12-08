@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-public class Rapporter {
+public class RapporterController {
 private BilRepository bilRepository = new BilRepository();
 private RapportRepository rapportRepository = new RapportRepository();
 private SkadeRepository skadeRepository = new SkadeRepository();

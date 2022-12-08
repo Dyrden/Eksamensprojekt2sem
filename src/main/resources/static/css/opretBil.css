@@ -1,0 +1,14 @@
+
+
+
+
+.bilInformationContainer {
+    display : flex;
+    width: fit-content;
+    align-content: center;
+
+    justify-content: space-evenly;
+    flex-direction: row;
+
+
+}
