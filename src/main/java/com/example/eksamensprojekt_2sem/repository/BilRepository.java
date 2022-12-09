@@ -179,17 +179,17 @@ public class BilRepository {
 
         String[] parametre = parameterTekst.split(","); //parameterText bliver delt op i dens kommaer, op til 5 gange for at være acceptabelt.
 
-        String definéretProcedure = switch (parametre.length) { //En bedre måde på at gøre tingene i en enkel metode i stedet for 5.
-            case 1 -> "CALL skafbileraf1parameter('" + parametre[0] + "')";
-            case 2 -> "CALL skafbileraf2parametre('" + parametre[0] + "','" + parametre[1] + "')";
-            case 3 -> "CALL skafbileraf3parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "')";
-            case 4 -> "CALL skafbileraf4parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "')";
-            case 5 -> "CALL skafbileraf5parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "','" + parametre[4] + "')";
+        String defineretProcedure = switch (parametre.length) { //En bedre måde på at gøre tingene i en enkel metode i stedet for 5.
+            case 1 -> "CALL BilerFind1Param('" + parametre[0] + "')";
+            case 2 -> "CALL BilerFind2Param('" + parametre[0] + "','" + parametre[1] + "')";
+            case 3 -> "CALL BilerFind3Param('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "')";
+            case 4 -> "CALL BilerFind4Param('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "')";
+            case 5 -> "CALL BilerFind5Param('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "','" + parametre[4] + "')";
 
             default -> throw new IllegalStateException("Unexpected value: " + parametre.length);
         };
 
-        biler = returnerListeBilerAfSpecifikCall(definéretProcedure);
+        biler = returnerListeBilerAfSpecifikCall(defineretProcedure);
 
         return biler;
     }

@@ -48,7 +48,7 @@ public class KundeRepository {
   public void opretKunde(String fornavn, String efternavn, String email, String tlf, String cpr) { //Kristian
     // Format:
     // fornavn,efternavn,email,tlf,cpr
-    SQLManager.update("CALL OpretBruger('" + fornavn + "','" + efternavn + "','" + email + "','" + tlf + "','" + cpr + "')");
+    SQLManager.update("CALL BrugerOpret('" + fornavn + "','" + efternavn + "','" + email + "','" + tlf + "','" + cpr + "')");
   }
 
   public int getNyesteKundeID() { //Kristian. Metoden skal returnere det nyeste kunde ID, så websiden ved, hvilken kunde den skal forbinde den nye booking til.
