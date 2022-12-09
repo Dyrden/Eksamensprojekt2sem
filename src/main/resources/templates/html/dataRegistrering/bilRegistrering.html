@@ -21,9 +21,7 @@
         <h3>Registrer ny bil</h3>
         <h4>Indtast bilens informationer</h4>
         <fieldset>
-            <select name="maerke" id="maerke">
-                <option value="0">Vælg mærke</option>
-                <option th:each="m : ${maerker}" th:value="${m}" th:text="${m}"></option>
+                <input placeholder="bil Mærke" id="bilmaerke" type="text">
             </select>
         </fieldset>
         <fieldset>
@@ -89,90 +87,5 @@
         </fieldset>
     </form>
 </div>
--------------------
-Marks model. Jeg har fjernet CSS filen derfor det ser mærkeligt ud.
-<div class="bilInformationerContainer">
-
-    <div class="bilInformationer">
-        <form action="/bilRegistrering">
-
-            <div class="bilInformation">
-                <label for="vognnummer">Vogn Nummer</label>
-                <input id="vognnummer" type="text">
-
-            </div>
-            <div class="bilInformation">
-                <label for="stelNummer">Stelnummer</label>
-                <input id="stelNummer" type="text">
-
-            </div>
-            <div class="bilInformation">
-                <label for="bilmaerke">Mærke</label>
-                <input class="inputbox" id="bilmaerke" type="text">
-            </div>
-            <div class="bilInformation">
-                <label for="model">Model </label>
-                <input id="model" type="text">
-
-            </div>
-            <div class="bilInformation">
-                <label for="gear">Gear</label>
-                <input id="gear" type="text">
-
-            </div>
-            <div class="bilInformation">
-                <label for="energitype">Energitype</label>
-                <input id="energitype" type="text">
-
-            </div>
-            <div class="bilInformation">
-                <label for="udstyrniveau">Udstyrniveau</label>
-                <input id="udstyrniveau" type="text">
-
-            </div>
-            <div class="bilInformation">
-                <label for="farve">Farve</label>
-                <input id="farve" type="text">
-
-            </div>
-             <div class="bilInformation">
-                <label for="staalpris">Stålpris</label>
-                <input id="staalpris" type="text">
-
-            </div>
-             <div class="bilInformation">
-                <label for="registreringsafgift">Registreringsafgift</label>
-                <input id="registreringsafgift" type="text">
-
-            </div>
-             <div class="bilInformation">
-                <label for="CO2udledning">CO2udledning</label>
-                <input id="CO2udledning" type="text">
-
-            </div>
-            <div class="bilInformation">
-                <label for="produktionsaar">Produktionsår</label>
-                <input id="produktionsaar" type="text">
-
-            </div>
-            <div class="bilInformation">
-                <label for="kilometertal">Kilometertal</label>
-                <input id="kilometertal" type="text">
-
-            </div>
-            <div class="bilInformation">
-                <label for="maanedspris">Månedspris</label>
-                <input id="maanedspris" type="text">
-
-            </div>
-
-            <div>
-                <input type="submit" value="Opret bil">
-            </div>
-        </form>
-    </div>
-</div>
-
-
 </body>
 </html>

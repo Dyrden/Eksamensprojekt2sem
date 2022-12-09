@@ -45,7 +45,7 @@ public class BilRepository {
              double CO2Udledning = resultSet.getInt(12);
              int produktionsaar = resultSet.getInt(13);
              int distance = resultSet.getInt(14);
-             double maanedsPris = resultSet.getDouble(14);
+             double maanedsPris = resultSet.getDouble(15);
 
                 biler.add(new BilModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
                                             staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedsPris));
@@ -215,7 +215,7 @@ public class BilRepository {
                 double CO2Udledning = resultSet.getInt(12);
                 int produktionsaar = resultSet.getInt(13);
                 int distance = resultSet.getInt(14);
-                double maanedsPris = resultSet.getDouble(14);
+                double maanedsPris = resultSet.getDouble(15);
 
                 biler.add(new BilModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
                         staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedsPris));

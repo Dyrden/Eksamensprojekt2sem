@@ -179,7 +179,7 @@ public class DataRegController {
         @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,
         @RequestParam("abonnementsType") int abonnementsType,
         @RequestParam("udleveringsSted") int udleveringsSted,
-        HttpSession sessionKundeID, HttpSession sessionBil)
+        HttpSession sessionKundeID, HttpSession sessionBil, Model model)
     {
         BilModel bil = bilRepository.visSpecifikBil((String)sessionBil.getAttribute("vognNummer")); // Caster en session til en stringværdi som kan bruges i metoden, som derefter kan definere BilModel objektet.
         // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
@@ -193,6 +193,13 @@ public class DataRegController {
                 udlejningsStartDato,
                 udeljningsSlutDato,
                 bil.getDistance()); // Bilens "kilometerStart" er den mængde kilometer som bilen har kørt.
+
+       model.addAttribute("bil", bil);
+       model.addAttribute("bruger", sessionKundeID.getAttribute("brugerID"));
+       model.addAttribute("udlejningsStartDato", udlejningsStartDato);
+       model.addAttribute("udeljningsSlutDato", udeljningsSlutDato);
+       model.addAttribute("abonnementsType", abonnementsType);
+       model.addAttribute("udleveringsSted", udleveringsSted);
 
         return "html/dataRegistrering/successite";
     }
