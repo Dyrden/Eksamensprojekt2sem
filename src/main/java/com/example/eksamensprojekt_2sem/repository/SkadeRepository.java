@@ -1,5 +1,7 @@
 package com.example.eksamensprojekt_2sem.repository;
 
+import com.example.eksamensprojekt_2sem.model.AbonnementsTypeModel;
+import com.example.eksamensprojekt_2sem.model.BookingModel;
 import com.example.eksamensprojekt_2sem.model.RapportModel;
 import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
@@ -37,7 +39,9 @@ public class SkadeRepository {
         skader.add(new SkadeModel(skadeid, skadensPlacering, skadensBeskrivelse, skadensPris, rapportID));
       }
     } catch (SQLException e){
-      e.printStackTrace();
+      System.err.println("Ingen rapporter/skader fundet.");
+      System.out.println(e.getMessage());
+      return new LinkedList<SkadeModel>();
     }
 
     return skader;
@@ -92,7 +96,9 @@ public class SkadeRepository {
         totalPris += skadensPris;
       }
     } catch (SQLException e){
-      e.printStackTrace();
+      System.err.println("Ingen skader/skadepris fundet.");
+      System.out.println(e.getMessage());
+      return 0;
     }
 
     return totalPris;

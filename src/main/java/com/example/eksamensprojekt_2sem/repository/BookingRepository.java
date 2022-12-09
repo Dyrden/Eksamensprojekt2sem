@@ -44,7 +44,9 @@ public class BookingRepository {
             }
 
         } catch (SQLException e){
-            e.printStackTrace();
+            System.err.println("Ingen bookinger fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<BookingModel>();
         }
 
         return bookinger;
@@ -67,7 +69,9 @@ public class BookingRepository {
             }
 
         } catch (SQLException e){
-            e.printStackTrace();
+            System.err.println("Ingen indtægt fundet.");
+            System.out.println(e.getMessage());
+            return 0;
         }
 
 
@@ -109,7 +113,9 @@ public class BookingRepository {
             }
 
         } catch (SQLException e){
-            e.printStackTrace();
+            System.err.println("Ingen aktive bookinger fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<BilOgBookingModel>();
         }
 
         return biler;
@@ -123,14 +129,14 @@ public class BookingRepository {
     public void lavBooking(String vognNummer, int BrugerID,int abonnementsType,int sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){ // Kristian
         // Format:
         // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
-        SQLManager.update("CALL BookingOpret('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
+        SQLManager.update("CALL Booking_Opret('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
 
     }
 
     public List<UdleveringsstedModel> visAlleUdleveringsSteder() { //Kristian
         List<UdleveringsstedModel> udleveringssteder = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visAlleUdleveringsSteder()");
+            ResultSet resultSet = SQLManager.execute("CALL skafUdleveringssteder()");
 
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
@@ -139,7 +145,9 @@ public class BookingRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen udleveringssteder fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<UdleveringsstedModel>();
         }
 
         return udleveringssteder;
@@ -149,7 +157,7 @@ public class BookingRepository {
     public List<AbonnementsTypeModel> visAlleAbonnementsTyper() { //Kristian
         List<AbonnementsTypeModel> abonnementsTyper = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visAlleAbonnementsTyper()");
+            ResultSet resultSet = SQLManager.execute("CALL skafAbonnementsTyper()");
 
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
@@ -158,7 +166,9 @@ public class BookingRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen abonnementsTyper fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<AbonnementsTypeModel>();
         }
 
         return abonnementsTyper;

@@ -1,6 +1,7 @@
 package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.BrugerModel;
+import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -39,7 +40,9 @@ public class KundeRepository {
           brugere.add(new BrugerModel(id, fornavn, efternavn, email, tlf, cpr));
         }
       } catch (SQLException e) {
-        e.printStackTrace();
+        System.err.println("Ingen brugere fundet.");
+        System.out.println(e.getMessage());
+        return new LinkedList<BrugerModel>();
       }
       return brugere;
   }
@@ -48,7 +51,7 @@ public class KundeRepository {
   public void opretKunde(String fornavn, String efternavn, String email, String tlf, String cpr) { //Kristian
     // Format:
     // fornavn,efternavn,email,tlf,cpr
-    SQLManager.update("CALL BrugerOpret('" + fornavn + "','" + efternavn + "','" + email + "','" + tlf + "','" + cpr + "')");
+    SQLManager.update("CALL Bruger_Opret('" + fornavn + "','" + efternavn + "','" + email + "','" + tlf + "','" + cpr + "')");
   }
 
   public int getNyesteKundeID() { //Kristian. Metoden skal returnere det nyeste kunde ID, så websiden ved, hvilken kunde den skal forbinde den nye booking til.
@@ -63,7 +66,9 @@ public class KundeRepository {
       nyesteKundeID = resultSet.getInt(1);
 
     } catch (SQLException e) {
-      e.printStackTrace();
+      System.err.println("Ingen kunde fundet.");
+      System.out.println(e.getMessage());
+      return 0;
     }
 
     return nyesteKundeID;
@@ -88,7 +93,9 @@ public class KundeRepository {
         brugere.add(new BrugerModel(id, fornavn, efternavn, email, tlf, cpr));
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      System.err.println("Ingen bruger fundet.");
+      System.out.println(e.getMessage());
+      return new LinkedList<BrugerModel>();
     }
     return brugere;
   }
