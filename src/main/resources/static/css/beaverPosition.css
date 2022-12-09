@@ -3,8 +3,8 @@
     background-repeat: no-repeat, repeat;
     background-size: 50%;
     background-attachment: inherit;
-    background-position-x: 120px;
-    background-position-y: 280px;
+    background-position-x: -50px;
+    background-position-y: 230px;
 
 }
 
@@ -40,12 +40,39 @@
     background-attachment: inherit;
     background-position-x: 1088px;
     background-position-y: 0px;
+}
 
-}#beaverTilfoejSkade{
+#beaverTilfoejSkade{
     background-image: url(@{/images/beaverMechanic.png});
     background-repeat: no-repeat, repeat;
      background-size: 40%;
      background-attachment: inherit;
      background-position-x: 900px;
      background-position-y: 20px;
+}
+
+ #beaverVaelgRapperSkader{
+     background-image: url(@{/images/beaverMechanic.png});
+     background-repeat: no-repeat, repeat;
+     background-size: 25%;
+     background-attachment: inherit;
+     background-position-x: 1050px;
+     background-position-y: 120px;
+ }
+
+#beaverIBaggrundForretning{
+    background-image: url(@{/images/beaverInASuit.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 50%;
+    background-attachment: inherit;
+    background-position-x: -41px;
+    background-position-y: 127px;
+}
+#beaverSeRapporter{
+    background-image: url(@{/images/beaverInASuit.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 9%;
+    background-attachment: inherit;
+    background-position-x: 1088px;
+    background-position-y: 0px;
 }
