@@ -13,6 +13,8 @@
 
 </head>
 <body>
+<div th:id="beaverVaelgRapperSkader" th:style="'background-image:url(' + @{/images/beaverMechanic.png}">
+
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
 <div th:class="bilInfo">
 <table class="center">
@@ -38,6 +40,7 @@
     <button placeholder="Registrer ny rapport?" type="submit">  <a th:class="htmlLink" th:href="@{'/'}">Registrer ny rapport?</a>
     </button>
   </div>
+</div>
 </div>
 </body>
 </html>
