@@ -211,7 +211,7 @@ public class BilRepository {
     public Object visInleveretBiler() {
         List<BilModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visBilerManglerOvervaagning()");
+            ResultSet resultSet = SQLManager.execute("CALL BilerSkaderMangler()");
             while (resultSet.next()){
                 String maerke = resultSet.getString(1);
                 String model = resultSet.getString(2);
@@ -236,30 +236,30 @@ public class BilRepository {
     public BilModel visSpecifikBil(String vognNummer) {
         //Ferhat og Kristian er ansvarlig for denne metode
 
-        BilModel bil = new BilModel();
-        try {
-            ResultSet resultSet = SQLManager.execute
-                ("CALL FindSpecifikBilFraVognNum('" + vognNummer + "')");
-            while (resultSet.next()) {
-                bil.setVognNummer(resultSet.getString(1));
-                bil.setStelNummer(resultSet.getString(2));
-                bil.setMaerke(resultSet.getString(3));
-                bil.setModel(resultSet.getString(4));
-                bil.setEnergiType(resultSet.getString(5));
-                bil.setGearboks(resultSet.getString(6));
-                bil.setUdstyr(resultSet.getString(7));
-                bil.setStatus(resultSet.getString(8));
-                bil.setFarve(resultSet.getString(9));
-                bil.setStaalPris(resultSet.getDouble(10));
-                bil.setRegistreringsAfgift(resultSet.getDouble(11));
-                bil.setCO2Udledning(resultSet.getDouble(12));
-                bil.setProduktionsaar(resultSet.getInt(13));
-                bil.setDistance(resultSet.getInt(14));
-            }
-            System.out.println(bil);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+      BilModel bil = new BilModel();
+      try{
+          ResultSet resultSet = SQLManager.execute
+                  ("CALL BilVognnummerFind('"+vognNummer+"')");
+          while (resultSet.next()){
+            bil.setVognNummer(resultSet.getString(1));
+            bil.setStelNummer(resultSet.getString(2));
+              bil.setMaerke(resultSet.getString(3));
+              bil.setModel(resultSet.getString(4));
+              bil.setEnergiType(resultSet.getString(5));
+              bil.setGearboks(resultSet.getString(6));
+              bil.setUdstyr(resultSet.getString(7));
+              bil.setStatus(resultSet.getString(8));
+              bil.setFarve(resultSet.getString(9));
+              bil.setStaalPris(resultSet.getDouble(10));
+              bil.setRegistreringsAfgift(resultSet.getDouble(11));
+              bil.setCO2Udledning(resultSet.getDouble(12));
+              bil.setProduktionsaar(resultSet.getInt(13));
+              bil.setDistance(resultSet.getInt(14));
+          }
+        System.out.println(bil);
+      } catch (SQLException e){
+          e.printStackTrace();
+      }
 
         return bil;
 
@@ -332,7 +332,7 @@ public class BilRepository {
                 double CO2Udledning = resultSet.getInt(12);
                 int produktionsaar = resultSet.getInt(13);
                 int distance = resultSet.getInt(14);
-                double maanedsPris = resultSet.getDouble(14);
+                double maanedsPris = resultSet.getDouble(15);
 
                 biler.add(new BilModel(vognNummer, stelNummer, maerke, model, energiType, gearboks, udstyr, status, farve,
                     staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedsPris));

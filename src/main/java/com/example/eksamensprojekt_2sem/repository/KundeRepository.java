@@ -56,7 +56,7 @@ public class KundeRepository {
     int nyesteKundeID = 0;
 
     try {
-      ResultSet resultSet = SQLManager.execute("CALL getHoejesteKundeID()");
+      ResultSet resultSet = SQLManager.execute("CALL KundeIDFindHoejst()");
 
       resultSet.next(); //Der er kun en enkel linje i denne query, så dette er nødvendigt.
 

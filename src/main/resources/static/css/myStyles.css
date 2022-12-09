@@ -117,6 +117,11 @@
     display: flex;
     justify-content: center;
 }
+#centerSearchField {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #totalPrisIRapport {
     display: flex;
