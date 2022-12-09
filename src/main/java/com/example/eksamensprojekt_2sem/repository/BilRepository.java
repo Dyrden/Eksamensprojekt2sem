@@ -1,6 +1,8 @@
 package com.example.eksamensprojekt_2sem.repository;
 
+
 import com.example.eksamensprojekt_2sem.model.*;
+import com.example.eksamensprojekt_2sem.model.BilModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -21,9 +23,7 @@ public class BilRepository {
 
     @Value("${JDBCPassword}")
     private String pass;
-
-    public BilRepository() {
-    }
+    public BilRepository(){}
 
     public List<BilModel> visTilgaengeligeBiler() {
         //Mark er ansvarlig for denne metode
@@ -211,8 +211,8 @@ public class BilRepository {
     public Object visInleveretBiler() {
         List<BilModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL BilerManglerSkader()");
-            while (resultSet.next()) {
+            ResultSet resultSet = SQLManager.execute("CALL visBilerManglerOvervaagning()");
+            while (resultSet.next()){
                 String maerke = resultSet.getString(1);
                 String model = resultSet.getString(2);
                 String vognNummer = resultSet.getString(3);
@@ -299,12 +299,9 @@ public class BilRepository {
         String definéretProcedure = switch (parametre.length) { //En bedre måde på at gøre tingene i en enkel metode i stedet for 5.
             case 1 -> "CALL skafbileraf1parameter('" + parametre[0] + "')";
             case 2 -> "CALL skafbileraf2parametre('" + parametre[0] + "','" + parametre[1] + "')";
-            case 3 ->
-                "CALL skafbileraf3parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "')";
-            case 4 ->
-                "CALL skafbileraf4parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "')";
-            case 5 ->
-                "CALL skafbileraf5parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "','" + parametre[4] + "')";
+            case 3 -> "CALL skafbileraf3parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "')";
+            case 4 -> "CALL skafbileraf4parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "')";
+            case 5 -> "CALL skafbileraf5parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "','" + parametre[4] + "')";
 
             default -> throw new IllegalStateException("Unexpected value: " + parametre.length);
         };
@@ -348,5 +345,89 @@ public class BilRepository {
         }
         return biler;
     }
+  public List<String> skafAlleFarver() {
+    List<String> farver = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL visAlleFarver()");
 
+      while (resultSet.next()) {
+       String farve = resultSet.getString(1);
+        farver.add(farve);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return farver;
+
+  }
+  public List<String> skafAlleMaerker() {
+    List<String> maerker = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL skafmaerker()");
+
+      while (resultSet.next()) {
+        String maerke = resultSet.getString(2);
+        maerker.add(maerke);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return maerker;
+
+  }
+  public List<String> skafGearbokse() {
+    List<String> liste = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL skafgearboks()");
+
+      while (resultSet.next()) {
+        String item = resultSet.getString(2);
+        liste.add(item);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return liste;
+
+  }
+  public List<String> skafenergiTyper() {
+    List<String> liste = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL skafenergityper()");
+
+      while (resultSet.next()) {
+        String item = resultSet.getString(2);
+        liste.add(item);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return liste;
+
+  }
+  public List<String> skafUdstyrsNiveau() {
+    List<String> liste = new LinkedList<>();
+    try {
+      ResultSet resultSet = SQLManager.execute("CALL skafudstyrsniveau()");
+
+      while (resultSet.next()) {
+        String item = resultSet.getString(2);
+        liste.add(item);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return liste;
+
+  }
 }

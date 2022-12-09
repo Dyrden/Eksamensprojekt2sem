@@ -5,32 +5,97 @@
     <title>opretBil</title>
 
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
-    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
-    <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
-    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
-    <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../../static/css/overSkrift.css"/>
-
-    <link rel="stylesheet" th:href="@{/css/opretBil.css}" href="../../../static/css/opretBil.css"/>
+    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../static/css/navigationsbar.css"/>
+    <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../static/css/tableStyle.css"/>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../static/css/tilfojSkade.css"/>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../static/css/nyNaviBar.css"/>
+    <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"></div>
 
+<div class="container">
+    <form id="bilSpecifikation" action="/tilfoej" method="post">
+        <h3>Registrer ny bil</h3>
+        <h4>Indtast bilens informationer</h4>
+        <fieldset>
+            <select name="maerke" id="maerke">
+                <option value="0">Vælg mærke</option>
+                <option th:each="m : ${maerker}" th:value="${m}" th:text="${m}"></option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <select name="farve" id="farveValg">
+                <option value="0">Vælg farve.</option>
+                <option th:each="f : ${farver}" th:value="${f}" th:text="${f}"></option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <select name="gearboks" id="gearboks">
+                <option value="0">Vælg gearboks</option>
+                <option th:each="g : ${gearbokse}" th:value="${g}" th:text="${g}"></option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <select name="udstyrsniveau" id="udstyrsniveau">
+                <option value="0">Vælg udstyrsniveau.</option>
+                <option th:each="u : ${udstyrsniveau}" th:value="${u}" th:text="${u}"></option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <select name="energiTyper" id="energiTyper">
+                <option value="0">Vælg energiTyper.</option>
+                <option th:each="e : ${energiTyper}" th:value="${e}" th:text="${e}"></option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <input name="model" placeholder="model" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input name="stelNummer" placeholder="stelNummer" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input name="vognnummer" placeholder="vognnummer" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input name="produktionsaar" placeholder="produktionsaar" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input name="staal" placeholder="staal pris" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input name="CO2udledning" placeholder="CO2udledning" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input name="registreringsafgift" placeholder="registreringsafgift" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input name="Kilometertal" placeholder="Kilometertal" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input name="maanedspris" placeholder="maanedspris" type="text" tabindex="1" required autofocus>
+        </fieldset>
+
+
+        <fieldset>
+            <div class="flex">
+                <button placeholder="annuller" type="submit" th:href="@{'/skadeOgUdbedring/'}">Annuller
+                </button>
+                <input type="hidden" id="wishId" name="rapportID" th:attr="value=${rapportID}">
+                <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Indsend</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+-------------------
+Marks model. Jeg har fjernet CSS filen derfor det ser mærkeligt ud.
 <div class="bilInformationerContainer">
 
     <div class="bilInformationer">
         <form action="/bilRegistrering">
 
-            <div class="bilInformation">
-                <label for="bilmaerke">Bil Mærke</label>
-                <input class="inputbox" id="bilmaerke" type="text">
-            </div>
-            <div class="bilInformation">
-                <label for="model">Model </label>
-                <input id="model" type="text">
-
-            </div>
             <div class="bilInformation">
                 <label for="vognnummer">Vogn Nummer</label>
                 <input id="vognnummer" type="text">
@@ -39,6 +104,15 @@
             <div class="bilInformation">
                 <label for="stelNummer">Stelnummer</label>
                 <input id="stelNummer" type="text">
+
+            </div>
+            <div class="bilInformation">
+                <label for="bilmaerke">Mærke</label>
+                <input class="inputbox" id="bilmaerke" type="text">
+            </div>
+            <div class="bilInformation">
+                <label for="model">Model </label>
+                <input id="model" type="text">
 
             </div>
             <div class="bilInformation">
@@ -52,7 +126,7 @@
 
             </div>
             <div class="bilInformation">
-                <label for="udstyrniveau">udstyrniveau</label>
+                <label for="udstyrniveau">Udstyrniveau</label>
                 <input id="udstyrniveau" type="text">
 
             </div>
@@ -62,7 +136,7 @@
 
             </div>
              <div class="bilInformation">
-                <label for="staalpris">stålpris</label>
+                <label for="staalpris">Stålpris</label>
                 <input id="staalpris" type="text">
 
             </div>
@@ -98,6 +172,7 @@
         </form>
     </div>
 </div>
+
 
 </body>
 </html>

@@ -75,6 +75,11 @@ public class DataRegController {
         model.addAttribute("maerker", bilRepository.skafMaerker());
         model.addAttribute("udstyrsniveau", bilRepository.skafUdstyrsNiveau());
         model.addAttribute("model", bilRepository.skafBilModelModel());
+        model.addAttribute("energiTyper", bilRepository.skafenergiTyper());
+        model.addAttribute("farver", bilRepository.skafAlleFarver());
+        model.addAttribute("gearbokse", bilRepository.skafGearbokse());
+        model.addAttribute("maerker", bilRepository.skafAlleMaerker());
+        model.addAttribute("udstyrsniveau", bilRepository.skafUdstyrsNiveau());
 
         return "html/dataRegistrering/bilRegistrering";
 
