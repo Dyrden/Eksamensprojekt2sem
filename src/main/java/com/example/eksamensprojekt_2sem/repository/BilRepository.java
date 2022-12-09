@@ -32,7 +32,7 @@ public class BilRepository {
         //Mark er ansvarlig for denne metode
         List<BilModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visTilgængeligeBiler()");
+            ResultSet resultSet = SQLManager.execute("CALL skafTilgængeligeBiler");
 
             while (resultSet.next()) {
                 String vognNummer = resultSet.getString(1);
@@ -252,7 +252,7 @@ public class BilRepository {
       BilModel bil = new BilModel();
       try{
           ResultSet resultSet = SQLManager.execute
-                  ("CALL BilVognnummerFind('"+vognNummer+"')");
+                  ("CALL skafSpecifikBilFraVognNum('"+vognNummer+"')");
           while (resultSet.next()){
             bil.setVognNummer(resultSet.getString(1));
             bil.setStelNummer(resultSet.getString(2));

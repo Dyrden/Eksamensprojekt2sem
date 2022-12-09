@@ -26,7 +26,7 @@ public class KundeRepository {
     List<BrugerModel> brugere = new LinkedList<>();
 
       try {
-        ResultSet resultSet = SQLManager.execute("CALL visAlleBrugere()");
+        ResultSet resultSet = SQLManager.execute("CALL skafAlleBrugere()");
 
         while (resultSet.next()) {
           int id = resultSet.getInt(1);
@@ -56,7 +56,7 @@ public class KundeRepository {
     int nyesteKundeID = 0;
 
     try {
-      ResultSet resultSet = SQLManager.execute("CALL KundeIDFindHoejst()");
+      ResultSet resultSet = SQLManager.execute("CALL skafHoejsteKundeID()");
 
       resultSet.next(); //Der er kun en enkel linje i denne query, så dette er nødvendigt.
 
