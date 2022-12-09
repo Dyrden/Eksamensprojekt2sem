@@ -65,7 +65,7 @@ public class RapportRepository {
 
 
     public void tilføjNuværrendeKMTilRapport(String rapportID, int km) {
-        SQLManager.update("CALL knytNuværrendeKMRapport(" + rapportID + ", " + km + ")");
+        SQLManager.update("CALL RapportKMNuSet(" + rapportID + ", " + km + ")");
     }
 
 

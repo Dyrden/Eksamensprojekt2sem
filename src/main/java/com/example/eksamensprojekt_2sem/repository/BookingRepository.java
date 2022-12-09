@@ -123,7 +123,7 @@ public class BookingRepository {
     public void lavBooking(String vognNummer, int BrugerID,int abonnementsType,int sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){ // Kristian
         // Format:
         // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
-        SQLManager.update("CALL lavBooking('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
+        SQLManager.update("CALL BookingOpret('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
 
     }
 

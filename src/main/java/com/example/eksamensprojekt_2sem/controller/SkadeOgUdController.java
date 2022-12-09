@@ -24,9 +24,8 @@ public class SkadeOgUdController {
 
     @GetMapping("/skadeOgUdbedring")
     //Ferhat er ansvarlig for denne metode
-    public String visSkadeOgUd(Model model, HttpSession session){
+    public String visSkadeOgUd(Model model){
         model.addAttribute("biler", bilRepository.visInleveretBiler());
-        session.invalidate();
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
     //Ferhat er ansvarlig for denne metode
@@ -59,14 +58,17 @@ public class SkadeOgUdController {
 
     @GetMapping("/seSkader/{rapportID}")
     //Ferhat er ansvarlig for denne metode
-    public String visSkader(@PathVariable("rapportID") String rapportID, Model model, HttpSession session){
+    public String visSkader(@PathVariable("rapportID")
+                                @RequestParam("BilvognNummer") String bil,
+                                String rapportID, Model model){
 
         //Når vi nu har bilens rapport, så kan vi tilgå rapporten
         //vi henter alle skaderne fra rapportens id.
         //Rapportens id har vi fået fra tildigere kode gennem bilens vognNummer
         model.addAttribute("skader",skadeRepository.skafSkaderFraRapport(rapportID));
         model.addAttribute("rapportID", rapportID);
-        model.addAttribute("bil", session.getAttribute("bil"));
+        //if statement nødvendigt som exception for at loade denne side direkte
+        model.addAttribute("bil", bilRepository.visSpecifikBil(bil));
         return "html/skadeOgUdbedring/seSkader";
     }
 
