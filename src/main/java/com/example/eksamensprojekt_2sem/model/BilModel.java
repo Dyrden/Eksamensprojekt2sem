@@ -54,7 +54,55 @@ public class BilModel {
       this.stelNummer = stelNummer;
   }
 
-  public String getMaerke() {
+
+    public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
+        this.vognNummer = vognNummer;
+        this.stelNummer = stelNummer;
+        this.maerke = maerke;
+        this.model = model;
+        this.energiType = energiType;
+        this.gearboks = gearboks;
+        this.udstyr = udstyr;
+        this.status = status;
+        this.farve = farve;
+        this.staalPris = staalPris;
+        this.registreringsAfgift = registreringsAfgift;
+        this.CO2Udledning = CO2Udledning;
+        this.produktionsaar = produktionsaar;
+        this.distance = distance;
+    }
+
+    public BilModel(String vognNummer, String stelNummer, int maerkeID, int modelID, int statusID, int farveID, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
+        this.vognNummer = vognNummer;
+        this.stelNummer = stelNummer;
+        this.maerkeID = maerkeID;
+        this.modelID = modelID;
+        this.statusID = statusID;
+        this.farveID = farveID;
+        this.staalPris = staalPris;
+        this.registreringsAfgift = registreringsAfgift;
+        this.CO2Udledning = CO2Udledning;
+        this.produktionsaar = produktionsaar;
+        this.distance = distance;
+    }
+
+    public BilModel(String vognNummer, String stelNummer, String maerke, String model, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
+        this.vognNummer = vognNummer;
+        this.stelNummer = stelNummer;
+        this.maerke = maerke;
+        this.model = model;
+        this.status = status;
+        this.farve = farve;
+        this.staalPris = staalPris;
+        this.registreringsAfgift = registreringsAfgift;
+        this.CO2Udledning = CO2Udledning;
+        this.produktionsaar = produktionsaar;
+        this.distance = distance;
+    }
+
+
+
+    public String getMaerke() {
         return maerke;
     }
 
@@ -110,55 +158,11 @@ public class BilModel {
         this.farve = farve;
     }
 
-    public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
-        this.vognNummer = vognNummer;
-        this.stelNummer = stelNummer;
-        this.maerke = maerke;
-        this.model = model;
-        this.energiType = energiType;
-        this.gearboks = gearboks;
-        this.udstyr = udstyr;
-        this.status = status;
-        this.farve = farve;
-        this.staalPris = staalPris;
-        this.registreringsAfgift = registreringsAfgift;
-        this.CO2Udledning = CO2Udledning;
-        this.produktionsaar = produktionsaar;
-        this.distance = distance;
-    }
-
-    public BilModel(String vognNummer, String stelNummer, int maerkeID, int modelID, int statusID, int farveID, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
-        this.vognNummer = vognNummer;
-        this.stelNummer = stelNummer;
-        this.maerkeID = maerkeID;
-        this.modelID = modelID;
-        this.statusID = statusID;
-        this.farveID = farveID;
-        this.staalPris = staalPris;
-        this.registreringsAfgift = registreringsAfgift;
-        this.CO2Udledning = CO2Udledning;
-        this.produktionsaar = produktionsaar;
-        this.distance = distance;
-    }
-
-    public BilModel(String vognNummer, String stelNummer, String maerke, String model, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
-        this.vognNummer = vognNummer;
-        this.stelNummer = stelNummer;
-        this.maerke = maerke;
-        this.model = model;
-        this.status = status;
-        this.farve = farve;
-        this.staalPris = staalPris;
-        this.registreringsAfgift = registreringsAfgift;
-        this.CO2Udledning = CO2Udledning;
-        this.produktionsaar = produktionsaar;
-        this.distance = distance;
-    }
-
-
 
     public BilModel() {
     }
+
+
 
     public String getVognNummer() {
         return vognNummer;
