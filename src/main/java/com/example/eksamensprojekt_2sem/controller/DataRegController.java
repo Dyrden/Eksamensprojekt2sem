@@ -69,22 +69,57 @@ public class DataRegController {
     // konstant værdier
     @GetMapping("/bilRegistrering")
     public String visBilRegistrering(Model model) {
-        model.addAttribute("energiTyper", null);
-        model.addAttribute("farver", null);
-        model.addAttribute("gearbokse", null);
-        model.addAttribute("maerker", null);
-        model.addAttribute("udstyrsniveau", null);
+        model.addAttribute("energiTyper", bilRepository.skafEnergiTyper());
+        model.addAttribute("farver", bilRepository.skafFarver());
+        model.addAttribute("gearbokse", bilRepository.skafGearboks());
+        model.addAttribute("maerker", bilRepository.skafMaerker());
+        model.addAttribute("udstyrsniveau", bilRepository.skafUdstyrsNiveau());
+        model.addAttribute("model", bilRepository.skafBilModelModel());
 
         return "html/dataRegistrering/bilRegistrering";
 
     }
 
     @PostMapping("/indsendBilTilRegistrering")
-    public String indsendBilTilRegistrering() {
-        //meget request param
-        //sql call til INSERT
+    public String indsendBilTilRegistrering(
+        @RequestParam("vognnummer") String vognnummer,
+        @RequestParam("stelnummer") String stelnummer,
+        @RequestParam("model") String model,
+        @RequestParam("farve") String farve,
+        @RequestParam("gearboks") String gearboks,
+        @RequestParam("maerke") String maerke,
+        @RequestParam("udstyrsniveau") String udstyrsniveau,
+        @RequestParam("energitype") String energitype,
+        @RequestParam("staalpris") double staalpris,
+        @RequestParam("registreringsafgift") double registreringsafgift,
+        @RequestParam("CO2udledning") double co2udledning,
+        @RequestParam("produktionsaar") int produktionsaar,
+        @RequestParam("kilometertal") int kilometertal,
+        @RequestParam("maanedspris") double maanedspris
+    ) {
 
-        return "";
+        BilModel bil = new BilModel();
+        bil.setModel(model);
+        bil.setVognNummer(vognnummer);
+        bil.setStelNummer(stelnummer);
+        bil.setModel(model);
+        bil.setFarve(farve);
+        bil.setGearboks(gearboks);
+        bil.setMaerke(maerke);
+        bil.setUdstyr(udstyrsniveau);
+        bil.setEnergiType(energitype);
+        bil.setStaalPris(staalpris);
+        bil.setRegistreringsAfgift(registreringsafgift);
+        bil.setCO2Udledning(co2udledning);
+        bil.setProduktionsaar(produktionsaar);
+        bil.setDistance(kilometertal);
+        bil.setMaanedsPris(maanedspris);
+
+
+
+
+
+        return "redirect:/";
     }
 
     @GetMapping("/kunde")
