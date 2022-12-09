@@ -1,4 +1,4 @@
-package com.example.eksamensprojekt_2sem.model;
+package com.example.eksamensprojekt_2sem.model.bilmodel;
 
 public class UdstyrsniveauModel {
 
@@ -28,6 +28,11 @@ public class UdstyrsniveauModel {
 
     public void setUdstyrsniveau(String udstyrsniveau) {
         this.udstyrsniveau = udstyrsniveau;
+    }
+
+    @Override
+    public String toString() {
+        return getUdstyrsniveau();
     }
 
 }

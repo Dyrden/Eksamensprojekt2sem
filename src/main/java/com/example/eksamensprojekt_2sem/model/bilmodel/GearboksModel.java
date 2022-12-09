@@ -1,4 +1,4 @@
-package com.example.eksamensprojekt_2sem.model;
+package com.example.eksamensprojekt_2sem.model.bilmodel;
 
 public class GearboksModel {
 
@@ -30,4 +30,9 @@ public class GearboksModel {
         this.gearboks = gearboks;
     }
 
+
+    @Override
+    public String toString() {
+        return getGearboks();
+    }
 }

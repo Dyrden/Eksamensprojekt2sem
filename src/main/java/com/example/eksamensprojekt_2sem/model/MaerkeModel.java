@@ -32,9 +32,6 @@ public class MaerkeModel {
 
     @Override
     public String toString() {
-        return "EnergiTypeModel{" +
-            "energiTypeID=" + maerkeID +
-            ", energiType='" + maerke + '\'' +
-            '}';
+        return getMaerke();
     }
 }

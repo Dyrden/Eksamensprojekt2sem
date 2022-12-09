@@ -1,4 +1,4 @@
-package com.example.eksamensprojekt_2sem.model;
+package com.example.eksamensprojekt_2sem.model.bilmodel;
 
 public class EnergiTypeModel {
 
@@ -32,9 +32,6 @@ public class EnergiTypeModel {
 
     @Override
     public String toString() {
-        return "EnergiTypeModel{" +
-            "energiTypeID=" + energiTypeID +
-            ", energiType='" + energiType + '\'' +
-            '}';
+        return getEnergiType();
     }
 }

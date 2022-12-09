@@ -30,4 +30,8 @@ public class FarveModel {
         this.farve = farve;
     }
 
+    @Override
+    public String toString() {
+        return getFarve();
+    }
 }

@@ -3,6 +3,9 @@ package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.*;
 import com.example.eksamensprojekt_2sem.model.BilModel;
+import com.example.eksamensprojekt_2sem.model.bilmodel.EnergiTypeModel;
+import com.example.eksamensprojekt_2sem.model.bilmodel.GearboksModel;
+import com.example.eksamensprojekt_2sem.model.bilmodel.UdstyrsniveauModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
