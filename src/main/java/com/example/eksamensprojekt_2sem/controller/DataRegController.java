@@ -1,6 +1,7 @@
 package com.example.eksamensprojekt_2sem.controller;
 
 import com.example.eksamensprojekt_2sem.model.BilModel;
+import com.example.eksamensprojekt_2sem.model.BilModelModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
 import com.example.eksamensprojekt_2sem.repository.BookingRepository;
 import com.example.eksamensprojekt_2sem.repository.KundeRepository;
@@ -73,15 +74,6 @@ public class DataRegController {
         model.addAttribute("gearbokse", bilRepository.skafGearboks());
         model.addAttribute("maerker", bilRepository.skafMaerker());
         model.addAttribute("udstyrsniveau", bilRepository.skafUdstyrsNiveau());
-        model.addAttribute("model", bilRepository.skafBilModel());
-      /*
-        model.addAttribute("energiTyper", bilRepository.skafenergiTyper());
-        model.addAttribute("farver", bilRepository.skafAlleFarver());
-        model.addAttribute("gearbokse", bilRepository.skafGearbokse());
-        model.addAttribute("maerker", bilRepository.skafAlleMaerker());
-        model.addAttribute("udstyrsniveau", bilRepository.skafUdstyrsNiveau());
-      * */
-
         return "html/dataRegistrering/bilRegistrering";
 
     }
@@ -108,7 +100,6 @@ public class DataRegController {
         bil.setModel(model);
         bil.setVognNummer(vognnummer);
         bil.setStelNummer(stelnummer);
-        bil.setModel(model);
         bil.setFarve(farve);
         bil.setGearboks(gearboks);
         bil.setMaerke(maerke);
@@ -122,9 +113,18 @@ public class DataRegController {
         bil.setMaanedsPris(maanedspris);
 
 
+        BilModelModel bilModel = new BilModelModel(model,energitype,gearboks,udstyrsniveau,maerke,farve);
 
+        // check om model findes
+        int modelID = bilRepository.findModel(bilModel);
 
+        if (modelID == 0) {
+            bilRepository.lavModel(bilModel);
+            modelID = bilRepository.findModel(bilModel);
+        }
+        bil.setModelID(modelID);
 
+        bilRepository.lavBil(bil);
         return "redirect:/";
     }
 

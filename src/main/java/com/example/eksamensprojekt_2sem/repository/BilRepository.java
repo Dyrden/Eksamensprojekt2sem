@@ -230,9 +230,19 @@ public class BilRepository {
 
     }
 
-    public Object LavBil(String s) {
-        return SQLManager.makeStatement("CALL LavBil()");
-
+    public void lavBil(BilModel bil) {
+        SQLManager.update(
+            "CALL Bil_Lav(\""
+                + bil.getVognNummer() + "\", \""
+                + bil.getStelNummer() + "\", \""
+                + bil.getStaalPris() + "\", \""
+                + bil.getRegistreringsAfgift() + "\", \""
+                + bil.getCO2Udledning() + "\", \""
+                + bil.getProduktionsaar() + "\", \""
+                + bil.getDistance() + "\", \""
+                + bil.getMaanedsPris() + "\", \""
+                + bil.getModelID() + "\")");
+        System.out.println("lavede bil");
     }
 
 
@@ -416,6 +426,40 @@ public class BilRepository {
     return liste;
 
   }
+
+    public int findModel(BilModelModel model) {
+        System.out.println(model.getModel() + " - " + model.getEnergiType()  + " - " + model.getGearboks()  + " - " + model.getUdstyrsNiveau()  + " - " + model.getMaerke()  + " - " + model.getFarve());
+        int modelID = 0;
+        try {
+            ResultSet rs = SQLManager.execute(
+                "CALL Model_FindExact(\""
+                    + model.getModel() + "\", \""
+                    + model.getEnergiType() + "\", \""
+                    + model.getGearboks() + "\", \""
+                    + model.getUdstyrsNiveau() + "\", \""
+                    + model.getMaerke() + "\", \""
+                    + model.getFarve() + "\")");
+            rs.next();
+            modelID = rs.getInt(1);
+        } catch (SQLException e) {
+            System.out.println("No model found by parameters");
+        }
+
+        return modelID;
+    }
+
+    public void lavModel(BilModelModel model) {
+        SQLManager.update(
+            "CALL Model_lav(\""
+                + model.getModel() + "\", \""
+                + model.getEnergiType() + "\", \""
+                + model.getGearboks() + "\", \""
+                + model.getUdstyrsNiveau() + "\", \""
+                + model.getMaerke() + "\", \""
+                + model.getFarve() + "\")");
+
+        System.out.println("lavede model");
+    }
 
   /*
   public List<String> skafUdstyrsNiveau() {
