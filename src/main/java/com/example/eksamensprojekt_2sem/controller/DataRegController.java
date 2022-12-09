@@ -4,7 +4,6 @@ import com.example.eksamensprojekt_2sem.model.BilModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
 import com.example.eksamensprojekt_2sem.repository.BookingRepository;
 import com.example.eksamensprojekt_2sem.repository.KundeRepository;
-import org.apache.coyote.http11.HttpOutputBuffer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -74,12 +73,14 @@ public class DataRegController {
         model.addAttribute("gearbokse", bilRepository.skafGearboks());
         model.addAttribute("maerker", bilRepository.skafMaerker());
         model.addAttribute("udstyrsniveau", bilRepository.skafUdstyrsNiveau());
-        model.addAttribute("model", bilRepository.skafBilModelModel());
+        model.addAttribute("model", bilRepository.skafBilModel());
+      /*
         model.addAttribute("energiTyper", bilRepository.skafenergiTyper());
         model.addAttribute("farver", bilRepository.skafAlleFarver());
         model.addAttribute("gearbokse", bilRepository.skafGearbokse());
         model.addAttribute("maerker", bilRepository.skafAlleMaerker());
         model.addAttribute("udstyrsniveau", bilRepository.skafUdstyrsNiveau());
+      * */
 
         return "html/dataRegistrering/bilRegistrering";
 

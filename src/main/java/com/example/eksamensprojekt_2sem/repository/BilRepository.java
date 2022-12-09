@@ -187,7 +187,7 @@ public class BilRepository {
         return gearboksModels;
     }
 
-    public LinkedList<BilModelModel> skafBilModelModel() {
+    public LinkedList<BilModelModel> skafBilModel() {
         LinkedList<BilModelModel> bilModelModels = new LinkedList<>();
 
         ResultSet rs = SQLManager.execute("CALL skafbilmodel()");
@@ -413,6 +413,8 @@ public class BilRepository {
     return liste;
 
   }
+
+  /*
   public List<String> skafUdstyrsNiveau() {
     List<String> liste = new LinkedList<>();
     try {
@@ -430,4 +432,5 @@ public class BilRepository {
     return liste;
 
   }
+  * */
 }

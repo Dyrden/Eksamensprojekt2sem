@@ -58,9 +58,8 @@ public class SkadeOgUdController {
 
     @GetMapping("/seSkader/{rapportID}")
     //Ferhat er ansvarlig for denne metode
-    public String visSkader(@PathVariable("rapportID")
-                                @RequestParam("BilvognNummer") String bil,
-                                String rapportID, Model model){
+    public String visSkader(@PathVariable("rapportID") String rapportID, @RequestParam("BilvognNummer") String bil,
+                                 Model model){
 
         //Når vi nu har bilens rapport, så kan vi tilgå rapporten
         //vi henter alle skaderne fra rapportens id.
