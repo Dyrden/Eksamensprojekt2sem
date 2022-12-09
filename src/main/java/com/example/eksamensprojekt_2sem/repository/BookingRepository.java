@@ -120,14 +120,14 @@ public class BookingRepository {
         //SQLManager.makeStatement("CALL VisBookningHistorik()");
 
     }
-    public void lavBooking(String vognNummer, int BrugerID,int abonnementsType,int sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){
+    public void lavBooking(String vognNummer, int BrugerID,int abonnementsType,int sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){ // Kristian
         // Format:
         // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
-        SQLManager.update("CALL lavBooking('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
+        SQLManager.update("CALL BookingOpret('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
 
     }
 
-    public List<UdleveringsstedModel> visAlleUdleveringsSteder() {
+    public List<UdleveringsstedModel> visAlleUdleveringsSteder() { //Kristian
         List<UdleveringsstedModel> udleveringssteder = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL visAlleUdleveringsSteder()");
@@ -146,7 +146,7 @@ public class BookingRepository {
 
     }
 
-    public List<AbonnementsTypeModel> visAlleAbonnementsTyper() {
+    public List<AbonnementsTypeModel> visAlleAbonnementsTyper() { //Kristian
         List<AbonnementsTypeModel> abonnementsTyper = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL visAlleAbonnementsTyper()");

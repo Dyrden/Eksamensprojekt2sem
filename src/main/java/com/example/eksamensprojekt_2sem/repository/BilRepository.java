@@ -95,7 +95,7 @@ public class BilRepository {
     public Object visInleveretBiler(){
         List<BilModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visBilerManglerOvervaagning()");
+            ResultSet resultSet = SQLManager.execute("CALL BilerSkaderMangler()");
             while (resultSet.next()){
                 String maerke = resultSet.getString(1);
                 String model = resultSet.getString(2);
@@ -122,7 +122,7 @@ public class BilRepository {
       BilModel bil = new BilModel();
       try{
           ResultSet resultSet = SQLManager.execute
-                  ("CALL FindSpecifikBilFraVognNum('"+vognNummer+"')");
+                  ("CALL BilVognnummerFind('"+vognNummer+"')");
           while (resultSet.next()){
             bil.setVognNummer(resultSet.getString(1));
             bil.setStelNummer(resultSet.getString(2));
