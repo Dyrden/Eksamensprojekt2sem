@@ -230,7 +230,7 @@ public class BilRepository {
     public Object visInleveretBiler() {
         List<BilModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL BilerSkaderMangler()");
+            ResultSet resultSet = SQLManager.execute("CALL skafBilerManglerOvervaagning()");
             while (resultSet.next()){
                 String maerke = resultSet.getString(1);
                 String model = resultSet.getString(2);
