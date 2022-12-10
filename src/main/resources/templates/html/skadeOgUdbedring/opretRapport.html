@@ -41,7 +41,7 @@
             <h4>Indtast venligst ny kilometer antal</h4>
             <h4>Overkørte km afregnes 0,75 kr./km</h4>
             <fieldset>
-              <input name="km" placeholder="km" type="number" tabindex="1" required>
+              <input name="slutkm" placeholder="km" type="number" tabindex="1" required>
               <input name="rapportID" type="hidden" th:value="${rapportID}">
             </fieldset>
             <fieldset>
@@ -89,9 +89,9 @@
               <th>Slet skade</th>
             </tr>
             <tr th:each="s : ${skader}">
-              <td> <span th:text="${s.skadensPlacering}">skadensPlacering</span> </td>
-              <td> <span th:text="${s.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
-              <td> <span th:text="${s.skadensPris}">skadensPris</span> kr. </td>
+              <td> <span th:text="${s.getSkadensPlacering()}">skadensPlacering</span> </td>
+              <td> <span th:text="${s.getSkadensBeskrivelse()}">skadensBeskrivelse</span> </td>
+              <td> <span th:text="${s.getSkadensPris()}">skadensPris</span> kr. </td>
               <td th:id="rodKnap">
                 <button placeholder="Registrer ny rapport?" type="submit">  <a th:class="htmlLink" th:href="@{'/sletSkade/' + ${s.id}}">Slet skade</a>
                 </button>

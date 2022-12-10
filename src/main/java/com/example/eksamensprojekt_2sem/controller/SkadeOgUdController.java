@@ -33,6 +33,7 @@ public class SkadeOgUdController {
     //Ferhat er ansvarlig for denne metode
     public String visSkadeOgUd(Model model) {
         model.addAttribute("biler", bilRepository.visInleveretBiler());
+
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
@@ -187,7 +188,7 @@ public class SkadeOgUdController {
         RapportModel rapportModel = new RapportModel();
         rapportModel.setId(rapportID);
         rapportModel.setOverskredetKM(slutkm);
-        rapportRepository.opdaterSlutKMTilRapport(rapportID, rapportModel);
+        rapportRepository.redigereSlutKMTilRapport(rapportID, rapportModel);
 
         model.addAttribute("bookingID", bookingID);
         return "redirect:/opretRapport/" + bookingID;

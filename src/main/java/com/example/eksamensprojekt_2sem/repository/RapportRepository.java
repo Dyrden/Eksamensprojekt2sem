@@ -65,20 +65,37 @@ public class RapportRepository {
 
 
     public int findRapportIDFraBookingID(int bookingID) {
-        //TODO
-        return 0;
+        int fundetID = 0;
+        ResultSet resultSet = SQLManager.execute("CALL skafRapportFraBookingID(\"" + bookingID + "\")");
+        try {
+            resultSet.next();
+            fundetID = resultSet.getInt(1);
+        } catch (SQLException e ) {
+            System.out.println("ingen rapport fundet");
+        }
+        return fundetID;
     }
 
     public void opretRapportFraBookingID(int bookingID) {
-        //TODO
+        SQLManager.update("CALL Rapport_OpretFraBookingID(\"" + bookingID + "\")");
     }
 
     public int findSlutKMFraRapportID(int rapportID) {
-        //TODO
-        return 0;
+        int slutkm = 0;
+        ResultSet resultSet = SQLManager.execute(" CALL skafSlutKilometerFraRapportID(\"" + rapportID + "\")");
+        try {
+            resultSet.next();
+            slutkm = resultSet.getInt(1);
+        } catch (SQLException e ) {
+            System.out.println("ingen slutkm fundet");
+        }
+        return slutkm;
+
     }
 
-    public void opdaterSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
-        //TODO
+    public void redigereSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
+        SQLManager.update(
+            "CALL Rapport_RedigerSlutKilometerFraRapportID(" + rapportID + ", " + rapportModel.getOverskredetKM() + ")");
     }
+
 }
