@@ -68,10 +68,15 @@
     display: flex;
 
 }
+.knapIMidten{
+    display: flex;
+    justify-content: center;
+}
 .flexSkade{
     display: flex;
     margin-top: 0;
     justify-content: space-around;
+    scale: 90%;
 }
 .flexBooking{
     display: flex;

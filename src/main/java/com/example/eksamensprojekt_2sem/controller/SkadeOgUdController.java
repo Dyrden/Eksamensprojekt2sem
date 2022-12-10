@@ -36,6 +36,11 @@ public class SkadeOgUdController {
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
+    @GetMapping("/opretRapportTest")
+    public String rapportSkadeTest(){
+        return "html/skadeOgUdbedring/opretRapport";
+    }
+
     //Ferhat er ansvarlig for denne metode
     @GetMapping("/vaelgRapport/{vognNummer}")
     public String vaelgRapport(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession session) {
@@ -63,6 +68,7 @@ public class SkadeOgUdController {
     }
 
 
+
     @GetMapping("/seSkader/{rapportID}")
     //Ferhat er ansvarlig for denne metode
     public String visSkader(@PathVariable("rapportID") int rapportID, @RequestParam("BilvognNummer") String bil,
@@ -77,6 +83,7 @@ public class SkadeOgUdController {
         model.addAttribute("bil", bilRepository.visSpecifikBil(bil));
         return "html/skadeOgUdbedring/seSkader";
     }
+
 
 
     @GetMapping("/tilfoejSkade/{rapportID}")
