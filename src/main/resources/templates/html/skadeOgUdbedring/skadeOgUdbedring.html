@@ -47,8 +47,9 @@
                             <td> <span th:text="${b.getVognNummer()}">Vognnummer</span> </td>
                             <td> <span th:text="${b.getStelNummer()}">Registreringsnummer</span> </td>
                             <td th:id="blaaKnapTilTable">
-                                <form th:action="@{/opretRapport/__${b.getBookingID()}__}" >
-                                    <button type="submit">Opret Rapport</button>
+                                <form th:action="@{/opretRapport/__${b.getBookingID()}__}" method="get" >
+                                    <!--https://stackoverflow.com/questions/45716052/thymeleaf-pass-input-text-as-parameter-in-form-action-->
+                                    <button type="submit">Se rapport</button>
 
                                 </form>
                             </td>
