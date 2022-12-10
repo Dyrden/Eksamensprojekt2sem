@@ -190,7 +190,7 @@ public class BilRepository {
     public LinkedList<GearboksModel> skafGearboks() {
         LinkedList<GearboksModel> gearboksModels = new LinkedList<>();
 
-        ResultSet rs = SQLManager.execute("CALL skafgearboks()");
+        ResultSet rs = SQLManager.execute("CALL GearboksFind()");
 
         try {
             while (rs.next()) {
@@ -212,7 +212,7 @@ public class BilRepository {
     public LinkedList<BilModelModel> skafBilModel() {
         LinkedList<BilModelModel> bilModelModels = new LinkedList<>();
 
-        ResultSet rs = SQLManager.execute("CALL skafbilmodel()");
+        ResultSet rs = SQLManager.execute("CALL BilModelFind()");
 
         try {
             while (rs.next()) {
@@ -410,7 +410,7 @@ public class BilRepository {
   public List<String> skafAlleMaerker() {
     List<String> maerker = new LinkedList<>();
     try {
-      ResultSet resultSet = SQLManager.execute("CALL skafmaerker()");
+      ResultSet resultSet = SQLManager.execute("CALL MaerkerFind()");
 
       while (resultSet.next()) {
         String maerke = resultSet.getString(2);
@@ -444,7 +444,7 @@ public class BilRepository {
   public List<String> skafenergiTyper() {
     List<String> liste = new LinkedList<>();
     try {
-      ResultSet resultSet = SQLManager.execute("CALL skafenergityper()");
+      ResultSet resultSet = SQLManager.execute("CALL EnergityperFind()");
 
       while (resultSet.next()) {
         String item = resultSet.getString(2);
