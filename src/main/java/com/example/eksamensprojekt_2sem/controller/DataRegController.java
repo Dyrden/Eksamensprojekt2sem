@@ -13,9 +13,9 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class DataRegController {
-    private BilRepository bilRepository;
-    private KundeRepository kundeRepository;
-    private BookingRepository bookingRepository;
+    private final BilRepository bilRepository;
+    private final KundeRepository kundeRepository;
+    private final BookingRepository bookingRepository;
 
     //Ansvarlig: Mark Dyrby Denner
     // konstruktør til
