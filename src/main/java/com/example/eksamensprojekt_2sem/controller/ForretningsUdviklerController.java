@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ForretningsUdviklerController {
 
-    private BilRepository bilRepository = new BilRepository();
-    private BookingRepository bookingRepository = new BookingRepository();
+    private BilRepository bilRepository;
+    private BookingRepository bookingRepository;
+
+    public ForretningsUdviklerController(BilRepository bilRepository, BookingRepository bookingRepository) {
+        this.bilRepository = bilRepository;
+        this.bookingRepository = bookingRepository;
+    }
 
     @GetMapping("/forretningsUdviklere")
     public String visForretningsUdviklere(Model model){
