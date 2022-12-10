@@ -16,8 +16,9 @@
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"></div>
 
-<div class="container">
-    <form id="bilSpecifikation" action="/indsendBilTilRegistrering" method="post">
+<div class="container flexIMidten">
+    <div id="bilRegistreringForm">
+    <form action="/indsendBilTilRegistrering" method="post">
         <h3>Registrer ny bil</h3>
         <h4>Indtast bilens informationer</h4>
         <fieldset>
@@ -64,6 +65,8 @@
                 <option th:each="e : ${energiTyper}" th:value="${e}" th:text="${e}"></option>
             </select>
         </fieldset>
+    </div>
+    <div id="bilRegistreringForm">
         <fieldset>
             <label for="produktionsaar">Produktionsår</label>
             <input id="produktionsaar" name="produktionsaar" placeholder="produktionsår" type="text" tabindex="1" required autofocus>
@@ -89,14 +92,12 @@
             <input id="maanedspris" name="maanedspris" placeholder="månedspris" type="text" tabindex="1" required autofocus>
         </fieldset>
 
-
         <fieldset>
-            <div class="flex">
-                <button type="submit" th:href="@{'/skadeOgUdbedring/'}">Annuller</button>
-                <input type="hidden" id="wishId" name="rapportID" th:attr="value=${rapportID}">
+            <div class="flexIMidten">
                 <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Indsend</button>
             </div>
         </fieldset>
+    </div>
     </form>
 </div>
 </body>
