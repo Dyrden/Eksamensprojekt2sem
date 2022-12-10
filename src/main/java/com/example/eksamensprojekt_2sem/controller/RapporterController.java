@@ -19,7 +19,7 @@ private RapportRepository rapportRepository = new RapportRepository();
 private SkadeRepository skadeRepository = new SkadeRepository();
 
   @GetMapping("/seRapporter")
-  public String visForretningsUdviklere(Model model){
+  public String visRapporter(Model model){
     model.addAttribute("biler", bilRepository.visAlleBiler());
 
     return "html/rapporter/rapporter";
