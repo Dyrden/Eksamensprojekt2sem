@@ -150,6 +150,8 @@ public class SkadeOgUdController {
             model.addAttribute("slutkm", rapportRepository.findSlutKMFraRapportID(rapportID));
         }
 
+        System.out.println("rapportID : " + rapportID);
+
         model.addAttribute("rapportID", rapportID);
         model.addAttribute("bookingID", bookingID);
 
@@ -157,14 +159,13 @@ public class SkadeOgUdController {
     }
 
 
-    @GetMapping("/opretSkade")
+    @PostMapping("/opretSkade")
     public String opretSkade(
-        @RequestParam("bookingID") String bookingID,
+        @RequestParam("bookingID") int bookingID,
         @RequestParam("rapportID") int rapportID,
         @RequestParam("skade_placering") String skadePlacering,
         @RequestParam("skade_pris") double skadensPris,
-        @RequestParam("skade_beskrivelse") String skadensBeskrivelse,
-        Model model
+        @RequestParam("skade_beskrivelse") String skadensBeskrivelse
     ) {
         SkadeModel skadeModel = new SkadeModel();
         skadeModel.setSkadensPris(skadensPris);
@@ -176,7 +177,7 @@ public class SkadeOgUdController {
         return "redirect:/opretRapport/" + bookingID;
     }
 
-    @GetMapping("/opretKM")
+    @PostMapping("/opretKM")
     public String opretKM(
         @RequestParam("bookingID") int bookingID,
         @RequestParam("rapportID") int rapportID,
@@ -186,7 +187,7 @@ public class SkadeOgUdController {
         RapportModel rapportModel = new RapportModel();
         rapportModel.setId(rapportID);
         rapportModel.setOverskredetKM(slutkm);
-        rapportRepository.tilføjSlutKMTilRapport(rapportID, rapportModel);
+        rapportRepository.opdaterSlutKMTilRapport(rapportID, rapportModel);
 
         model.addAttribute("bookingID", bookingID);
         return "redirect:/opretRapport/" + bookingID;

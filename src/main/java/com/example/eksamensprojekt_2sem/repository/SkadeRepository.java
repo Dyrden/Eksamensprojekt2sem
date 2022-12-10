@@ -103,7 +103,4 @@ public class SkadeRepository {
         //TODO
     }
 
-    public void tilføjSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
-        //TODO
-    }
 }

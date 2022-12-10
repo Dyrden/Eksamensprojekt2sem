@@ -1,9 +1,7 @@
 package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.RapportModel;
-import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -80,7 +78,7 @@ public class RapportRepository {
         return 0;
     }
 
-    public void tilføjSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
+    public void opdaterSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
         //TODO
     }
 }

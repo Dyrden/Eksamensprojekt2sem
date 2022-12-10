@@ -35,7 +35,8 @@
 
       <div>
         <div id="kundeinfo">
-          <form action="/indtastkm" method="post">
+          <form action="/opretKM" method="post">
+            <input type="hidden" th:value="${bookingID}" name="bookingID">
             <h3>Kilometer registrering</h3>
             <h4>Indtast venligst ny kilometer antal</h4>
             <h4>Overkørte km afregnes 0,75 kr./km</h4>
@@ -53,7 +54,8 @@
       </div>
       <div>
         <div id="kundeinfo">
-          <form id="bilSpecifikation" action="/tilfoej" method="post">
+          <form id="bilSpecifikation" action="/opretSkade" method="post">
+            <input type="hidden" th:value="${bookingID}" name="bookingID" >
             <h3>Registrer Skade</h3>
             <h4>Indtast skade, fejl eller anden omkostning</h4>
             <fieldset>
