@@ -14,11 +14,18 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class DataRegController {
     private BilRepository bilRepository;
-    private KundeRepository kundeRepository = new KundeRepository();
+    private KundeRepository kundeRepository;
+    private BookingRepository bookingRepository;
 
-    private BookingRepository bookingRepository = new BookingRepository();
-
-    public DataRegController(BilRepository bilRepository) {
+    //Ansvarlig: Mark Dyrby Denner
+    // konstruktør til
+    public DataRegController(
+        BilRepository bilRepository,
+        KundeRepository kundeRepository,
+        BookingRepository bookingRepository)
+    {
+        this.kundeRepository = kundeRepository;
+        this.bookingRepository = bookingRepository;
         this.bilRepository = bilRepository;
     }
 
