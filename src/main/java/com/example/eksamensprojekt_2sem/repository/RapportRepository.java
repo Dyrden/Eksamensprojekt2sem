@@ -18,7 +18,7 @@ public class RapportRepository {
         List<RapportModel> rapporter = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute
-                ("CALL skafRapporterFraVognNummer('" + vognNummer + "')");
+                ("CALL skafRapportHvorVognNummerSpecifik('" + vognNummer + "')");
             while (resultSet.next()) {
                 RapportModel rapport = new RapportModel();
 
