@@ -190,7 +190,7 @@ public class BilRepository {
     public LinkedList<GearboksModel> skafGearboks() {
         LinkedList<GearboksModel> gearboksModels = new LinkedList<>();
 
-        ResultSet rs = SQLManager.execute("CALL GearboksFind()");
+        ResultSet rs = SQLManager.execute("CALL skafgearboks()");
 
         try {
             while (rs.next()) {
