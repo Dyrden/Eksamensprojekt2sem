@@ -114,6 +114,22 @@ public class RapportRepository {
         return kmkørt;
     }
 
+    public double skafPrisPaaOverskredetKM(int bookingID){
+        // Ferhat er ansvarlig for metoden
+        double pris = 0;
+        int kmKørt = skafUdregnetKMKørt(bookingID);
+        int antalMåneder = 0;
+
+        int maksimaltKMTilladt = antalMåneder*2000;
+
+        if ((kmKørt>maksimaltKMTilladt)){
+            int kmOvertrådt = kmKørt-maksimaltKMTilladt;
+            pris = kmOvertrådt*0.75;
+        }
+
+        return pris;
+    }
+
     public void udregnKilometerKørt(int bookingID,int slutkm) {
         SQLManager.execute(
             "call skafUdregnetKilometerKoertOgOpdaterBilOgRapport(" + bookingID + ", " + slutkm + ")");
