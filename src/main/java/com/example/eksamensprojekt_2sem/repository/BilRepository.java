@@ -7,7 +7,6 @@ import com.example.eksamensprojekt_2sem.model.bilmodel.EnergiTypeModel;
 import com.example.eksamensprojekt_2sem.model.bilmodel.GearboksModel;
 import com.example.eksamensprojekt_2sem.model.bilmodel.UdstyrsniveauModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -233,8 +232,8 @@ public class BilRepository {
 
 
 
-    public Object visInleveretBiler() {
-        List<BilModel> biler = new LinkedList<>();
+    public LinkedList<BilModel> visInleveretBiler() {
+        LinkedList<BilModel> biler = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafBilerManglerOvervaagning()");
             while (resultSet.next()){
@@ -248,7 +247,6 @@ public class BilRepository {
         } catch (SQLException e) {
             System.err.println("Ingen indleveret biler fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<BilModel>();
         }
         return biler;
 
@@ -257,9 +255,9 @@ public class BilRepository {
 
     //Ansvarlig : Mark Dyrby Denner
     // Denne metode tager imod en bilmodel og laver en insert call til databasen
-    public void lavBil(BilModel bil) {
+    public void opretBil(BilModel bil) {
         SQLManager.update(
-            "CALL Bil_Lav(\""
+            "CALL Bil_Opret(\""
                 + bil.getVognNummer() + "\", \""
                 + bil.getStelNummer() + "\", \""
                 + bil.getStaalPris() + "\", \""
@@ -470,7 +468,7 @@ public class BilRepository {
         int modelID = 0;
         try {
             ResultSet rs = SQLManager.execute(
-                "CALL Model_FindExact(\""
+                "CALL skafModelMedPraeciseParametre(\""
                     + model.getModel() + "\", \""
                     + model.getEnergiType() + "\", \""
                     + model.getGearboks() + "\", \""
@@ -490,9 +488,9 @@ public class BilRepository {
     //Ansvarlig : Mark Dyrby Denner
     //Denne metode tager imod en bil's 'model' og, ved brug af en procedure, indsætter den
     // i databasen
-    public void lavModel(BilModelModel model) {
+    public void opretModel(BilModelModel model) {
         SQLManager.update(
-            "CALL Model_lav(\""
+            "CALL Model_Opret(\""
                 + model.getModel() + "\", \""
                 + model.getEnergiType() + "\", \""
                 + model.getGearboks() + "\", \""

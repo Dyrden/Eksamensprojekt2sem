@@ -126,12 +126,12 @@ public class DataRegController {
         int modelID = bilRepository.findModel(bilModel);
 
         if (modelID == 0) {
-            bilRepository.lavModel(bilModel);
+            bilRepository.opretModel(bilModel);
             modelID = bilRepository.findModel(bilModel);
         }
         bil.setModelID(modelID);
 
-        bilRepository.lavBil(bil);
+        bilRepository.opretBil(bil);
         return "redirect:/";
     }
 
