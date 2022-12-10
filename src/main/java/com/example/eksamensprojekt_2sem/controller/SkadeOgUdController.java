@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Controller
 public class SkadeOgUdController {
@@ -144,6 +146,7 @@ public class SkadeOgUdController {
         } else  {
             model.addAttribute("skader",skadeRepository.skafSkaderFraRapport(rapportID));
             model.addAttribute("slutkm", rapportRepository.findSlutKMFraRapportID(rapportID));
+            model.addAttribute("udregnetKM", rapportRepository.skafUdregnetKMKørt(bookingID));
         }
 
         System.out.println("rapportID : " + rapportID);
@@ -188,12 +191,9 @@ public class SkadeOgUdController {
         rapportRepository.redigereSlutKMTilRapport(rapportID, rapportModel);
 
         rapportRepository.udregnKilometerKørt(bookingID,slutkm);
-        int udregnetKM = rapportRepository.skafUdregnetKMKørt(bookingID);
 
-        System.out.println(udregnetKM);
-
-        model.addAttribute("udregnetKM", udregnetKM);
         model.addAttribute("bookingID", bookingID);
+
 
         return "redirect:/opretRapport/" + bookingID;
     }
