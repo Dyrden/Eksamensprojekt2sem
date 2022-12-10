@@ -66,4 +66,21 @@ public class RapportRepository {
     }
 
 
+    public int findRapportIDFraBookingID(int bookingID) {
+        //TODO
+        return 0;
+    }
+
+    public void opretRapportFraBookingID(int bookingID) {
+        //TODO
+    }
+
+    public int findSlutKMFraRapportID(int rapportID) {
+        //TODO
+        return 0;
+    }
+
+    public void tilføjSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
+        //TODO
+    }
 }

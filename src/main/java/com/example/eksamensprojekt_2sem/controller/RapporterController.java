@@ -55,7 +55,7 @@ public class RapporterController {
 
     @GetMapping("/seSkadesRapport/{rapportID}")
     //Ferhat er ansvarlig for denne metode
-    public String visSkader(@PathVariable("rapportID") String rapportID, Model model, HttpSession session) {
+    public String visSkader(@PathVariable("rapportID") int rapportID, Model model, HttpSession session) {
         //Når vi nu har bilens rapport, så kan vi tilgå rapporten
         //vi henter alle skaderne fra rapportens id.
         //Rapportens id har vi fået fra tildigere kode gennem bilens vognNummer
