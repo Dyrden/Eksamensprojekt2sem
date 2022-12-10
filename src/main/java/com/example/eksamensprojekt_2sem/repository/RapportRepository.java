@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -96,6 +97,26 @@ public class RapportRepository {
     public void redigereSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
         SQLManager.update(
             "CALL Rapport_RedigerSlutKilometerFraRapportID(" + rapportID + ", " + rapportModel.getOverskredetKM() + ")");
+    }
+
+    public int skafUdregnetKMKørt(int bookingID) {
+        int kmkørt = 0;
+        ResultSet resultSet = SQLManager.execute(
+            "call skafKilometerKoert(" + bookingID + ")");
+        try {
+            resultSet.next();
+            kmkørt = resultSet.getInt(1);
+
+        } catch (SQLException e) {
+            System.out.println("fejl under udregning af kilometer kørt");
+        }
+
+        return kmkørt;
+    }
+
+    public void udregnKilometerKørt(int bookingID,int slutkm) {
+        SQLManager.execute(
+            "call skafUdregnetKilometerKoertOgOpdaterBilOgRapport(" + bookingID + ", " + slutkm + ")");
     }
 
 }

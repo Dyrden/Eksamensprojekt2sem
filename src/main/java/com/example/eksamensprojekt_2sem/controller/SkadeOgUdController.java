@@ -187,7 +187,14 @@ public class SkadeOgUdController {
         rapportModel.setOverskredetKM(slutkm);
         rapportRepository.redigereSlutKMTilRapport(rapportID, rapportModel);
 
+        rapportRepository.udregnKilometerKørt(bookingID,slutkm);
+        int udregnetKM = rapportRepository.skafUdregnetKMKørt(bookingID);
+
+        System.out.println(udregnetKM);
+
+        model.addAttribute("udregnetKM", udregnetKM);
         model.addAttribute("bookingID", bookingID);
+
         return "redirect:/opretRapport/" + bookingID;
     }
 }
