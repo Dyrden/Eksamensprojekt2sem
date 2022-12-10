@@ -510,6 +510,25 @@ public class BilRepository {
         System.out.println("lavede model");
     }
 
+    public BilModel skafBilFraBookingID(int bookingID) {
+
+        BilModel bilModel = new BilModel();
+        ResultSet resultSet = SQLManager.execute("CALL skafBilFraBookingID(\"" + bookingID + "\")");
+
+        try {
+            resultSet.next();
+            bilModel.setVognNummer(resultSet.getString(1));
+            bilModel.setStelNummer(resultSet.getString(2));
+            bilModel.setMaerke(resultSet.getString(3));
+            bilModel.setModel(resultSet.getString(4));
+
+        } catch (SQLException e ) {
+            System.out.println("ingen bil fundet");
+        }
+        return bilModel;
+    }
+
+    /*
     public BilModel skafBilFraVognnummer(String vognnummer) {
         BilModel bilModel = new BilModel();
         ResultSet resultSet = SQLManager.execute("CALL skafBilFraVognNummer(\"" + vognnummer + "\")");
@@ -527,6 +546,7 @@ public class BilRepository {
         return bilModel;
 
     }
+    * */
 
   /*
   public List<String> skafUdstyrsNiveau() {

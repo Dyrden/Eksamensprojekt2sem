@@ -132,7 +132,6 @@ public class SkadeOgUdController {
     @GetMapping("/opretRapport/{bookingID}")
     public String opretRapport(
         @PathVariable("bookingID") int bookingID,
-        @RequestParam("vognnummer") String vognnummer,
         Model model
     ) {
 
@@ -149,7 +148,7 @@ public class SkadeOgUdController {
 
         System.out.println("rapportID : " + rapportID);
 
-        model.addAttribute("bil",bilRepository.skafBilFraVognnummer(vognnummer));
+        model.addAttribute("bil",bilRepository.skafBilFraBookingID(bookingID));
         model.addAttribute("rapportID", rapportID);
         model.addAttribute("bookingID", bookingID);
 
