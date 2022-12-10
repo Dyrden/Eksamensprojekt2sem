@@ -237,10 +237,11 @@ public class BilRepository {
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafBilerManglerOvervaagning()");
             while (resultSet.next()){
-                String maerke = resultSet.getString(1);
-                String model = resultSet.getString(2);
-                String vognNummer = resultSet.getString(3);
-                String stelNummer = resultSet.getString(4);
+
+                String vognNummer = resultSet.getString(1);
+                String stelNummer = resultSet.getString(2);
+              String maerke = resultSet.getString(3);
+              String model = resultSet.getString(4);
                 biler.add(new BilModel(maerke, model, vognNummer, stelNummer));
             }
 
