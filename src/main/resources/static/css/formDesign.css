@@ -29,8 +29,8 @@
 
 #bilSpecifikation {
     background:#F9F9F9;
-    padding:75px;
-    margin: 0;
+    padding-left: 25px;
+    padding-right: 20px;
     margin-right: 15px;
 }
 
@@ -441,7 +441,7 @@ fieldset {
     margin: 0;
     margin-left: 50px;
     display: block;
-    margin-right: 150px;
+    margin-right: 50px;
 }
 
 #skaderTabel h3 {

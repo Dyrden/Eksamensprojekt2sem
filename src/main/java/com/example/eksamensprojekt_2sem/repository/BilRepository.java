@@ -237,7 +237,6 @@ public class BilRepository {
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafBilerManglerOvervaagning()");
             while (resultSet.next()){
-
                 String vognNummer = resultSet.getString(1);
                 String stelNummer = resultSet.getString(2);
               String maerke = resultSet.getString(3);

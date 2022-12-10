@@ -1,9 +1,7 @@
 package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.RapportModel;
-import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -66,4 +64,21 @@ public class RapportRepository {
     }
 
 
+    public int findRapportIDFraBookingID(int bookingID) {
+        //TODO
+        return 0;
+    }
+
+    public void opretRapportFraBookingID(int bookingID) {
+        //TODO
+    }
+
+    public int findSlutKMFraRapportID(int rapportID) {
+        //TODO
+        return 0;
+    }
+
+    public void opdaterSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
+        //TODO
+    }
 }

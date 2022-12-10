@@ -47,7 +47,7 @@
                             <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
                             <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
                             <td th:id="blaaKnapTilTable">
-                                <button type="submit"> <a th:class="htmlLink" th:href="@{'/vaelgRapport/' + ${b.vognNummer}}">Vælg bil</a> </button>
+                                <button type="submit"> <a th:class="htmlLink" th:href="@{'/opretRapport/' + ${bookingID}}">Vælg bil</a> </button>
                             </td>
                         </tr>
                     </table>
