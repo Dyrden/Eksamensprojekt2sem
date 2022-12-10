@@ -27,7 +27,7 @@ public class BilRepository {
         //Mark er ansvarlig for denne metode
         List<BilModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visTilgængeligeBiler()");
+            ResultSet resultSet = SQLManager.execute("CALL skafTilgængeligeBiler");
 
             while (resultSet.next()) {
                 String vognNummer = resultSet.getString(1);
@@ -51,7 +51,9 @@ public class BilRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen tilgængelige biler fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<BilModel>();
         }
 
         return biler;
@@ -85,7 +87,9 @@ public class BilRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen biler fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<BilModel>();
         }
 
         return biler;
@@ -107,7 +111,9 @@ public class BilRepository {
                 farveModels.add(farveModel);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen farver fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<FarveModel>();
         }
         return farveModels;
     }
@@ -128,7 +134,9 @@ public class BilRepository {
                 maerkeModels.add(maerkeModel);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen bilmærker fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<MaerkeModel>();
         }
         return maerkeModels;
     }
@@ -149,7 +157,9 @@ public class BilRepository {
                 energiTypeModels.add(energiTypeModel);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen energityper fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<EnergiTypeModel>();
         }
         return energiTypeModels;
     }
@@ -169,7 +179,9 @@ public class BilRepository {
                 udstyrsniveauModels.add(udstyrsniveauModel);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen udstyrsniveauer fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<UdstyrsniveauModel>();
         }
         return udstyrsniveauModels;
     }
@@ -189,7 +201,9 @@ public class BilRepository {
                 gearboksModels.add(gearboksModel);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen gearbokse fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<GearboksModel>();
         }
         return gearboksModels;
     }
@@ -210,7 +224,9 @@ public class BilRepository {
 
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen bilmodeller fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<BilModelModel>();
         }
         return bilModelModels;
     }
@@ -220,7 +236,7 @@ public class BilRepository {
     public Object visInleveretBiler() {
         List<BilModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL BilerSkaderMangler()");
+            ResultSet resultSet = SQLManager.execute("CALL skafBilerManglerOvervaagning()");
             while (resultSet.next()){
                 String maerke = resultSet.getString(1);
                 String model = resultSet.getString(2);
@@ -230,7 +246,9 @@ public class BilRepository {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen indleveret biler fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<BilModel>();
         }
         return biler;
 
@@ -261,7 +279,7 @@ public class BilRepository {
       BilModel bil = new BilModel();
       try{
           ResultSet resultSet = SQLManager.execute
-                  ("CALL BilVognnummerFind('"+vognNummer+"')");
+                  ("CALL skafSpecifikBilFraVognNum('"+vognNummer+"')");
           while (resultSet.next()){
             bil.setVognNummer(resultSet.getString(1));
             bil.setStelNummer(resultSet.getString(2));
@@ -280,7 +298,9 @@ public class BilRepository {
           }
         System.out.println(bil);
       } catch (SQLException e){
-          e.printStackTrace();
+          System.err.println("Ingen bil blev fundet.");
+          System.out.println(e.getMessage());
+          return new BilModel();
       }
 
         return bil;
@@ -306,7 +326,9 @@ public class BilRepository {
 
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen bil blev fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<SkadeModel>();
         }
         return bilModel;
     }
@@ -319,11 +341,11 @@ public class BilRepository {
         String[] parametre = parameterTekst.split(","); //parameterText bliver delt op i dens kommaer, op til 5 gange for at være acceptabelt.
 
         String defineretProcedure = switch (parametre.length) { //En bedre måde på at gøre tingene i en enkel metode i stedet for 5.
-            case 1 -> "CALL BilerFind1Param('" + parametre[0] + "')";
-            case 2 -> "CALL BilerFind2Param('" + parametre[0] + "','" + parametre[1] + "')";
-            case 3 -> "CALL BilerFind3Param('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "')";
-            case 4 -> "CALL BilerFind4Param('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "')";
-            case 5 -> "CALL BilerFind5Param('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "','" + parametre[4] + "')";
+            case 1 -> "CALL skafbileraf1parameter('" + parametre[0] + "')";
+            case 2 -> "CALL skafbileraf2parametre('" + parametre[0] + "','" + parametre[1] + "')";
+            case 3 -> "CALL skafbileraf3parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "')";
+            case 4 -> "CALL skafbileraf4parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "')";
+            case 5 -> "CALL skafbileraf5parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "','" + parametre[4] + "')";
 
             default -> throw new IllegalStateException("Unexpected value: " + parametre.length);
         };
@@ -378,7 +400,9 @@ public class BilRepository {
       }
 
     } catch (SQLException e) {
-      e.printStackTrace();
+        System.err.println("Ingen farver/ikke alle farver blev fundet.");
+        System.out.println(e.getMessage());
+        return new LinkedList<String>();
     }
 
     return farver;

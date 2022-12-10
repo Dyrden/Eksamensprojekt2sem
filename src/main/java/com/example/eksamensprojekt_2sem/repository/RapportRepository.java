@@ -1,6 +1,7 @@
 package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.RapportModel;
+import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -29,7 +30,9 @@ public class RapportRepository {
                 System.out.println(rapport);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen rapporter fra vognnummer fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<RapportModel>();
         }
 
         return rapporter;
@@ -49,7 +52,9 @@ public class RapportRepository {
                 rapport.setOverSkredetKM(resultSet.getString(4));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Ingen rapport fundet.");
+            System.out.println(e.getMessage());
+            return null;
         }
 
         return rapport;
