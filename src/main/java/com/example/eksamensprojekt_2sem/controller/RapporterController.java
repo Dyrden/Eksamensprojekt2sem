@@ -24,23 +24,22 @@ public class RapporterController {
         this.skadeRepository = skadeRepository;
     }
 
-    @GetMapping("/seRapporter")
-    public String visForretningsUdviklere(Model model) {
-        model.addAttribute("biler", bilRepository.visAlleBiler());
-        return "html/rapporter/rapporter";
-    }
+  @GetMapping("/seRapporter")
+  public String visRapporter(Model model){
+    model.addAttribute("biler", bilRepository.visAlleBiler());
 
-    @GetMapping("/seRapport/{vognNummer}")
-    //Ferhat er ansvarlig for denne metode
-    public String seRapport(@PathVariable("vognNummer") String vognNummer, Model model) {
-        model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
-        return "html/rapporter/seRapport";
-    }
-
-    @GetMapping("/vaelgRapportRapporter/{vognNummer}")
-    //Ferhat er ansvarlig for denne metode
-    public String vaelgRapport(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession session) {
-        model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
+    return "html/rapporter/rapporter";
+  }
+  @GetMapping("/seRapport/{vognNummer}")
+  //Ferhat er ansvarlig for denne metode
+  public String seRapport(@PathVariable("vognNummer") String vognNummer, Model model){
+    model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
+    return "html/rapporter/seRapport";
+  }
+  @GetMapping("/vaelgRapportRapporter/{vognNummer}")
+  //Ferhat er ansvarlig for denne metode
+  public String vaelgRapport(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession session){
+    model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
 
         //Her henter vi den valgte bils rapport
         //Så kan vi efterfølgende bruge rapportens id til at modtage skaderne
