@@ -18,16 +18,7 @@ import java.util.List;
 @Repository
 public class BilRepository {
 
-    @Value("${JDBCUrl}")
-    private String dbUrl;
-
-    @Value("${JDBCUsername}")
-    private String uID;
-
-    @Value("${JDBCPassword}")
-    private String pass;
     public BilRepository(){}
-
 
     //Ansvarlig : Mark Dyrby Denner, Ferhat Baran, Bjørn Uffe Haastrup
     // Denne metode søger databasen ved hjælp af et procedure til at finde biler

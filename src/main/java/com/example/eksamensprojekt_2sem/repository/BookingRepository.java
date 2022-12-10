@@ -15,14 +15,6 @@ import java.util.List;
 
 @Repository
 public class BookingRepository {
-    @Value("${JDBCUrl}")
-    private String dbUrl;
-
-    @Value("${JDBCUsername}")
-    private String uID;
-
-    @Value("${JDBCPassword}")
-    private String pass;
 
     public List<BookingModel> visAlleBookinger(){
         //Ferhat er ansvarlig for denne metode

@@ -1,24 +1,17 @@
 package com.example.eksamensprojekt_2sem.repository;
 
-import com.example.eksamensprojekt_2sem.model.RapportModel;
 import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+@Repository
 public class SkadeRepository {
-  @Value("${JDBCUrl}")
-  private String dbUrl;
-
-  @Value("${JDBCUsername}")
-  private String uID;
-
-  @Value("${JDBCPassword}")
-  private String pass;
 
   public List<SkadeModel> skafSkaderFraRapport(String id){
     //Ferhat og Kristian er ansvarlig for denne metode

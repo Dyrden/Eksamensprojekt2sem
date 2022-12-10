@@ -12,14 +12,6 @@ import java.util.List;
 
 @Repository
 public class KundeRepository {
-  @Value("${JDBCUrl}")
-  private String dbUrl;
-
-  @Value("${JDBCUsername}")
-  private String uID;
-
-  @Value("${JDBCPassword}")
-  private String pass;
 
   public List<BrugerModel> visAlleBrugere() {
     //Ferhat og Kristian er ansvarlig for denne metode

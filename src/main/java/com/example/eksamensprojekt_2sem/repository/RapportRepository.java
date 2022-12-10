@@ -12,14 +12,6 @@ import java.util.List;
 
 @Repository
 public class RapportRepository {
-    @Value("${JDBCUrl}")
-    private String dbUrl;
-
-    @Value("${JDBCUsername}")
-    private String uID;
-
-    @Value("${JDBCPassword}")
-    private String pass;
 
     public List<RapportModel> hentRapporterFraVognNummer(String vognNummer) {
         List<RapportModel> rapporter = new LinkedList<>();
