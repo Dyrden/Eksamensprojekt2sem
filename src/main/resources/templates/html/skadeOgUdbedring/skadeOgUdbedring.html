@@ -47,7 +47,11 @@
                             <td> <span th:text="${b.getVognNummer()}">Vognnummer</span> </td>
                             <td> <span th:text="${b.getStelNummer()}">Registreringsnummer</span> </td>
                             <td th:id="blaaKnapTilTable">
-                                <button type="submit"> <a th:class="htmlLink" th:href="@{'/opretRapport/' + ${b.getBookingID()}}">Opret Rapport</a> </button>
+                                <form th:action="@{/opretRapport/__${b.getBookingID()}__}" >
+                                    <input type="hidden" th:value="${b.getVognNummer()}" name="vognnummer">
+                                    <button type="submit">Opret Rapport</button>
+
+                                </form>
                             </td>
                         </tr>
                     </table>

@@ -52,7 +52,7 @@ public class SkadeRepository {
     public void sletSkade(int skadeID) {
         //Ferhat er ansvarlig for denne metode
         ResultSet resultSet = SQLManager.execute
-            ("CALL SletSkade(" + skadeID + ")");
+            ("CALL Skade_Slet(\"" + skadeID + "\")");
     }
 
     public void beregnAntalKM() {

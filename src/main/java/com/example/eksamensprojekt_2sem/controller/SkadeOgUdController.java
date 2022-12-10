@@ -110,16 +110,11 @@ public class SkadeOgUdController {
         return "redirect:/seSkader/" + rapportID;
     }
 
-    @GetMapping("/sletSkade/{skadeId}")
+    @PostMapping("/sletSkade/{skadeId}")
     //Ferhat er ansvarlig for denne metode
-    public String deleteWishList(@PathVariable("skadeId") int skadeId, HttpSession session) {
+    public String deleteWishList(@PathVariable("skadeId") int skadeId, @RequestParam("bookingID") int bookingID) {
         skadeRepository.sletSkade(skadeId);
-        BilModel bil = (BilModel) session.getAttribute("bil");
-
-        String vognNummer = bil.getVognNummer();
-        int rapportID = (int) session.getAttribute("rapportID");
-
-        return "redirect:/seSkader/" + rapportID;
+        return "redirect:/opretRapport/" + bookingID;
     }
 
     @PostMapping("/udbedring")
@@ -136,8 +131,9 @@ public class SkadeOgUdController {
 
     @GetMapping("/opretRapport/{bookingID}")
     public String opretRapport(
-        @PathVariable("bookingID") int bookingID
-        , Model model
+        @PathVariable("bookingID") int bookingID,
+        @RequestParam("vognnummer") String vognnummer,
+        Model model
     ) {
 
         int rapportID = 0;
@@ -153,6 +149,7 @@ public class SkadeOgUdController {
 
         System.out.println("rapportID : " + rapportID);
 
+        model.addAttribute("bil",bilRepository.skafBilFraVognnummer(vognnummer));
         model.addAttribute("rapportID", rapportID);
         model.addAttribute("bookingID", bookingID);
 
@@ -172,6 +169,7 @@ public class SkadeOgUdController {
         skadeModel.setSkadensPris(skadensPris);
         skadeModel.setSkadensBeskrivelse(skadensBeskrivelse);
         skadeModel.setSkadensPlacering(skadePlacering);
+
 
         skadeRepository.opretSkadePåRapport(rapportID, skadeModel);
 

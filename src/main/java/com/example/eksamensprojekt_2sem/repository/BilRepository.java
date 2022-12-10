@@ -510,6 +510,24 @@ public class BilRepository {
         System.out.println("lavede model");
     }
 
+    public BilModel skafBilFraVognnummer(String vognnummer) {
+        BilModel bilModel = new BilModel();
+        ResultSet resultSet = SQLManager.execute("CALL skafBilFraVognNummer(\"" + vognnummer + "\")");
+
+        try {
+            resultSet.next();
+            bilModel.setVognNummer(resultSet.getString(1));
+            bilModel.setStelNummer(resultSet.getString(2));
+            bilModel.setMaerke(resultSet.getString(3));
+            bilModel.setModel(resultSet.getString(4));
+
+        } catch (SQLException e ) {
+            System.out.println("ingen bil fundet");
+        }
+        return bilModel;
+
+    }
+
   /*
   public List<String> skafUdstyrsNiveau() {
     List<String> liste = new LinkedList<>();
