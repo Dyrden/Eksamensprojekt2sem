@@ -54,7 +54,7 @@
       </div>
       <div>
         <div id="kundeinfo">
-          <form id="bilSpecifikation" action="/opretSkade" method="post">
+          <form id="skadeRegistrering" action="/opretSkade" method="post">
             <input type="hidden" th:value="${bookingID}" name="bookingID" >
             <h3>Registrer Skade</h3>
             <h4>Indtast skade, fejl eller anden omkostning</h4>
@@ -68,7 +68,7 @@
               <textarea id="skade-beskrivelse" name="skade_beskrivelse" placeholder="Beskriv venligst skaden...." tabindex="3" required></textarea>
             </fieldset>
             <fieldset>
-              <div class="knapIMidten">
+              <div class="flexIMidten">
                 <input type="hidden" id="wishId" name="rapportID" th:attr="value=${rapportID}">
                 <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Indsend</button>
               </div>
