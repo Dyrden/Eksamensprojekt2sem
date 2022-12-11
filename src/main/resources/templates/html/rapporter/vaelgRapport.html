@@ -17,17 +17,15 @@
 <div th:class="bilInfo">
 <table class="center">
   <tr>
-    <th>Bilens vogn nummer</th>
-    <th>Rapport nummer</th>
+    <th>Bilens booking id</th>
     <th>dato</th>
     <th>Vælg Rapport</th>
   </tr>
-  <tr th:each="r : ${rapporter}">
-    <td> <span th:text="${r.vognNummer}">vogn nummer</span> </td>
-    <td> <span th:text="${r.id}">id</span> </td>
-    <td> <span th:text="${r.dato}">dato</span> </td>
+  <tr th:each="b : ${bookinger}">
+    <td> <span th:text="${b.id}">Booking</span> </td>
+    <td> <span th:text="${b.slutDato}">dato</span> </td>
     <td th:id="blaaKnapTilTable">
-      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seSkadesRapport/' + ${r.id}}">Se skader for rapporten</a> </button>
+      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seSkadesRapport/' + ${b.id}}">Se skader for bookingen</a> </button>
     </td>
 </table>
 </div>

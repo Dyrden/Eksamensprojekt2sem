@@ -232,17 +232,18 @@ public class BilRepository {
     }
 
 
-    public LinkedList<BilModel> visInleveretBiler() {
-        LinkedList<BilModel> biler = new LinkedList<>();
+    public LinkedList<BilOgBookingModel> visInleveretBiler() {
+        LinkedList<BilOgBookingModel> biler = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafBilerManglerOvervaagning()");
             while (resultSet.next()) {
-                BilModel bilModel = new BilModel();
+                BilOgBookingModel bilModel = new BilOgBookingModel();
                 bilModel.setVognNummer(resultSet.getString(1));
                 bilModel.setStelNummer(resultSet.getString(2));
                 bilModel.setMaerke(resultSet.getString(3));
                 bilModel.setModel(resultSet.getString(4));
-                bilModel.setBookingID(resultSet.getInt(17));
+                bilModel.setId(resultSet.getInt(17));
+                bilModel.setSlutDato(resultSet.getString(22));
                 biler.add(bilModel);
             }
 

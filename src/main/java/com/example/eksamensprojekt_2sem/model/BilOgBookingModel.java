@@ -75,6 +75,10 @@ public class BilOgBookingModel {
     this.startDato = startDato;
     this.slutDato = slutDato;
   }
+
+  public BilOgBookingModel() {
+  }
+
   public String getVognNummer() {
     return vognNummer;
   }
