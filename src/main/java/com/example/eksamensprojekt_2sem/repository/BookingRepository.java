@@ -51,7 +51,7 @@ public class BookingRepository {
 
         double indtaegt = 0;
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visAktiveBookingOgBilData()");
+            ResultSet resultSet = SQLManager.execute("CALL skafAktiveBookingOgBilData()");
 
             while (resultSet.next()) {
 
@@ -74,7 +74,7 @@ public class BookingRepository {
         //Ferhat er ansvarlig for denne metode
         List<BilOgBookingModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visAktiveBookingOgBilData()");
+            ResultSet resultSet = SQLManager.execute("CALL skafAktiveBookingOgBilData()");
 
             while (resultSet.next()) {
                 String vognNummer = resultSet.getString(1);
