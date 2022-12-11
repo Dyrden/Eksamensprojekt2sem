@@ -147,6 +147,10 @@ public class SkadeOgUdController {
             model.addAttribute("skader",skadeRepository.skafSkaderFraRapport(rapportID));
             model.addAttribute("slutkm", rapportRepository.findSlutKMFraRapportID(rapportID));
             model.addAttribute("udregnetKM", rapportRepository.skafUdregnetKMKørt(bookingID));
+            model.addAttribute("pris", rapportRepository.skafPrisPaaOverskredetKM(bookingID));
+            model.addAttribute("antalMaanederBooket", rapportRepository.skafAntalMaanederBooket(bookingID));
+            model.addAttribute("maksimumKM", rapportRepository.skafMaksimumKMTilladt(bookingID));
+            model.addAttribute("KMovertraadt", rapportRepository.skafKMOverskredet(bookingID));
         }
 
         System.out.println("rapportID : " + rapportID);

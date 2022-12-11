@@ -116,11 +116,22 @@ public class RapportRepository {
 
     public double skafPrisPaaOverskredetKM(int bookingID){
         // Ferhat er ansvarlig for metoden
+        int antalMånederBooket = 0;
+
+        ResultSet resultSet = SQLManager.execute(
+            "call skafAntalMaanederFraBookingID(" + bookingID + ")");
+        try {
+            resultSet.next();
+            antalMånederBooket = resultSet.getInt(1);
+
+        } catch (SQLException e) {
+            System.out.println("fejl under udregning af kilometer kørt");
+        }
+
         double pris = 0;
         int kmKørt = skafUdregnetKMKørt(bookingID);
-        int antalMåneder = 0;
 
-        int maksimaltKMTilladt = antalMåneder*2000;
+        int maksimaltKMTilladt = antalMånederBooket*2000;
 
         if ((kmKørt>maksimaltKMTilladt)){
             int kmOvertrådt = kmKørt-maksimaltKMTilladt;
@@ -128,6 +139,71 @@ public class RapportRepository {
         }
 
         return pris;
+    }
+    public int skafAntalMaanederBooket(int bookingID){
+        // Ferhat er ansvarlig for metoden
+        int antalMånederBooket = 0;
+
+        ResultSet resultSet = SQLManager.execute(
+            "call skafAntalMaanederFraBookingID(" + bookingID + ")");
+        try {
+            resultSet.next();
+            antalMånederBooket = resultSet.getInt(1);
+
+        } catch (SQLException e) {
+            System.out.println("fejl under udregning af kilometer kørt");
+        }
+
+
+        return antalMånederBooket;
+    }
+    public int skafMaksimumKMTilladt(int bookingID){
+        // Ferhat er ansvarlig for metoden
+        int antalMånederBooket = 0;
+
+        ResultSet resultSet = SQLManager.execute(
+            "call skafAntalMaanederFraBookingID(" + bookingID + ")");
+        try {
+            resultSet.next();
+            antalMånederBooket = resultSet.getInt(1);
+
+        } catch (SQLException e) {
+            System.out.println("fejl under udregning af kilometer kørt");
+        }
+
+        int maksimaltKMTilladt = antalMånederBooket*2000;
+
+
+        return maksimaltKMTilladt;
+    }
+
+    public int skafKMOverskredet(int bookingID) {
+        // Ferhat er ansvarlig for metoden
+        int antalMånederBooket = 0;
+        int kmOvertrådt = 0;
+
+
+        ResultSet resultSet = SQLManager.execute(
+            "call skafAntalMaanederFraBookingID(" + bookingID + ")");
+        try {
+            resultSet.next();
+            antalMånederBooket = resultSet.getInt(1);
+
+        } catch (SQLException e) {
+            System.out.println("fejl under udregning af kilometer kørt");
+        }
+
+        int kmKørt = skafUdregnetKMKørt(bookingID);
+
+        int maksimaltKMTilladt = antalMånederBooket * 2000;
+
+        if ((kmKørt > maksimaltKMTilladt)) {
+            kmOvertrådt = kmKørt - maksimaltKMTilladt;
+        } else {
+            return 0;
+        }
+
+        return kmOvertrådt;
     }
 
     public void udregnKilometerKørt(int bookingID,int slutkm) {

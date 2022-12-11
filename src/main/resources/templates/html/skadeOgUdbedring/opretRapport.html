@@ -31,15 +31,17 @@
         <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
       </tr>
     </table>
+    </div>
     <div th:class="flexSkade">
 
       <div>
-        <div id="kundeinfo">
+        <div id="kmRegistrering">
           <form action="/opretKM" method="post">
             <input type="hidden" th:value="${bookingID}" name="bookingID">
             <h3>Kilometer registrering</h3>
-            <h4>Indtast venligst ny kilometer antal</h4>
-            <h4>Overkørte km afregnes 0,75 kr./km</h4>
+            <h4>Overkørte km afregnes 0,75 kr./km </br>
+              Antal km om måneden tilladt er 2000 km</h4>
+            <h4>Indtast venligst nuværende kilometer tal</h4>
             <fieldset>
               <input name="slutkm" placeholder="km" type="number" tabindex="1" required th:value="${slutkm}">
               <input name="rapportID" type="hidden" th:value="${rapportID}">
@@ -50,12 +52,34 @@
               </div>
             </fieldset>
           </form>
-          <table class="bilInfo">
+            <table class="bilInfo center">
             <tr>
-              <th>antal km kørt</th>
+              <th>Antal måneder booket</th>
+
             </tr>
             <tr>
-              <td> <span th:text="${udregnetKM}">antal km kørt</span> </td>
+              <td> <span th:text="${antalMaanederBooket}">antal måneder booket</span> </td>
+
+            </tr>
+          </table>
+          <table class="bilInfo center">
+            <tr>
+              <th>Maksimalt kørsel tilladt</th>
+              <th>KM kørt i perioden</th>
+            </tr>
+            <tr>
+              <td> <span th:text="${maksimumKM}">Maksimalt km tilladt</span> km</td>
+              <td> <span th:text="${udregnetKM}">antal km kørt</span> km</td>
+            </tr>
+          </table>
+          <table class="bilInfo center">
+            <tr>
+              <th>KM overskredet</th>
+              <th>Til betaling</th>
+            </tr>
+            <tr>
+              <td> <span th:text="${KMovertraadt}">antal km overskredet</span> km</td>
+              <td> <span th:text="${pris}">pris for overskredet km.</span> kr.</td>
             </tr>
           </table>
         </div>
