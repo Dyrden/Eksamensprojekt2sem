@@ -80,7 +80,7 @@ public class SkadeRepository {
         List<SkadeModel> skader = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute
-                ("CALL skafSkaderFraRapport(\"" + id + "\")");
+                ("CALL skafSkaderFraRapportID(\"" + id + "\")");
             while (resultSet.next()) {
                 int skadeid = (resultSet.getInt(1));
                 String skadensPlacering = (resultSet.getString(2));
