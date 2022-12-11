@@ -108,13 +108,13 @@ public class SkadeOgUdController {
         skadeRepository.tilfoejSkade(skadePlacering, skadensBeskrivelse, skadensPris, rapportID);
 
         session.setAttribute("rapportID", rapportID);
-        //redirect tilbage til seSkader med vognnummer måske man kunne buge session
+        //redirect tilbage til seSkader
         return "redirect:/seSkader/" + rapportID;
     }
 
     @PostMapping("/sletSkade/{skadeId}")
     //Ferhat er ansvarlig for denne metode
-    public String deleteWishList(@PathVariable("skadeId") int skadeId, @RequestParam("bookingID") int bookingID) {
+    public String sletSkade(@PathVariable("skadeId") int skadeId, @RequestParam("bookingID") int bookingID) {
         skadeRepository.sletSkade(skadeId);
         return "redirect:/opretRapport/" + bookingID;
     }
@@ -122,12 +122,6 @@ public class SkadeOgUdController {
     @PostMapping("/udbedring")
     public String reUdbedring() {
         return "redirect:/skadeOgUdbedring";
-    }
-
-    @GetMapping("visSpecifikBil/{stelNummer}")
-    public String visSpecifikBilWeb(@PathVariable("stelNummer") String s, Model model) {
-        model.addAttribute("specifikBil", bilRepository.sUVisning(s));
-        return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
 
