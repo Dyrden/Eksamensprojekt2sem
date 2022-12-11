@@ -12,8 +12,19 @@
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
 <div th:id="book">
   <div th:id="page">
-    <div th:id="subpage">Skades Rapport for vogn Nummer: <span th:text="${bil.vognNummer}"></span> Rapport ID:<span th:text="${skader.get(0).rapportID}"></span>
+    <div th:id="subpage">
+
+      Skades Rapport for:
+      <tr th:each="b : ${booking}">
+      <th>Vogn nummer: </th>
+      <td> <b><span th:text="${b.bil_vognNummer}"></span></b></td>
+      </tr>
+      og RapportID:
+        <b><span th:text="${rapport}">rapportID</span></b>
+
+
       <div th:id="vertical">
+
         <table>
           <caption>Klar til A4 print</caption>
           <tr>
@@ -33,8 +44,7 @@
           <th>Totalpris for skaderne</th>
         </tr>
         <tr th:each="s : ${totalPris}">
-          <td> <span th:text="${totalPris}">skadensPlacering</span> </td>
-
+          <td> <span th:text="${totalPris}">totalPris</span> </td>
         </tr>
       </table>
     </div>

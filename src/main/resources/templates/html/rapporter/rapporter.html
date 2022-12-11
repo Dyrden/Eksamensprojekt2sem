@@ -31,10 +31,10 @@
     <td> <span th:text="${b.vognNummer}">vognnummer</span> </td>
     <td> <span th:text="${b.stelNummer}">stelnummer</span> </td>
     <td th:id="blaaKnapTilTable">
-      <button type="submit"> <a th:class="htmlLink" th:href="@{'/vaelgRapportRapporter/' + ${b.vognNummer}}">se bookings</a> </button>
+      <button type="submit"> <a th:class="htmlLink" th:href="@{'/vaelgRapportRapporter/' + ${b.vognNummer}}">Se bookings</a> </button>
     </td>
     <td th:id="blaaKnapTilTable">
-      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seRapport/' + ${b.vognNummer}}">se bil info</a> </button>
+      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seRapport/' + ${b.vognNummer}}">Se bilinformation</a> </button>
     </td>
   </tr>
 </table>

@@ -1,9 +1,9 @@
 package com.example.eksamensprojekt_2sem.controller;
 
-import com.example.eksamensprojekt_2sem.model.BilModel;
 import com.example.eksamensprojekt_2sem.model.RapportModel;
 import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
+import com.example.eksamensprojekt_2sem.repository.BookingRepository;
 import com.example.eksamensprojekt_2sem.repository.RapportRepository;
 import com.example.eksamensprojekt_2sem.repository.SkadeRepository;
 import org.springframework.stereotype.Controller;
@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Controller
 public class SkadeOgUdController {
@@ -24,11 +22,13 @@ public class SkadeOgUdController {
     private final BilRepository bilRepository;
     private final RapportRepository rapportRepository;
     private final SkadeRepository skadeRepository;
+    private final BookingRepository bookingRepository;
 
-    public SkadeOgUdController(BilRepository bilRepository, RapportRepository rapportRepository, SkadeRepository skadeRepository) {
+    public SkadeOgUdController(BilRepository bilRepository, RapportRepository rapportRepository, SkadeRepository skadeRepository, BookingRepository bookingRepository) {
         this.bilRepository = bilRepository;
         this.rapportRepository = rapportRepository;
         this.skadeRepository = skadeRepository;
+        this.bookingRepository = bookingRepository;
     }
 
     @GetMapping("/skadeOgUdbedring")
@@ -80,7 +80,7 @@ public class SkadeOgUdController {
         //Når vi nu har bilens rapport, så kan vi tilgå rapporten
         //vi henter alle skaderne fra rapportens id.
         //Rapportens id har vi fået fra tildigere kode gennem bilens vognNummer
-        model.addAttribute("skader", skadeRepository.skafSkaderFraRapport(rapportID));
+        model.addAttribute("skader", skadeRepository.skafSkaderFraBookingID(rapportID));
         model.addAttribute("rapportID", rapportID);
         //if statement nødvendigt som exception for at loade denne side direkte
         model.addAttribute("bil", bilRepository.visSpecifikBil(bil));
@@ -139,12 +139,15 @@ public class SkadeOgUdController {
 
         int rapportID = 0;
         rapportID = rapportRepository.findRapportIDFraBookingID(bookingID);
+        System.out.println(rapportID);
 
         if (rapportID == 0) {
             rapportRepository.opretRapportFraBookingID(bookingID);
+            System.out.println("fandt ingen rapport: Opretter ");
             rapportID = rapportRepository.findRapportIDFraBookingID(bookingID);
+            System.out.println(rapportID);
         } else  {
-            model.addAttribute("skader",skadeRepository.skafSkaderFraRapport(rapportID));
+            model.addAttribute("skader",skadeRepository.skafSkaderFraBookingID(bookingID));
             model.addAttribute("slutkm", rapportRepository.findSlutKMFraRapportID(rapportID));
             model.addAttribute("udregnetKM", rapportRepository.skafUdregnetKMKørt(bookingID));
             model.addAttribute("pris", rapportRepository.skafPrisPaaOverskredetKM(bookingID));
@@ -200,5 +203,15 @@ public class SkadeOgUdController {
 
 
         return "redirect:/opretRapport/" + bookingID;
+    }
+
+    @PostMapping("/saetOvervaaget/{bookingID}")
+    public String sætOvervåget(
+        @PathVariable("bookingID") int bookingID
+    ) {
+        bookingRepository.sætBookingOvervåget(bookingID);
+
+
+        return "redirect:/skadeOgUdbedring/";
     }
 }

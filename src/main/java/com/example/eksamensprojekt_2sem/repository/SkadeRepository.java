@@ -1,11 +1,7 @@
 package com.example.eksamensprojekt_2sem.repository;
 
-import com.example.eksamensprojekt_2sem.model.AbonnementsTypeModel;
-import com.example.eksamensprojekt_2sem.model.BookingModel;
-import com.example.eksamensprojekt_2sem.model.RapportModel;
 import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -16,13 +12,13 @@ import java.util.List;
 @Repository
 public class SkadeRepository {
 
-    public List<SkadeModel> skafSkaderFraRapport(int id) {
+    public List<SkadeModel> skafSkaderFraBookingID(int id) {
         //Ferhat og Kristian er ansvarlig for denne metode
 
         List<SkadeModel> skader = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute
-                ("CALL skafSkaderFraRapportID('" + id + "')");
+                ("CALL skafSkaderFraBookingID('" + id + "')");
             while (resultSet.next()) {
                 int skadeid = (resultSet.getInt(1));
                 String skadensPlacering = (resultSet.getString(2));
@@ -80,7 +76,7 @@ public class SkadeRepository {
         List<SkadeModel> skader = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute
-                ("CALL skafSkaderFraRapportID(\"" + id + "\")");
+                ("CALL skafSkaderFraRapportID('" + id + "')");
             while (resultSet.next()) {
                 int skadeid = (resultSet.getInt(1));
                 String skadensPlacering = (resultSet.getString(2));
@@ -109,4 +105,14 @@ public class SkadeRepository {
 
     }
 
+    public double skafTotalPrisFraSkadeListe(List<SkadeModel> skadeListe) {
+
+        double total = 0;
+
+        for(SkadeModel skade : skadeListe){
+            total += skade.getSkadensPris();
+        }
+
+        return total;
+    }
 }
