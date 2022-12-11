@@ -21,12 +21,13 @@
     <th>dato</th>
     <th>Vælg Rapport</th>
   </tr>
-  <tr th:each="b : ${bookinger}">
+  <tr th:each="b : ${bookings}">
     <td> <span th:text="${b.id}">Booking</span> </td>
     <td> <span th:text="${b.slutDato}">dato</span> </td>
     <td th:id="blaaKnapTilTable">
       <button type="submit"> <a th:class="htmlLink" th:href="@{'/seSkadesRapport/' + ${b.id}}">Se skader for bookingen</a> </button>
     </td>
+  </tr>
 </table>
 </div>
 </body>

@@ -1,6 +1,5 @@
 package com.example.eksamensprojekt_2sem.controller;
 
-import com.example.eksamensprojekt_2sem.model.BilModel;
 import com.example.eksamensprojekt_2sem.model.RapportModel;
 import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Controller
 public class SkadeOgUdController {
@@ -80,7 +77,7 @@ public class SkadeOgUdController {
         //Når vi nu har bilens rapport, så kan vi tilgå rapporten
         //vi henter alle skaderne fra rapportens id.
         //Rapportens id har vi fået fra tildigere kode gennem bilens vognNummer
-        model.addAttribute("skader", skadeRepository.skafSkaderFraRapport(rapportID));
+        model.addAttribute("skader", skadeRepository.skafSkaderFraBookingID(rapportID));
         model.addAttribute("rapportID", rapportID);
         //if statement nødvendigt som exception for at loade denne side direkte
         model.addAttribute("bil", bilRepository.visSpecifikBil(bil));
@@ -144,7 +141,7 @@ public class SkadeOgUdController {
             rapportRepository.opretRapportFraBookingID(bookingID);
             rapportID = rapportRepository.findRapportIDFraBookingID(bookingID);
         } else  {
-            model.addAttribute("skader",skadeRepository.skafSkaderFraRapport(rapportID));
+            model.addAttribute("skader",skadeRepository.skafSkaderFraBookingID(rapportID));
             model.addAttribute("slutkm", rapportRepository.findSlutKMFraRapportID(rapportID));
             model.addAttribute("udregnetKM", rapportRepository.skafUdregnetKMKørt(bookingID));
             model.addAttribute("pris", rapportRepository.skafPrisPaaOverskredetKM(bookingID));

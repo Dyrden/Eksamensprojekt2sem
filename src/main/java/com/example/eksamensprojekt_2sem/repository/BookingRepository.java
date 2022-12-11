@@ -2,14 +2,10 @@ package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.*;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Book;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLSyntaxErrorException;
-import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,9 +26,8 @@ public class BookingRepository {
                 String sted = resultSet.getString(4);
                 String startDate = resultSet.getString(5);
                 String slutDato = resultSet.getString(6);
-                double maanedsPris = resultSet.getDouble(7);
 
-                bookinger.add(new BookingModel(id, brugerID, type, sted, startDate, slutDato, maanedsPris));
+                bookinger.add(new BookingModel(id, brugerID, type, sted, startDate, slutDato));
             }
 
         } catch (SQLException e){
@@ -44,6 +39,65 @@ public class BookingRepository {
         return bookinger;
 
     }
+
+    public List<BookingModel> skafBookingerFraVognNum(String vognNummer){
+        //Kristian er ansvarlig for denne metode
+        List<BookingModel> bookinger = new LinkedList<>();
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL skafBookingerFraVognNum('" + vognNummer + "')");
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                int brugerID = resultSet.getInt(2);
+                String type = resultSet.getString(3);
+                String sted = resultSet.getString(4);
+                String startDate = resultSet.getString(5);
+                String slutDato = resultSet.getString(6);
+                int kilometerstart = resultSet.getInt(7);
+                String bil_vognNummer = resultSet.getString(8);
+
+                bookinger.add(new BookingModel(id, brugerID, type, sted, startDate, slutDato, kilometerstart, bil_vognNummer));
+            }
+
+        } catch (NullPointerException e){
+            System.err.println("Ingen bookinger for vognnummer fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<BookingModel>();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return bookinger;
+    }
+
+    public List<BookingModel> skafBookingFraID(int bookingID){
+        //Kristian er ansvarlig for denne metode
+        List<BookingModel> bookinger = new LinkedList<>();
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL skafBookingFraID('" + bookingID + "')");
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                int brugerID = resultSet.getInt(2);
+                String type = resultSet.getString(3);
+                String sted = resultSet.getString(4);
+                String startDate = resultSet.getString(5);
+                String slutDato = resultSet.getString(6);
+                int kilometerstart = resultSet.getInt(7);
+                String bil_vognNummer = resultSet.getString(8);
+
+                bookinger.add(new BookingModel(id, brugerID, type, sted, startDate, slutDato, kilometerstart, bil_vognNummer));
+            }
+
+        } catch (NullPointerException e){
+            System.err.println("Ingen bookinger for rapportID fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<BookingModel>();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return bookinger;
+    }
+
 
     public double visSamletIndtaegt(){
         //Ferhat er ansvarlig for denne metode

@@ -9,20 +9,31 @@ public class BookingModel {
   private String udleveringsSted;
   private String startDato;
   private String slutDato;
-  private double maanedspris;
   private int kilometerStart;
+  private String bil_vognNummer;
 
   public BookingModel() {
   }
 
-  public BookingModel(int id, int brugerID, String abonnementsType, String udleveringsSted, String startDato, String slutDato, double maanedspris) {
+  public BookingModel(int id, int brugerID, String abonnementsType, String udleveringsSted, String startDato, String slutDato) {
     this.id = id;
     this.brugerID = brugerID;
     this.abonnementsType = abonnementsType;
     this.udleveringsSted = udleveringsSted;
     this.startDato = startDato;
     this.slutDato = slutDato;
-    this.maanedspris = maanedspris;
+
+  }
+
+  public BookingModel(int id, int brugerID, String abonnementsType, String udleveringsSted, String startDato, String slutDato, int kilometerStart, String bil_vognNummer) {
+    this.id = id;
+    this.brugerID = brugerID;
+    this.abonnementsType = abonnementsType;
+    this.udleveringsSted = udleveringsSted;
+    this.startDato = startDato;
+    this.slutDato = slutDato;
+    this.kilometerStart = kilometerStart;
+    this.bil_vognNummer = bil_vognNummer;
   }
 
   public int getKilometerStart() {
@@ -33,7 +44,7 @@ public class BookingModel {
     this.kilometerStart = kilometerStart;
   }
 
-  public BookingModel(int id, int brugerID, int abonnementstypeID, String abonnementsType, int udleveringsStedID, String udleveringsSted, String startDato, String slutDato, double maanedspris, int kilometerStart) {
+  public BookingModel(int id, int brugerID, int abonnementstypeID, String abonnementsType, int udleveringsStedID, String udleveringsSted, String startDato, String slutDato, int kilometerStart) {
     this.id = id;
     this.brugerID = brugerID;
     this.abonnementstypeID = abonnementstypeID;
@@ -42,7 +53,6 @@ public class BookingModel {
     this.udleveringsSted = udleveringsSted;
     this.startDato = startDato;
     this.slutDato = slutDato;
-    this.maanedspris = maanedspris;
     this.kilometerStart = kilometerStart;
   }
 
@@ -110,26 +120,27 @@ public class BookingModel {
     this.slutDato = slutDato;
   }
 
-  public double getMaanedspris() {
-    return maanedspris;
+  public String getBil_vognNummer() {
+    return bil_vognNummer;
   }
 
-  public void setMaanedspris(double maanedspris) {
-    this.maanedspris = maanedspris;
+  public void setBil_vognNummer(String bil_vognNummer) {
+    this.bil_vognNummer = bil_vognNummer;
   }
 
   @Override
   public String toString() {
     return "BookingModel{" +
-        "id=" + id +
-        ", brugerID=" + brugerID +
-        ", abonnementstypeID=" + abonnementstypeID +
-        ", abonnementstype='" + abonnementsType + '\'' +
-        ", udleveringsStedID=" + udleveringsStedID +
-        ", udleveringsSted='" + udleveringsSted + '\'' +
-        ", startDato='" + startDato + '\'' +
-        ", slutDato='" + slutDato + '\'' +
-        ", maanedspris=" + maanedspris +
-        '}';
+            "id=" + id +
+            ", brugerID=" + brugerID +
+            ", abonnementstypeID=" + abonnementstypeID +
+            ", abonnementsType='" + abonnementsType + '\'' +
+            ", udleveringsStedID=" + udleveringsStedID +
+            ", udleveringsSted='" + udleveringsSted + '\'' +
+            ", startDato='" + startDato + '\'' +
+            ", slutDato='" + slutDato + '\'' +
+            ", kilometerStart=" + kilometerStart +
+            ", bil_vognNummer='" + bil_vognNummer + '\'' +
+            '}';
   }
 }
