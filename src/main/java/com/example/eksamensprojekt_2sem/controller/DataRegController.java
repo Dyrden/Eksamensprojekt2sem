@@ -42,7 +42,6 @@ public class DataRegController {
             sessionSoeg.setAttribute("soegeFelt",null);
         }
 
-
         return "html/dataRegistrering/bookingRegistrering";
     }
 
