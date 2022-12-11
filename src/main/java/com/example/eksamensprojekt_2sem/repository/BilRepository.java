@@ -64,7 +64,7 @@ public class BilRepository {
         //Mark er ansvarlig for denne metode
         List<BilModel> biler = new LinkedList<>();
         try {
-            ResultSet resultSet = SQLManager.execute("CALL visAlleBiler()");
+            ResultSet resultSet = SQLManager.execute("CALL skafAlleBiler()");
 
             while (resultSet.next()) {
                 String vognNummer = resultSet.getString(1);

@@ -242,12 +242,16 @@ public class DataRegController {
                 udeljningsSlutDato,
                 bil.getDistance()); // Bilens "kilometerStart" er den mængde kilometer som bilen har kørt.
 
+        System.out.println("En booking er lavet!");
+
        model.addAttribute("bil", bil);
        model.addAttribute("bruger", sessionKundeID.getAttribute("brugerID"));
        model.addAttribute("udlejningsStartDato", udlejningsStartDato);
        model.addAttribute("udeljningsSlutDato", udeljningsSlutDato);
        model.addAttribute("abonnementsType", abonnementsType);
        model.addAttribute("udleveringsSted", udleveringsSted);
+
+        sessionKundeID.invalidate();
 
         return "html/dataRegistrering/successite";
     }
