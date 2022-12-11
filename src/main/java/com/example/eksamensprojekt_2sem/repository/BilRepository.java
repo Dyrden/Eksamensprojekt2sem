@@ -17,7 +17,8 @@ import java.util.List;
 @Repository
 public class BilRepository {
 
-    public BilRepository(){}
+    public BilRepository() {
+    }
 
     //Ansvarlig : Mark Dyrby Denner, Ferhat Baran, Bjørn Uffe Haastrup
     // Denne metode søger databasen ved hjælp af et procedure til at finde biler
@@ -43,7 +44,7 @@ public class BilRepository {
                 double CO2Udledning = resultSet.getInt(12);
                 int produktionsaar = resultSet.getInt(13);
                 int distance = resultSet.getInt(14);
-                double maanedsPris = resultSet.getDouble(14);
+                double maanedsPris = resultSet.getDouble(15);
 
                 biler.add(new BilModel(vognNummer, stelNummer, maerke, model, energiType, gearboks, udstyr, status, farve,
                     staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedsPris));
@@ -231,17 +232,18 @@ public class BilRepository {
     }
 
 
-
     public LinkedList<BilModel> visInleveretBiler() {
         LinkedList<BilModel> biler = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafBilerManglerOvervaagning()");
-            while (resultSet.next()){
-                String vognNummer = resultSet.getString(1);
-                String stelNummer = resultSet.getString(2);
-              String maerke = resultSet.getString(3);
-              String model = resultSet.getString(4);
-                biler.add(new BilModel(maerke, model, vognNummer, stelNummer));
+            while (resultSet.next()) {
+                BilModel bilModel = new BilModel();
+                bilModel.setVognNummer(resultSet.getString(1));
+                bilModel.setStelNummer(resultSet.getString(2));
+                bilModel.setMaerke(resultSet.getString(3));
+                bilModel.setModel(resultSet.getString(4));
+                bilModel.setBookingID(resultSet.getInt(17));
+                biler.add(bilModel);
             }
 
         } catch (SQLException e) {
@@ -274,32 +276,32 @@ public class BilRepository {
     public BilModel visSpecifikBil(String vognNummer) {
         //Ferhat og Kristian er ansvarlig for denne metode
 
-      BilModel bil = new BilModel();
-      try{
-          ResultSet resultSet = SQLManager.execute
-                  ("CALL skafSpecifikBilFraVognNum('"+vognNummer+"')");
-          while (resultSet.next()){
-            bil.setVognNummer(resultSet.getString(1));
-            bil.setStelNummer(resultSet.getString(2));
-              bil.setMaerke(resultSet.getString(3));
-              bil.setModel(resultSet.getString(4));
-              bil.setEnergiType(resultSet.getString(5));
-              bil.setGearboks(resultSet.getString(6));
-              bil.setUdstyr(resultSet.getString(7));
-              bil.setStatus(resultSet.getString(8));
-              bil.setFarve(resultSet.getString(9));
-              bil.setStaalPris(resultSet.getDouble(10));
-              bil.setRegistreringsAfgift(resultSet.getDouble(11));
-              bil.setCO2Udledning(resultSet.getDouble(12));
-              bil.setProduktionsaar(resultSet.getInt(13));
-              bil.setDistance(resultSet.getInt(14));
-          }
-        System.out.println(bil);
-      } catch (SQLException e){
-          System.err.println("Ingen bil blev fundet.");
-          System.out.println(e.getMessage());
-          return new BilModel();
-      }
+        BilModel bil = new BilModel();
+        try {
+            ResultSet resultSet = SQLManager.execute
+                ("CALL skafSpecifikBilFraVognNum('" + vognNummer + "')");
+            while (resultSet.next()) {
+                bil.setVognNummer(resultSet.getString(1));
+                bil.setStelNummer(resultSet.getString(2));
+                bil.setMaerke(resultSet.getString(3));
+                bil.setModel(resultSet.getString(4));
+                bil.setEnergiType(resultSet.getString(5));
+                bil.setGearboks(resultSet.getString(6));
+                bil.setUdstyr(resultSet.getString(7));
+                bil.setStatus(resultSet.getString(8));
+                bil.setFarve(resultSet.getString(9));
+                bil.setStaalPris(resultSet.getDouble(10));
+                bil.setRegistreringsAfgift(resultSet.getDouble(11));
+                bil.setCO2Udledning(resultSet.getDouble(12));
+                bil.setProduktionsaar(resultSet.getInt(13));
+                bil.setDistance(resultSet.getInt(14));
+            }
+            System.out.println(bil);
+        } catch (SQLException e) {
+            System.err.println("Ingen bil blev fundet.");
+            System.out.println(e.getMessage());
+            return new BilModel();
+        }
 
         return bil;
 
@@ -341,9 +343,12 @@ public class BilRepository {
         String defineretProcedure = switch (parametre.length) { //En bedre måde på at gøre tingene i en enkel metode i stedet for 5.
             case 1 -> "CALL skafbileraf1parameter('" + parametre[0] + "')";
             case 2 -> "CALL skafbileraf2parametre('" + parametre[0] + "','" + parametre[1] + "')";
-            case 3 -> "CALL skafbileraf3parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "')";
-            case 4 -> "CALL skafbileraf4parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "')";
-            case 5 -> "CALL skafbileraf5parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "','" + parametre[4] + "')";
+            case 3 ->
+                "CALL skafbileraf3parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "')";
+            case 4 ->
+                "CALL skafbileraf4parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "')";
+            case 5 ->
+                "CALL skafbileraf5parametre('" + parametre[0] + "','" + parametre[1] + "','" + parametre[2] + "','" + parametre[3] + "','" + parametre[4] + "')";
 
             default -> throw new IllegalStateException("Unexpected value: " + parametre.length);
         };
@@ -387,76 +392,80 @@ public class BilRepository {
         }
         return biler;
     }
-  public List<String> skafAlleFarver() {
-    List<String> farver = new LinkedList<>();
-    try {
-      ResultSet resultSet = SQLManager.execute("CALL visAlleFarver()");
 
-      while (resultSet.next()) {
-       String farve = resultSet.getString(1);
-        farver.add(farve);
-      }
+    public List<String> skafAlleFarver() {
+        List<String> farver = new LinkedList<>();
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL visAlleFarver()");
 
-    } catch (SQLException e) {
-        System.err.println("Ingen farver/ikke alle farver blev fundet.");
-        System.out.println(e.getMessage());
-        return new LinkedList<String>();
+            while (resultSet.next()) {
+                String farve = resultSet.getString(1);
+                farver.add(farve);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Ingen farver/ikke alle farver blev fundet.");
+            System.out.println(e.getMessage());
+            return new LinkedList<String>();
+        }
+
+        return farver;
+
     }
 
-    return farver;
+    public List<String> skafAlleMaerker() {
+        List<String> maerker = new LinkedList<>();
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL MaerkerFind()");
 
-  }
-  public List<String> skafAlleMaerker() {
-    List<String> maerker = new LinkedList<>();
-    try {
-      ResultSet resultSet = SQLManager.execute("CALL MaerkerFind()");
+            while (resultSet.next()) {
+                String maerke = resultSet.getString(2);
+                maerker.add(maerke);
+            }
 
-      while (resultSet.next()) {
-        String maerke = resultSet.getString(2);
-        maerker.add(maerke);
-      }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-    } catch (SQLException e) {
-      e.printStackTrace();
+        return maerker;
+
     }
 
-    return maerker;
+    public List<String> skafGearbokse() {
+        List<String> liste = new LinkedList<>();
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL skafgearboks()");
 
-  }
-  public List<String> skafGearbokse() {
-    List<String> liste = new LinkedList<>();
-    try {
-      ResultSet resultSet = SQLManager.execute("CALL skafgearboks()");
+            while (resultSet.next()) {
+                String item = resultSet.getString(2);
+                liste.add(item);
+            }
 
-      while (resultSet.next()) {
-        String item = resultSet.getString(2);
-        liste.add(item);
-      }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-    } catch (SQLException e) {
-      e.printStackTrace();
+        return liste;
+
     }
 
-    return liste;
+    public List<String> skafenergiTyper() {
+        List<String> liste = new LinkedList<>();
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL EnergityperFind()");
 
-  }
-  public List<String> skafenergiTyper() {
-    List<String> liste = new LinkedList<>();
-    try {
-      ResultSet resultSet = SQLManager.execute("CALL EnergityperFind()");
+            while (resultSet.next()) {
+                String item = resultSet.getString(2);
+                liste.add(item);
+            }
 
-      while (resultSet.next()) {
-        String item = resultSet.getString(2);
-        liste.add(item);
-      }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-    } catch (SQLException e) {
-      e.printStackTrace();
+        return liste;
+
     }
-
-    return liste;
-
-  }
 
 
     //Ansvarlig : Mark Dyrby Denner
@@ -464,7 +473,7 @@ public class BilRepository {
     // de samme værdier i databasen og returnerer ID'et på denne. Hvis den ikke findes
     // returneres 0.
     public int findModel(BilModelModel model) {
-        System.out.println(model.getModel() + " - " + model.getEnergiType()  + " - " + model.getGearboks()  + " - " + model.getUdstyrsNiveau()  + " - " + model.getMaerke()  + " - " + model.getFarve());
+        System.out.println(model.getModel() + " - " + model.getEnergiType() + " - " + model.getGearboks() + " - " + model.getUdstyrsNiveau() + " - " + model.getMaerke() + " - " + model.getFarve());
         int modelID = 0;
         try {
             ResultSet rs = SQLManager.execute(
@@ -500,6 +509,44 @@ public class BilRepository {
 
         System.out.println("lavede model");
     }
+
+    public BilModel skafBilFraBookingID(int bookingID) {
+
+        BilModel bilModel = new BilModel();
+        ResultSet resultSet = SQLManager.execute("CALL skafBilFraBookingID(\"" + bookingID + "\")");
+
+        try {
+            resultSet.next();
+            bilModel.setVognNummer(resultSet.getString(1));
+            bilModel.setStelNummer(resultSet.getString(2));
+            bilModel.setMaerke(resultSet.getString(3));
+            bilModel.setModel(resultSet.getString(4));
+
+        } catch (SQLException e ) {
+            System.out.println("ingen bil fundet");
+        }
+        return bilModel;
+    }
+
+    /*
+    public BilModel skafBilFraVognnummer(String vognnummer) {
+        BilModel bilModel = new BilModel();
+        ResultSet resultSet = SQLManager.execute("CALL skafBilFraVognNummer(\"" + vognnummer + "\")");
+
+        try {
+            resultSet.next();
+            bilModel.setVognNummer(resultSet.getString(1));
+            bilModel.setStelNummer(resultSet.getString(2));
+            bilModel.setMaerke(resultSet.getString(3));
+            bilModel.setModel(resultSet.getString(4));
+
+        } catch (SQLException e ) {
+            System.out.println("ingen bil fundet");
+        }
+        return bilModel;
+
+    }
+    * */
 
   /*
   public List<String> skafUdstyrsNiveau() {

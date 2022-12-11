@@ -29,9 +29,8 @@
 
 #bilSpecifikation {
     background:#F9F9F9;
-    padding-left: 25px;
-    padding-right: 20px;
-    margin-right: 15px;
+    margin-right: -170px;
+    padding: 75px;
 }
 
 #bilSpecifikation h3 {
@@ -541,4 +540,156 @@ fieldset {
 }
 #brugerIDSearchField .input:focus {
     outline-color: #259bca;
+}
+
+#skadeRegistrering input[type="text"], #skadeRegistrering input[type="email"], #skadeRegistrering input[type="tel"], #skadeRegistrering input[type="url"], #skadeRegistrering textarea, #skadeRegistrering button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#skadeRegistrering {
+    background:#F9F9F9;
+    padding-left: 25px;
+    padding-right: 20px;
+    margin-right: 15px;
+}
+
+#skadeRegistrering h3 {
+    color: #F96;
+    display: contents;
+    font-size: 50px;
+    font-weight: 400;
+    text-transform: uppercase;
+
+}
+
+#skadeRegistrering h4 {
+    margin:5px 0 15px;
+    display:block;
+    font-size:15px;
+}
+
+fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: max-content;
+}
+
+#skadeRegistrering input[type="text"], #skadeRegistrering input[type="email"], #skadeRegistrering input[type="tel"], #skadeRegistrering input[type="url"], #skadeRegistrering textarea {
+    width:100%;
+    border:1px solid #CCC;
+    background:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+}
+
+#skadeRegistrering label{
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+#skadeRegistrering input[type="text"]:hover, #skadeRegistrering input[type="email"]:hover, #skadeRegistrering input[type="tel"]:hover, #skadeRegistrering input[type="url"]:hover, #skadeRegistrering textarea:hover {
+    -webkit-transition:border-color 0.3s ease-in-out;
+    -moz-transition:border-color 0.3s ease-in-out;
+    transition:border-color 0.3s ease-in-out;
+    border:1px solid #AAA;
+}
+
+#skadeRegistrering textarea {
+    height:100px;
+    max-width:100%;
+    resize:none;
+}
+
+#skadeRegistrering button[type="submit"] {
+    cursor:pointer;
+    width:100%;
+    border:none;
+    background:#06add9;
+    color:#FFF;
+    margin:15px;
+    padding:10px;
+    font-size:15px;
+}
+
+#skadeRegistrering button[type="submit"]:hover {
+    background:#09C;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+}
+
+#skadeRegistrering button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#skadeRegistrering input:focus, #skadeRegistrering textarea:focus {
+    outline: 0;
+    border: 1px solid #999;
+}
+
+#bilRegistreringForm input[type="text"], #bilRegistreringForm input[type="email"],#bilRegistreringForm input[type="number"], #bilRegistreringForm input[type="tel"], #bilRegistreringForm input[type="url"], #bilRegistreringForm textarea, #bilRegistreringForm button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#bilRegistreringForm {
+    background:#F9F9F9;
+    padding:75px;
+    margin:0;
+    margin-left: 60px;
+}
+
+#bilRegistreringForm h3 {
+    color: #F96;
+    display: contents;
+    font-size: 40px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+#bilRegistreringForm h4 {
+    margin:5px 0 15px;
+    display:block;
+    font-size:15px;
+}
+
+#bilRegistreringForm input[type="text"], #bilRegistreringForm input[type="email"],#bilRegistreringForm input[type="number"], #bilRegistreringForm input[type="tel"], #bilRegistreringForm input[type="url"], #bilRegistreringForm textarea {
+    width:100%;
+    border:1px solid #CCC;
+    background:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+}
+
+#bilRegistreringForm input[type="text"]:hover, #bilRegistreringForm input[type="email"]:hover, #bilRegistreringForm input[type="number"]:hover, #bilRegistreringForm input[type="tel"]:hover, #bilRegistreringForm input[type="url"]:hover, #kundeinfo textarea:hover {
+    -webkit-transition:border-color 0.3s ease-in-out;
+    -moz-transition:border-color 0.3s ease-in-out;
+    transition:border-color 0.3s ease-in-out;
+    border:1px solid #AAA;
+}
+
+#bilRegistreringForm textarea {
+    height:100px;
+    max-width:100%;
+    resize:none;
+}
+
+#bilRegistreringForm button[type="submit"] {
+    cursor:pointer;
+    width:auto;
+    border:none;
+    background:#06add9;
+    color:#FFF;
+    margin:15px;
+    padding:10px;
+    font-size:15px;
+}
+
+#bilRegistreringForm button[type="submit"]:hover {
+    background:#09C;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+}
+
+#bilRegistreringForm button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#bilRegistreringForm input:focus, #bilRegistreringForm textarea:focus {
+    outline:0;
+    border:1px solid #999;
 }

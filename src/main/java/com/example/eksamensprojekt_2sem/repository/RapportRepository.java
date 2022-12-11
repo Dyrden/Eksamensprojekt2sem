@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -65,20 +66,73 @@ public class RapportRepository {
 
 
     public int findRapportIDFraBookingID(int bookingID) {
-        //TODO
-        return 0;
+        int fundetID = 0;
+        ResultSet resultSet = SQLManager.execute("CALL skafRapportFraBookingID(\"" + bookingID + "\")");
+        try {
+            resultSet.next();
+            fundetID = resultSet.getInt(1);
+        } catch (SQLException e ) {
+            System.out.println("ingen rapport fundet");
+        }
+        return fundetID;
     }
 
     public void opretRapportFraBookingID(int bookingID) {
-        //TODO
+        SQLManager.update("CALL Rapport_OpretFraBookingID(\"" + bookingID + "\")");
     }
 
     public int findSlutKMFraRapportID(int rapportID) {
-        //TODO
-        return 0;
+        int slutkm = 0;
+        ResultSet resultSet = SQLManager.execute(" CALL skafSlutKilometerFraRapportID(\"" + rapportID + "\")");
+        try {
+            resultSet.next();
+            slutkm = resultSet.getInt(1);
+        } catch (SQLException e ) {
+            System.out.println("ingen slutkm fundet");
+        }
+        return slutkm;
+
     }
 
-    public void opdaterSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
-        //TODO
+    public void redigereSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
+        SQLManager.update(
+            "CALL Rapport_RedigerSlutKilometerFraRapportID(" + rapportID + ", " + rapportModel.getOverskredetKM() + ")");
     }
+
+    public int skafUdregnetKMKørt(int bookingID) {
+        int kmkørt = 0;
+        ResultSet resultSet = SQLManager.execute(
+            "call skafKilometerKoert(" + bookingID + ")");
+        try {
+            resultSet.next();
+            kmkørt = resultSet.getInt(1);
+
+        } catch (SQLException e) {
+            System.out.println("fejl under udregning af kilometer kørt");
+        }
+
+        return kmkørt;
+    }
+
+    public double skafPrisPaaOverskredetKM(int bookingID){
+        // Ferhat er ansvarlig for metoden
+        double pris = 0;
+        int kmKørt = skafUdregnetKMKørt(bookingID);
+        int antalMåneder = 0;
+
+        int maksimaltKMTilladt = antalMåneder*2000;
+
+        if ((kmKørt>maksimaltKMTilladt)){
+            int kmOvertrådt = kmKørt-maksimaltKMTilladt;
+            pris = kmOvertrådt*0.75;
+        }
+
+        return pris;
+    }
+
+    public void udregnKilometerKørt(int bookingID,int slutkm) {
+        SQLManager.execute(
+            "call skafUdregnetKilometerKoertOgOpdaterBilOgRapport(" + bookingID + ", " + slutkm + ")");
+    }
+
 }

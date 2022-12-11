@@ -27,6 +27,8 @@ public class BilModel {
   private int distance;
   private double maanedsPris;
 
+  private int bookingID;
+
 
   public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance, double maanedsPris) {
     this.vognNummer = vognNummer;
@@ -120,6 +122,14 @@ public class BilModel {
 
     public String getEnergiType() {
         return energiType;
+    }
+
+    public int getBookingID() {
+        return bookingID;
+    }
+
+    public void setBookingID(int bookingID) {
+        this.bookingID = bookingID;
     }
 
     public void setEnergiType(String energiType) {

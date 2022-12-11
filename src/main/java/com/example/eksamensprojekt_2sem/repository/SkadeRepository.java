@@ -22,7 +22,7 @@ public class SkadeRepository {
         List<SkadeModel> skader = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute
-                ("CALL skafSkaderFraRapport('" + id + "')");
+                ("CALL skafSkaderFraRapportID('" + id + "')");
             while (resultSet.next()) {
                 int skadeid = (resultSet.getInt(1));
                 String skadensPlacering = (resultSet.getString(2));
@@ -52,7 +52,7 @@ public class SkadeRepository {
     public void sletSkade(int skadeID) {
         //Ferhat er ansvarlig for denne metode
         ResultSet resultSet = SQLManager.execute
-            ("CALL SletSkade(" + skadeID + ")");
+            ("CALL Skade_Slet(\"" + skadeID + "\")");
     }
 
     public void beregnAntalKM() {
@@ -80,7 +80,7 @@ public class SkadeRepository {
         List<SkadeModel> skader = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute
-                ("CALL skafSkaderFraRapport('" + id + "')");
+                ("CALL skafSkaderFraRapport(\"" + id + "\")");
             while (resultSet.next()) {
                 int skadeid = (resultSet.getInt(1));
                 String skadensPlacering = (resultSet.getString(2));
@@ -100,7 +100,13 @@ public class SkadeRepository {
     }
 
     public void opretSkadePåRapport(int rapportID, SkadeModel skadeModel) {
-        //TODO
+        SQLManager.update(
+            "CALL Skade_Opret(\""
+                + rapportID + "\",\""
+                + skadeModel.getSkadensPlacering() + "\",\""
+                + skadeModel.getSkadensBeskrivelse() + "\",\""
+                + skadeModel.getSkadensPris()+ "\")");
+
     }
 
 }

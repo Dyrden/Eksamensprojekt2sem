@@ -41,7 +41,7 @@
             <h4>Indtast venligst ny kilometer antal</h4>
             <h4>Overkørte km afregnes 0,75 kr./km</h4>
             <fieldset>
-              <input name="km" placeholder="km" type="number" tabindex="1" required>
+              <input name="slutkm" placeholder="km" type="number" tabindex="1" required th:value="${slutkm}">
               <input name="rapportID" type="hidden" th:value="${rapportID}">
             </fieldset>
             <fieldset>
@@ -50,11 +50,19 @@
               </div>
             </fieldset>
           </form>
+          <table class="bilInfo">
+            <tr>
+              <th>antal km kørt</th>
+            </tr>
+            <tr>
+              <td> <span th:text="${udregnetKM}">antal km kørt</span> </td>
+            </tr>
+          </table>
         </div>
       </div>
       <div>
         <div id="kundeinfo">
-          <form id="bilSpecifikation" action="/opretSkade" method="post">
+          <form id="skadeRegistrering" action="/opretSkade" method="post">
             <input type="hidden" th:value="${bookingID}" name="bookingID" >
             <h3>Registrer Skade</h3>
             <h4>Indtast skade, fejl eller anden omkostning</h4>
@@ -68,7 +76,7 @@
               <textarea id="skade-beskrivelse" name="skade_beskrivelse" placeholder="Beskriv venligst skaden...." tabindex="3" required></textarea>
             </fieldset>
             <fieldset>
-              <div class="knapIMidten">
+              <div class="flexIMidten">
                 <input type="hidden" id="wishId" name="rapportID" th:attr="value=${rapportID}">
                 <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Indsend</button>
               </div>
@@ -89,12 +97,14 @@
               <th>Slet skade</th>
             </tr>
             <tr th:each="s : ${skader}">
-              <td> <span th:text="${s.skadensPlacering}">skadensPlacering</span> </td>
-              <td> <span th:text="${s.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
-              <td> <span th:text="${s.skadensPris}">skadensPris</span> kr. </td>
+              <td> <span th:text="${s.getSkadensPlacering()}">skadensPlacering</span> </td>
+              <td> <span th:text="${s.getSkadensBeskrivelse()}">skadensBeskrivelse</span> </td>
+              <td> <span th:text="${s.getSkadensPris()}">skadensPris</span> kr. </td>
               <td th:id="rodKnap">
-                <button placeholder="Registrer ny rapport?" type="submit">  <a th:class="htmlLink" th:href="@{'/sletSkade/' + ${s.id}}">Slet skade</a>
-                </button>
+                <form th:action="@{/sletSkade/__${s.id}__}" method="post">
+                  <input type="hidden" th:value="${bookingID}" name="bookingID">
+                  <button type="submit">Slet skade</button>
+                </form>
               </td>
             </tr>
           </table>

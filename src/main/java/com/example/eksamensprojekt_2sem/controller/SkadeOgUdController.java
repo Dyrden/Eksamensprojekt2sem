@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Controller
 public class SkadeOgUdController {
@@ -33,6 +35,7 @@ public class SkadeOgUdController {
     //Ferhat er ansvarlig for denne metode
     public String visSkadeOgUd(Model model) {
         model.addAttribute("biler", bilRepository.visInleveretBiler());
+
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
@@ -109,16 +112,11 @@ public class SkadeOgUdController {
         return "redirect:/seSkader/" + rapportID;
     }
 
-    @GetMapping("/sletSkade/{skadeId}")
+    @PostMapping("/sletSkade/{skadeId}")
     //Ferhat er ansvarlig for denne metode
-    public String deleteWishList(@PathVariable("skadeId") int skadeId, HttpSession session) {
+    public String deleteWishList(@PathVariable("skadeId") int skadeId, @RequestParam("bookingID") int bookingID) {
         skadeRepository.sletSkade(skadeId);
-        BilModel bil = (BilModel) session.getAttribute("bil");
-
-        String vognNummer = bil.getVognNummer();
-        int rapportID = (int) session.getAttribute("rapportID");
-
-        return "redirect:/seSkader/" + rapportID;
+        return "redirect:/opretRapport/" + bookingID;
     }
 
     @PostMapping("/udbedring")
@@ -135,8 +133,8 @@ public class SkadeOgUdController {
 
     @GetMapping("/opretRapport/{bookingID}")
     public String opretRapport(
-        @PathVariable("bookingID") int bookingID
-        , Model model
+        @PathVariable("bookingID") int bookingID,
+        Model model
     ) {
 
         int rapportID = 0;
@@ -148,10 +146,12 @@ public class SkadeOgUdController {
         } else  {
             model.addAttribute("skader",skadeRepository.skafSkaderFraRapport(rapportID));
             model.addAttribute("slutkm", rapportRepository.findSlutKMFraRapportID(rapportID));
+            model.addAttribute("udregnetKM", rapportRepository.skafUdregnetKMKørt(bookingID));
         }
 
         System.out.println("rapportID : " + rapportID);
 
+        model.addAttribute("bil",bilRepository.skafBilFraBookingID(bookingID));
         model.addAttribute("rapportID", rapportID);
         model.addAttribute("bookingID", bookingID);
 
@@ -172,6 +172,7 @@ public class SkadeOgUdController {
         skadeModel.setSkadensBeskrivelse(skadensBeskrivelse);
         skadeModel.setSkadensPlacering(skadePlacering);
 
+
         skadeRepository.opretSkadePåRapport(rapportID, skadeModel);
 
         return "redirect:/opretRapport/" + bookingID;
@@ -187,9 +188,13 @@ public class SkadeOgUdController {
         RapportModel rapportModel = new RapportModel();
         rapportModel.setId(rapportID);
         rapportModel.setOverskredetKM(slutkm);
-        rapportRepository.opdaterSlutKMTilRapport(rapportID, rapportModel);
+        rapportRepository.redigereSlutKMTilRapport(rapportID, rapportModel);
+
+        rapportRepository.udregnKilometerKørt(bookingID,slutkm);
 
         model.addAttribute("bookingID", bookingID);
+
+
         return "redirect:/opretRapport/" + bookingID;
     }
 }
