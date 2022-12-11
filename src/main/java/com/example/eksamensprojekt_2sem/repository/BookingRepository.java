@@ -221,4 +221,7 @@ public class BookingRepository {
 
     }
 
+    public void sætBookingOvervåget(int bookingID) {
+        SQLManager.update("CALL saetBookingOvervaaget('" + bookingID +"')");
+    }
 }
