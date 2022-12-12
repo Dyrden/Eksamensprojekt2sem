@@ -105,13 +105,14 @@ public class BookingRepository {
 
         double indtaegt = 0;
         try {
-            ResultSet resultSet = SQLManager.execute("CALL skafAktiveBookingOgBilData()");
+            ResultSet resultSet = SQLManager.execute("CALL skafForetningsInformationer()");
 
             while (resultSet.next()) {
 
-                double maanedsPris = resultSet.getDouble(15);
+                double maanedsPris = resultSet.getDouble(1);
+                double maanederUdlejet = resultSet.getInt(2);
 
-                indtaegt += maanedsPris;
+                indtaegt += maanedsPris*maanederUdlejet;
             }
 
         } catch (SQLException e){
