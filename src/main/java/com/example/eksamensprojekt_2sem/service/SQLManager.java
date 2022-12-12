@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 
 public class SQLManager {
-    public static PreparedStatement makeStatement(String s){
+    private static PreparedStatement makeStatement(String s){
         //laver en skabelon for Prepared statements, fordi DRY
         PreparedStatement preparedStatement = null;
         try {

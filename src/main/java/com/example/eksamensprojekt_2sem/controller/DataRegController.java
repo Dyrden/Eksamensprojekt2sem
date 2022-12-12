@@ -38,7 +38,7 @@ public class DataRegController {
         if(sessionSoeg.getAttribute("soegeFelt") == null){
             model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
         } else {
-            model.addAttribute("biler", bilRepository.chooseCallFromParameter((String)sessionSoeg.getAttribute("soegeFelt")));
+            model.addAttribute("biler", bilRepository.vaelgKaldFraParametre((String)sessionSoeg.getAttribute("soegeFelt")));
             sessionSoeg.setAttribute("soegeFelt",null);
         }
 

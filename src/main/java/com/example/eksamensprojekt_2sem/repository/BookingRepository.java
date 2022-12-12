@@ -115,10 +115,7 @@ public class BookingRepository {
             System.err.println("Ingen indtægt fundet.");
             System.out.println(e.getMessage());
         }
-
-
         return indtaegt;
-
     }
     public List<BilOgBookingModel> visAktiveBookinger(){ //Ferhat er ansvarlig for denne metode
 
