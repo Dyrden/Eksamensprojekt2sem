@@ -36,10 +36,10 @@
 #beaverSeSkader{
     background-image: url(@{/images/beaverMechanic.png});
     background-repeat: no-repeat, repeat;
-    background-size: 9%;
+    background-size: 19%;
     background-attachment: inherit;
-    background-position-x: 1088px;
-    background-position-y: 0px;
+    background-position-x: 126px;
+    background-position-y: -3px;
 }
 
 #beaverTilfoejSkade{
