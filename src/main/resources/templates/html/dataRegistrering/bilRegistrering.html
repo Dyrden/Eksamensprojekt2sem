@@ -31,7 +31,13 @@
         </fieldset>
         <fieldset>
             <label for="maerke">Mærke</label>
+            <!--
             <input id="maerke" name="maerke" placeholder="bilmærke" type="text" tabindex="1" required autofocus>
+            -->
+            <select id="maerke" name="maerke" required autofocus>
+                <option value="0">Vælg model</option>
+                <option th:each="m : ${maerker}" th:value="${m}" th:text="${m}"></option>
+            </select>
         </fieldset>
         <fieldset>
             <label for="model">Model</label>
