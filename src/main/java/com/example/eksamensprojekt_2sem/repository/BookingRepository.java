@@ -221,7 +221,21 @@ public class BookingRepository {
 
     }
 
-    public void sætBookingOvervåget(int bookingID) {
+    private void sætBookingOvervåget(int bookingID) {
         SQLManager.update("CALL saetBookingOvervaaget('" + bookingID +"')");
+    }
+
+
+    public void sætBilTotalskadet(int bookingID) {
+        sætBookingOvervåget(bookingID);
+        SQLManager.update("CALL Bil_RedigerStatusTilTotalskadetBookingID('" + bookingID +"')");
+    }
+    public void sætBilSolgt(int bookingID) {
+        sætBookingOvervåget(bookingID);
+        SQLManager.update("CALL Bil_RedigerStatusTilSolgtBookingID('" + bookingID +"')");
+    }
+    public void sætBilIkkeUdlejet(int bookingID) {
+        sætBookingOvervåget(bookingID);
+        SQLManager.update("CALL Bil_RedigerStatusTilIkkeUdlejetBookingID('" + bookingID +"')");
     }
 }

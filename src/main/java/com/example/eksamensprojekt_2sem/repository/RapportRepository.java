@@ -127,7 +127,9 @@ public class RapportRepository {
         } catch (SQLException e) {
             System.out.println("fejl under udregning af kilometer kørt");
         }
-
+        if (antalMånederBooket == 0){
+            antalMånederBooket = 1;
+        }
         double pris = 0;
         int kmKørt = skafUdregnetKMKørt(bookingID);
 
@@ -154,6 +156,9 @@ public class RapportRepository {
             System.out.println("fejl under udregning af kilometer kørt");
         }
 
+        if (antalMånederBooket == 0){
+            antalMånederBooket = 1;
+        }
 
         return antalMånederBooket;
     }
@@ -171,6 +176,9 @@ public class RapportRepository {
             System.out.println("fejl under udregning af kilometer kørt");
         }
 
+        if (antalMånederBooket == 0){
+            antalMånederBooket = 1;
+        }
         int maksimaltKMTilladt = antalMånederBooket*2000;
 
 
@@ -192,7 +200,9 @@ public class RapportRepository {
         } catch (SQLException e) {
             System.out.println("fejl under udregning af kilometer kørt");
         }
-
+        if (antalMånederBooket == 0){
+            antalMånederBooket = 1;
+        }
         int kmKørt = skafUdregnetKMKørt(bookingID);
 
         int maksimaltKMTilladt = antalMånederBooket * 2000;
