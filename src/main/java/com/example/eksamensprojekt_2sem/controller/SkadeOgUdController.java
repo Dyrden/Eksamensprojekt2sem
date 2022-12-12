@@ -31,7 +31,7 @@ public class SkadeOgUdController {
         this.bookingRepository = bookingRepository;
     }
 
-    @GetMapping("/skadeOgUdbedring")
+    @GetMapping("/skadeOgUdbedring") //Bjørn
     //Ferhat er ansvarlig for denne metode
     public String visSkadeOgUd(Model model) {
         model.addAttribute("biler", bilRepository.visInleveretBiler());
@@ -39,19 +39,13 @@ public class SkadeOgUdController {
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
-    @GetMapping("/opretRapportTest")
-    public String rapportSkadeTest(){
-        return "html/skadeOgUdbedring/opretRapport";
-    }
-
-    //Ferhat er ansvarlig for denne metode
-    @GetMapping("/vaelgRapport/{vognNummer}")
+    @GetMapping("/vaelgRapport/{vognNummer}") //Ferhat og Mark
     public String vaelgRapport(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession session) {
         model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
 
         //Her henter vi den valgte bils rapport
         //Så kan vi efterfølgende bruge rapportens id til at modtage skaderne
-        List<RapportModel> rapporter = rapportRepository.hentRapporterFraVognNummer(vognNummer);
+        //List<RapportModel> rapporter = rapportRepository.hentRapporterFraVognNummer(vognNummer);
         model.addAttribute("rapporter", rapportRepository.hentRapporterFraVognNummer(vognNummer));
 
 
@@ -62,7 +56,7 @@ public class SkadeOgUdController {
     }
 
 
-    @PostMapping("/indtastkm")
+    @PostMapping("/indtastkm") //Mark
     public String indtastKm(
         @RequestParam("km") int overskredetKM,
         @RequestParam("rapportID") String rapportID) {
@@ -72,32 +66,29 @@ public class SkadeOgUdController {
 
 
 
-    @GetMapping("/seSkader/{rapportID}")
-    //Ferhat er ansvarlig for denne metode
-    public String visSkader(@PathVariable("rapportID") int rapportID, @RequestParam("BilvognNummer") String bil,
-                            Model model) {
-
-        //Når vi nu har bilens rapport, så kan vi tilgå rapporten
-        //vi henter alle skaderne fra rapportens id.
-        //Rapportens id har vi fået fra tildigere kode gennem bilens vognNummer
-        model.addAttribute("skader", skadeRepository.skafSkaderFraBookingID(rapportID));
-        model.addAttribute("rapportID", rapportID);
-        //if statement nødvendigt som exception for at loade denne side direkte
-        model.addAttribute("bil", bilRepository.visSpecifikBil(bil));
-        return "html/skadeOgUdbedring/seSkader";
-    }
-
+//    @GetMapping("/seSkader/{rapportID}") //Ferhat og Bjørn
+//    public String visSkader(@PathVariable("rapportID") int rapportID, @RequestParam("BilvognNummer") String bil,
+//                            Model model) {
+//
+//        //Når vi nu har bilens rapport, så kan vi tilgå rapporten
+//        //vi henter alle skaderne fra rapportens id.
+//        //Rapportens id har vi fået fra tildigere kode gennem bilens vognNummer
+//        model.addAttribute("skader", skadeRepository.skafSkaderFraBookingID(rapportID));
+//        model.addAttribute("rapportID", rapportID);
+//        //if statement nødvendigt som exception for at loade denne side direkte
+//        model.addAttribute("bil", bilRepository.visSpecifikBil(bil));
+//        return "html/skadeOgUdbedring/seSkader";
+//    }
 
 
-    @GetMapping("/tilfoejSkade/{rapportID}")
-    //Ferhat er ansvarlig for denne metode
+
+/*    @GetMapping("/tilfoejSkade/{rapportID}") //Ferhat
     public String tilfoejSkade(@PathVariable("rapportID") String rapportID, Model model) {
         model.addAttribute("rapportID", rapportID);
         return "html/skadeOgUdbedring/tilfoejSkade";
-    }
+    }*/
 
-    @PostMapping("/tilfoej")
-    //Ferhat er ansvarlig for denne metode
+/*    @PostMapping("/tilfoej") //Ferhat
     public String tilfoejSkadePost(Model model, HttpSession session,
                                    @RequestParam("skade_placering") String skadePlacering,
                                    @RequestParam("skade_pris") double skadensPris,
@@ -110,22 +101,22 @@ public class SkadeOgUdController {
         session.setAttribute("rapportID", rapportID);
         //redirect tilbage til seSkader
         return "redirect:/seSkader/" + rapportID;
-    }
+    }*/
 
-    @PostMapping("/sletSkade/{skadeId}")
-    //Ferhat er ansvarlig for denne metode
+    @PostMapping("/sletSkade/{skadeId}") //Ferhat
+
     public String sletSkade(@PathVariable("skadeId") int skadeId, @RequestParam("bookingID") int bookingID) {
         skadeRepository.sletSkade(skadeId);
         return "redirect:/opretRapport/" + bookingID;
     }
 
-    @PostMapping("/udbedring")
+    @PostMapping("/udbedring") //Ferhat
     public String reUdbedring() {
         return "redirect:/skadeOgUdbedring";
     }
 
 
-    @GetMapping("/opretRapport/{bookingID}")
+    @GetMapping("/opretRapport/{bookingID}") //Mark og Ferhat
     public String opretRapport(
         @PathVariable("bookingID") int bookingID,
         Model model
@@ -160,7 +151,7 @@ public class SkadeOgUdController {
     }
 
 
-    @PostMapping("/opretSkade")
+    @PostMapping("/opretSkade") // Mark
     public String opretSkade(
         @RequestParam("bookingID") int bookingID,
         @RequestParam("rapportID") int rapportID,
@@ -179,7 +170,7 @@ public class SkadeOgUdController {
         return "redirect:/opretRapport/" + bookingID;
     }
 
-    @PostMapping("/opretKM")
+    @PostMapping("/opretKM") //Mark
     public String opretKM(
         @RequestParam("bookingID") int bookingID,
         @RequestParam("rapportID") int rapportID,
@@ -199,7 +190,7 @@ public class SkadeOgUdController {
         return "redirect:/opretRapport/" + bookingID;
     }
 
-    @PostMapping("/saetIkkeUdlejet/{bookingID}")
+    @PostMapping("/saetIkkeUdlejet/{bookingID}")//Mark og Kristian
     public String saetIkkeUdlejet(
         @PathVariable("bookingID") int bookingID
     ) {
@@ -209,7 +200,7 @@ public class SkadeOgUdController {
         return "redirect:/skadeOgUdbedring/";
     }
 
-    @PostMapping("/saetBilTotalskadet/{bookingID}")
+    @PostMapping("/saetBilTotalskadet/{bookingID}") //Kristian
     public String saetBilTotalskadet(
             @PathVariable("bookingID") int bookingID
     ) {
@@ -219,7 +210,7 @@ public class SkadeOgUdController {
         return "redirect:/skadeOgUdbedring/";
     }
 
-    @PostMapping("/saetBilSolgt/{bookingID}")
+    @PostMapping("/saetBilSolgt/{bookingID}") //Kristian
     public String saetBilSolgt(
             @PathVariable("bookingID") int bookingID
     ) {

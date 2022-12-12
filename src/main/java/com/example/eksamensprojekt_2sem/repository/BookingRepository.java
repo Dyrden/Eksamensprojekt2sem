@@ -1,6 +1,8 @@
 package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.*;
+import com.example.eksamensprojekt_2sem.model.bookingmodel.AbonnementsTypeModel;
+import com.example.eksamensprojekt_2sem.model.bookingmodel.UdleveringsstedModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +14,7 @@ import java.util.List;
 @Repository
 public class BookingRepository {
 
-    public List<BookingModel> visAlleBookinger(){
+   /* public List<BookingModel> visAlleBookinger(){ //Ferhat
         //Ferhat er ansvarlig for denne metode
         List<BookingModel> bookinger = new LinkedList<>();
         BookingModel booking = new BookingModel();
@@ -38,10 +40,10 @@ public class BookingRepository {
 
         return bookinger;
 
-    }
+    }*/
 
-    public List<BookingModel> skafBookingerFraVognNum(String vognNummer){
-        //Kristian er ansvarlig for denne metode
+    public List<BookingModel> skafBookingerFraVognNum(String vognNummer){ //Kristian er ansvarlig for denne metode
+
         List<BookingModel> bookinger = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafBookingerFraVognNum('" + vognNummer + "')");
@@ -59,18 +61,15 @@ public class BookingRepository {
                 bookinger.add(new BookingModel(id, brugerID, type, sted, startDate, slutDato, kilometerstart, bil_vognNummer));
             }
 
-        } catch (NullPointerException e){
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen bookinger for vognnummer fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<BookingModel>();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
         return bookinger;
     }
 
-    public List<BookingModel> skafBookingFraID(int bookingID){
-        //Kristian er ansvarlig for denne metode
+    public List<BookingModel> skafBookingFraID(int bookingID){ //Kristian er ansvarlig for denne metode
+
         List<BookingModel> bookinger = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafBookingFraID('" + bookingID + "')");
@@ -88,20 +87,18 @@ public class BookingRepository {
                 bookinger.add(new BookingModel(id, brugerID, type, sted, startDate, slutDato, kilometerstart, bil_vognNummer));
             }
 
-        } catch (NullPointerException e){
+        } catch (SQLException | NullPointerException e){
             System.err.println("Ingen bookinger for rapportID fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<BookingModel>();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
+
         return bookinger;
     }
 
 
-    public double visSamletIndtaegt(){
-        //Ferhat er ansvarlig for denne metode
-        //Den viser ligenu samledeindtægt for bookede biler denne måned
+    public double visSamletIndtaegt(){//Ferhat er ansvarlig for denne metode
+
+        //Den viser lige nu samlede indtægt for bookede biler denne måned
 
         double indtaegt = 0;
         try {
@@ -115,18 +112,14 @@ public class BookingRepository {
                 indtaegt += maanedsPris*maanederUdlejet;
             }
 
-        } catch (SQLException e){
+        } catch (SQLException | NullPointerException e){
             System.err.println("Ingen indtægt fundet.");
             System.out.println(e.getMessage());
-            return 0;
         }
-
-
         return indtaegt;
-
     }
-    public List<BilOgBookingModel> visAktiveBookinger(){
-        //Ferhat er ansvarlig for denne metode
+    public List<BilOgBookingModel> visAktiveBookinger(){ //Ferhat er ansvarlig for denne metode
+
         List<BilOgBookingModel> biler = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafAktiveBookingOgBilData()");
@@ -159,25 +152,23 @@ public class BookingRepository {
                     staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedspris, id, brugerID, type, sted, startDate, slutDato));
             }
 
-        } catch (SQLException e){
+        } catch (SQLException | NullPointerException e){
             System.err.println("Ingen aktive bookinger fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<BilOgBookingModel>();
         }
 
         return biler;
 
     }
 
-    public void visBookingHistorik(String s){
+/*    public void visBookingHistorik(String s){
         //SQLManager.makeStatement("CALL VisBookningHistorik()");
+    }*/
 
-    }
     public void lavBooking(String vognNummer, int BrugerID,int abonnementsType,int sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){ // Kristian
         // Format:
         // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
         SQLManager.update("CALL Booking_Opret('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
-
     }
 
     public List<UdleveringsstedModel> visAlleUdleveringsSteder() { //Kristian
@@ -191,14 +182,11 @@ public class BookingRepository {
                 udleveringssteder.add(new UdleveringsstedModel(id, sted));
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen udleveringssteder fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<UdleveringsstedModel>();
         }
-
         return udleveringssteder;
-
     }
 
     public List<AbonnementsTypeModel> visAlleAbonnementsTyper() { //Kristian
@@ -212,30 +200,29 @@ public class BookingRepository {
                 abonnementsTyper.add(new AbonnementsTypeModel(id, type));
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen abonnementsTyper fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<AbonnementsTypeModel>();
         }
 
         return abonnementsTyper;
 
     }
 
-    private void sætBookingOvervåget(int bookingID) {
+    private void sætBookingOvervåget(int bookingID) { //Kristian
         SQLManager.update("CALL saetBookingOvervaaget('" + bookingID +"')");
     }
 
 
-    public void sætBilTotalskadet(int bookingID) {
+    public void sætBilTotalskadet(int bookingID) { //Kristian
         sætBookingOvervåget(bookingID);
         SQLManager.update("CALL Bil_RedigerStatusTilTotalskadetBookingID('" + bookingID +"')");
     }
-    public void sætBilSolgt(int bookingID) {
+    public void sætBilSolgt(int bookingID) { //Kristian
         sætBookingOvervåget(bookingID);
         SQLManager.update("CALL Bil_RedigerStatusTilSolgtBookingID('" + bookingID +"')");
     }
-    public void sætBilIkkeUdlejet(int bookingID) {
+    public void sætBilIkkeUdlejet(int bookingID) { //Kristian
         sætBookingOvervåget(bookingID);
         SQLManager.update("CALL Bil_RedigerStatusTilIkkeUdlejetBookingID('" + bookingID +"')");
     }

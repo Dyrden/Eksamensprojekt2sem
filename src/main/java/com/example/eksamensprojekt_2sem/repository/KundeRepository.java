@@ -31,10 +31,9 @@ public class KundeRepository {
 
           brugere.add(new BrugerModel(id, fornavn, efternavn, email, tlf, cpr));
         }
-      } catch (SQLException e) {
+      } catch (SQLException | NullPointerException e) {
         System.err.println("Ingen brugere fundet.");
         System.out.println(e.getMessage());
-        return new LinkedList<BrugerModel>();
       }
       return brugere;
   }
@@ -57,17 +56,16 @@ public class KundeRepository {
 
       nyesteKundeID = resultSet.getInt(1);
 
-    } catch (SQLException e) {
+    } catch (SQLException | NullPointerException e) {
       System.err.println("Ingen kunde fundet.");
       System.out.println(e.getMessage());
-      return 0;
     }
 
     return nyesteKundeID;
 
   }
 
-  public List<BrugerModel> skafBrugerFraCPR(String brugerCPR) {
+  public List<BrugerModel> skafBrugerFraCPR(String brugerCPR) { //Kristian
 
     List<BrugerModel> brugere = new LinkedList<>();
 
@@ -84,10 +82,9 @@ public class KundeRepository {
 
         brugere.add(new BrugerModel(id, fornavn, efternavn, email, tlf, cpr));
       }
-    } catch (SQLException e) {
+    } catch (SQLException | NullPointerException e) {
       System.err.println("Ingen bruger fundet.");
       System.out.println(e.getMessage());
-      return new LinkedList<BrugerModel>();
     }
     return brugere;
   }

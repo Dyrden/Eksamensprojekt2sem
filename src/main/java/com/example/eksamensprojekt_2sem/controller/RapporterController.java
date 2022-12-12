@@ -28,48 +28,29 @@ public class RapporterController {
         this.bookingRepository = bookingRepository;
     }
 
-  @GetMapping("/seRapporter")
+  @GetMapping("/seRapporter") //Ferhat
   public String visRapporter(Model model){
     model.addAttribute("biler", bilRepository.visAlleBiler());
 
     return "html/rapporter/rapporter";
   }
-  @GetMapping("/seRapport/{vognNummer}")
+  @GetMapping("/seRapport/{vognNummer}") //Ferhat
   //Ferhat er ansvarlig for denne metode
   public String seRapport(@PathVariable("vognNummer") String vognNummer, Model model){
     model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
     return "html/rapporter/seRapport";
   }
-  @GetMapping("/vaelgRapportRapporter/{vognNummer}")
-  //Ferhat og Kristian er ansvarlig for denne metode
-  public String vaelgRapport(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession session){
+  @GetMapping("/vaelgRapportRapporter/{vognNummer}") //(Tidligere Ferhat) Kristian
 
-        //model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
+  public String vaelgRapport(@PathVariable("vognNummer") String vognNummer, Model model){
 
-        //Her henter vi den valgte bils rapport
-        //Så kan vi efterfølgende bruge rapportens id til at modtage skaderne
-        //List<RapportModel> rapporter = rapportRepository.hentRapporterFraVognNummer(vognNummer);
-        //model.addAttribute("rapporter", rapportRepository.hentRapporterFraVognNummer(vognNummer));
-
-        //Her bliver der fundet hvilke bookings findes under bilens vognnummer;
         model.addAttribute("bookings", bookingRepository.skafBookingerFraVognNum(vognNummer));
-
-
-
-        //Opretter en session og sætter bil til den bil vi er inde på i skader
-        //session.setAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
 
         return "html/rapporter/vaelgRapport";
     }
 
-    @GetMapping("/seSkadesRapport/{bookingID}")
-    //Ferhat er ansvarlig for denne metode
+    @GetMapping("/seSkadesRapport/{bookingID}") // (Tidligere Ferhat) Kristian
     public String visSkader(@PathVariable("bookingID") int bookingID, Model model, HttpSession session) {
-        //Når vi nu har bilens rapport, så kan vi tilgå rapporten
-        //vi henter alle skaderne fra rapportens id.
-        //Rapportens id har vi fået fra tildigere kode gennem bilens vognNummer
-
-
 
                 //Her hentes skader med booking ID
                 model.addAttribute("skader", skadeRepository.skafSkaderFraBookingID(bookingID));

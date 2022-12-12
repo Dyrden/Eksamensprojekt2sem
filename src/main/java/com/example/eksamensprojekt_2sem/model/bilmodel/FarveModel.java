@@ -1,4 +1,4 @@
-package com.example.eksamensprojekt_2sem.model;
+package com.example.eksamensprojekt_2sem.model.bilmodel;
 
 public class FarveModel {
 

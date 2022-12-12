@@ -133,23 +133,22 @@
             </tr>
           </table>
       </div>
-
+        <fieldset>
+          <form th:action="@{/saetIkkeUdlejet/__${bookingID}__}" method="post">
+            <button type="submit">Sæt tilgængelig til udlejning</button>
+          </form>
+        </fieldset>
+        <fieldset>
+          <form th:action="@{/saetBilTotalskadet/__${bookingID}__}" method="post">
+            <button type="submit">Sæt totalskadet</button>
+          </form>
+        </fieldset>
+        <fieldset>
+          <form th:action="@{/saetBilSolgt/__${bookingID}__}" method="post">
+            <button type="submit">Sæt solgt</button>
+          </form>
+        </fieldset>
     </div>
-          <fieldset>
-            <form th:action="@{/saetIkkeUdlejet/__${bookingID}__}" method="post">
-              <button type="submit">Sæt tilgængelig til udlejning</button>
-            </form>
-          </fieldset>
-          <fieldset>
-            <form th:action="@{/saetBilTotalskadet/__${bookingID}__}" method="post">
-              <button type="submit">Sæt totalskadet</button>
-            </form>
-          </fieldset>
-          <fieldset>
-            <form th:action="@{/saetBilSolgt/__${bookingID}__}" method="post">
-              <button type="submit">Sæt solgt</button>
-            </form>
-          </fieldset>
   </div>
 </div>
 

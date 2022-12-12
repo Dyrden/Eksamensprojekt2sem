@@ -29,8 +29,6 @@ static {
 
      */
 
-    private String test;
-
     public static Connection connect() {
         if (connection == null) {
             try {

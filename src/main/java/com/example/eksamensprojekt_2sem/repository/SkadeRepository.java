@@ -28,22 +28,21 @@ public class SkadeRepository {
 
                 skader.add(new SkadeModel(skadeid, skadensPlacering, skadensBeskrivelse, skadensPris, rapportID));
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen rapporter/skader fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<SkadeModel>();
         }
 
         return skader;
     }
 
-    public void tilfoejSkade(String placering, String beskrivelse, double pris, int rapportID) {
+/*    public void tilfoejSkade(String placering, String beskrivelse, double pris, int rapportID) {
         //Ferhat er ansvarlig for denne metode
         ResultSet resultSet = SQLManager.execute
             ("CALL TilfoejSkade('" + beskrivelse + "','" + placering + "'," + pris + "," + rapportID + ")");
 
         System.out.println(placering + beskrivelse + pris + rapportID);
-    }
+    }*/
 
     public void sletSkade(int skadeID) {
         //Ferhat er ansvarlig for denne metode
@@ -51,7 +50,7 @@ public class SkadeRepository {
             ("CALL Skade_Slet(\"" + skadeID + "\")");
     }
 
-    public void beregnAntalKM() {
+/*    public void beregnAntalKM() { //Ferhat
         int bilensKMTal = 3400; // distance
         int kilometerStart = 1000; // kilometerStart
         double betaling = 0; // ekstra betaling
@@ -67,9 +66,9 @@ public class SkadeRepository {
             betaling = antalKMKørt * 0.75; //300 kr.
         }
 
-    }
+    }*/
 
-    public double skafTotalPrisFraRapportID(int id) {
+/*    public double skafTotalPrisFraRapportID(int id) {
         //Ferhat og Kristian er ansvarlig for denne metode
 
         int totalPris = 0;
@@ -93,9 +92,9 @@ public class SkadeRepository {
         }
 
         return totalPris;
-    }
+    }*/
 
-    public void opretSkadePåRapport(int rapportID, SkadeModel skadeModel) {
+    public void opretSkadePåRapport(int rapportID, SkadeModel skadeModel) { //Mark
         SQLManager.update(
             "CALL Skade_Opret(\""
                 + rapportID + "\",\""
@@ -105,7 +104,7 @@ public class SkadeRepository {
 
     }
 
-    public double skafTotalPrisFraSkadeListe(List<SkadeModel> skadeListe) {
+    public double skafTotalPrisFraSkadeListe(List<SkadeModel> skadeListe) { //Kristian
 
         double total = 0;
 
