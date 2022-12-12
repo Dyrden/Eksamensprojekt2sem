@@ -199,13 +199,34 @@ public class SkadeOgUdController {
         return "redirect:/opretRapport/" + bookingID;
     }
 
-    @PostMapping("/saetOvervaaget/{bookingID}")
-    public String sætOvervåget(
+    @PostMapping("/saetIkkeUdlejet/{bookingID}")
+    public String saetIkkeUdlejet(
         @PathVariable("bookingID") int bookingID
     ) {
-        bookingRepository.sætBookingOvervåget(bookingID);
+        bookingRepository.sætBilIkkeUdlejet(bookingID);
 
 
         return "redirect:/skadeOgUdbedring/";
     }
+
+    @PostMapping("/saetBilTotalskadet/{bookingID}")
+    public String saetBilTotalskadet(
+            @PathVariable("bookingID") int bookingID
+    ) {
+        bookingRepository.sætBilTotalskadet(bookingID);
+
+
+        return "redirect:/skadeOgUdbedring/";
+    }
+
+    @PostMapping("/saetBilSolgt/{bookingID}")
+    public String saetBilSolgt(
+            @PathVariable("bookingID") int bookingID
+    ) {
+        bookingRepository.sætBilSolgt(bookingID);
+
+
+        return "redirect:/skadeOgUdbedring/";
+    }
+
 }
