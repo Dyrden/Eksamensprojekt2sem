@@ -326,7 +326,7 @@ public class BilRepository {
     }*/
 
 
-    public List<BilModel> chooseCallFromParameter(String parameterTekst) { //Kristian og Mark
+    public List<BilModel> vaelgKaldFraParametre(String parameterTekst) { //Kristian og Mark
 
         List<BilModel> biler = new LinkedList<>();
 

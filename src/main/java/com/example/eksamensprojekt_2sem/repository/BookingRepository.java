@@ -102,23 +102,21 @@ public class BookingRepository {
 
         double indtaegt = 0;
         try {
-            ResultSet resultSet = SQLManager.execute("CALL skafAktiveBookingOgBilData()");
+            ResultSet resultSet = SQLManager.execute("CALL skafForetningsInformationer()");
 
             while (resultSet.next()) {
 
-                double maanedsPris = resultSet.getDouble(15);
+                double maanedsPris = resultSet.getDouble(1);
+                double maanederUdlejet = resultSet.getInt(2);
 
-                indtaegt += maanedsPris;
+                indtaegt += maanedsPris*maanederUdlejet;
             }
 
         } catch (SQLException | NullPointerException e){
             System.err.println("Ingen indtægt fundet.");
             System.out.println(e.getMessage());
         }
-
-
         return indtaegt;
-
     }
     public List<BilOgBookingModel> visAktiveBookinger(){ //Ferhat er ansvarlig for denne metode
 
