@@ -137,7 +137,17 @@
     </div>
           <fieldset>
             <form th:action="@{/saetOvervaaget/__${bookingID}__}" method="post">
-              <button type="submit">Sæt Overvåget</button>
+              <button type="submit">Sæt tilgængelig til udlejning</button>
+            </form>
+          </fieldset>
+          <fieldset>
+            <form th:action="@{/saetOvervaaget/__${bookingID}__}" method="post">
+              <button type="submit">Sæt totalskadet</button>
+            </form>
+          </fieldset>
+          <fieldset>
+            <form th:action="@{/saetOvervaaget/__${bookingID}__}" method="post">
+              <button type="submit">Sæt solgt</button>
             </form>
           </fieldset>
   </div>
