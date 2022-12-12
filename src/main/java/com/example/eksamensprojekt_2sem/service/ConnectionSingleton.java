@@ -10,7 +10,7 @@ import java.sql.SQLException;
 @Repository
 public class ConnectionSingleton {
 
-    //private static Connection connection = null;
+    private static Connection connection = null;
     //kald til gemte værdier, der tilgår DB
 
     /*
@@ -28,24 +28,24 @@ static {
 }
 
      */
-public static Connection connect(){
-    Connection connection = null;
 
-    try {
-        //Skaber en forbindelse til DB
-        //tak til Claus Bove @kea dat22v1 programmering
-        String db_URL = System.getenv("JDBCUrl");
-        String uid = System.getenv("JDBCUsername");
-        String pass = System.getenv("JDBCPassword");
-        connection = DriverManager.getConnection(db_URL, uid, pass);
+    private String test;
 
-
-    } catch (SQLException e) {
-        e.printStackTrace();
+    public static Connection connect() {
+        if (connection == null) {
+            try {
+                //Skaber en forbindelse til DB
+                //tak til Claus Bove @kea dat22v1 programmering
+                String db_URL = System.getenv("JDBCUrl");
+                String uid = System.getenv("JDBCUsername");
+                String pass = System.getenv("JDBCPassword");
+                connection = DriverManager.getConnection(db_URL, uid, pass);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return connection;
     }
-
-    return connection;
-}
 
 
 }
