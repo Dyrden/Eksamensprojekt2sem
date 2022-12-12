@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public class RapportRepository {
 
-    public List<RapportModel> hentRapporterFraVognNummer(String vognNummer) {
+    public List<RapportModel> hentRapporterFraVognNummer(String vognNummer) { //Ferhat
         List<RapportModel> rapporter = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute
@@ -28,10 +28,9 @@ public class RapportRepository {
                 rapporter.add(rapport);
                 System.out.println(rapport);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen rapporter fra vognnummer fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<RapportModel>();
         }
 
         return rapporter;
@@ -39,7 +38,7 @@ public class RapportRepository {
 
 
 
-    public RapportModel hentRapportFraRapportID(String rapportID) {
+/*    public RapportModel hentRapportFraRapportID(String rapportID) {
         RapportModel rapport = new RapportModel();
         try {
             ResultSet resultSet = SQLManager.execute
@@ -57,15 +56,15 @@ public class RapportRepository {
         }
 
         return rapport;
-    }
+    }*/
 
 
-    public void tilføjNuværrendeKMTilRapport(String rapportID, int km) {
+    public void tilføjNuværrendeKMTilRapport(String rapportID, int km) { //Mark
         SQLManager.update("CALL RapportKMNuSet(" + rapportID + ", " + km + ")");
     }
 
 
-    public int findRapportIDFraBookingID(int bookingID) {
+    public int findRapportIDFraBookingID(int bookingID) { //Mark
         int fundetID = 0;
         ResultSet resultSet = SQLManager.execute("CALL skafRapportFraBookingID(\"" + bookingID + "\")");
         try {
@@ -77,11 +76,11 @@ public class RapportRepository {
         return fundetID;
     }
 
-    public void opretRapportFraBookingID(int bookingID) {
+    public void opretRapportFraBookingID(int bookingID) { //Mark
         SQLManager.update("CALL Rapport_OpretFraBookingID(\"" + bookingID + "\")");
     }
 
-    public int findSlutKMFraRapportID(int rapportID) {
+    public int findSlutKMFraRapportID(int rapportID) { //Mark
         int slutkm = 0;
         ResultSet resultSet = SQLManager.execute(" CALL skafSlutKilometerFraRapportID(\"" + rapportID + "\")");
         try {
@@ -94,12 +93,12 @@ public class RapportRepository {
 
     }
 
-    public void redigereSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
+    public void redigereSlutKMTilRapport(int rapportID, RapportModel rapportModel) {//Mark
         SQLManager.update(
             "CALL Rapport_RedigerSlutKilometerFraRapportID(" + rapportID + ", " + rapportModel.getOverskredetKM() + ")");
     }
 
-    public int skafUdregnetKMKørt(int bookingID) {
+    public int skafUdregnetKMKørt(int bookingID) {//Mark
         int kmkørt = 0;
         ResultSet resultSet = SQLManager.execute(
             "call skafKilometerKoert(" + bookingID + ")");
@@ -114,8 +113,7 @@ public class RapportRepository {
         return kmkørt;
     }
 
-    public double skafPrisPaaOverskredetKM(int bookingID){
-        // Ferhat er ansvarlig for metoden
+    public double skafPrisPaaOverskredetKM(int bookingID){ //Ferhat
         int antalMånederBooket = 0;
 
         ResultSet resultSet = SQLManager.execute(
@@ -142,8 +140,8 @@ public class RapportRepository {
 
         return pris;
     }
-    public int skafAntalMaanederBooket(int bookingID){
-        // Ferhat er ansvarlig for metoden
+
+    public int skafAntalMaanederBooket(int bookingID){ //Ferhat
         int antalMånederBooket = 0;
 
         ResultSet resultSet = SQLManager.execute(
@@ -162,8 +160,9 @@ public class RapportRepository {
 
         return antalMånederBooket;
     }
-    public int skafMaksimumKMTilladt(int bookingID){
-        // Ferhat er ansvarlig for metoden
+
+    public int skafMaksimumKMTilladt(int bookingID){ // Ferhat er ansvarlig for metoden
+
         int antalMånederBooket = 0;
 
         ResultSet resultSet = SQLManager.execute(
@@ -185,8 +184,7 @@ public class RapportRepository {
         return maksimaltKMTilladt;
     }
 
-    public int skafKMOverskredet(int bookingID) {
-        // Ferhat er ansvarlig for metoden
+    public int skafKMOverskredet(int bookingID) { //Ferhat
         int antalMånederBooket = 0;
         int kmOvertrådt = 0;
 
@@ -216,7 +214,7 @@ public class RapportRepository {
         return kmOvertrådt;
     }
 
-    public void udregnKilometerKørt(int bookingID,int slutkm) {
+    public void udregnKilometerKørt(int bookingID,int slutkm) { //Mark
         SQLManager.execute(
             "call skafUdregnetKilometerKoertOgOpdaterBilOgRapport(" + bookingID + ", " + slutkm + ")");
     }
