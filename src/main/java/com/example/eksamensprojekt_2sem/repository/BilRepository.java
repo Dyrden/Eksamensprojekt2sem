@@ -3,9 +3,7 @@ package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.*;
 import com.example.eksamensprojekt_2sem.model.BilModel;
-import com.example.eksamensprojekt_2sem.model.bilmodel.EnergiTypeModel;
-import com.example.eksamensprojekt_2sem.model.bilmodel.GearboksModel;
-import com.example.eksamensprojekt_2sem.model.bilmodel.UdstyrsniveauModel;
+import com.example.eksamensprojekt_2sem.model.bilmodel.*;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.stereotype.Repository;
 
@@ -60,8 +58,8 @@ public class BilRepository {
 
     }
 
-    public List<BilModel> visAlleBiler() {
-        //Mark er ansvarlig for denne metode
+    public List<BilModel> visAlleBiler() { //Ferhat
+
         List<BilModel> biler = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafAlleBiler()");
@@ -110,10 +108,9 @@ public class BilRepository {
                 farveModel.setFarve(rs.getString(2));
                 farveModels.add(farveModel);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen farver fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<FarveModel>();
         }
         return farveModels;
     }
@@ -133,10 +130,9 @@ public class BilRepository {
                 maerkeModel.setMaerke(rs.getString(2));
                 maerkeModels.add(maerkeModel);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen bilmærker fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<MaerkeModel>();
         }
         return maerkeModels;
     }
@@ -156,10 +152,9 @@ public class BilRepository {
                 energiTypeModel.setEnergiType(rs.getString(2));
                 energiTypeModels.add(energiTypeModel);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen energityper fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<EnergiTypeModel>();
         }
         return energiTypeModels;
     }
@@ -178,10 +173,9 @@ public class BilRepository {
                 udstyrsniveauModel.setUdstyrsniveau(rs.getString(2));
                 udstyrsniveauModels.add(udstyrsniveauModel);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen udstyrsniveauer fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<UdstyrsniveauModel>();
         }
         return udstyrsniveauModels;
     }
@@ -200,10 +194,9 @@ public class BilRepository {
                 gearboksModel.setGearboks(rs.getString(2));
                 gearboksModels.add(gearboksModel);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen gearbokse fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<GearboksModel>();
         }
         return gearboksModels;
     }
@@ -223,16 +216,15 @@ public class BilRepository {
                 bilModelModels.add(bilModelModel);
 
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen bilmodeller fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<BilModelModel>();
         }
         return bilModelModels;
     }
 
 
-    public LinkedList<BilOgBookingModel> visInleveretBiler() {
+    public LinkedList<BilOgBookingModel> visInleveretBiler() { //Mark, Bjørn og Ferhat
         LinkedList<BilOgBookingModel> biler = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafBilerManglerOvervaagning()");
@@ -247,7 +239,7 @@ public class BilRepository {
                 biler.add(bilModel);
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen indleveret biler fundet.");
             System.out.println(e.getMessage());
         }
@@ -274,8 +266,7 @@ public class BilRepository {
     }
 
 
-    public BilModel visSpecifikBil(String vognNummer) {
-        //Ferhat og Kristian er ansvarlig for denne metode
+    public BilModel visSpecifikBil(String vognNummer) {//Ferhat og Kristian er ansvarlig for denne metode
 
         BilModel bil = new BilModel();
         try {
@@ -297,8 +288,8 @@ public class BilRepository {
                 bil.setProduktionsaar(resultSet.getInt(13));
                 bil.setDistance(resultSet.getInt(14));
             }
-            System.out.println(bil);
-        } catch (SQLException e) {
+            //System.out.println(bil);
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen bil blev fundet.");
             System.out.println(e.getMessage());
             return new BilModel();
@@ -309,7 +300,7 @@ public class BilRepository {
 
     }
 
-    public Object sUVisning(String s) {
+/*    public Object sUVisning(String s) { //Bjørn
         BilModel bilModel = null;
         try {
 
@@ -332,10 +323,10 @@ public class BilRepository {
             return new LinkedList<SkadeModel>();
         }
         return bilModel;
-    }
+    }*/
 
 
-    public List<BilModel> chooseCallFromParameter(String parameterTekst) {
+    public List<BilModel> chooseCallFromParameter(String parameterTekst) { //Kristian og Mark
 
         List<BilModel> biler = new LinkedList<>();
 
@@ -359,7 +350,7 @@ public class BilRepository {
         return biler;
     }
 
-    private List<BilModel> returnerListeBilerAfSpecifikCall(String definéretProcedure) {
+    private List<BilModel> returnerListeBilerAfSpecifikCall(String definéretProcedure) { //Kristian
         List<BilModel> biler = new LinkedList<>();
 
         try {
@@ -386,15 +377,14 @@ public class BilRepository {
                     staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedsPris));
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen biler fundet med søgeparametre.");
             System.out.println(e.getMessage());
-            return new LinkedList<BilModel>();
         }
         return biler;
     }
 
-    public List<String> skafAlleFarver() {
+/*    public List<String> skafAlleFarver() { //Ferhat
         List<String> farver = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL visAlleFarver()");
@@ -412,9 +402,9 @@ public class BilRepository {
 
         return farver;
 
-    }
+    }*/
 
-    public List<String> skafAlleMaerker() {
+/*    public List<String> skafAlleMaerker() {
         List<String> maerker = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL MaerkerFind()");
@@ -430,9 +420,9 @@ public class BilRepository {
 
         return maerker;
 
-    }
+    }*/
 
-    public List<String> skafGearbokse() {
+/*    public List<String> skafGearbokse() {
         List<String> liste = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafgearboks()");
@@ -448,9 +438,9 @@ public class BilRepository {
 
         return liste;
 
-    }
+    }*/
 
-    public List<String> skafenergiTyper() {
+/*    public List<String> skafenergiTyper() {
         List<String> liste = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL EnergityperFind()");
@@ -466,7 +456,7 @@ public class BilRepository {
 
         return liste;
 
-    }
+    }*/
 
 
     //Ansvarlig : Mark Dyrby Denner
@@ -511,7 +501,7 @@ public class BilRepository {
         System.out.println("lavede model");
     }
 
-    public BilModel skafBilFraBookingID(int bookingID) {
+    public BilModel skafBilFraBookingID(int bookingID) { //Mark
 
         BilModel bilModel = new BilModel();
         ResultSet resultSet = SQLManager.execute("CALL skafBilFraBookingID(\"" + bookingID + "\")");

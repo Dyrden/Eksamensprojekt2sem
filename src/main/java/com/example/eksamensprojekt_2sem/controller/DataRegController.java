@@ -1,7 +1,7 @@
 package com.example.eksamensprojekt_2sem.controller;
 
 import com.example.eksamensprojekt_2sem.model.BilModel;
-import com.example.eksamensprojekt_2sem.model.BilModelModel;
+import com.example.eksamensprojekt_2sem.model.bilmodel.BilModelModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
 import com.example.eksamensprojekt_2sem.repository.BookingRepository;
 import com.example.eksamensprojekt_2sem.repository.KundeRepository;
@@ -84,7 +84,7 @@ public class DataRegController {
 
     }
 
-    @PostMapping("/indsendBilTilRegistrering")
+    @PostMapping("/indsendBilTilRegistrering") // Mark
     public String indsendBilTilRegistrering(
         @RequestParam("vognnummer") String vognnummer,
         @RequestParam("stelnummer") String stelnummer,
@@ -134,13 +134,13 @@ public class DataRegController {
         return "redirect:/";
     }
 
-    @GetMapping("/kunde")
+/*    @GetMapping("/kunde") //Ferhat
     //Ferhat er ansvarlig for denne metode
     //Gammel kundebooking side. Hvis man hellere vil tage den.
     public String kunde(Model model){
         model.addAttribute("biler", bilRepository.visTilgaengeligeBiler());
         return "html/dataRegistrering/kundeBookingGammel";
-    }
+    }*/
 
 
     @GetMapping("/bookBil/{vognNummer}")
@@ -166,8 +166,7 @@ public class DataRegController {
             return "html/dataRegistrering/kundeRegistrering";
     }
 
-    @PostMapping("/soegKundeMedCPR") //Middleway Getmapping.
-    //Ferhat er ansvarlig for denne metode
+    @PostMapping("/soegKundeMedCPR") //Middleway Getmapping. //Kristian er ansvarlig for denne metode
     public String soegKundeMedCPR(
                           @RequestParam String brugerCPR,
                           HttpSession sessionBil,
@@ -179,8 +178,6 @@ public class DataRegController {
             brugerCPR = null;
         }
             sessionBrugerCPR.setAttribute("brugerCPR", brugerCPR);
-
-        //sessionBrugerID.setAttribute("BrugerID",kundeRepository.skafBrugerIDFraCPR(kundeCPR));
 
         return "redirect:/bookBil/" + vognNummer;
     }
@@ -220,7 +217,7 @@ public class DataRegController {
         return "redirect:/udstyrValg/" + (int)sessionBrugerID.getAttribute("brugerID");
     }
 
-    @PostMapping("/nyBooking") // Kristian
+    @PostMapping("/nyBooking") // Kristian og Ferhat
     public String nyBooking(
         @RequestParam("udlejningsStartDato") String udlejningsStartDato,
         @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,
