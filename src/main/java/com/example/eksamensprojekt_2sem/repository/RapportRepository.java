@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -178,10 +177,10 @@ public class RapportRepository {
         if (antalMånederBooket == 0) {
             antalMånederBooket = 1;
         }
-        int maksimaltKMTilladt = antalMånederBooket * 2000;
 
+        int maksimalKMKørtPerMåned = 2000;
 
-        return maksimaltKMTilladt;
+        return antalMånederBooket * maksimalKMKørtPerMåned;
     }
 
     public int skafKMOverskredet(int bookingID) { //Ferhat
@@ -207,8 +206,6 @@ public class RapportRepository {
 
         if ((kmKørt > maksimaltKMTilladt)) {
             kmOvertrådt = kmKørt - maksimaltKMTilladt;
-        } else {
-            return 0;
         }
 
         return kmOvertrådt;

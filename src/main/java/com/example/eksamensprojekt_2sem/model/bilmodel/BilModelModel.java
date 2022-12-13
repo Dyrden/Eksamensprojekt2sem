@@ -13,11 +13,6 @@ public class BilModelModel {
     public BilModelModel() {
     }
 
-    public BilModelModel(int ID, String model) {
-        this.ID = ID;
-        this.model = model;
-    }
-
 
     public BilModelModel(String model, String energiType, String gearboks, String udstyrsNiveau, String maerke, String farve) {
         this.model = model;
@@ -28,9 +23,6 @@ public class BilModelModel {
         this.farve = farve;
     }
 
-    public int getID() {
-        return ID;
-    }
 
     public void setID(int ID) {
         this.ID = ID;
@@ -48,10 +40,6 @@ public class BilModelModel {
         return energiType;
     }
 
-    public void setEnergiType(String energiType) {
-        this.energiType = energiType;
-    }
-
     public String getGearboks() {
         return gearboks;
     }
@@ -62,10 +50,6 @@ public class BilModelModel {
 
     public String getUdstyrsNiveau() {
         return udstyrsNiveau;
-    }
-
-    public void setUdstyrsNiveau(String udstyrsNiveau) {
-        this.udstyrsNiveau = udstyrsNiveau;
     }
 
     public String getMaerke() {

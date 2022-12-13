@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>opretBil</title>
@@ -16,9 +16,9 @@
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"></div>
 
-<div class="container flexIMidten">
-    <div id="bilRegistreringForm">
-        <form action="/indsendBilTilRegistrering" method="post">
+<div class="container">
+    <form class="flexIMidten" action="/indsendBilTilRegistrering" method="post">
+        <div id="bilRegistreringForm">
             <h3>Registrer ny bil</h3>
             <h4>Indtast bilens informationer</h4>
             <fieldset>
@@ -33,12 +33,9 @@
             </fieldset>
             <fieldset>
                 <label for="maerke">Mærke</label>
-                <!--
-                <input id="maerke" name="maerke" placeholder="bilmærke" type="text" tabindex="1" required autofocus>
-                -->
                 <select id="maerke" name="maerke" required autofocus>
                     <option value="0">Vælg model</option>
-                    <option th:each="m : ${maerker}" th:value="${m}" th:text="${m}"></option>
+                    <option th:each="m : ${maerker}" th:value="${m.getMaerke()}" th:text="${m.getMaerke()}"></option>
                 </select>
             </fieldset>
             <fieldset>
@@ -49,71 +46,77 @@
                 <label for="farveValg">Farve</label>
                 <select id="farveValg" name="farve" required autofocus>
                     <option value="0">Vælg farve.</option>
-                    <option th:each="f : ${farver}" th:value="${f}" th:text="${f}"></option>
+                    <option th:each="f : ${farver}" th:value="${f.getFarve()}" th:text="${f.getFarve()}"></option>
                 </select>
             </fieldset>
             <fieldset>
                 <label for="gearboks">Type gear</label>
                 <select id="gearboks" name="gearboks" required autofocus>
                     <option value="0">Vælg gearboks</option>
-                    <option th:each="g : ${gearbokse}" th:value="${g}" th:text="${g}"></option>
+                    <option th:each="g : ${gearbokse}" th:value="${g.getGearboks()}"
+                            th:text="${g.getGearboks()}"></option>
                 </select>
             </fieldset>
             <fieldset>
                 <label for="udstyrsniveau">Udstyrsniveau</label>
                 <select id="udstyrsniveau" name="udstyrsniveau" required autofocus>
                     <option value="0">Vælg udstyrsniveau.</option>
-                    <option th:each="u : ${udstyrsniveau}" th:value="${u}" th:text="${u}"></option>
+                    <option th:each="u : ${udstyrsniveau}" th:value="${u.getUdstyrsniveau()}"
+                            th:text="${u.getUdstyrsniveau()}"></option>
                 </select>
             </fieldset>
             <fieldset>
                 <label for="energiTyper">Type af Energi</label>
                 <select id="energiTyper" name="energitype" required autofocus>
                     <option value="0">Vælg energiTyper.</option>
-                    <option th:each="e : ${energiTyper}" th:value="${e}" th:text="${e}"></option>
+                    <option th:each="e : ${energiTyper}" th:value="${e.getEnergiType()}"
+                            th:text="${e.getEnergiType()}"></option>
                 </select>
             </fieldset>
-        </form>
-    </div>
-    <div id="bilRegistreringForm">
-        <fieldset>
-            <label for="produktionsaar">Produktionsår</label>
-            <input id="produktionsaar" name="produktionsaar" placeholder="produktionsår" type="text" tabindex="1"
-                   required autofocus>
-        </fieldset>
-        <fieldset>
-            <label for="staalpris">Stålpris</label>
-            <input id="staalpris" name="staalpris" placeholder="stålpris" type="text" tabindex="1" required autofocus>
-        </fieldset>
-        <fieldset>
-            <label for="CO2udledning">CO2udlednings afgift</label>
-            <input id="CO2udledning" name="CO2udledning" placeholder="CO2udledning" type="text" tabindex="1" required
-                   autofocus>
-        </fieldset>
-        <fieldset>
-            <label for="registreringsafgift">Registrerings Afgift</label>
-            <input id="registreringsafgift" name="registreringsafgift" placeholder="registreringsafgift" type="text"
-                   tabindex="1" required autofocus>
-        </fieldset>
-        <fieldset>
-            <label for="kilometertal">Kilometertal</label>
-            <input id="kilometertal" name="kilometertal" placeholder="kilometertal" type="text" tabindex="1" required
-                   autofocus>
-        </fieldset>
-        <fieldset>
-            <label for="maanedspris">Månedspris</label>
-            <input id="maanedspris" name="maanedspris" placeholder="månedspris" type="text" tabindex="1" required
-                   autofocus>
-        </fieldset>
+        </div>
+        <div id="bilRegistreringForm">
+            <fieldset>
+                <label for="produktionsaar">Produktionsår</label>
+                <input id="produktionsaar" name="produktionsaar" placeholder="produktionsår" type="text" tabindex="1"
+                       required autofocus>
+            </fieldset>
+            <fieldset>
+                <label for="staalpris">Stålpris</label>
+                <input id="staalpris" name="staalpris" placeholder="stålpris" type="text" tabindex="1" required
+                       autofocus>
+            </fieldset>
+            <fieldset>
+                <label for="CO2udledning">CO2udlednings afgift</label>
+                <input id="CO2udledning" name="CO2udledning" placeholder="CO2udledning" type="text" tabindex="1"
+                       required
+                       autofocus>
+            </fieldset>
+            <fieldset>
+                <label for="registreringsafgift">Registrerings Afgift</label>
+                <input id="registreringsafgift" name="registreringsafgift" placeholder="registreringsafgift" type="text"
+                       tabindex="1" required autofocus>
+            </fieldset>
+            <fieldset>
+                <label for="kilometertal">Kilometertal</label>
+                <input id="kilometertal" name="kilometertal" placeholder="kilometertal" type="text" tabindex="1"
+                       required
+                       autofocus>
+            </fieldset>
+            <fieldset>
+                <label for="maanedspris">Månedspris</label>
+                <input id="maanedspris" name="maanedspris" placeholder="månedspris" type="text" tabindex="1" required
+                       autofocus>
+            </fieldset>
 
-        <fieldset>
-            <div class="flexIMidten">
-                <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">
-                    Indsend
-                </button>
-            </div>
-        </fieldset>
-    </div>
+            <fieldset>
+                <div class="flexIMidten">
+                    <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">
+                        Indsend
+                    </button>
+                </div>
+            </fieldset>
+        </div>
+    </form>
 </div>
 </body>
 </html>

@@ -23,14 +23,15 @@
             <div th:id="searchField">
                 <h4>Søgefelt</h4>
                 <div>
-                    <input type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
+                    <label for="vognnummer"></label>
+                    <input id="vognnummer" type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
                 </div>
             </div>
 
         </div>
         <div th:id="cardTilTable">
             <h3>Skade og Udbedring</h3>
-            <h4>Vælg den bil du vil se rapporter for. Derefter kan du tilføje skader til rapporten </br>
+            <h4>Vælg den bil du vil se rapporter for. Derefter kan du tilføje skader til rapporten <br>
                 Denne liste viser biler, som er bookede lige nu</h4>
             <div th:id="scroll">
                 <table th:id="kundeTable">

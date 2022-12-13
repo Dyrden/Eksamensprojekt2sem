@@ -1,7 +1,6 @@
 package com.example.eksamensprojekt_2sem.controller;
 
 import com.example.eksamensprojekt_2sem.model.BilModel;
-import com.example.eksamensprojekt_2sem.model.bilmodel.BilModelModel;
 import com.example.eksamensprojekt_2sem.repository.BilRepository;
 import com.example.eksamensprojekt_2sem.repository.BookingRepository;
 import com.example.eksamensprojekt_2sem.repository.KundeRepository;

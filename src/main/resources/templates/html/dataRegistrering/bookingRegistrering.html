@@ -29,7 +29,8 @@
 
                 <div th:id="brugerIDSearchField">
                     <form th:id="centerSearchField" action="/soegBiler" method="post">
-                        <input type="text" name="soegeFelt" th:class="searchField" placeholder="Indtast søgeord...">
+                        <label for="soegeFelt" ></label>
+                        <input id="soegeFelt" type="text" name="soegeFelt" th:class="searchField" placeholder="Indtast søgeord...">
                         <input type="submit" value="Søg">
                     </form>
                 </div>
@@ -38,7 +39,7 @@
         </div>
         <div th:id="cardTilTable">
             <h3>Booking af bil</h3>
-            <h4>Vælg den bil du vil booke </br>
+            <h4>Vælg den bil du vil booke <br>
                 Efterfølgende, kan du registrere en ny kunde, eller vælge en eksisterende kunde</h4>
             <div th:id="scroll">
                 <table th:id="kundeTable">

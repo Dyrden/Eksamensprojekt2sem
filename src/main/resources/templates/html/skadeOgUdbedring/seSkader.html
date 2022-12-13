@@ -40,7 +40,8 @@
                         <h4>Indtast venligst ny kilometer antal</h4>
                         <h4>Overkørte km afregnes 0,75 kr./km</h4>
                         <fieldset>
-                            <input name="km" placeholder="km" type="number" tabindex="1" required>
+                            <label for="km">indtast bilens slut kilometer</label>
+                            <input id="km" name="km" placeholder="km" type="number" tabindex="1" required>
                             <input name="rapportID" type="hidden" th:value="${rapportID}">
                         </fieldset>
                         <fieldset>
@@ -70,28 +71,21 @@
                             <td><span th:text="${s.skadensBeskrivelse}">skadensBeskrivelse</span></td>
                             <td><span th:text="${s.skadensPris}">skadensPris</span> kr.</td>
                             <td th:id="rodKnap">
-                                <button placeholder="Registrer ny rapport?" type="submit"><a th:class="htmlLink"
-                                                                                             th:href="@{'/sletSkade/' + ${s.id}}">Slet
-                                    skade</a>
+                                <button type="submit">
+                                    <a th:class="htmlLink" th:href="@{'/sletSkade/' + ${s.id}}">Slet skade</a>
                                 </button>
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div th:id="center">
-                    <button placeholder="Registrer ny skade" type="submit"><a th:class="htmlLink"
-                                                                              th:href="@{'/tilfoejSkade/'+${rapportID}}">Registrer
-                        ny skade</a>
+                    <button type="submit">
+                        <a th:class="htmlLink" th:href="@{'/tilfoejSkade/'+${rapportID}}">Registrer ny skade</a>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-</div>
-</div>
-
-
 </body>
 </html>

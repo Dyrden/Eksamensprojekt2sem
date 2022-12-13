@@ -1,165 +1,172 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Skade og Udbedring</title>
-  <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
-  <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
-  <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
-  <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../../static/css/overSkrift.css"/>
-  <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
-  <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
-  <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
+    <meta charset="UTF-8">
+    <title>Skade og Udbedring</title>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+    <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
+    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
+    <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../../static/css/overSkrift.css"/>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+    <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: navigation"> </div>
+<div th:replace="html/fragments/aFragment:: navigation"></div>
 <div id="beaverSeSkader" th:style="'background-image:url(' + @{/images/beaverMechanic.png}">
-  <h4 id="overskriftStatusValg">-Vælg venligst bilens status-</h4>
-  <div class="bilInfo sideOmSide bilInfoAutoWidth">
-    <div id="treKnapper">
-    <table>
-      <tr>
-        <th>Bil Mærke</th>
-        <th>Model</th>
-        <th>Vognnummer</th>
-        <th>Registreringsnummer</th>
-      </tr>
-      <tr th:each="b : ${bil}">
-        <td> <span th:text="${b.maerke}">Bil Mærke</span> </td>
-        <td> <span th:text="${b.model}">Model</span> </td>
-        <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
-        <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
-      </tr>
-    </table>
-      </div>
-    <div id="treKnapper">
-      <fieldset class="margin0">
-        <form th:action="@{/saetIkkeUdlejet/__${bookingID}__}" method="post">
-          <button type="submit">Tilgængelig til udlejning</button>
-        </form>
-      </fieldset>
-      <fieldset class="margin0">
-        <form th:action="@{/saetBilTotalskadet/__${bookingID}__}" method="post">
-          <button type="submit">Totalskadet</button>
-        </form>
-      </fieldset>
-      <fieldset class="margin0" >
-        <form th:action="@{/saetBilSolgt/__${bookingID}__}" method="post">
-          <button type="submit">Solgt</button>
-        </form>
-      </fieldset>
-    </div>
+    <h4 id="overskriftStatusValg">-Vælg venligst bilens status-</h4>
+    <div class="bilInfo sideOmSide bilInfoAutoWidth">
+        <div id="treKnapper">
+            <table>
+                <tr>
+                    <th>Bil Mærke</th>
+                    <th>Model</th>
+                    <th>Vognnummer</th>
+                    <th>Registreringsnummer</th>
+                </tr>
+                <tr th:each="b : ${bil}">
+                    <td><span th:text="${b.maerke}">Bil Mærke</span></td>
+                    <td><span th:text="${b.model}">Model</span></td>
+                    <td><span th:text="${b.vognNummer}">Vognnummer</span></td>
+                    <td><span th:text="${b.stelNummer}">Registreringsnummer</span></td>
+                </tr>
+            </table>
+        </div>
+        <div id="treKnapper">
+            <fieldset class="margin0">
+                <form th:action="@{/saetIkkeUdlejet/__${bookingID}__}" method="post">
+                    <button type="submit">Tilgængelig til udlejning</button>
+                </form>
+            </fieldset>
+            <fieldset class="margin0">
+                <form th:action="@{/saetBilTotalskadet/__${bookingID}__}" method="post">
+                    <button type="submit">Totalskadet</button>
+                </form>
+            </fieldset>
+            <fieldset class="margin0">
+                <form th:action="@{/saetBilSolgt/__${bookingID}__}" method="post">
+                    <button type="submit">Solgt</button>
+                </form>
+            </fieldset>
+        </div>
     </div>
     <div class="flexSkade">
 
-      <div>
-        <div id="kmRegistrering">
-          <form action="/opretKM" method="post">
-            <input type="hidden" th:value="${bookingID}" name="bookingID">
-            <h3>Kilometer registrering</h3>
-            <h4>Overkørte km afregnes 0,75 kr./km </br>
-              Antal km om måneden tilladt er 2000 km</h4>
-            <h4>Indtast venligst nuværende kilometer tal</h4>
-            <fieldset>
-              <input name="slutkm" placeholder="km" type="number" tabindex="1" required th:value="${slutkm}">
-              <input name="rapportID" type="hidden" th:value="${rapportID}">
-            </fieldset>
-            <fieldset>
-              <div class="bilBookingFormFlex">
-                <button class="inline" name="submit" type="submit" id="send-kundeinfo" data-submit="...Sending">indtast km</button>
-              </div>
-            </fieldset>
-          </form>
-            <table class="bilInfo center">
-            <tr>
-              <th>Antal måneder booket</th>
-
-            </tr>
-            <tr>
-              <td> <span th:text="${antalMaanederBooket}">antal måneder booket</span> </td>
-
-            </tr>
-          </table>
-          <table class="bilInfo center">
-            <tr>
-              <th>Maksimalt kørsel tilladt</th>
-              <th>KM kørt i perioden</th>
-            </tr>
-            <tr>
-              <td> <span th:text="${maksimumKM}">Maksimalt km tilladt</span> km</td>
-              <td> <span th:text="${udregnetKM}">antal km kørt</span> km</td>
-            </tr>
-          </table>
-          <table class="bilInfo center">
-            <tr>
-              <th>KM overskredet</th>
-              <th>Til betaling</th>
-            </tr>
-            <tr>
-              <td> <span th:text="${KMovertraadt}">antal km overskredet</span> km</td>
-              <td> <span th:text="${pris}">pris for overskredet km.</span> kr.</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      <div>
-        <div id="tilfoejSkadeForm">
-          <form id="skadeRegistrering" action="/opretSkade" method="post">
-            <input type="hidden" th:value="${bookingID}" name="bookingID" >
-            <h3>Registrer Skade</h3>
-            <h4>Indtast skade, fejl eller anden omkostning</h4>
-            <fieldset>
-              <input id="skade-placering" name="skade_placering" placeholder="Skadens placering" type="text" tabindex="1" required autofocus>
-            </fieldset>
-            <fieldset>
-              <input id="skade-pris" name="skade_pris" placeholder="Skadens pris" type="text" tabindex="2" required>
-            </fieldset>
-            <fieldset>
-              <textarea id="skade-beskrivelse" name="skade_beskrivelse" placeholder="Beskriv venligst skaden...." tabindex="3" required></textarea>
-            </fieldset>
-            <fieldset>
-              <div class="flexIMidten">
-                <input type="hidden" id="rapportID" name="rapportID" th:attr="value=${rapportID}">
-                <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Indsend</button>
-              </div>
-            </fieldset>
-          </form>
-          </div>
-      </div>
         <div>
-      <div id="skaderTabel">
-        <h3>Skader</h3>
-        <h4>Registrer skader eller fjern skader som er betalt.</h4>
-        <div id="scrollSkader">
-          <table id="kundeTable">
-            <tr>
-              <th>Skadens placering</th>
-              <th>Skadens beskrivelse</th>
-              <th>Skadens pris</th>
-              <th>Slet skade</th>
-            </tr>
-            <tr th:each="s : ${skader}">
-              <td> <span th:text="${s.getSkadensPlacering()}">skadensPlacering</span> </td>
-              <td> <span th:text="${s.getSkadensBeskrivelse()}">skadensBeskrivelse</span> </td>
-              <td> <span th:text="${s.getSkadensPris()}">skadensPris</span> kr. </td>
-              <td id="rodKnap">
-                <form th:action="@{/sletSkade/__${s.id}__}" method="post">
-                  <input type="hidden" th:value="${bookingID}" name="bookingID">
-                  <button type="submit">Slet skade</button>
+            <div id="kmRegistrering">
+                <form action="/opretKM" method="post">
+                    <input type="hidden" th:value="${bookingID}" name="bookingID">
+                    <h3>Kilometer registrering</h3>
+                    <h4>Overkørte km afregnes 0,75 kr./km <br>
+                        Antal km om måneden tilladt er 2000 km</h4>
+
+                    <fieldset>
+                        <label for="slutkm">Indtast venligst nuværende kilometer tal</label>
+                        <input id="slutkm" name="slutkm" placeholder="km" type="number" tabindex="1" required th:value="${slutkm}">
+                        <input name="rapportID" type="hidden" th:value="${rapportID}">
+                    </fieldset>
+                    <fieldset>
+                        <div class="bilBookingFormFlex">
+                            <button class="inline" name="submit" type="submit" id="send-kundeinfo"
+                                    data-submit="...Sending">indtast km
+                            </button>
+                        </div>
+                    </fieldset>
                 </form>
-              </td>
-            </tr>
-          </table>
-      </div>
+                <table class="bilInfo center">
+                    <tr>
+                        <th>Antal måneder booket</th>
+
+                    </tr>
+                    <tr>
+                        <td><span th:text="${antalMaanederBooket}">antal måneder booket</span></td>
+
+                    </tr>
+                </table>
+                <table class="bilInfo center">
+                    <tr>
+                        <th>Maksimalt kørsel tilladt</th>
+                        <th>KM kørt i perioden</th>
+                    </tr>
+                    <tr>
+                        <td><span th:text="${maksimumKM}">Maksimalt km tilladt</span> km</td>
+                        <td><span th:text="${udregnetKM}">antal km kørt</span> km</td>
+                    </tr>
+                </table>
+                <table class="bilInfo center">
+                    <tr>
+                        <th>KM overskredet</th>
+                        <th>Til betaling</th>
+                    </tr>
+                    <tr>
+                        <td><span th:text="${KMovertraadt}">antal km overskredet</span> km</td>
+                        <td><span th:text="${pris}">pris for overskredet km.</span> kr.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div id="tilfoejSkadeForm">
+                <form id="skadeRegistrering" action="/opretSkade" method="post">
+                    <input type="hidden" th:value="${bookingID}" name="bookingID">
+                    <h3>Registrer Skade</h3>
+                    <h4>Indtast skade, fejl eller anden omkostning</h4>
+                    <fieldset>
+                        <label for="skade-placering" >Skadens placering</label>
+                        <input id="skade-placering" name="skade_placering" placeholder="Skadens placering" type="text"
+                               tabindex="1" required autofocus>
+                    </fieldset>
+                    <fieldset>
+                        <label for="skade-pris">Skadens pris</label>
+                        <input id="skade-pris" name="skade_pris" placeholder="Skadens pris" type="text" tabindex="2"
+                               required>
+                    </fieldset>
+                    <fieldset>
+                        <label for="skade-beskrivelse">Skadens beskrivelse</label>
+                        <textarea id="skade-beskrivelse" name="skade_beskrivelse"
+                                  placeholder="Beskriv venligst skaden...." tabindex="3" required></textarea>
+                    </fieldset>
+                    <fieldset>
+                        <div class="flexIMidten">
+                            <input type="hidden" id="rapportID" name="rapportID" th:attr="value=${rapportID}">
+                            <button class="inline" name="submit" type="submit" id="contact-submit"
+                                    data-submit="...Sending">Indsend
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div>
+            <div id="skaderTabel">
+                <h3>Skader</h3>
+                <h4>Registrer skader eller fjern skader som er betalt.</h4>
+                <div id="scrollSkader">
+                    <table id="kundeTable">
+                        <tr>
+                            <th>Skadens placering</th>
+                            <th>Skadens beskrivelse</th>
+                            <th>Skadens pris</th>
+                            <th>Slet skade</th>
+                        </tr>
+                        <tr th:each="s : ${skader}">
+                            <td><span th:text="${s.getSkadensPlacering()}">skadensPlacering</span></td>
+                            <td><span th:text="${s.getSkadensBeskrivelse()}">skadensBeskrivelse</span></td>
+                            <td><span th:text="${s.getSkadensPris()}">skadensPris</span> kr.</td>
+                            <td id="rodKnap">
+                                <form th:action="@{/sletSkade/__${s.id}__}" method="post">
+                                    <input type="hidden" th:value="${bookingID}" name="bookingID">
+                                    <button type="submit">Slet skade</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-</div>
-</div>
-
-
 
 
 </body>

@@ -85,8 +85,7 @@
 }
 
 .cardbody .container .card .box .content {
-    padding: 20px;
-    padding-bottom: 30px;
+    padding: 20px 20px 30px;
     text-align: center;
 }
 
@@ -142,7 +141,7 @@
     -webkit-box-pack: justify;
     justify-content: space-between;
     background-color: rgb(255, 255, 255);
-    padding: 28.8px;
+    padding: 29px;
     height: 96px;
     box-sizing: border-box;
 

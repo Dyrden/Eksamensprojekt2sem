@@ -1,9 +1,7 @@
 package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.BrugerModel;
-import com.example.eksamensprojekt_2sem.model.SkadeModel;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;

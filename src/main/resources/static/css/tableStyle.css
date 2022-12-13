@@ -77,7 +77,7 @@ div.table-title {
 .bilInfo th {
     position: -webkit-sticky;
     position: sticky;
-    top: 0px;
+    top: 0;
     color: aliceblue;
 }
 
@@ -132,7 +132,7 @@ div.table-title {
 #SkadeTable th {
     position: -webkit-sticky;
     position: sticky;
-    top: 0px;
+    top: 0;
 
 }
 

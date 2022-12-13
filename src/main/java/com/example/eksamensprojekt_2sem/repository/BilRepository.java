@@ -2,7 +2,6 @@ package com.example.eksamensprojekt_2sem.repository;
 
 
 import com.example.eksamensprojekt_2sem.model.*;
-import com.example.eksamensprojekt_2sem.model.BilModel;
 import com.example.eksamensprojekt_2sem.model.bilmodel.*;
 import com.example.eksamensprojekt_2sem.service.SQLManager;
 import org.springframework.stereotype.Repository;
@@ -51,7 +50,6 @@ public class BilRepository {
         } catch (SQLException e) {
             System.err.println("Ingen tilgængelige biler fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<BilModel>();
         }
 
         return biler;
@@ -87,7 +85,6 @@ public class BilRepository {
         } catch (SQLException e) {
             System.err.println("Ingen biler fundet.");
             System.out.println(e.getMessage());
-            return new LinkedList<BilModel>();
         }
 
         return biler;
@@ -201,28 +198,6 @@ public class BilRepository {
         return gearboksModels;
     }
 
-    //Ansvarlig : Mark Dyrby Denner
-    // Denne metode søger databasen for 'model's og retunerer en liste af dem
-    public LinkedList<BilModelModel> skafBilModel() {
-        LinkedList<BilModelModel> bilModelModels = new LinkedList<>();
-
-        ResultSet rs = SQLManager.execute("CALL BilModelFind()");
-
-        try {
-            while (rs.next()) {
-                BilModelModel bilModelModel = new BilModelModel();
-                bilModelModel.setID(rs.getInt(1));
-                bilModelModel.setModel(rs.getString(2));
-                bilModelModels.add(bilModelModel);
-
-            }
-        } catch (SQLException | NullPointerException e) {
-            System.err.println("Ingen bilmodeller fundet.");
-            System.out.println(e.getMessage());
-        }
-        return bilModelModels;
-    }
-
 
     public LinkedList<BilOgBookingModel> visInleveretBiler() { //Mark, Bjørn og Ferhat
         LinkedList<BilOgBookingModel> biler = new LinkedList<>();
@@ -296,11 +271,9 @@ public class BilRepository {
                 bil.setProduktionsaar(resultSet.getInt(13));
                 bil.setDistance(resultSet.getInt(14));
             }
-            //System.out.println(bil);
         } catch (SQLException | NullPointerException e) {
             System.err.println("Ingen bil blev fundet.");
             System.out.println(e.getMessage());
-            return new BilModel();
         }
 
         return bil;
@@ -336,7 +309,7 @@ public class BilRepository {
 
     public List<BilModel> vaelgKaldFraParametre(String parameterTekst) { //Kristian og Mark
 
-        List<BilModel> biler = new LinkedList<>();
+        List<BilModel> biler;
 
         String[] parametre = parameterTekst.split(","); //parameterText bliver delt op i dens kommaer, op til 5 gange for at være acceptabelt.
 

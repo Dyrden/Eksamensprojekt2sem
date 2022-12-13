@@ -1,6 +1,5 @@
 package com.example.eksamensprojekt_2sem.service;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
