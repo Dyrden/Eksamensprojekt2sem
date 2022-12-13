@@ -145,7 +145,7 @@ fieldset {
 
 #kundeinfo {
     background:#F9F9F9;
-    padding:55px;
+    padding: 65px;
     margin:0;
     margin-left: 60px;
 }
@@ -436,9 +436,9 @@ fieldset {
 
 #skaderTabel {
     background: #F9F9F9;
-    padding: 75px;
+    padding: 65px;
     margin: 0;
-    margin-left: 50px;
+    margin-left: 30px;
     display: block;
     margin-right: 50px;
 }
@@ -446,7 +446,7 @@ fieldset {
 #skaderTabel h3 {
     color: #F96;
     display: contents;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 400;
     text-transform: uppercase;
 }
@@ -507,7 +507,7 @@ fieldset {
     cursor:pointer;
     width:auto;
     border:none;
-    background: #d90606;
+    background: #eb6161;
     color:#FFF;
     margin:15px;
     padding:10px;
@@ -569,9 +569,18 @@ fieldset {
 fieldset {
     border: medium none !important;
     margin: 0 0 10px;
-    min-width: 100%;
+    min-width: auto;
     padding: 0;
-    width: max-content;
+    width: auto;
+}
+
+#bilRegistreringForm fieldset{
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: auto;
+    padding: 0;
+    width: 200px;
+
 }
 
 #skadeRegistrering input[type="text"], #skadeRegistrering input[type="email"], #skadeRegistrering input[type="tel"], #skadeRegistrering input[type="url"], #skadeRegistrering textarea {
@@ -628,10 +637,12 @@ fieldset {
 #bilRegistreringForm input[type="text"], #bilRegistreringForm input[type="email"],#bilRegistreringForm input[type="number"], #bilRegistreringForm input[type="tel"], #bilRegistreringForm input[type="url"], #bilRegistreringForm textarea, #bilRegistreringForm button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
 
 #bilRegistreringForm {
-    background:#F9F9F9;
-    padding:75px;
-    margin:0;
-    margin-left: 60px;
+    background: #F9F9F9;
+    padding: 60px;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
 }
 
 #bilRegistreringForm h3 {
@@ -697,7 +708,7 @@ fieldset {
 
 #kmRegistrering {
     background:#F9F9F9;
-    padding:55px;
+    padding: 65px;
     margin:0;
     margin-left: 60px;
 }
@@ -760,4 +771,165 @@ fieldset {
 #kmRegistrering input:focus, #kmRegistrering textarea:focus {
     outline:0;
     border:1px solid #999;
+}
+
+#treKnapper input[type="text"], #treKnapper input[type="email"],#treKnapper input[type="number"], #treKnapper input[type="tel"], #treKnapper input[type="url"], #treKnapper textarea, #treKnapper button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#treKnapper {
+    background: #F9F9F9;
+    padding: 15px;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#treKnapper h3 {
+    color: #F96;
+    display: contents;
+    font-size: 40px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+#treKnapper h4 {
+    margin:5px 0 15px;
+    display:block;
+    font-size:15px;
+}
+
+#treKnapper input[type="text"], #treKnapper input[type="email"],#treKnapper input[type="number"], #treKnapper input[type="tel"], #treKnapper input[type="url"], #treKnapper textarea {
+    width: -webkit-fill-available;
+    border:1px solid #CCC;
+    background:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+}
+
+#treKnapper input[type="text"]:hover, #kundeinfo input[type="email"]:hover, #kundeinfo input[type="number"]:hover, #kundeinfo input[type="tel"]:hover, #kundeinfo input[type="url"]:hover, #kundeinfo textarea:hover {
+    -webkit-transition:border-color 0.3s ease-in-out;
+    -moz-transition:border-color 0.3s ease-in-out;
+    transition:border-color 0.3s ease-in-out;
+    border:1px solid #AAA;
+}
+
+#treKnapper textarea {
+    height:100px;
+    max-width:100%;
+    resize:none;
+}
+
+#treKnapper button[type="submit"] {
+    cursor: pointer;
+    width: auto;
+    border: none;
+    background: #269bca;
+    color: #FFF;
+    margin: 12px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+#treKnapper button[type="submit"]:hover {
+    background:#09C;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+}
+
+#treKnapper button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#treKnapper input:focus, #treKnapper textarea:focus {
+    outline:0;
+    border:1px solid #999;
+}
+
+.sideOmSide{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    margin-left: 360px;
+}
+
+.margin0{
+    margin: 0;
+}
+----------------------------------
+#tilfoejSkadeForm input[type="text"], #tilfoejSkadeForm input[type="email"],#tilfoejSkadeForm input[type="number"], #tilfoejSkadeForm input[type="tel"], #tilfoejSkadeForm input[type="url"], #tilfoejSkadeForm textarea, #tilfoejSkadeForm button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#tilfoejSkadeForm {
+    background:#F9F9F9;
+    padding: 65px;
+    margin:0;
+    margin-left: 30px;
+}
+
+#tilfoejSkadeForm h3 {
+    color: #F96;
+    display: contents;
+    font-size: 40px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+#tilfoejSkadeForm h4 {
+    margin:5px 0 15px;
+    display:block;
+    font-size:15px;
+}
+
+#tilfoejSkadeForm input[type="text"], #tilfoejSkadeForm input[type="email"],#tilfoejSkadeForm input[type="number"], #tilfoejSkadeForm input[type="tel"], #tilfoejSkadeForm input[type="url"], #tilfoejSkadeForm textarea {
+    width:100%;
+    border:1px solid #CCC;
+    background:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+}
+
+#tilfoejSkadeForm input[type="text"]:hover, #tilfoejSkadeForm input[type="email"]:hover, #tilfoejSkadeForm input[type="number"]:hover, #tilfoejSkadeForm input[type="tel"]:hover, #tilfoejSkadeForm input[type="url"]:hover, #tilfoejSkadeForm textarea:hover {
+    -webkit-transition:border-color 0.3s ease-in-out;
+    -moz-transition:border-color 0.3s ease-in-out;
+    transition:border-color 0.3s ease-in-out;
+    border:1px solid #AAA;
+}
+
+#tilfoejSkadeForm textarea {
+    height:100px;
+    max-width:100%;
+    resize:none;
+}
+
+#tilfoejSkadeForm button[type="submit"] {
+    cursor:pointer;
+    width:auto;
+    border:none;
+    background:#06add9;
+    color:#FFF;
+    margin:15px;
+    padding:10px;
+    font-size:15px;
+}
+
+#tilfoejSkadeForm button[type="submit"]:hover {
+    background:#09C;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+}
+
+#tilfoejSkadeForm button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#tilfoejSkadeForm input:focus, #tilfoejSkadeForm textarea:focus {
+    outline:0;
+    border:1px solid #999;
+}
+
+#overskriftStatusValg{
+    margin-left: 960px;
+    position: absolute;
+    margin-top: -10px;
+    text-transform: uppercase;
+    color: #f28c5a;
+"
 }

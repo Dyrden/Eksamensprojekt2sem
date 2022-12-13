@@ -9,6 +9,13 @@ margin-bottom: 10px;
     border-radius: 5px;
 
 }
+.bilInfoAutoWidth table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: auto;
+    border-radius: 5px;
+
+}
 .bilInfo table.center {
     margin-left: auto;
     margin-right: auto;
@@ -165,4 +172,9 @@ div.table-title {
 #scroll {
     height:400px;
     overflow:auto;
+}
+#scrollSkader{
+    height: 389px;
+    width: 470px;
+    overflow: auto;
 }

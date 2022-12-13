@@ -14,10 +14,11 @@
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
-<div th:id="beaverSeSkader" th:style="'background-image:url(' + @{/images/beaverMechanic.png}">
-
-  <div th:class="bilInfo">
-    <table class="center">
+<div id="beaverSeSkader" th:style="'background-image:url(' + @{/images/beaverMechanic.png}">
+  <h4 id="overskriftStatusValg">-Vælg venligst bilens status-</h4>
+  <div class="bilInfo sideOmSide bilInfoAutoWidth">
+    <div id="treKnapper">
+    <table>
       <tr>
         <th>Bil Mærke</th>
         <th>Model</th>
@@ -31,8 +32,26 @@
         <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
       </tr>
     </table>
+      </div>
+    <div id="treKnapper">
+      <fieldset class="margin0">
+        <form th:action="@{/saetIkkeUdlejet/__${bookingID}__}" method="post">
+          <button type="submit">Tilgængelig til udlejning</button>
+        </form>
+      </fieldset>
+      <fieldset class="margin0">
+        <form th:action="@{/saetBilTotalskadet/__${bookingID}__}" method="post">
+          <button type="submit">Totalskadet</button>
+        </form>
+      </fieldset>
+      <fieldset class="margin0" >
+        <form th:action="@{/saetBilSolgt/__${bookingID}__}" method="post">
+          <button type="submit">Solgt</button>
+        </form>
+      </fieldset>
     </div>
-    <div th:class="flexSkade">
+    </div>
+    <div class="flexSkade">
 
       <div>
         <div id="kmRegistrering">
@@ -85,7 +104,7 @@
         </div>
       </div>
       <div>
-        <div id="kundeinfo">
+        <div id="tilfoejSkadeForm">
           <form id="skadeRegistrering" action="/opretSkade" method="post">
             <input type="hidden" th:value="${bookingID}" name="bookingID" >
             <h3>Registrer Skade</h3>
@@ -101,7 +120,7 @@
             </fieldset>
             <fieldset>
               <div class="flexIMidten">
-                <input type="hidden" id="wishId" name="rapportID" th:attr="value=${rapportID}">
+                <input type="hidden" id="rapportID" name="rapportID" th:attr="value=${rapportID}">
                 <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Indsend</button>
               </div>
             </fieldset>
@@ -112,8 +131,8 @@
       <div id="skaderTabel">
         <h3>Skader</h3>
         <h4>Registrer skader eller fjern skader som er betalt.</h4>
-        <div th:id="scroll">
-          <table th:id="kundeTable">
+        <div id="scrollSkader">
+          <table id="kundeTable">
             <tr>
               <th>Skadens placering</th>
               <th>Skadens beskrivelse</th>
@@ -124,7 +143,7 @@
               <td> <span th:text="${s.getSkadensPlacering()}">skadensPlacering</span> </td>
               <td> <span th:text="${s.getSkadensBeskrivelse()}">skadensBeskrivelse</span> </td>
               <td> <span th:text="${s.getSkadensPris()}">skadensPris</span> kr. </td>
-              <td th:id="rodKnap">
+              <td id="rodKnap">
                 <form th:action="@{/sletSkade/__${s.id}__}" method="post">
                   <input type="hidden" th:value="${bookingID}" name="bookingID">
                   <button type="submit">Slet skade</button>
@@ -133,21 +152,6 @@
             </tr>
           </table>
       </div>
-        <fieldset>
-          <form th:action="@{/saetIkkeUdlejet/__${bookingID}__}" method="post">
-            <button type="submit">Sæt tilgængelig til udlejning</button>
-          </form>
-        </fieldset>
-        <fieldset>
-          <form th:action="@{/saetBilTotalskadet/__${bookingID}__}" method="post">
-            <button type="submit">Sæt totalskadet</button>
-          </form>
-        </fieldset>
-        <fieldset>
-          <form th:action="@{/saetBilSolgt/__${bookingID}__}" method="post">
-            <button type="submit">Sæt solgt</button>
-          </form>
-        </fieldset>
     </div>
   </div>
 </div>
