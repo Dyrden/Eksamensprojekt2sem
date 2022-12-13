@@ -4,26 +4,26 @@
     background-size: 50%;
     background-attachment: inherit;
     background-position-x: -50px;
-    background-position-y: 230px;
+    background-position-y: 249px;
 
 }
 
 #beaverBookingRegistrering {
     background-image: url(../images/beaver.png);
     background-repeat: no-repeat, repeat;
-    background-size: 40%;
+    background-size: 37%;
     background-attachment: inherit;
-    background-position-x: 0;
-    background-position-y: 300px;
+    background-position-x: -2px;
+    background-position-y: 342px;
 }
 
 #beaverKundeRegistrering {
     background-image: url(../images/beaver.png);
     background-repeat: no-repeat, repeat;
-    background-size: 10%;
+    background-size: 11%;
     background-attachment: inherit;
-    background-position-x: 260px;
-    background-position-y: 0;
+    background-position-x: 250px;
+    background-position-y: 1px;
 }
 
 #beaverUdstyrValg {
@@ -31,7 +31,7 @@
     background-repeat: no-repeat, repeat;
     background-size: 40%;
     background-attachment: inherit;
-    background-position-x: 990px;
+    background-position-x: 250px;
     background-position-y: 190px;
 }
 
@@ -65,10 +65,10 @@
 #beaverIBaggrundForretning {
     background-image: url(../images/beaverInASuit.png);
     background-repeat: no-repeat, repeat;
-    background-size: 50%;
+    background-size: 40%;
     background-attachment: inherit;
-    background-position-x: -41px;
-    background-position-y: 127px;
+    background-position-x: -29px;
+    background-position-y: 252px;
 }
 
 #beaverSeRapporter {
