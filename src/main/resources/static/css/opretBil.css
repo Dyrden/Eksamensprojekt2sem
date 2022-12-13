@@ -1,6 +1,6 @@
 
 .bilInformationer {
-    display : flex;
+    display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
@@ -10,10 +10,8 @@
 }
 
 
-
-
 .bilInformationerContainer {
-    margin : 25px;
+    margin: 25px;
     padding: 25px;
     border-radius: 10px;
     background-color: #1d87b1;

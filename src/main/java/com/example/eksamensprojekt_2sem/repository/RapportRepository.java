@@ -70,7 +70,7 @@ public class RapportRepository {
         try {
             resultSet.next();
             fundetID = resultSet.getInt(1);
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             System.out.println("ingen rapport fundet");
         }
         return fundetID;
@@ -86,7 +86,7 @@ public class RapportRepository {
         try {
             resultSet.next();
             slutkm = resultSet.getInt(1);
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             System.out.println("ingen slutkm fundet");
         }
         return slutkm;
@@ -113,7 +113,7 @@ public class RapportRepository {
         return kmkørt;
     }
 
-    public double skafPrisPaaOverskredetKM(int bookingID){ //Ferhat
+    public double skafPrisPaaOverskredetKM(int bookingID) { //Ferhat
         int antalMånederBooket = 0;
 
         ResultSet resultSet = SQLManager.execute(
@@ -125,23 +125,23 @@ public class RapportRepository {
         } catch (SQLException e) {
             System.out.println("fejl under udregning af kilometer kørt");
         }
-        if (antalMånederBooket == 0){
+        if (antalMånederBooket == 0) {
             antalMånederBooket = 1;
         }
         double pris = 0;
         int kmKørt = skafUdregnetKMKørt(bookingID);
 
-        int maksimaltKMTilladt = antalMånederBooket*2000;
+        int maksimaltKMTilladt = antalMånederBooket * 2000;
 
-        if ((kmKørt>maksimaltKMTilladt)){
-            int kmOvertrådt = kmKørt-maksimaltKMTilladt;
-            pris = kmOvertrådt*0.75;
+        if ((kmKørt > maksimaltKMTilladt)) {
+            int kmOvertrådt = kmKørt - maksimaltKMTilladt;
+            pris = kmOvertrådt * 0.75;
         }
 
         return pris;
     }
 
-    public int skafAntalMaanederBooket(int bookingID){ //Ferhat
+    public int skafAntalMaanederBooket(int bookingID) { //Ferhat
         int antalMånederBooket = 0;
 
         ResultSet resultSet = SQLManager.execute(
@@ -154,14 +154,14 @@ public class RapportRepository {
             System.out.println("fejl under udregning af kilometer kørt");
         }
 
-        if (antalMånederBooket == 0){
+        if (antalMånederBooket == 0) {
             antalMånederBooket = 1;
         }
 
         return antalMånederBooket;
     }
 
-    public int skafMaksimumKMTilladt(int bookingID){ // Ferhat er ansvarlig for metoden
+    public int skafMaksimumKMTilladt(int bookingID) { // Ferhat er ansvarlig for metoden
 
         int antalMånederBooket = 0;
 
@@ -175,10 +175,10 @@ public class RapportRepository {
             System.out.println("fejl under udregning af kilometer kørt");
         }
 
-        if (antalMånederBooket == 0){
+        if (antalMånederBooket == 0) {
             antalMånederBooket = 1;
         }
-        int maksimaltKMTilladt = antalMånederBooket*2000;
+        int maksimaltKMTilladt = antalMånederBooket * 2000;
 
 
         return maksimaltKMTilladt;
@@ -198,7 +198,7 @@ public class RapportRepository {
         } catch (SQLException e) {
             System.out.println("fejl under udregning af kilometer kørt");
         }
-        if (antalMånederBooket == 0){
+        if (antalMånederBooket == 0) {
             antalMånederBooket = 1;
         }
         int kmKørt = skafUdregnetKMKørt(bookingID);
@@ -214,7 +214,7 @@ public class RapportRepository {
         return kmOvertrådt;
     }
 
-    public void udregnKilometerKørt(int bookingID,int slutkm) { //Mark
+    public void udregnKilometerKørt(int bookingID, int slutkm) { //Mark
         SQLManager.execute(
             "call skafUdregnetKilometerKoertOgOpdaterBilOgRapport(" + bookingID + ", " + slutkm + ")");
     }

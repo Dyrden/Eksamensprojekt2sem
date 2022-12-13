@@ -100,7 +100,7 @@ public class SkadeRepository {
                 + rapportID + "\",\""
                 + skadeModel.getSkadensPlacering() + "\",\""
                 + skadeModel.getSkadensBeskrivelse() + "\",\""
-                + skadeModel.getSkadensPris()+ "\")");
+                + skadeModel.getSkadensPris() + "\")");
 
     }
 
@@ -108,7 +108,7 @@ public class SkadeRepository {
 
         double total = 0;
 
-        for(SkadeModel skade : skadeListe){
+        for (SkadeModel skade : skadeListe) {
             total += skade.getSkadensPris();
         }
 

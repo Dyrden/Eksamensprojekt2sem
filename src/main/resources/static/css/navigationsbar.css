@@ -4,6 +4,7 @@ body {
     background: #eaf1fa;
     margin: 0px;
 }
+
 .skew-menu {
     text-align: center;
     margin-top: 25px;
@@ -19,6 +20,7 @@ body {
     transform: skew(-25deg);
     position: sticky;
 }
+
 .skew-menu ul li {
     background: #fff;
     float: left;
@@ -26,23 +28,27 @@ body {
     box-shadow: 0 3px 6px rgb(0 0 0 / 10%);
     text-transform: uppercase;
     transition: all 0.3s linear;
-    font-family:"Open Sans", Helvetica, Arial, sans-serif;
-    font-weight:300;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 300;
     font-size: 16px;
-    line-height:30px;
-    color:black;
+    line-height: 30px;
+    color: black;
 }
+
 .skew-menu ul li:first-child {
     border-radius: 7px 0 0 7px;
 }
+
 .skew-menu ul li:last-child {
     border-right: none;
     border-radius: 0 7px 7px 0;
 }
+
 .skew-menu ul li:hover {
     background: #eee;
     color: #259bca;
 }
+
 .skew-menu ul li a {
     display: block;
     padding: 1em 2em;
@@ -50,11 +56,12 @@ body {
     text-decoration: none;
     transform: skew(25deg);
 }
+
 .logocorner {
     position: absolute;
     left: 50px;
     top: 1px;
-scale: 130%;
+    scale: 130%;
 }
 
 .sticky {

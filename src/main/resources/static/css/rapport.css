@@ -13,7 +13,7 @@
     /* IE 9 */
 }
 
-#vertical th{
+#vertical th {
     height: 30px;
     line-height: 14px;
     padding-bottom: 10px;
@@ -21,30 +21,35 @@
     font-size: larger;
     background: gainsboro;
 }
-#vertical td{
+
+#vertical td {
     font-size: larger;
 }
 
 #vertical table, th, td {
     border: 1px solid;
 }
+
 #vertical table {
     width: 70%;
     margin: 35px;
 }
 
-#vertical{
+#vertical {
     display: flex;
     justify-content: center;
     margin-top: 100px;
 }
+
 body {
     font: 12pt "Tahoma";
 }
+
 * {
     box-sizing: content-box;
     -moz-box-sizing: border-box;
 }
+
 #page {
     width: 21cm;
     min-height: 29.7cm;
@@ -67,6 +72,7 @@ body {
     background: initial;
     page-break-after: always;
 }
+
 #subpage {
     padding: 1cm;
     border: 4px Black solid;

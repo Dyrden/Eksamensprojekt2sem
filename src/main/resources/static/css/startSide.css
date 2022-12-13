@@ -1,6 +1,7 @@
 /* inpiration fra https://codepen.io/saviomartin/pen/LYNgqKW */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -49,6 +50,7 @@
 .cardbody .container .card:nth-child(3) .box .content a {
     background: #2196f3;
 }
+
 .cardbody .container .card:nth-child(4) .box .content a {
     background: #2196f3;
 }
@@ -125,27 +127,28 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transition: 0.5s;
 }
+
 .cardbody .container .card .box .content a:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
     background: #fff;
     color: #000;
 }
 
-.navibar{
-    position : relative;
-    display : flex;
-    -webkit-box-align : center;
-    align-items : center;
-    -webkit-box-pack : justify;
-    justify-content : space-between;
-    background-color : rgb(255, 255, 255);
-    padding : 28.8px;
-    height : 96px;
-    box-sizing : border-box;
+.navibar {
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    padding: 28.8px;
+    height: 96px;
+    box-sizing: border-box;
 
 }
 
-.main-menu{
+.main-menu {
     position: inherit;
     top: 0;
     width: 100%;
@@ -153,7 +156,7 @@
     border-bottom: 5px solid #69c0e6;
 }
 
-.main-menu-content{
+.main-menu-content {
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -169,14 +172,14 @@
     height: 7rem
 }
 
-.logo{
+.logo {
     position: absolute;
     left: 50px;
     top: 1px;
     scale: 130%;
 }
 
-.bilabonnementLogo{
+.bilabonnementLogo {
     position: absolute;
     left: -280px;
     top: -30px;

@@ -16,45 +16,45 @@ public class BilModel {
     private String gearboks;
 
     private String udstyr;
-  private int statusID;
-  private String status;
-  private int farveID;
-  private String farve;
-  private double staalPris;
-  private double registreringsAfgift;
-  private double CO2Udledning;
-  private int produktionsaar;
-  private int distance;
-  private double maanedsPris;
+    private int statusID;
+    private String status;
+    private int farveID;
+    private String farve;
+    private double staalPris;
+    private double registreringsAfgift;
+    private double CO2Udledning;
+    private int produktionsaar;
+    private int distance;
+    private double maanedsPris;
 
-  private int bookingID;
+    private int bookingID;
 
 
-  public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance, double maanedsPris) {
-    this.vognNummer = vognNummer;
-    this.stelNummer = stelNummer;
-    this.maerke = maerke;
-    this.model = model;
-    this.energiType = energiType;
-    this.gearboks = gearboks;
-    this.udstyr = udstyr;
-    this.status = status;
-    this.farve = farve;
-    this.staalPris = staalPris;
-    this.registreringsAfgift = registreringsAfgift;
-    this.CO2Udledning = CO2Udledning;
-    this.produktionsaar = produktionsaar;
-    this.distance = distance;
-    this.maanedsPris = maanedsPris;
+    public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance, double maanedsPris) {
+        this.vognNummer = vognNummer;
+        this.stelNummer = stelNummer;
+        this.maerke = maerke;
+        this.model = model;
+        this.energiType = energiType;
+        this.gearboks = gearboks;
+        this.udstyr = udstyr;
+        this.status = status;
+        this.farve = farve;
+        this.staalPris = staalPris;
+        this.registreringsAfgift = registreringsAfgift;
+        this.CO2Udledning = CO2Udledning;
+        this.produktionsaar = produktionsaar;
+        this.distance = distance;
+        this.maanedsPris = maanedsPris;
 
-  }
+    }
 
-  public BilModel(String maerke, String model, String vognNummer, String stelNummer){
-      this.maerke = maerke;
-      this.model = model;
-      this.vognNummer = vognNummer;
-      this.stelNummer = stelNummer;
-  }
+    public BilModel(String maerke, String model, String vognNummer, String stelNummer) {
+        this.maerke = maerke;
+        this.model = model;
+        this.vognNummer = vognNummer;
+        this.stelNummer = stelNummer;
+    }
 
 
     public BilModel(String vognNummer, String stelNummer, String maerke, String model, String energiType, String gearboks, String udstyr, String status, String farve, double staalPris, double registreringsAfgift, double CO2Udledning, int produktionsaar, int distance) {
@@ -101,7 +101,6 @@ public class BilModel {
         this.produktionsaar = produktionsaar;
         this.distance = distance;
     }
-
 
 
     public String getMaerke() {
@@ -171,7 +170,6 @@ public class BilModel {
 
     public BilModel() {
     }
-
 
 
     public String getVognNummer() {
@@ -273,25 +271,25 @@ public class BilModel {
     @Override
     public String toString() {
         return "BilModel{" +
-                "vognNummer='" + vognNummer + '\'' +
-                ", stelNummer='" + stelNummer + '\'' +
-                ", maerkeID=" + maerkeID +
-                ", maerke='" + maerke + '\'' +
-                ", modelID=" + modelID +
-                ", model='" + model + '\'' +
-                ", energiType='" + energiType + '\'' +
-                ", gearboks='" + gearboks + '\'' +
-                ", udstyr='" + udstyr + '\'' +
-                ", statusID=" + statusID +
-                ", status='" + status + '\'' +
-                ", farveID=" + farveID +
-                ", farve='" + farve + '\'' +
-                ", staalPris=" + staalPris +
-                ", registreringsAfgift=" + registreringsAfgift +
-                ", CO2Udledning=" + CO2Udledning +
-                ", produktionsaar=" + produktionsaar +
-                ", distance=" + distance +
-                ", maanedsPris=" + maanedsPris +
-                '}';
+            "vognNummer='" + vognNummer + '\'' +
+            ", stelNummer='" + stelNummer + '\'' +
+            ", maerkeID=" + maerkeID +
+            ", maerke='" + maerke + '\'' +
+            ", modelID=" + modelID +
+            ", model='" + model + '\'' +
+            ", energiType='" + energiType + '\'' +
+            ", gearboks='" + gearboks + '\'' +
+            ", udstyr='" + udstyr + '\'' +
+            ", statusID=" + statusID +
+            ", status='" + status + '\'' +
+            ", farveID=" + farveID +
+            ", farve='" + farve + '\'' +
+            ", staalPris=" + staalPris +
+            ", registreringsAfgift=" + registreringsAfgift +
+            ", CO2Udledning=" + CO2Udledning +
+            ", produktionsaar=" + produktionsaar +
+            ", distance=" + distance +
+            ", maanedsPris=" + maanedsPris +
+            '}';
     }
 }

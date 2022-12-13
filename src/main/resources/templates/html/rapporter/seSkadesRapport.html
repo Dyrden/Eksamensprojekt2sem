@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Skade og Udbedring</title>
-  <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
-  <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
-  <link rel="stylesheet" th:href="@{/css/rapport.css}" href="../../../static/css/rapport.css"/>
+    <meta charset="UTF-8">
+    <title>Skade og Udbedring</title>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
+    <link rel="stylesheet" th:href="@{/css/rapport.css}" href="../../../static/css/rapport.css"/>
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: navigation"> </div>
+<div th:replace="html/fragments/aFragment:: navigation"></div>
 <div th:id="book">
-  <div th:id="page">
-    <div th:id="subpage">
+    <div th:id="page">
+        <div th:id="subpage">
 
-      Skades Rapport for:
-      <tr th:each="b : ${booking}">
-      <th>Vogn nummer: </th>
-      <td> <b><span th:text="${b.bil_vognNummer}"></span></b></td>
-      </tr>
-      og Booking ID:
-        <b><span th:text="${bookingID}">bookingID</span></b>
+            Skades Rapport for:
+            <tr th:each="b : ${booking}">
+                <th>Vogn nummer:</th>
+                <td><b><span th:text="${b.bil_vognNummer}"></span></b></td>
+            </tr>
+            og Booking ID:
+            <b><span th:text="${bookingID}">bookingID</span></b>
 
 
-      <div th:id="vertical">
+            <div th:id="vertical">
 
-        <table>
-          <caption>Klar til A4 print</caption>
-          <tr>
-            <th>Skadens placering</th>
-            <th>Skadens beskrivelse</th>
-            <th>Skadens pris</th>
-          </tr>
-          <tr th:each="s : ${skader}">
-            <td> <span th:text="${s.skadensPlacering}">skadensPlacering</span> </td>
-            <td> <span th:text="${s.skadensBeskrivelse}">skadensBeskrivelse</span> </td>
-            <td> <span th:text="${s.skadensPris}">skadensPris</span> kr. </td>
-          </tr>
-        </table>
-      </div>
-      <table th:id="totalPrisIRapport">
-        <tr>
-          <th>Totalpris for skaderne</th>
-        </tr>
-        <tr th:each="s : ${totalPris}">
-          <td> <span th:text="${totalPris}">totalPris</span> </td>
-        </tr>
-      </table>
+                <table>
+                    <caption>Klar til A4 print</caption>
+                    <tr>
+                        <th>Skadens placering</th>
+                        <th>Skadens beskrivelse</th>
+                        <th>Skadens pris</th>
+                    </tr>
+                    <tr th:each="s : ${skader}">
+                        <td><span th:text="${s.skadensPlacering}">skadensPlacering</span></td>
+                        <td><span th:text="${s.skadensBeskrivelse}">skadensBeskrivelse</span></td>
+                        <td><span th:text="${s.skadensPris}">skadensPris</span> kr.</td>
+                    </tr>
+                </table>
+            </div>
+            <table th:id="totalPrisIRapport">
+                <tr>
+                    <th>Totalpris for skaderne</th>
+                </tr>
+                <tr th:each="s : ${totalPris}">
+                    <td><span th:text="${totalPris}">totalPris</span></td>
+                </tr>
+            </table>
+        </div>
     </div>
-  </div>
 </div>
 </body>
 </html>

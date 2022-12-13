@@ -1,34 +1,36 @@
 /* "Css hentet fra https://codepen.io/ssbalakumar/pen/bGwwaG" */
 
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    -webkit-box-sizing:content-box;
-    -moz-box-sizing:border-box;
-    -webkit-font-smoothing:antialiased;
-    -moz-font-smoothing:antialiased;
-    -o-font-smoothing:antialiased;
-    font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 .container {
-    max-width:400px;
-    width:100%;
-    margin:0 auto;
-    position:relative;
-    font-family:"Open Sans", Helvetica, Arial, sans-serif;
-    font-weight:300;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 300;
     font-size: 12px;
-    line-height:30px;
-    color:#777;
+    line-height: 30px;
+    color: #777;
 }
 
-#bilSpecifikation input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+#bilSpecifikation input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #bilSpecifikation {
-    background:#F9F9F9;
+    background: #F9F9F9;
     margin-right: -170px;
     padding: 75px;
 }
@@ -43,9 +45,9 @@
 }
 
 #bilSpecifikation h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
 }
 
 fieldset {
@@ -57,71 +59,79 @@ fieldset {
 }
 
 #bilSpecifikation input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea {
-    width:100%;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+    width: 100%;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
 }
 
-#bilSpecifikation label{
+#bilSpecifikation label {
     font-size: 15px;
     margin-top: 10px;
 }
 
 #bilSpecifikation input[type="text"]:hover, #bilSpecifikation input[type="email"]:hover, #bilSpecifikation input[type="tel"]:hover, #bilSpecifikation input[type="url"]:hover, #bilSpecifikation textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #bilSpecifikation textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #bilSpecifikation button[type="submit"] {
-    cursor:pointer;
-    width:100%;
-    border:none;
-    background:#06add9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #06add9;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 #bilSpecifikation button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#bilSpecifikation button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#bilSpecifikation button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #bilSpecifikation input:focus, #bilSpecifikation textarea:focus {
-    outline:0;
-    border:1px solid #999;
+    outline: 0;
+    border: 1px solid #999;
 }
+
 ::-webkit-input-placeholder {
-    color:#888;
+    color: #888;
 }
+
 :-moz-placeholder {
-    color:#888;
+    color: #888;
 }
+
 ::-moz-placeholder {
-    color:#888;
+    color: #888;
 }
+
 :-ms-input-placeholder {
-    color:#888;
+    color: #888;
 }
+
 .inline {
-    display:inline-block;
-    margin-right:10px;
+    display: inline-block;
+    margin-right: 10px;
 }
+
 .flexKundeBooking {
     display: -webkit-box;
     display: -moz-box;
@@ -131,7 +141,7 @@ fieldset {
     justify-content: center;
 }
 
-.bilBookingFormFlex{
+.bilBookingFormFlex {
     justify-content: center;
     margin: auto;
     display: -webkit-box;
@@ -141,12 +151,14 @@ fieldset {
     display: flex;
 }
 
-#kundeinfo input[type="text"], #kundeinfo input[type="email"],#kundeinfo input[type="number"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+#kundeinfo input[type="text"], #kundeinfo input[type="email"], #kundeinfo input[type="number"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #kundeinfo {
-    background:#F9F9F9;
+    background: #F9F9F9;
     padding: 65px;
-    margin:0;
+    margin: 0;
     margin-left: 60px;
 }
 
@@ -159,59 +171,63 @@ fieldset {
 }
 
 #kundeinfo h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
 }
 
-#kundeinfo input[type="text"], #kundeinfo input[type="email"],#kundeinfo input[type="number"], #kundeinfo input[type="tel"], #kundeinfo input[type="url"], #kundeinfo textarea {
-    width:100%;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+#kundeinfo input[type="text"], #kundeinfo input[type="email"], #kundeinfo input[type="number"], #kundeinfo input[type="tel"], #kundeinfo input[type="url"], #kundeinfo textarea {
+    width: 100%;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
 }
 
 #kundeinfo input[type="text"]:hover, #kundeinfo input[type="email"]:hover, #kundeinfo input[type="number"]:hover, #kundeinfo input[type="tel"]:hover, #kundeinfo input[type="url"]:hover, #kundeinfo textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #kundeinfo textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #kundeinfo button[type="submit"] {
-    cursor:pointer;
-    width:auto;
-    border:none;
-    background:#06add9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    cursor: pointer;
+    width: auto;
+    border: none;
+    background: #06add9;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 #kundeinfo button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#kundeinfo button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#kundeinfo button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #kundeinfo input:focus, #bilSpecifikation textarea:focus {
-    outline:0;
-    border:1px solid #999;
+    outline: 0;
+    border: 1px solid #999;
 }
 
 /* find Kunde */
-#findKunde input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+#findKunde input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #findKunde {
     background: #F9F9F9;
@@ -231,9 +247,9 @@ fieldset {
 }
 
 #findKunde h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
 }
 
 #findKunde input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea {
@@ -246,44 +262,49 @@ fieldset {
 }
 
 #findKunde input[type="text"]:hover, #bilSpecifikation input[type="email"]:hover, #bilSpecifikation input[type="tel"]:hover, #bilSpecifikation input[type="url"]:hover, #bilSpecifikation textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #findKunde textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #findKunde button[type="submit"] {
-    cursor:pointer;
-    width:auto;
-    border:none;
-    background:#06add9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    cursor: pointer;
+    width: auto;
+    border: none;
+    background: #06add9;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 #findKunde button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#findKunde button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#findKunde button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #findKunde input:focus, #bilSpecifikation textarea:focus {
-    outline:0;
-    border:1px solid #999;
+    outline: 0;
+    border: 1px solid #999;
 }
+
 /* find bil */
-#cardTilTable input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+#cardTilTable input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea, #bilSpecifikation button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #cardTilTable {
     background: #F9F9F9;
@@ -302,63 +323,68 @@ fieldset {
 }
 
 #cardTilTable h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
 }
 
 #cardTilTable input[type="text"], #bilSpecifikation input[type="email"], #bilSpecifikation input[type="tel"], #bilSpecifikation input[type="url"], #bilSpecifikation textarea {
-    width:100%;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+    width: 100%;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
 }
 
 #cardTilTable input[type="text"]:hover, #bilSpecifikation input[type="email"]:hover, #bilSpecifikation input[type="tel"]:hover, #bilSpecifikation input[type="url"]:hover, #bilSpecifikation textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #cardTilTable textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #cardTilTable button[type="submit"] {
-    cursor:pointer;
-    width:100%;
-    border:none;
-    background:#06add9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #06add9;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 #cardTilTable button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#cardTilTable button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#cardTilTable button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #cardTilTable input:focus, #bilSpecifikation textarea:focus {
-    outline:0;
-    border:1px solid #999;
+    outline: 0;
+    border: 1px solid #999;
 }
+
 /* Search field */
-#searchField input[type="text"], #searchField input[type="email"], #searchField input[type="tel"], #searchField input[type="url"], #searchField textarea, #searchField button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+#searchField input[type="text"], #searchField input[type="email"], #searchField input[type="tel"], #searchField input[type="url"], #searchField textarea, #searchField button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #searchField {
-    background:#F9F9F9;
-    padding:55px;
-    margin:30px;
+    background: #F9F9F9;
+    padding: 55px;
+    margin: 30px;
     margin-left: 100px;
     width: max-content;
 
@@ -373,19 +399,19 @@ fieldset {
 }
 
 #searchField h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
     color: #f58a54;
 
 }
 
 #searchField input[type="text"], #searchField input[type="email"], #searchField input[type="tel"], #searchField input[type="url"], #searchField textarea {
-    width:100%;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+    width: 100%;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
     margin-top: 10px;
     border-radius: 1rem;
     color: #259bca;
@@ -394,45 +420,49 @@ fieldset {
 }
 
 #searchField input[type="text"]:hover, #searchField input[type="email"]:hover, #searchField input[type="tel"]:hover, #searchField input[type="url"]:hover, #bilSpecifikation textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #searchField textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #searchField button[type="submit"] {
-    cursor:pointer;
-    width:100%;
-    border:none;
-    background:#06add9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #06add9;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 #searchField button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#searchField button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#searchField button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #searchField input:focus, #searchField textarea:focus {
-    border:1px solid #999;
+    border: 1px solid #999;
     outline-color: #259bca;
 }
-----------------------
 
-#skaderTabel input[type="text"], #skaderTabel input[type="email"], #skaderTabel input[type="tel"], #skaderTabel input[type="url"], #skaderTabel textarea, #skaderTabel button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+----------------------
+#skaderTabel input[type="text"], #skaderTabel input[type="email"], #skaderTabel input[type="tel"], #skaderTabel input[type="url"], #skaderTabel textarea, #skaderTabel button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #skaderTabel {
     background: #F9F9F9;
@@ -452,82 +482,87 @@ fieldset {
 }
 
 #skaderTabel h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
 }
 
 #skaderTabel input[type="text"], #skaderTabel input[type="email"], #skaderTabel input[type="tel"], #skaderTabel input[type="url"], #skaderTabel textarea {
-    width:100%;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+    width: 100%;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
 }
 
 #skaderTabel input[type="text"]:hover, #skaderTabel input[type="email"]:hover, #skaderTabel input[type="tel"]:hover, #skaderTabel input[type="url"]:hover, #skaderTabel textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #skaderTabel textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #skaderTabel button[type="submit"] {
-    cursor:pointer;
-    width:auto;
-    border:none;
-    background:#06add9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    cursor: pointer;
+    width: auto;
+    border: none;
+    background: #06add9;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 #skaderTabel button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#skaderTabel button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#skaderTabel button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #skaderTabel input:focus, #skaderTabel textarea:focus {
-    outline:0;
-    border:1px solid #999;
+    outline: 0;
+    border: 1px solid #999;
 }
 
-#rodKnap button[type="submit"]{
-    cursor:pointer;
-    width:auto;
-    border:none;
+#rodKnap button[type="submit"] {
+    cursor: pointer;
+    width: auto;
+    border: none;
     background: #eb6161;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
-#blaaKnapTilTable button[type="submit"]{
-    cursor:pointer;
+
+#blaaKnapTilTable button[type="submit"] {
+    cursor: pointer;
     width: max-content;
-    border:none;
+    border: none;
     background: #0681d9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
-#alignSearchOgSog{
+
+#alignSearchOgSog {
     display: flex;
     align-items: center;
 }
-#brugerIDSearchField{
+
+#brugerIDSearchField {
     border: none;
     padding: 0rem;
     font-size: 1rem;
@@ -538,14 +573,17 @@ fieldset {
     padding-bottom: 10px;
     padding-top: 10px;
 }
+
 #brugerIDSearchField .input:focus {
     outline-color: #259bca;
 }
 
-#skadeRegistrering input[type="text"], #skadeRegistrering input[type="email"], #skadeRegistrering input[type="tel"], #skadeRegistrering input[type="url"], #skadeRegistrering textarea, #skadeRegistrering button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+#skadeRegistrering input[type="text"], #skadeRegistrering input[type="email"], #skadeRegistrering input[type="tel"], #skadeRegistrering input[type="url"], #skadeRegistrering textarea, #skadeRegistrering button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #skadeRegistrering {
-    background:#F9F9F9;
+    background: #F9F9F9;
     padding-left: 25px;
     padding-right: 20px;
     margin-right: 15px;
@@ -561,9 +599,9 @@ fieldset {
 }
 
 #skadeRegistrering h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
 }
 
 fieldset {
@@ -574,7 +612,7 @@ fieldset {
     width: auto;
 }
 
-#bilRegistreringForm fieldset{
+#bilRegistreringForm fieldset {
     border: medium none !important;
     margin: 0 0 10px;
     min-width: auto;
@@ -584,57 +622,61 @@ fieldset {
 }
 
 #skadeRegistrering input[type="text"], #skadeRegistrering input[type="email"], #skadeRegistrering input[type="tel"], #skadeRegistrering input[type="url"], #skadeRegistrering textarea {
-    width:100%;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+    width: 100%;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
 }
 
-#skadeRegistrering label{
+#skadeRegistrering label {
     font-size: 15px;
     margin-top: 10px;
 }
 
 #skadeRegistrering input[type="text"]:hover, #skadeRegistrering input[type="email"]:hover, #skadeRegistrering input[type="tel"]:hover, #skadeRegistrering input[type="url"]:hover, #skadeRegistrering textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #skadeRegistrering textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #skadeRegistrering button[type="submit"] {
-    cursor:pointer;
-    width:100%;
-    border:none;
-    background:#06add9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #06add9;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 #skadeRegistrering button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#skadeRegistrering button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#skadeRegistrering button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #skadeRegistrering input:focus, #skadeRegistrering textarea:focus {
     outline: 0;
     border: 1px solid #999;
 }
 
-#bilRegistreringForm input[type="text"], #bilRegistreringForm input[type="email"],#bilRegistreringForm input[type="number"], #bilRegistreringForm input[type="tel"], #bilRegistreringForm input[type="url"], #bilRegistreringForm textarea, #bilRegistreringForm button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+#bilRegistreringForm input[type="text"], #bilRegistreringForm input[type="email"], #bilRegistreringForm input[type="number"], #bilRegistreringForm input[type="tel"], #bilRegistreringForm input[type="url"], #bilRegistreringForm textarea, #bilRegistreringForm button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #bilRegistreringForm {
     background: #F9F9F9;
@@ -654,62 +696,67 @@ fieldset {
 }
 
 #bilRegistreringForm h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
 }
 
-#bilRegistreringForm input[type="text"], #bilRegistreringForm input[type="email"],#bilRegistreringForm input[type="number"], #bilRegistreringForm input[type="tel"], #bilRegistreringForm input[type="url"], #bilRegistreringForm textarea {
-    width:100%;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+#bilRegistreringForm input[type="text"], #bilRegistreringForm input[type="email"], #bilRegistreringForm input[type="number"], #bilRegistreringForm input[type="tel"], #bilRegistreringForm input[type="url"], #bilRegistreringForm textarea {
+    width: 100%;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
 }
 
 #bilRegistreringForm input[type="text"]:hover, #bilRegistreringForm input[type="email"]:hover, #bilRegistreringForm input[type="number"]:hover, #bilRegistreringForm input[type="tel"]:hover, #bilRegistreringForm input[type="url"]:hover, #kundeinfo textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #bilRegistreringForm textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #bilRegistreringForm button[type="submit"] {
-    cursor:pointer;
-    width:auto;
-    border:none;
-    background:#06add9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    cursor: pointer;
+    width: auto;
+    border: none;
+    background: #06add9;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 #bilRegistreringForm button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#bilRegistreringForm button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#bilRegistreringForm button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #bilRegistreringForm input:focus, #bilRegistreringForm textarea:focus {
-    outline:0;
-    border:1px solid #999;
+    outline: 0;
+    border: 1px solid #999;
 }
-#kmRegistrering input[type="text"], #kmRegistrering input[type="email"],#kmRegistrering input[type="number"], #kmRegistrering input[type="tel"], #kmRegistrering input[type="url"], #kmRegistrering textarea, #kmRegistrering button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#kmRegistrering input[type="text"], #kmRegistrering input[type="email"], #kmRegistrering input[type="number"], #kmRegistrering input[type="tel"], #kmRegistrering input[type="url"], #kmRegistrering textarea, #kmRegistrering button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #kmRegistrering {
-    background:#F9F9F9;
+    background: #F9F9F9;
     padding: 65px;
-    margin:0;
+    margin: 0;
     margin-left: 60px;
 }
 
@@ -722,58 +769,62 @@ fieldset {
 }
 
 #kmRegistrering h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
 }
 
-#kmRegistrering input[type="text"], #kmRegistrering input[type="email"],#kmRegistrering input[type="number"], #kmRegistrering input[type="tel"], #kmRegistrering input[type="url"], #kmRegistrering textarea {
+#kmRegistrering input[type="text"], #kmRegistrering input[type="email"], #kmRegistrering input[type="number"], #kmRegistrering input[type="tel"], #kmRegistrering input[type="url"], #kmRegistrering textarea {
     width: -webkit-fill-available;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
 }
 
 #kmRegistrering input[type="text"]:hover, #kundeinfo input[type="email"]:hover, #kundeinfo input[type="number"]:hover, #kundeinfo input[type="tel"]:hover, #kundeinfo input[type="url"]:hover, #kundeinfo textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #kmRegistrering textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #kmRegistrering button[type="submit"] {
-    cursor:pointer;
-    width:auto;
-    border:none;
-    background:#06add9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    cursor: pointer;
+    width: auto;
+    border: none;
+    background: #06add9;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 #kmRegistrering button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#kmRegistrering button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#kmRegistrering button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #kmRegistrering input:focus, #kmRegistrering textarea:focus {
-    outline:0;
-    border:1px solid #999;
+    outline: 0;
+    border: 1px solid #999;
 }
 
-#treKnapper input[type="text"], #treKnapper input[type="email"],#treKnapper input[type="number"], #treKnapper input[type="tel"], #treKnapper input[type="url"], #treKnapper textarea, #treKnapper button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+#treKnapper input[type="text"], #treKnapper input[type="email"], #treKnapper input[type="number"], #treKnapper input[type="tel"], #treKnapper input[type="url"], #treKnapper textarea, #treKnapper button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #treKnapper {
     background: #F9F9F9;
@@ -793,30 +844,30 @@ fieldset {
 }
 
 #treKnapper h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
 }
 
-#treKnapper input[type="text"], #treKnapper input[type="email"],#treKnapper input[type="number"], #treKnapper input[type="tel"], #treKnapper input[type="url"], #treKnapper textarea {
+#treKnapper input[type="text"], #treKnapper input[type="email"], #treKnapper input[type="number"], #treKnapper input[type="tel"], #treKnapper input[type="url"], #treKnapper textarea {
     width: -webkit-fill-available;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
 }
 
 #treKnapper input[type="text"]:hover, #kundeinfo input[type="email"]:hover, #kundeinfo input[type="number"]:hover, #kundeinfo input[type="tel"]:hover, #kundeinfo input[type="url"]:hover, #kundeinfo textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #treKnapper textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #treKnapper button[type="submit"] {
@@ -832,36 +883,41 @@ fieldset {
 }
 
 #treKnapper button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#treKnapper button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#treKnapper button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #treKnapper input:focus, #treKnapper textarea:focus {
-    outline:0;
-    border:1px solid #999;
+    outline: 0;
+    border: 1px solid #999;
 }
 
-.sideOmSide{
+.sideOmSide {
     display: flex;
     align-items: stretch;
     justify-content: space-evenly;
     margin-left: 360px;
 }
 
-.margin0{
+.margin0 {
     margin: 0;
 }
+
 ----------------------------------
-#tilfoejSkadeForm input[type="text"], #tilfoejSkadeForm input[type="email"],#tilfoejSkadeForm input[type="number"], #tilfoejSkadeForm input[type="tel"], #tilfoejSkadeForm input[type="url"], #tilfoejSkadeForm textarea, #tilfoejSkadeForm button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+#tilfoejSkadeForm input[type="text"], #tilfoejSkadeForm input[type="email"], #tilfoejSkadeForm input[type="number"], #tilfoejSkadeForm input[type="tel"], #tilfoejSkadeForm input[type="url"], #tilfoejSkadeForm textarea, #tilfoejSkadeForm button[type="submit"] {
+    font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
 
 #tilfoejSkadeForm {
-    background:#F9F9F9;
+    background: #F9F9F9;
     padding: 65px;
-    margin:0;
+    margin: 0;
     margin-left: 30px;
 }
 
@@ -874,58 +930,60 @@ fieldset {
 }
 
 #tilfoejSkadeForm h4 {
-    margin:5px 0 15px;
-    display:block;
-    font-size:15px;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 15px;
 }
 
-#tilfoejSkadeForm input[type="text"], #tilfoejSkadeForm input[type="email"],#tilfoejSkadeForm input[type="number"], #tilfoejSkadeForm input[type="tel"], #tilfoejSkadeForm input[type="url"], #tilfoejSkadeForm textarea {
-    width:100%;
-    border:1px solid #CCC;
-    background:#FFF;
-    margin:0 0 5px;
-    padding:10px;
+#tilfoejSkadeForm input[type="text"], #tilfoejSkadeForm input[type="email"], #tilfoejSkadeForm input[type="number"], #tilfoejSkadeForm input[type="tel"], #tilfoejSkadeForm input[type="url"], #tilfoejSkadeForm textarea {
+    width: 100%;
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
 }
 
 #tilfoejSkadeForm input[type="text"]:hover, #tilfoejSkadeForm input[type="email"]:hover, #tilfoejSkadeForm input[type="number"]:hover, #tilfoejSkadeForm input[type="tel"]:hover, #tilfoejSkadeForm input[type="url"]:hover, #tilfoejSkadeForm textarea:hover {
-    -webkit-transition:border-color 0.3s ease-in-out;
-    -moz-transition:border-color 0.3s ease-in-out;
-    transition:border-color 0.3s ease-in-out;
-    border:1px solid #AAA;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
 }
 
 #tilfoejSkadeForm textarea {
-    height:100px;
-    max-width:100%;
-    resize:none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 #tilfoejSkadeForm button[type="submit"] {
-    cursor:pointer;
-    width:auto;
-    border:none;
-    background:#06add9;
-    color:#FFF;
-    margin:15px;
-    padding:10px;
-    font-size:15px;
+    cursor: pointer;
+    width: auto;
+    border: none;
+    background: #06add9;
+    color: #FFF;
+    margin: 15px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 #tilfoejSkadeForm button[type="submit"]:hover {
-    background:#09C;
-    -webkit-transition:background 0.3s ease-in-out;
-    -moz-transition:background 0.3s ease-in-out;
-    transition:background-color 0.3s ease-in-out;
+    background: #09C;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#tilfoejSkadeForm button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+#tilfoejSkadeForm button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
 
 #tilfoejSkadeForm input:focus, #tilfoejSkadeForm textarea:focus {
-    outline:0;
-    border:1px solid #999;
+    outline: 0;
+    border: 1px solid #999;
 }
 
-#overskriftStatusValg{
+#overskriftStatusValg {
     margin-left: 960px;
     position: absolute;
     margin-top: -10px;

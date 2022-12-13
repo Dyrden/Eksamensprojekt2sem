@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Skade og Udbedring</title>
-  <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
-  <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
-  <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
-  <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../../static/css/overSkrift.css"/>
-  <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
-  <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
-  <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
+    <meta charset="UTF-8">
+    <title>Skade og Udbedring</title>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+    <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
+    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
+    <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../../static/css/overSkrift.css"/>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+    <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 </head>
 <body>
 <div th:id="beaverVaelgRapperSkader" th:style="'background-image:url(' + @{/images/beaverMechanic.png}">
 
-<div th:replace="html/fragments/aFragment:: navigation"> </div>
-<div th:class="bilInfo">
-<table class="center">
-  <tr>
-    <th>Bilens vogn nummer</th>
-    <th>Rapport nummer</th>
-    <th>dato</th>
-    <th>Vælg Rapport</th>
-  </tr>
-  <tr th:each="r : ${rapporter}">
-    <td> <span th:text="${r.vognNummer}">vogn nummer</span> </td>
-    <td> <span th:text="${r.id}">id</span> </td>
-    <td> <span th:text="${r.dato}">dato</span> </td>
-    <td th:id="blaaKnapTilTable">
-      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seSkader/' + ${r.id}}">Se skader for rapport</a> </button>
-    </td>
+    <div th:replace="html/fragments/aFragment:: navigation"></div>
+    <div th:class="bilInfo">
+        <table class="center">
+            <tr>
+                <th>Bilens vogn nummer</th>
+                <th>Rapport nummer</th>
+                <th>dato</th>
+                <th>Vælg Rapport</th>
+            </tr>
+            <tr th:each="r : ${rapporter}">
+                <td><span th:text="${r.vognNummer}">vogn nummer</span></td>
+                <td><span th:text="${r.id}">id</span></td>
+                <td><span th:text="${r.dato}">dato</span></td>
+                <td th:id="blaaKnapTilTable">
+                    <button type="submit"><a th:class="htmlLink" th:href="@{'/seSkader/' + ${r.id}}">Se skader for
+                        rapport</a></button>
+                </td>
 
-</table>
+        </table>
 
-</div>
-<div th:id="center">
-  <div id="blaaKnap">
-    <button placeholder="Registrer ny rapport?" type="submit">  <a th:class="htmlLink" th:href="@{'/'}">Registrer ny rapport?</a>
-    </button>
-  </div>
-</div>
+    </div>
+    <div th:id="center">
+        <div id="blaaKnap">
+            <button placeholder="Registrer ny rapport?" type="submit"><a th:class="htmlLink" th:href="@{'/'}">Registrer
+                ny rapport?</a>
+            </button>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -9,72 +9,72 @@
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: navigation"> </div>
+<div th:replace="html/fragments/aFragment:: navigation"></div>
 <div th:id="book">
     <div th:id="page">
         <div th:id="subpage">BIL Rapport for vogn Nummer: <span th:text="${bil.vognNummer}"></span>
-<div th:id="vertical">
-<table>
-    <caption>Klar til A4 print</caption>
-    <tr th:each="b : ${bil}">
-        <th>Vogn nummer</th>
-        <td th:text="${b.vognNummer}">data</td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Stel Nummer</th>
-        <td th:text="${b.stelNummer}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Mærke</th>
-        <td th:text="${b.maerke}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Model</th>
-        <td th:text="${b.model}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Bil type</th>
-        <td th:text="${b.energiType}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Gear type</th>
-        <td th:text="${b.gearboks}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Bilens udstyr</th>
-        <td th:text="${b.udstyr}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Status</th>
-        <td th:text="${b.status}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Farve</th>
-        <td th:text="${b.farve}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Stål pris</th>
-        <td th:text="${b.staalPris}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Registerings afgift</th>
-        <td th:text="${b.registreringsAfgift}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>C02 Udledning</th>
-        <td th:text="${b.CO2Udledning}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Produktions år</th>
-        <td th:text="${b.produktionsaar}"></td>
-    </tr>
-    <tr th:each="b : ${bil}">
-        <th>Antal km. kørt</th>
-        <td th:text="${b.distance}"></td>
-    </tr>
+            <div th:id="vertical">
+                <table>
+                    <caption>Klar til A4 print</caption>
+                    <tr th:each="b : ${bil}">
+                        <th>Vogn nummer</th>
+                        <td th:text="${b.vognNummer}">data</td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Stel Nummer</th>
+                        <td th:text="${b.stelNummer}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Mærke</th>
+                        <td th:text="${b.maerke}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Model</th>
+                        <td th:text="${b.model}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Bil type</th>
+                        <td th:text="${b.energiType}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Gear type</th>
+                        <td th:text="${b.gearboks}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Bilens udstyr</th>
+                        <td th:text="${b.udstyr}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Status</th>
+                        <td th:text="${b.status}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Farve</th>
+                        <td th:text="${b.farve}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Stål pris</th>
+                        <td th:text="${b.staalPris}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Registerings afgift</th>
+                        <td th:text="${b.registreringsAfgift}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>C02 Udledning</th>
+                        <td th:text="${b.CO2Udledning}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Produktions år</th>
+                        <td th:text="${b.produktionsaar}"></td>
+                    </tr>
+                    <tr th:each="b : ${bil}">
+                        <th>Antal km. kørt</th>
+                        <td th:text="${b.distance}"></td>
+                    </tr>
 
-</table>
-</div>
+                </table>
+            </div>
         </div>
     </div>
 </div>

@@ -6,35 +6,35 @@ import java.sql.SQLException;
 
 
 public class SQLManager {
-    private static PreparedStatement makeStatement(String s){
+    private static PreparedStatement makeStatement(String s) {
         //laver en skabelon for Prepared statements, fordi DRY
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = ConnectionSingleton.connect().prepareStatement(s);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return preparedStatement;
     }
 
-    public static ResultSet execute(String s){
+    public static ResultSet execute(String s) {
         //metode der modtager info fra DB
         ResultSet resultSet = null;
         try {
             PreparedStatement psts = makeStatement(s);
             resultSet = psts.executeQuery();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return resultSet;
     }
 
-    public static void update(String s){
+    public static void update(String s) {
         //metode der sender info til DB
         try {
             PreparedStatement psts = makeStatement(s);
             psts.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
