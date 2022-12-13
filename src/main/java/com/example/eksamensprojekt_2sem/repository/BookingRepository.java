@@ -95,14 +95,37 @@ public class BookingRepository {
         return bookinger;
     }
 
-
-    public double visSamletIndtaegt(){//Ferhat er ansvarlig for denne metode
+    public double visSamletIndtaegt(){//Ferhat og Mark er ansvarlig for denne metode
 
         //Den viser lige nu samlede indtægt for bookede biler denne måned
 
         double indtaegt = 0;
         try {
-            ResultSet resultSet = SQLManager.execute("CALL skafForetningsInformationer()");
+            ResultSet resultSet = SQLManager.execute("CALL skafIndtaegt()");
+
+            while (resultSet.next()) {
+
+                double maanedsPris = resultSet.getDouble(1);
+                double maanederUdlejet = resultSet.getInt(2);
+
+                indtaegt += maanedsPris*maanederUdlejet;
+            }
+
+        } catch (SQLException | NullPointerException e){
+            System.err.println("Ingen indtægt fundet.");
+            System.out.println(e.getMessage());
+        }
+        return indtaegt;
+    }
+
+
+    public double visSamletIndtaegtForDenneMåned(){ //Ferhat og Mark er ansvarlig for denne metode
+
+        //Den viser lige nu samlede indtægt for bookede biler denne måned
+
+        double indtaegt = 0;
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL skafIndtaegtForDenneMaaned()");
 
             while (resultSet.next()) {
 

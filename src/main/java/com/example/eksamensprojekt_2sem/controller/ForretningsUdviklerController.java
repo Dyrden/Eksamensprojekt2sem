@@ -21,6 +21,7 @@ public class ForretningsUdviklerController {
     public String visForretningsUdviklere(Model model){
         model.addAttribute("bookedeBiler", bookingRepository.visAktiveBookinger());
         model.addAttribute("samledeIndtaegt", bookingRepository.visSamletIndtaegt());
+        model.addAttribute("samledeIndtaegtMaaned", bookingRepository.visSamletIndtaegtForDenneMåned());
         return "html/forretningsUdviklere";
     }
 }
