@@ -102,35 +102,25 @@ public class DataRegController {
         @RequestParam("maanedspris") double maanedspris
     ) {
 
-        BilModel bil = new BilModel();
-        bil.setModel(model);
-        bil.setVognNummer(vognnummer);
-        bil.setStelNummer(stelnummer);
-        bil.setFarve(farve);
-        bil.setGearboks(gearboks);
-        bil.setMaerke(maerke);
-        bil.setUdstyr(udstyrsniveau);
-        bil.setEnergiType(energitype);
-        bil.setStaalPris(staalpris);
-        bil.setRegistreringsAfgift(registreringsafgift);
-        bil.setCO2Udledning(co2udledning);
-        bil.setProduktionsaar(produktionsaar);
-        bil.setDistance(kilometertal);
-        bil.setMaanedsPris(maanedspris);
-
-
-        BilModelModel bilModel = new BilModelModel(model,energitype,gearboks,udstyrsniveau,maerke,farve);
-
         // check om model findes
-        int modelID = bilRepository.findModel(bilModel);
+        int modelID = bilRepository.findModel(model,energitype,gearboks,udstyrsniveau,maerke,farve);
 
         if (modelID == 0) {
-            bilRepository.opretModel(bilModel);
-            modelID = bilRepository.findModel(bilModel);
+            bilRepository.opretModel(model,energitype,gearboks,udstyrsniveau,maerke,farve);
+            modelID = bilRepository.findModel(model,energitype,gearboks,udstyrsniveau,maerke,farve);
         }
-        bil.setModelID(modelID);
 
-        bilRepository.opretBil(bil);
+        bilRepository.opretBil(
+            vognnummer,
+            stelnummer,
+            modelID,
+            staalpris,
+            registreringsafgift,
+            co2udledning,
+            produktionsaar,
+            kilometertal,
+            maanedspris);
+
         return "redirect:/";
     }
 

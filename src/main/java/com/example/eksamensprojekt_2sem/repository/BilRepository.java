@@ -250,18 +250,26 @@ public class BilRepository {
 
     //Ansvarlig : Mark Dyrby Denner
     // Denne metode tager imod en bilmodel og laver en insert call til databasen
-    public void opretBil(BilModel bil) {
+    public void opretBil(String vognnummer,
+                         String stelnummer,
+                         int modelID,
+                         double staalpris,
+                         double registreringsafgift,
+                         double co2udledning,
+                         int produktionsaar,
+                         int kilometertal,
+                         double maanedspris) {
         SQLManager.update(
             "CALL Bil_Opret(\""
-                + bil.getVognNummer() + "\", \""
-                + bil.getStelNummer() + "\", \""
-                + bil.getStaalPris() + "\", \""
-                + bil.getRegistreringsAfgift() + "\", \""
-                + bil.getCO2Udledning() + "\", \""
-                + bil.getProduktionsaar() + "\", \""
-                + bil.getDistance() + "\", \""
-                + bil.getMaanedsPris() + "\", \""
-                + bil.getModelID() + "\")");
+                + vognnummer + "\", \""
+                + stelnummer + "\", \""
+                + staalpris + "\", \""
+                + registreringsafgift + "\", \""
+                + co2udledning + "\", \""
+                + produktionsaar + "\", \""
+                + kilometertal + "\", \""
+                + maanedspris + "\", \""
+                + modelID + "\")");
         System.out.println("lavede bil");
     }
 
@@ -463,18 +471,18 @@ public class BilRepository {
     // Denne metode bruger en procedure der står for at finde alle 'model's som har præcis
     // de samme værdier i databasen og returnerer ID'et på denne. Hvis den ikke findes
     // returneres 0.
-    public int findModel(BilModelModel model) {
-        System.out.println(model.getModel() + " - " + model.getEnergiType() + " - " + model.getGearboks() + " - " + model.getUdstyrsNiveau() + " - " + model.getMaerke() + " - " + model.getFarve());
+    public int findModel(String model, String energitype, String gearboks, String udstyrsniveau, String maerke, String farve) {
+        BilModelModel bilModel = new BilModelModel(model,energitype,gearboks,udstyrsniveau,maerke,farve);
         int modelID = 0;
         try {
             ResultSet rs = SQLManager.execute(
                 "CALL skafModelMedPraeciseParametre(\""
-                    + model.getModel() + "\", \""
-                    + model.getEnergiType() + "\", \""
-                    + model.getGearboks() + "\", \""
-                    + model.getUdstyrsNiveau() + "\", \""
-                    + model.getMaerke() + "\", \""
-                    + model.getFarve() + "\")");
+                    + bilModel.getModel() + "\", \""
+                    + bilModel.getEnergiType() + "\", \""
+                    + bilModel.getGearboks() + "\", \""
+                    + bilModel.getUdstyrsNiveau() + "\", \""
+                    + bilModel.getMaerke() + "\", \""
+                    + bilModel.getFarve() + "\")");
             rs.next();
             modelID = rs.getInt(1);
         } catch (SQLException e) {
@@ -488,15 +496,15 @@ public class BilRepository {
     //Ansvarlig : Mark Dyrby Denner
     //Denne metode tager imod en bil's 'model' og, ved brug af en procedure, indsætter den
     // i databasen
-    public void opretModel(BilModelModel model) {
+    public void opretModel(String model, String energiType, String gearboks, String udstyrsniveau, String maerke, String farve) {
         SQLManager.update(
             "CALL Model_Opret(\""
-                + model.getModel() + "\", \""
-                + model.getEnergiType() + "\", \""
-                + model.getGearboks() + "\", \""
-                + model.getUdstyrsNiveau() + "\", \""
-                + model.getMaerke() + "\", \""
-                + model.getFarve() + "\")");
+                + model + "\", \""
+                + energiType + "\", \""
+                + gearboks + "\", \""
+                + udstyrsniveau + "\", \""
+                + maerke + "\", \""
+                + farve + "\")");
 
         System.out.println("lavede model");
     }
