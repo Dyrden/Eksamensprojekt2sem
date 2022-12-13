@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Booking oplysninger</title>
@@ -15,8 +15,9 @@
 </head>
 <body>
 <div th:replace="html/fragments/aFragment:: navigation"> </div>
-
 <div th:id="beaverUdstyrValg" th:style="'background-image:url(' + @{/images/beaver.png}">
+<!--
+-->
 
 <div th:class="bilInfo">
   <div class="table-title">

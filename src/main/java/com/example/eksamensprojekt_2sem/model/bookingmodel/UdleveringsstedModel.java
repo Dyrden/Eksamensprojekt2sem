@@ -5,6 +5,15 @@ public class UdleveringsstedModel {
     private int id;
     private String sted;
 
+
+    public String getSted() {
+        return sted;
+    }
+
+    public void setSted(String sted) {
+        this.sted = sted;
+    }
+
     public UdleveringsstedModel(int id, String sted) {
         this.id = id;
         this.sted = sted;
