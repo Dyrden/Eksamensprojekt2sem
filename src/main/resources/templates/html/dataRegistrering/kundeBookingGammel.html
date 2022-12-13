@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kundeBooking</title>
+    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+    <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
+    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
+    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
+
+
+<div th:class="bilInfo">
+    <div class="table-title">
+        <h3>Bilens informationer</h3>
+    </div>
+    <table class="center">
+        <tr>
+            <th>Bil Mærke</th>
+            <th>Model</th>
+            <th>Vognnummer</th>
+            <th>Registreringsnummer</th>
+        </tr>
+        <tr th:each="b : ${bil}">
+            <td> <span th:text="${b.maerke}">Bil Mærke</span> </td>
+            <td> <span th:text="${b.model}">Model</span> </td>
+            <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
+            <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
+        </tr>
+    </table>
+
+<div class="bilBookingFormFlex">
+    <form action="/nyBooking" method="post">
+    <div class="container bilBookingFormFlex">
+        <div id="bilSpecifikation">
+        <h3>Bilens specifikationer</h3>
+        <h4>Indtast venligst bilens specifikation</h4>
+        <fieldset>
+            <label for="udstyr">Vælg udstyr:</label>
+            <select name="udstyr" id="udstyr">
+                <option value="minimal udstyr">minimal udstyr</option>
+                <option value="fuld udstyr">fuld udstyr</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label for="startDato">Vælg start udlejningsdato</label>
+            <input name="udlejningsStartDato" id="startDato" type="date" tabindex="3" required>
+        </fieldset>
+        <fieldset>
+            <label for="slutDato">Vælg slut udlejningsdato</label>
+            <input name="udeljningsSlutDato" id="slutDato" type="date" tabindex="3" required>
+        </fieldset>
+        <fieldset>
+            <label for="udleveringsStedID">Vælg udleveringssted</label>
+            <select name="udleveringsStedID" id="udleveringsStedID">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">4</option>
+            </select>
+        </fieldset>
+        </div>
+        <div id="kundeinfo">
+        <h3>Kunde informationer</h3>
+        <h4>Indtast venligst kundens information</h4>
+        <fieldset>
+            <input name="fornavn" placeholder="Fornavn" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input name="efternavn" placeholder="Efternavn" type="text" tabindex="2" required>
+        </fieldset>
+        <fieldset>
+            <input name="email" placeholder="E-mail" type="text" tabindex="3" required></input>
+        </fieldset>
+        <fieldset>
+            <input name="tlf" placeholder="tlf nummer" type="text" tabindex="4" required></input>
+        </fieldset>
+        <fieldset>
+            <input name="CPR" placeholder="cpr nummer" type="text" tabindex="5" required></input>
+        </fieldset>
+        <fieldset>
+            <div class="bilBookingFormFlex">
+                <button class="inline" name="submit" type="submit" id="send-kundeinfo" data-submit="...Sending">Book</button>
+            </div>
+        </fieldset>
+        </div>
+    </div>
+    </form>
+</div>
+</body>
+</html>

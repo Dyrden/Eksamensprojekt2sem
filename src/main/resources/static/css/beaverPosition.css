@@ -1,42 +1,40 @@
-#beaverSkadeOgUdbedring {
-    background-image: url(../images/beaver.png);
+#beaverSkadeOgUdbedring{
+    background-image: url(@{/images/beaver.png});
     background-repeat: no-repeat, repeat;
     background-size: 50%;
     background-attachment: inherit;
     background-position-x: -50px;
-    background-position-y: 249px;
+    background-position-y: 230px;
 
 }
 
-#beaverBookingRegistrering {
-    background-image: url(../images/beaver.png);
-    background-repeat: no-repeat, repeat;
-    background-size: 37%;
-    background-attachment: inherit;
-    background-position-x: -2px;
-    background-position-y: 342px;
-}
-
-#beaverKundeRegistrering {
-    background-image: url(../images/beaver.png);
-    background-repeat: no-repeat, repeat;
-    background-size: 11%;
-    background-attachment: inherit;
-    background-position-x: 250px;
-    background-position-y: 1px;
-}
-
-#beaverUdstyrValg {
-    background-image: url(../images/beaver.png);
+#beaverBookingRegistrering{
+    background-image: url(@{/images/beaver.png});
     background-repeat: no-repeat, repeat;
     background-size: 40%;
     background-attachment: inherit;
-    background-position-x: 250px;
-    background-position-y: 190px;
+    background-position-x: 0px;
+    background-position-y: 300px;
+}
+#beaverKundeRegistrering{
+    background-image: url(@{/images/beaver.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 10%;
+    background-attachment: inherit;
+    background-position-x: 260px;
+    background-position-y: 0;
 }
 
-#beaverSeSkader {
-    background-image: url(../images/beaverMechanic.png);
+#beaverUdstyrValg{
+    background-image: url(@{/images/beaver.png});
+    background-repeat: no-repeat, repeat;
+    background-size: 40%;
+    background-attachment: inherit;
+    background-position-x: 990px;
+    background-position-y: 190px;
+}
+#beaverSeSkader{
+    background-image: url(@{/images/beaverMechanic.png});
     background-repeat: no-repeat, repeat;
     background-size: 19%;
     background-attachment: inherit;
@@ -44,38 +42,37 @@
     background-position-y: -3px;
 }
 
-#beaverTilfoejSkade {
-    background-image: url(../images/beaverMechanic.png);
+#beaverTilfoejSkade{
+    background-image: url(@{/images/beaverMechanic.png});
     background-repeat: no-repeat, repeat;
-    background-size: 40%;
-    background-attachment: inherit;
-    background-position-x: 900px;
-    background-position-y: 20px;
+     background-size: 40%;
+     background-attachment: inherit;
+     background-position-x: 900px;
+     background-position-y: 20px;
 }
 
-#beaverVaelgRapperSkader {
-    background-image: url(../images/beaverMechanic.png);
-    background-repeat: no-repeat, repeat;
-    background-size: 25%;
-    background-attachment: inherit;
-    background-position-x: 1050px;
-    background-position-y: 120px;
-}
+ #beaverVaelgRapperSkader{
+     background-image: url(@{/images/beaverMechanic.png});
+     background-repeat: no-repeat, repeat;
+     background-size: 25%;
+     background-attachment: inherit;
+     background-position-x: 1050px;
+     background-position-y: 120px;
+ }
 
-#beaverIBaggrundForretning {
-    background-image: url(../images/beaverInASuit.png);
+#beaverIBaggrundForretning{
+    background-image: url(@{/images/beaverInASuit.png});
     background-repeat: no-repeat, repeat;
-    background-size: 40%;
+    background-size: 50%;
     background-attachment: inherit;
-    background-position-x: -29px;
-    background-position-y: 252px;
+    background-position-x: -41px;
+    background-position-y: 127px;
 }
-
-#beaverSeRapporter {
-    background-image: url(../images/beaverInASuit.png);
+#beaverSeRapporter{
+    background-image: url(@{/images/beaverInASuit.png});
     background-repeat: no-repeat, repeat;
     background-size: 9%;
     background-attachment: inherit;
     background-position-x: 1088px;
-    background-position-y: 0;
+    background-position-y: 0px;
 }

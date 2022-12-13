@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping("/")
-    public String visHome() {
+    public String visHome(){
         return "html/startSideTest";
     }
 
     @GetMapping("/start")
-    public String start() {
+    public String start(){
 
         return "html/home";
     }

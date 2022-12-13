@@ -14,7 +14,7 @@
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: navigation"></div>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
 
 <div th:id="beaverKundeRegistrering" th:style="'background-image:url(' + @{/images/beaver.png}">
     <div th:class="bilInfo">
@@ -28,90 +28,79 @@
                 <th>Registreringsnummer</th>
             </tr>
             <tr th:each="b : ${bil}">
-                <td><span th:text="${b.maerke}">Bil Mærke</span></td>
-                <td><span th:text="${b.model}">Model</span></td>
-                <td><span th:text="${b.vognNummer}">Vognnummer</span></td>
-                <td><span th:text="${b.stelNummer}">Registreringsnummer</span></td>
+                <td> <span th:text="${b.maerke}">Bil Mærke</span> </td>
+                <td> <span th:text="${b.model}">Model</span> </td>
+                <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
+                <td> <span th:text="${b.stelNummer}">Registreringsnummer</span> </td>
             </tr>
         </table>
 
 
-        <div th:class="flexSkade">
+    <div th:class="flexSkade">
 
-            <div>
-                <div id="kundeinfo">
-                    <form action="/nyBruger" method="post">
-                        <h3>Registrer kunde</h3>
-                        <h4>Indtast venligst kundens information</h4>
-                        <fieldset>
-                            <label for="fornavn"> Fornavn</label>
-                            <input id="fornavn" name="fornavn" placeholder="Fornavn" type="text" tabindex="1" required autofocus>
-                        </fieldset>
-                        <fieldset>
-                            <label for="efternavn"> Efternavn</label>
-                            <input id="efternavn" name="efternavn" placeholder="Efternavn" type="text" tabindex="2" required>
-                        </fieldset>
-                        <fieldset>
-                            <label for="email"> Email </label>
-                            <input id="email" name="email" placeholder="E-mail" type="text" tabindex="3" required>
-                        </fieldset>
-                        <fieldset>
-                            <label for="tlf">tlf nr.</label>
-                            <input id="tlf" name="tlf" placeholder="tlf nummer" type="text" tabindex="4" required>
-                        </fieldset>
-                        <fieldset>
-                            <label for="CPR">CPR nr.</label>
-                            <input id="CPR" name="CPR" placeholder="cpr nummer" type="text" tabindex="5" required>
-                        </fieldset>
-                        <fieldset>
-                            <div class="bilBookingFormFlex">
-                                <button class="inline" name="submit" type="submit" id="send-kundeinfo"
-                                        data-submit="...Sending">Registrer kunde og vælg udstyr
-                                </button>
-                            </div>
-                        </fieldset>
+        <div>
+            <div id="kundeinfo">
+                <form action="/nyBruger" method="post">
+                <h3>Registrer kunde</h3>
+                <h4>Indtast venligst kundens information</h4>
+                <fieldset>
+                    <input name="fornavn" placeholder="Fornavn" type="text" tabindex="1" required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input name="efternavn" placeholder="Efternavn" type="text" tabindex="2" required>
+                </fieldset>
+                <fieldset>
+                    <input name="email" placeholder="E-mail" type="text" tabindex="3" required></input>
+                </fieldset>
+                <fieldset>
+                    <input name="tlf" placeholder="tlf nummer" type="text" tabindex="4" required></input>
+                </fieldset>
+                <fieldset>
+                    <input name="CPR" placeholder="cpr nummer" type="text" tabindex="5" required></input>
+                </fieldset>
+                <fieldset>
+                    <div class="bilBookingFormFlex">
+                        <button class="inline" name="submit" type="submit" id="send-kundeinfo" data-submit="...Sending">Registrer kunde og vælg udstyr</button>
+                    </div>
+                </fieldset>
                     </form>
-                </div>
-
             </div>
-            <div id="findKunde">
-                <h3>Find kunde</h3>
-                <div th:id="brugerIDSearchField">
-                    <form th:id="alignSearchOgSog" action="/soegKundeMedCPR" method="post">
-                        <input type="text" name="brugerCPR" th:class="searchField" placeholder="indtast CPR"
-                               minlength="8">
-                        <input type="submit" value="Søg på kunde">
-                    </form>
-                </div>
 
-                <div th:id="scroll">
-                    <table th:id="kundeTable">
-                        <tr>
-                            <th>Bruger ID</th>
-                            <th>Fornavn</th>
-                            <th>EfterNavn</th>
-                            <th>tlf nummer</th>
-                            <th>CPR nummer</th>
-                            <th>Vælg</th>
-                        </tr>
-                        <tr th:each="b : ${brugere}">
-                            <td><span th:text="${b.id}">Maerke</span></td>
-                            <td><span th:text="${b.fornavn}">Model</span></td>
-                            <td><span th:text="${b.efternavn}">Vognnummer</span></td>
-                            <td><span th:text="${b.tlf}">Registreringsnummer</span></td>
-                            <td><span th:text="${b.cpr}">Registreringsnummer</span></td>
-                            <td th:id="blaaKnapTilTable">
-                                <button type="submit"><a th:class="htmlLink" th:href="@{'/udstyrValg/' + ${b.id}}">Vælg
-                                    bruger</a></button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+</div>
+        <div id="findKunde">
+            <h3>Find kunde</h3>
+        <div th:id="brugerIDSearchField">
+            <form th:id="alignSearchOgSog" action="/soegKundeMedCPR" method="post">
+            <input type="text" name="brugerCPR" th:class="searchField" placeholder="indtast CPR" minlength="8">
+            <input type="submit" value="Søg på kunde">
+            </form>
         </div>
+
+            <div th:id="scroll">
+    <table th:id="kundeTable">
+        <tr>
+            <th>Bruger ID</th>
+            <th>Fornavn</th>
+            <th>EfterNavn</th>
+            <th>tlf nummer</th>
+            <th>CPR nummer</th>
+            <th>Vælg</th>
+        </tr>
+        <tr th:each="b : ${brugere}">
+            <td> <span th:text="${b.id}">Maerke</span> </td>
+            <td> <span th:text="${b.fornavn}">Model</span> </td>
+            <td> <span th:text="${b.efternavn}">Vognnummer</span> </td>
+            <td> <span th:text="${b.tlf}">Registreringsnummer</span> </td>
+            <td> <span th:text="${b.cpr}">Registreringsnummer</span> </td>
+            <td th:id="blaaKnapTilTable">
+                <button type="submit"> <a th:class="htmlLink" th:href="@{'/udstyrValg/' + ${b.id}}">Vælg bruger</a> </button>
+            </td>
+        </tr>
+    </table>
+            </div>
+</div>
     </div>
 </div>
+
 </body>
 </html>
-
-

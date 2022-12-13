@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Tilfoj skade</title>
-    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
-    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
-    <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
-    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
-    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
-    <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
+  <meta charset="UTF-8">
+  <title>Tilfoj skade</title>
+  <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+  <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
+  <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
+  <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+  <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
+  <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: navigation"></div>
-<div th:id="beaverTilfoejSkade" th:style="'background-image:url(' + /images/beaverMechanic.png">
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
+<div th:id="beaverTilfoejSkade" th:style="'background-image:url(' + @{/images/beaverMechanic.png}">
 
 
-    <div class="container">
-        <form id="bilSpecifikation" action="/tilfoej" method="post">
-            <h3>Registrer Skade</h3>
-            <h4>Indtast skade, fejl eller anden omkostning</h4>
-            <fieldset>
-                <input id="skade-placering" name="skade_placering" placeholder="Skadens placering" type="text"
-                       tabindex="1" required autofocus>
-            </fieldset>
-            <fieldset>
-                <input id="skade-pris" name="skade_pris" placeholder="Skadens pris" type="text" tabindex="2" required>
-            </fieldset>
-            <fieldset>
-                <textarea id="skade-beskrivelse" name="skade_beskrivelse" placeholder="Beskriv venligst skaden...."
-                          tabindex="3" required></textarea>
-            </fieldset>
-            <fieldset>
-                <div class="flex">
-                    <button type="submit" th:href="@{'/skadeOgUdbedring/'}">Annuller </button>
-                    <input type="hidden" id="wishId" name="rapportID" th:attr="value=${rapportID}">
-                    <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">
-                        Indsend
-                    </button>
-                </div>
-            </fieldset>
-        </form>
-    </div>
+<div class="container">
+  <form id="bilSpecifikation" action="/tilfoej" method="post">
+    <h3>Registrer Skade</h3>
+    <h4>Indtast skade, fejl eller anden omkostning</h4>
+    <fieldset>
+      <input id="skade-placering" name="skade_placering" placeholder="Skadens placering" type="text" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+      <input id="skade-pris" name="skade_pris" placeholder="Skadens pris" type="text" tabindex="2" required>
+    </fieldset>
+    <fieldset>
+      <textarea id="skade-beskrivelse" name="skade_beskrivelse" placeholder="Beskriv venligst skaden...." tabindex="3" required></textarea>
+    </fieldset>
+    <fieldset>
+      <div class="flex">
+        <button placeholder="annuller" type="submit" th:href="@{'/skadeOgUdbedring/'}">Annuller
+        </button>
+        <input type="hidden" id="wishId" name="rapportID" th:attr="value=${rapportID}">
+        <button class="inline" name="submit" type="submit" id="contact-submit" data-submit="...Sending">Indsend</button>
+      </div>
+    </fieldset>
+  </form>
+
+
+</div>
 </div>
 
 </body>

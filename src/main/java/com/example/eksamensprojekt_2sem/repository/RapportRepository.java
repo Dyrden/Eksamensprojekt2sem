@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -69,7 +70,7 @@ public class RapportRepository {
         try {
             resultSet.next();
             fundetID = resultSet.getInt(1);
-        } catch (SQLException e) {
+        } catch (SQLException e ) {
             System.out.println("ingen rapport fundet");
         }
         return fundetID;
@@ -85,7 +86,7 @@ public class RapportRepository {
         try {
             resultSet.next();
             slutkm = resultSet.getInt(1);
-        } catch (SQLException e) {
+        } catch (SQLException e ) {
             System.out.println("ingen slutkm fundet");
         }
         return slutkm;
@@ -112,7 +113,7 @@ public class RapportRepository {
         return kmkørt;
     }
 
-    public double skafPrisPaaOverskredetKM(int bookingID) { //Ferhat
+    public double skafPrisPaaOverskredetKM(int bookingID){ //Ferhat
         int antalMånederBooket = 0;
 
         ResultSet resultSet = SQLManager.execute(
@@ -124,23 +125,23 @@ public class RapportRepository {
         } catch (SQLException e) {
             System.out.println("fejl under udregning af kilometer kørt");
         }
-        if (antalMånederBooket == 0) {
+        if (antalMånederBooket == 0){
             antalMånederBooket = 1;
         }
         double pris = 0;
         int kmKørt = skafUdregnetKMKørt(bookingID);
 
-        int maksimaltKMTilladt = antalMånederBooket * 2000;
+        int maksimaltKMTilladt = antalMånederBooket*2000;
 
-        if ((kmKørt > maksimaltKMTilladt)) {
-            int kmOvertrådt = kmKørt - maksimaltKMTilladt;
-            pris = kmOvertrådt * 0.75;
+        if ((kmKørt>maksimaltKMTilladt)){
+            int kmOvertrådt = kmKørt-maksimaltKMTilladt;
+            pris = kmOvertrådt*0.75;
         }
 
         return pris;
     }
 
-    public int skafAntalMaanederBooket(int bookingID) { //Ferhat
+    public int skafAntalMaanederBooket(int bookingID){ //Ferhat
         int antalMånederBooket = 0;
 
         ResultSet resultSet = SQLManager.execute(
@@ -153,14 +154,14 @@ public class RapportRepository {
             System.out.println("fejl under udregning af kilometer kørt");
         }
 
-        if (antalMånederBooket == 0) {
+        if (antalMånederBooket == 0){
             antalMånederBooket = 1;
         }
 
         return antalMånederBooket;
     }
 
-    public int skafMaksimumKMTilladt(int bookingID) { // Ferhat er ansvarlig for metoden
+    public int skafMaksimumKMTilladt(int bookingID){ // Ferhat er ansvarlig for metoden
 
         int antalMånederBooket = 0;
 
@@ -174,13 +175,13 @@ public class RapportRepository {
             System.out.println("fejl under udregning af kilometer kørt");
         }
 
-        if (antalMånederBooket == 0) {
+        if (antalMånederBooket == 0){
             antalMånederBooket = 1;
         }
+        int maksimaltKMTilladt = antalMånederBooket*2000;
 
-        int maksimalKMKørtPerMåned = 2000;
 
-        return antalMånederBooket * maksimalKMKørtPerMåned;
+        return maksimaltKMTilladt;
     }
 
     public int skafKMOverskredet(int bookingID) { //Ferhat
@@ -197,7 +198,7 @@ public class RapportRepository {
         } catch (SQLException e) {
             System.out.println("fejl under udregning af kilometer kørt");
         }
-        if (antalMånederBooket == 0) {
+        if (antalMånederBooket == 0){
             antalMånederBooket = 1;
         }
         int kmKørt = skafUdregnetKMKørt(bookingID);
@@ -206,12 +207,14 @@ public class RapportRepository {
 
         if ((kmKørt > maksimaltKMTilladt)) {
             kmOvertrådt = kmKørt - maksimaltKMTilladt;
+        } else {
+            return 0;
         }
 
         return kmOvertrådt;
     }
 
-    public void udregnKilometerKørt(int bookingID, int slutkm) { //Mark
+    public void udregnKilometerKørt(int bookingID,int slutkm) { //Mark
         SQLManager.execute(
             "call skafUdregnetKilometerKoertOgOpdaterBilOgRapport(" + bookingID + ", " + slutkm + ")");
     }

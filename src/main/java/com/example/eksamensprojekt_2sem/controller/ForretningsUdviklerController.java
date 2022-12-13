@@ -15,7 +15,7 @@ public class ForretningsUdviklerController {
     }
 
     @GetMapping("/forretningsUdviklere") //Ferhat og Bjørn
-    public String visForretningsUdviklere(Model model) {
+    public String visForretningsUdviklere(Model model){
         model.addAttribute("bookedeBiler", bookingRepository.visAktiveBookinger());
         model.addAttribute("samledeIndtaegt", bookingRepository.visSamletIndtaegt());
         model.addAttribute("samledeIndtaegtMaaned", bookingRepository.visSamletIndtaegtForDenneMåned());

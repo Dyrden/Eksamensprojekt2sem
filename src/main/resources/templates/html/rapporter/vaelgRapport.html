@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Skade og Udbedring</title>
-    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
-    <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
-    <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
-    <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../../static/css/overSkrift.css"/>
-    <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
-    <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
-    <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
+  <meta charset="UTF-8">
+  <title>Skade og Udbedring</title>
+  <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
+  <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
+  <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
+  <link rel="stylesheet" th:href="@{/css/overSkrift.css}" href="../../../static/css/overSkrift.css"/>
+  <link rel="stylesheet" th:href="@{/css/nyNaviBar.css}" href="../../../static/css/nyNaviBar.css"/>
+  <link rel="stylesheet" th:href="@{/css/formDesign.css}" href="../../../static/css/formDesign.css"/>
+  <link rel="stylesheet" th:href="@{/css/beaverPosition.css}" href="../../../static/css/beaverPosition.css"/>
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: navigation"></div>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
 <div th:class="bilInfo">
-    <table class="center">
-        <tr>
-            <th>Bilens booking id</th>
-            <th>dato</th>
-            <th>Vælg Rapport</th>
-        </tr>
-        <tr th:each="b : ${bookings}">
-            <td><span th:text="${b.id}">Booking</span></td>
-            <td><span th:text="${b.slutDato}">dato</span></td>
-            <td th:id="blaaKnapTilTable">
-                <button type="submit"><a th:class="htmlLink" th:href="@{'/seSkadesRapport/' + ${b.id}}">Se skader for
-                    bookingen</a></button>
-            </td>
-        </tr>
-    </table>
+<table class="center">
+  <tr>
+    <th>Bilens booking id</th>
+    <th>dato</th>
+    <th>Vælg Rapport</th>
+  </tr>
+  <tr th:each="b : ${bookings}">
+    <td> <span th:text="${b.id}">Booking</span> </td>
+    <td> <span th:text="${b.slutDato}">dato</span> </td>
+    <td th:id="blaaKnapTilTable">
+      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seSkadesRapport/' + ${b.id}}">Se skader for bookingen</a> </button>
+    </td>
+  </tr>
+</table>
 </div>
 </body>
 </html>

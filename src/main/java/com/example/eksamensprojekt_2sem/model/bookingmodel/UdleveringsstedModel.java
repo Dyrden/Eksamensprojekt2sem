@@ -21,8 +21,8 @@ public class UdleveringsstedModel {
     @Override
     public String toString() {
         return "UdleveringsstedModel{" +
-            "id=" + id +
-            ", sted='" + sted + '\'' +
-            '}';
+                "id=" + id +
+                ", sted='" + sted + '\'' +
+                '}';
     }
 }

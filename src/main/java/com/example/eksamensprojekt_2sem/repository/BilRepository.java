@@ -445,7 +445,7 @@ public class BilRepository {
     // de samme værdier i databasen og returnerer ID'et på denne. Hvis den ikke findes
     // returneres 0.
     public int findModel(String model, String energitype, String gearboks, String udstyrsniveau, String maerke, String farve) {
-        BilModelModel bilModel = new BilModelModel(model, energitype, gearboks, udstyrsniveau, maerke, farve);
+        BilModelModel bilModel = new BilModelModel(model,energitype,gearboks,udstyrsniveau,maerke,farve);
         int modelID = 0;
         try {
             ResultSet rs = SQLManager.execute(
@@ -494,7 +494,7 @@ public class BilRepository {
             bilModel.setMaerke(resultSet.getString(3));
             bilModel.setModel(resultSet.getString(4));
 
-        } catch (SQLException e) {
+        } catch (SQLException e ) {
             System.out.println("ingen bil fundet");
         }
         return bilModel;

@@ -32,8 +32,8 @@ public class AbonnementsTypeModel {
     @Override
     public String toString() {
         return "AbonnementsTypeModel{" +
-            "id=" + id +
-            ", type='" + type + '\'' +
-            '}';
+                "id=" + id +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

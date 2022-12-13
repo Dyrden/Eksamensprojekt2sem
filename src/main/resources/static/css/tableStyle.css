@@ -1,5 +1,5 @@
-.bilInfo {
-    margin-bottom: 10px;
+.bilInfo{
+margin-bottom: 10px;
 }
 
 .bilInfo table {
@@ -9,7 +9,6 @@
     border-radius: 5px;
 
 }
-
 .bilInfoAutoWidth table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -17,26 +16,21 @@
     border-radius: 5px;
 
 }
-
 .bilInfo table.center {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 44px;
 }
-
 .bilInfo td, th {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
     width: 10%;
 }
-
-.bilInfo th {
+.bilInfo th{
     background-color: #259bca;
 
-}
-
-.bilInfo td {
+}.bilInfo td{
     background-color: #f6f3f2;
 
 }
@@ -47,7 +41,6 @@
     padding: 8px;
     width: 10%;
 }
-
 .bilInfo td:nth-child(even) {
     background-color: white;
     border: 1px solid #dddddd;
@@ -63,7 +56,6 @@ div.table-title {
     padding: 5px;
     width: 100%;
 }
-
 .table-title h3 {
     color: #000000;
     font-size: 30px;
@@ -74,13 +66,12 @@ div.table-title {
     text-transform: uppercase;
 }
 
-.bilInfo th {
+.bilInfo th{
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     color: aliceblue;
 }
-
 /* ----- Info for table i Skade og Udbedring */
 #SkadeTable {
     width: 50%;
@@ -93,27 +84,24 @@ div.table-title {
     width: 50%;
     border-radius: 5px;
 }
-
 #SkadeTable table.center {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left:auto;
+    margin-right:auto;
 }
-
 #SkadeTable td, th {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
     width: 10%;
 }
-
 #SkadeTable th {
     background-color: #259bca;
 }
 
-#SkadeTable td {
-    background-color: #f6f3f2;
+#SkadeTable td{
+     background-color: #f6f3f2;
 
-}
+ }
 
 #SkadeTable tr:nth-child(even) {
     background-color: white;
@@ -121,7 +109,6 @@ div.table-title {
     padding: 8px;
     width: 10%;
 }
-
 #SkadeTable td:nth-child(even) {
     background-color: white;
     border: 1px solid #dddddd;
@@ -129,7 +116,7 @@ div.table-title {
     width: 10%;
 }
 
-#SkadeTable th {
+#SkadeTable th{
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -150,25 +137,22 @@ div.table-title {
     width: 50%;
     border-radius: 5px;
 }
-
 #kundeTable table.center {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left:auto;
+    margin-right:auto;
 }
-
 #kundeTable td, th {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
     width: 10%;
 }
-
 #kundeTable th {
     background-color: #259bca;
     color: aliceblue;
 }
 
-#kundeTable td {
+#kundeTable td{
     background-color: #f6f3f2;
 
 }
@@ -179,20 +163,17 @@ div.table-title {
     padding: 8px;
     width: 10%;
 }
-
 #kundeTable td:nth-child(even) {
     background-color: white;
     border: 1px solid #dddddd;
     padding: 8px;
     width: 10%;
 }
-
 #scroll {
-    height: 400px;
-    overflow: auto;
+    height:400px;
+    overflow:auto;
 }
-
-#scrollSkader {
+#scrollSkader{
     height: 389px;
     width: 470px;
     overflow: auto;

@@ -13,54 +13,57 @@
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: navigation"></div>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
 
 <div th:id="beaverSkadeOgUdbedring" th:style="'background-image:url(' + @{/images/beaverMechanic.png}">
 
-    <div th:class="flexSkade">
+        <div th:class="flexSkade">
 
-        <div>
-            <div th:id="searchField">
-                <h4>Søgefelt</h4>
-                <div>
-                    <label for="vognnummer"></label>
-                    <input id="vognnummer" type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
+            <div>
+                <div th:id="searchField">
+                    <h4>Søgefelt</h4>
+                    <div>
+                        <input type="text" name="text" th:class="searchField" placeholder="indtast vognnummer">
+                    </div>
                 </div>
+
             </div>
+            <div th:id="cardTilTable">
+                <h3>Skade og Udbedring</h3>
+                <h4>Vælg den bil du vil se rapporter for. Derefter kan du tilføje skader til rapporten </br>
+                    Denne liste viser biler, som er bookede lige nu</h4>
+                <div th:id="scroll">
+                    <table th:id="kundeTable">
+                        <tr>
+                            <th>Bil Mærke</th>
+                            <th>Model</th>
+                            <th>Vognnummer</th>
+                            <th>Registreringsnummer</th>
+                            <th>slut dato</th>
+                            <th>Registrer skader</th>
+                        </tr>
+                        <tr th:each="b : ${biler}">
+                            <td> <span th:text="${b.getMaerke()}">Maerke</span> </td>
+                            <td> <span th:text="${b.getModel()}">Model</span> </td>
+                            <td> <span th:text="${b.getVognNummer()}">Vognnummer</span> </td>
+                            <td> <span th:text="${b.getStelNummer()}">Registreringsnummer</span> </td>
+                            <td> <span th:text="${b.slutDato}">slutDato</span> </td>
+                            <td th:id="blaaKnapTilTable">
+                                <form th:action="@{/opretRapport/__${b.getId()}__}" method="get" >
+                                    <!--https://stackoverflow.com/questions/45716052/thymeleaf-pass-input-text-as-parameter-in-form-action-->
+                                    <button type="submit">Registrer skader</button>
 
-        </div>
-        <div th:id="cardTilTable">
-            <h3>Skade og Udbedring</h3>
-            <h4>Vælg den bil du vil se rapporter for. Derefter kan du tilføje skader til rapporten <br>
-                Denne liste viser biler, som er bookede lige nu</h4>
-            <div th:id="scroll">
-                <table th:id="kundeTable">
-                    <tr>
-                        <th>Bil Mærke</th>
-                        <th>Model</th>
-                        <th>Vognnummer</th>
-                        <th>Registreringsnummer</th>
-                        <th>slut dato</th>
-                        <th>Registrer skader</th>
-                    </tr>
-                    <tr th:each="b : ${biler}">
-                        <td><span th:text="${b.getMaerke()}">Maerke</span></td>
-                        <td><span th:text="${b.getModel()}">Model</span></td>
-                        <td><span th:text="${b.getVognNummer()}">Vognnummer</span></td>
-                        <td><span th:text="${b.getStelNummer()}">Registreringsnummer</span></td>
-                        <td><span th:text="${b.slutDato}">slutDato</span></td>
-                        <td th:id="blaaKnapTilTable">
-                            <form th:action="@{/opretRapport/__${b.getId()}__}" method="get">
-                                <!--https://stackoverflow.com/questions/45716052/thymeleaf-pass-input-text-as-parameter-in-form-action-->
-                                <button type="submit">Registrer skader</button>
-
-                            </form>
-                        </td>
-                    </tr>
-                </table>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 </body>
 </html>

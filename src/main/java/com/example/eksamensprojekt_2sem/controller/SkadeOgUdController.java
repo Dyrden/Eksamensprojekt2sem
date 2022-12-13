@@ -64,6 +64,7 @@ public class SkadeOgUdController {
     }
 
 
+
 //    @GetMapping("/seSkader/{rapportID}") //Ferhat og Bjørn
 //    public String visSkader(@PathVariable("rapportID") int rapportID, @RequestParam("BilvognNummer") String bil,
 //                            Model model) {
@@ -128,8 +129,8 @@ public class SkadeOgUdController {
             System.out.println("fandt ingen rapport: Opretter ");
             rapportID = rapportRepository.findRapportIDFraBookingID(bookingID);
             System.out.println(rapportID);
-        } else {
-            model.addAttribute("skader", skadeRepository.skafSkaderFraBookingID(bookingID));
+        } else  {
+            model.addAttribute("skader",skadeRepository.skafSkaderFraBookingID(bookingID));
             model.addAttribute("slutkm", rapportRepository.findSlutKMFraRapportID(rapportID));
             model.addAttribute("udregnetKM", rapportRepository.skafUdregnetKMKørt(bookingID));
             model.addAttribute("pris", rapportRepository.skafPrisPaaOverskredetKM(bookingID));
@@ -140,7 +141,7 @@ public class SkadeOgUdController {
 
         System.out.println("rapportID : " + rapportID);
 
-        model.addAttribute("bil", bilRepository.skafBilFraBookingID(bookingID));
+        model.addAttribute("bil",bilRepository.skafBilFraBookingID(bookingID));
         model.addAttribute("rapportID", rapportID);
         model.addAttribute("bookingID", bookingID);
 
@@ -179,7 +180,7 @@ public class SkadeOgUdController {
         rapportModel.setOverskredetKM(slutkm);
         rapportRepository.redigereSlutKMTilRapport(rapportID, rapportModel);
 
-        rapportRepository.udregnKilometerKørt(bookingID, slutkm);
+        rapportRepository.udregnKilometerKørt(bookingID,slutkm);
 
         model.addAttribute("bookingID", bookingID);
 
@@ -199,7 +200,7 @@ public class SkadeOgUdController {
 
     @PostMapping("/saetBilTotalskadet/{bookingID}") //Kristian
     public String saetBilTotalskadet(
-        @PathVariable("bookingID") int bookingID
+            @PathVariable("bookingID") int bookingID
     ) {
         bookingRepository.sætBilTotalskadet(bookingID);
 
@@ -209,7 +210,7 @@ public class SkadeOgUdController {
 
     @PostMapping("/saetBilSolgt/{bookingID}") //Kristian
     public String saetBilSolgt(
-        @PathVariable("bookingID") int bookingID
+            @PathVariable("bookingID") int bookingID
     ) {
         bookingRepository.sætBilSolgt(bookingID);
 

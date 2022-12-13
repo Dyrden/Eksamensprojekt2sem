@@ -42,7 +42,7 @@ public class BookingRepository {
 
     }*/
 
-    public List<BookingModel> skafBookingerFraVognNum(String vognNummer) { //Kristian er ansvarlig for denne metode
+    public List<BookingModel> skafBookingerFraVognNum(String vognNummer){ //Kristian er ansvarlig for denne metode
 
         List<BookingModel> bookinger = new LinkedList<>();
         try {
@@ -68,7 +68,7 @@ public class BookingRepository {
         return bookinger;
     }
 
-    public List<BookingModel> skafBookingFraID(int bookingID) { //Kristian er ansvarlig for denne metode
+    public List<BookingModel> skafBookingFraID(int bookingID){ //Kristian er ansvarlig for denne metode
 
         List<BookingModel> bookinger = new LinkedList<>();
         try {
@@ -87,7 +87,7 @@ public class BookingRepository {
                 bookinger.add(new BookingModel(id, brugerID, type, sted, startDate, slutDato, kilometerstart, bil_vognNummer));
             }
 
-        } catch (SQLException | NullPointerException e) {
+        } catch (SQLException | NullPointerException e){
             System.err.println("Ingen bookinger for rapportID fundet.");
             System.out.println(e.getMessage());
         }
@@ -95,7 +95,7 @@ public class BookingRepository {
         return bookinger;
     }
 
-    public double visSamletIndtaegt() {//Ferhat og Mark er ansvarlig for denne metode
+    public double visSamletIndtaegt(){//Ferhat og Mark er ansvarlig for denne metode
 
         //Den viser lige nu samlede indtægt for bookede biler denne måned
 
@@ -108,10 +108,10 @@ public class BookingRepository {
                 double maanedsPris = resultSet.getDouble(1);
                 double maanederUdlejet = resultSet.getInt(2);
 
-                indtaegt += maanedsPris * maanederUdlejet;
+                indtaegt += maanedsPris*maanederUdlejet;
             }
 
-        } catch (SQLException | NullPointerException e) {
+        } catch (SQLException | NullPointerException e){
             System.err.println("Ingen indtægt fundet.");
             System.out.println(e.getMessage());
         }
@@ -119,7 +119,7 @@ public class BookingRepository {
     }
 
 
-    public double visSamletIndtaegtForDenneMåned() { //Ferhat og Mark er ansvarlig for denne metode
+    public double visSamletIndtaegtForDenneMåned(){ //Ferhat og Mark er ansvarlig for denne metode
 
         //Den viser lige nu samlede indtægt for bookede biler denne måned
 
@@ -132,17 +132,16 @@ public class BookingRepository {
                 double maanedsPris = resultSet.getDouble(1);
                 double maanederUdlejet = resultSet.getInt(2);
 
-                indtaegt += maanedsPris * maanederUdlejet;
+                indtaegt += maanedsPris*maanederUdlejet;
             }
 
-        } catch (SQLException | NullPointerException e) {
+        } catch (SQLException | NullPointerException e){
             System.err.println("Ingen indtægt fundet.");
             System.out.println(e.getMessage());
         }
         return indtaegt;
     }
-
-    public List<BilOgBookingModel> visAktiveBookinger() { //Ferhat er ansvarlig for denne metode
+    public List<BilOgBookingModel> visAktiveBookinger(){ //Ferhat er ansvarlig for denne metode
 
         List<BilOgBookingModel> biler = new LinkedList<>();
         try {
@@ -172,11 +171,11 @@ public class BookingRepository {
                 String startDate = resultSet.getString(21);
                 String slutDato = resultSet.getString(22);
 
-                biler.add(new BilOgBookingModel(vognNummer, stelNummer, maerke, model, energiType, gearboks, udstyr, status, farve,
+                biler.add(new BilOgBookingModel(vognNummer, stelNummer,maerke, model,energiType,gearboks,udstyr, status, farve,
                     staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedspris, id, brugerID, type, sted, startDate, slutDato));
             }
 
-        } catch (SQLException | NullPointerException e) {
+        } catch (SQLException | NullPointerException e){
             System.err.println("Ingen aktive bookinger fundet.");
             System.out.println(e.getMessage());
         }
@@ -189,10 +188,10 @@ public class BookingRepository {
         //SQLManager.makeStatement("CALL VisBookningHistorik()");
     }*/
 
-    public void lavBooking(String vognNummer, int BrugerID, int abonnementsType, int sted, String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart) { // Kristian
+    public void lavBooking(String vognNummer, int BrugerID,int abonnementsType,int sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){ // Kristian
         // Format:
         // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
-        SQLManager.update("CALL Booking_Opret('" + vognNummer + "','" + BrugerID + "','" + abonnementsType + "','" + sted + "','" + udlejningsStartDato + "','" + udlejningsSlutDato + "','" + kilometerStart + "')");
+        SQLManager.update("CALL Booking_Opret('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
     }
 
     public List<UdleveringsstedModel> visAlleUdleveringsSteder() { //Kristian
@@ -234,22 +233,20 @@ public class BookingRepository {
     }
 
     private void sætBookingOvervåget(int bookingID) { //Kristian
-        SQLManager.update("CALL saetBookingOvervaaget('" + bookingID + "')");
+        SQLManager.update("CALL saetBookingOvervaaget('" + bookingID +"')");
     }
 
 
     public void sætBilTotalskadet(int bookingID) { //Kristian
         sætBookingOvervåget(bookingID);
-        SQLManager.update("CALL Bil_RedigerStatusTilTotalskadetBookingID('" + bookingID + "')");
+        SQLManager.update("CALL Bil_RedigerStatusTilTotalskadetBookingID('" + bookingID +"')");
     }
-
     public void sætBilSolgt(int bookingID) { //Kristian
         sætBookingOvervåget(bookingID);
-        SQLManager.update("CALL Bil_RedigerStatusTilSolgtBookingID('" + bookingID + "')");
+        SQLManager.update("CALL Bil_RedigerStatusTilSolgtBookingID('" + bookingID +"')");
     }
-
     public void sætBilIkkeUdlejet(int bookingID) { //Kristian
         sætBookingOvervåget(bookingID);
-        SQLManager.update("CALL Bil_RedigerStatusTilIkkeUdlejetBookingID('" + bookingID + "')");
+        SQLManager.update("CALL Bil_RedigerStatusTilIkkeUdlejetBookingID('" + bookingID +"')");
     }
 }

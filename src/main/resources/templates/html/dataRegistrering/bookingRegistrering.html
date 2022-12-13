@@ -15,67 +15,65 @@
 
 </head>
 <body>
-<div th:replace="html/fragments/aFragment:: navigation"></div>
+<div th:replace="html/fragments/aFragment:: navigation"> </div>
 <div th:id="beaverBookingRegistrering" th:style="'background-image:url(' + @{/images/beaver.png}">
 
-    <div th:class="flexBooking">
+<div th:class="flexBooking">
 
-        <div>
-            <div th:id="searchField">
-                <h4>Søgefelt</h4>
-                <p>Søg efter biler med tags</p>
-                <p>separér med komma.</p>
-                <p>(f.eks. Nissan,Sort)</p>
+    <div>
+        <div th:id="searchField">
+            <h4>Søgefelt</h4>
+            <p>Søg efter biler med tags</p>
+            <p>separér med komma.</p>
+            <p>(f.eks. Nissan,Sort)</p>
 
-                <div th:id="brugerIDSearchField">
-                    <form th:id="centerSearchField" action="/soegBiler" method="post">
-                        <label for="soegeFelt" ></label>
-                        <input id="soegeFelt" type="text" name="soegeFelt" th:class="searchField" placeholder="Indtast søgeord...">
-                        <input type="submit" value="Søg">
-                    </form>
-                </div>
+            <div th:id="brugerIDSearchField">
+                <form th:id="centerSearchField" action="/soegBiler" method="post">
+                    <input type="text" name="soegeFelt" th:class="searchField" placeholder="Indtast søgeord...">
+                    <input type="submit" value="Søg">
+                </form>
             </div>
-
         </div>
-        <div th:id="cardTilTable">
-            <h3>Booking af bil</h3>
-            <h4>Vælg den bil du vil booke <br>
-                Efterfølgende, kan du registrere en ny kunde, eller vælge en eksisterende kunde</h4>
-            <div th:id="scroll">
-                <table th:id="kundeTable">
-                    <tr>
-                        <th>Bil Mærke</th>
-                        <th>Model</th>
-                        <th>Vognnummer</th>
-                        <th>gear</th>
-                        <th>brændsstof</th>
-                        <th>fra år</th>
-                        <th>har kørt</th>
-                        <th>farve</th>
-                        <th>Månedspris</th>
-                        <th>Udstyr</th>
-                        <th>Book</th>
-                    </tr>
-                    <tr th:each="b : ${biler}">
-                        <td><span th:text="${b.maerke}">Maerke</span></td>
-                        <td><span th:text="${b.model}">Model</span></td>
-                        <td><span th:text="${b.vognNummer}">Vognnummer</span></td>
-                        <td><span th:text="${b.gearboks}">gearboks</span></td>
-                        <td><span th:text="${b.energiType}">energiType</span></td>
-                        <td><span th:text="${b.produktionsaar}">produktionsaar</span></td>
-                        <td><span th:text="${b.distance}">distance</span> km</td>
-                        <td><span th:text="${b.farve}">farve</span></td>
-                        <td><span th:text="${b.maanedsPris}">farve</span></td>
-                        <td><span th:text="${b.udstyr}">farve</span></td>
-                        <td th:id="blaaKnapTilTable">
-                            <button type="submit"><a th:class="htmlLink"
-                                                     th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a></button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+
+    </div>
+    <div th:id="cardTilTable">
+        <h3>Booking af bil</h3>
+        <h4>Vælg den bil du vil booke </br>
+            Efterfølgende, kan du registrere en ny kunde, eller vælge en eksisterende kunde</h4>
+        <div th:id="scroll">
+            <table th:id="kundeTable">
+                <tr>
+                    <th>Bil Mærke</th>
+                    <th>Model</th>
+                    <th>Vognnummer</th>
+                    <th>gear</th>
+                    <th>brændsstof</th>
+                    <th>fra år</th>
+                    <th>har kørt</th>
+                    <th>farve</th>
+                    <th>Månedspris</th>
+                    <th>Udstyr</th>
+                    <th>Book</th>
+                </tr>
+                <tr th:each="b : ${biler}">
+                    <td> <span th:text="${b.maerke}">Maerke</span> </td>
+                    <td> <span th:text="${b.model}">Model</span> </td>
+                    <td> <span th:text="${b.vognNummer}">Vognnummer</span> </td>
+                    <td> <span th:text="${b.gearboks}">gearboks</span> </td>
+                    <td> <span th:text="${b.energiType}">energiType</span> </td>
+                    <td> <span th:text="${b.produktionsaar}">produktionsaar</span> </td>
+                    <td> <span th:text="${b.distance}">distance</span> km</td>
+                    <td> <span th:text="${b.farve}">farve</span> </td>
+                    <td> <span th:text="${b.maanedsPris}">farve</span> </td>
+                    <td> <span th:text="${b.udstyr}">farve</span> </td>
+                    <td th:id="blaaKnapTilTable">
+                        <button type="submit"> <a th:class="htmlLink" th:href="@{'/bookBil/' + ${b.vognNummer}}">Book</a> </button>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
+    </div>
 </body>
 </html>
