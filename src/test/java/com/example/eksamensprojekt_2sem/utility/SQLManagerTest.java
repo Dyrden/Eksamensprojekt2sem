@@ -10,55 +10,71 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SQLManagerTest {
 
-   static Connection connection;
+    static Connection connection;
 
     @BeforeAll
     static void setup() throws SQLException {
         connection = DriverManager.getConnection(System.getenv("Url"),
-                System.getenv("Username"), System.getenv("Password"));
+            System.getenv("Username"), System.getenv("Password"));
     }
 
     @AfterEach
-    void tearDown(){
-     String s = null;
+    void tearDown() {
+        String s = null;
     }
 
     @Test
     void makeStatement() {
-     String s = "CALL visTilgængeligeBiler()";
-     PreparedStatement preparedStatement = null;
-     try {
-      preparedStatement = connection.prepareStatement(s);
-     } catch (SQLException e){
-      e.printStackTrace();
-     }
-     assertNotNull(preparedStatement, "Test Statement");
+        String s = "CALL visTilgængeligeBiler()";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(s);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        assertNotNull(preparedStatement, "Test Statement");
     }
 
     @Test
     void execute() {
-     String s = "CALL skafAlleBiler()";
-     ResultSet resultSet = null;
-     try {
-      PreparedStatement psts = connection.prepareStatement(s);
-      resultSet = psts.executeQuery();
-     }catch (SQLException e){
-      e.printStackTrace();
-     }
-     assertNotNull(resultSet, "Test Resultset Execute");
+        String s = "CALL skafAlleBiler()";
+        ResultSet resultSet = null;
+        try {
+            PreparedStatement psts = connection.prepareStatement(s);
+            resultSet = psts.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        assertNotNull(resultSet, "Test Resultset Execute");
     }
 
 
     @Test
     void update() {
-     String s = "CALL Bil_Update()" ;
-     int resultSet = 0;
-     try {
-      PreparedStatement psts = connection.prepareStatement(s);
-      resultSet = psts.executeUpdate();
-     }catch (SQLException e){
-      e.printStackTrace();
-     }
-     assertEquals(resultSet, 0);
+        String s = "CALL Bil_Update()";
+        int resultSet = 0;
+        try {
+            PreparedStatement psts = connection.prepareStatement(s);
+            resultSet = psts.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        assertEquals(resultSet, 0);
     }
+
+    @Test
+    void NotAllowedToQueryAnythingButStoredProceduresTest() {
+        //Arrange
+        String SQL = "Select * from bil;";
+
+
+        //act & assert
+        assertThrows(SQLException.class, () -> {
+            PreparedStatement psts = connection.prepareStatement(SQL);
+            ResultSet resultSet = psts.executeQuery();
+        });
+
+
+
     }
+}
