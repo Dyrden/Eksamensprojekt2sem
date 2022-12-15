@@ -1,0 +1,4 @@
+CREATE PROCEDURE `skafAlleBrugere`()
+BEGIN
+SELECT * FROM bruger;
+END
