@@ -21,7 +21,7 @@
             <div th:id="searchField">
                 <table th:class="bilInfo">
                     <tr>
-                        <th>Samlede indtægt for bookede biler</th>
+                        <th>Samlede indtægt for alle booking perioder</th>
                     </tr>
                     <tr>
                         <td><span th:text="${samledeIndtaegt}">samlede indtægt</span> kr.</td>
@@ -40,7 +40,7 @@
         </div>
         <div id="cardTilTable">
             <h3>Forretnings udviklere</h3>
-            <h4>Her kan der ses en oversigt over alle de biler der er booket denne måned.</h4>
+            <h4>Her er alle bookninger</h4>
             <div th:id="scroll">
                 <table th:id="kundeTable">
                     <tr>
@@ -55,13 +55,13 @@
                         <th>månedspris</th>
                     </tr>
                     <tr th:each="b : ${bookedeBiler}">
-                        <td><span th:text="${b.id}">Booking ID</span></td>
-                        <td><span th:text="${b.brugerID}">Bruger ID</span></td>
-                        <td><span th:text="${b.maerke}">Bil Mærke</span></td>
-                        <td><span th:text="${b.model}">Bil Model</span></td>
-                        <td><span th:text="${b.abonnementsType}">type</span></td>
-                        <td><span th:text="${b.slutDato}">type</span></td>
-                        <td><span th:text="${b.startDato}">udleveringsSted</span></td>
+                        <td><span th:text="${b.getId()}">Booking ID</span></td>
+                        <td><span th:text="${b.getBrugerID()}">Bruger ID</span></td>
+                        <td><span th:text="${b.getMaerke()}">Bil Mærke</span></td>
+                        <td><span th:text="${b.getModel()}">Bil Model</span></td>
+                        <td><span th:text="${b.getAbonnementsType()}">type</span></td>
+                        <td><span th:text="${b.startDato}">startdato</span></td>
+                        <td><span th:text="${b.slutDato}">slutDato</span></td>
                         <td><span th:text="${b.maanedspris}">månedspris</span>0 kr.</td>
                     </tr>
                 </table>
@@ -71,59 +71,46 @@
 </div>
 <div class="flexLager">
     <div th:id="cardTilLager">
-        <h3>Forretnings udviklere</h3>
-        <h4>Her kan der ses en oversigt over alle de biler der er booket denne måned.</h4>
+        <h3>Udlejet biler</h3>
+        <h4>Her kan ses alle udlejet biler</h4>
         <div th:id="scroll">
             <table th:id="kundeTable">
                 <tr>
                 <tr>
-                    <th>Booking ID</th>
-                    <th>Bruger ID</th>
+                    <th>Vognnummer</th>
+                    <th>Stelnummer</th>
                     <th>Bil Mærke</th>
                     <th>Bil Model</th>
-                    <th>Abonnements type</th>
-                    <th>Start udelejning</th>
-                    <th>Slut udelejning</th>
                     <th>månedspris</th>
                 </tr>
-                <tr th:each="b : ${bookedeBiler}">
-                    <td><span th:text="${b.id}">Booking ID</span></td>
-                    <td><span th:text="${b.brugerID}">Bruger ID</span></td>
-                    <td><span th:text="${b.maerke}">Bil Mærke</span></td>
-                    <td><span th:text="${b.model}">Bil Model</span></td>
-                    <td><span th:text="${b.abonnementsType}">type</span></td>
-                    <td><span th:text="${b.slutDato}">type</span></td>
-                    <td><span th:text="${b.startDato}">udleveringsSted</span></td>
-                    <td><span th:text="${b.maanedspris}">månedspris</span>0 kr.</td>
+                <tr th:each="b : ${udlejetBiler}">
+                    <td><span th:text="${b.getVognNummer()}">Vognnummer</span></td>
+                    <td><span th:text="${b.getStelNummer()}">Stelnummer</span></td>
+                    <td><span th:text="${b.getMaerke()}">Bil Mærke</span></td>
+                    <td><span th:text="${b.getModel()}">Bil Model</span></td>
+                    <td><span th:text="${b.getMaanedsPris()}">månedspris</span>0 kr.</td>
                 </tr>
             </table>
         </div>
     </div>
     <div th:id="cardTilLager">
-        <h3>Forretnings udviklere</h3>
-        <h4>Her kan der ses en oversigt over alle de biler der er booket denne måned.</h4>
+        <h3>Tilgængelige biler</h3>
+        <h4>Her vises biler, parat til udlejning</h4>
         <div th:id="scroll">
             <table th:id="kundeTable">
                 <tr>
-                <tr>
-                    <th>Booking ID</th>
-                    <th>Bruger ID</th>
+                    <th>Vognnummer</th>
+                    <th>Stelnummer</th>
                     <th>Bil Mærke</th>
                     <th>Bil Model</th>
-                    <th>Abonnements type</th>
-                    <th>Start udelejning</th>
-                    <th>Slut udelejning</th>
                     <th>månedspris</th>
                 </tr>
-                <tr th:each="b : ${bookedeBiler}">
-                    <td><span th:text="${b.id}">Booking ID</span></td>
-                    <td><span th:text="${b.brugerID}">Bruger ID</span></td>
-                    <td><span th:text="${b.maerke}">Bil Mærke</span></td>
-                    <td><span th:text="${b.model}">Bil Model</span></td>
-                    <td><span th:text="${b.abonnementsType}">type</span></td>
-                    <td><span th:text="${b.slutDato}">type</span></td>
-                    <td><span th:text="${b.startDato}">udleveringsSted</span></td>
-                    <td><span th:text="${b.maanedspris}">månedspris</span>0 kr.</td>
+                <tr th:each="b : ${ikkeUdlejetBiler}">
+                    <td><span th:text="${b.getVognNummer()}">Vognnummer</span></td>
+                    <td><span th:text="${b.getStelNummer()}">Stelnummer</span></td>
+                    <td><span th:text="${b.getMaerke()}">Bil Mærke</span></td>
+                    <td><span th:text="${b.getModel()}">Bil Model</span></td>
+                    <td><span th:text="${b.getMaanedsPris()}">månedspris</span>0 kr.</td>
                 </tr>
             </table>
         </div>

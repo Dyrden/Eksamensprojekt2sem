@@ -500,6 +500,44 @@ public class BilRepository {
         return bilModel;
     }
 
+    public List<BilModel> visUdlejetBiler() {
+        LinkedList<BilModel> bilModels = new LinkedList<>();
+
+        try {
+            ResultSet resultSet = SQLManager.execute("CALL Bil_FindAlleUdlejet");
+            while (resultSet.next()) {
+                String vognNummer = resultSet.getString(1);
+                String stelNummer = resultSet.getString(2);
+                double staalPris = resultSet.getInt(3);
+                double registreringsAfgift = resultSet.getInt(4);
+                double CO2Udledning = resultSet.getInt(5);
+                int produktionsaar = resultSet.getInt(6);
+                int distance = resultSet.getInt(7);
+                double maanedsPris = resultSet.getDouble(8);
+                String model = resultSet.getString(9);
+                String energiType = resultSet.getString(10);
+                String gearboks = resultSet.getString(11);
+                String udstyr = resultSet.getString(12);
+                String maerke = resultSet.getString(13);
+                String farve = resultSet.getString(14);
+                String status = resultSet.getString(15);
+
+                bilModels.add(new BilModel(vognNummer, stelNummer, maerke, model, energiType, gearboks, udstyr, status, farve,
+                    staalPris, registreringsAfgift, CO2Udledning, produktionsaar, distance, maanedsPris));
+
+
+            }
+
+        } catch ( SQLException e) {
+            System.out.println("Kunne ikke finde nogle udlejet biler");
+            e.printStackTrace();
+        }
+
+
+
+        return bilModels;
+    }
+
     /*
     public BilModel skafBilFraVognnummer(String vognnummer) {
         BilModel bilModel = new BilModel();
