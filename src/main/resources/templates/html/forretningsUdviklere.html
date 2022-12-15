@@ -38,7 +38,7 @@
             </div>
 
         </div>
-        <div th:id="cardTilTable">
+        <div id="cardTilTable">
             <h3>Forretnings udviklere</h3>
             <h4>Her kan der ses en oversigt over alle de biler der er booket denne måned.</h4>
             <div th:id="scroll">
@@ -66,6 +66,66 @@
                     </tr>
                 </table>
             </div>
+        </div>
+    </div>
+</div>
+<div class="flexLager">
+    <div th:id="cardTilLager">
+        <h3>Forretnings udviklere</h3>
+        <h4>Her kan der ses en oversigt over alle de biler der er booket denne måned.</h4>
+        <div th:id="scroll">
+            <table th:id="kundeTable">
+                <tr>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Bruger ID</th>
+                    <th>Bil Mærke</th>
+                    <th>Bil Model</th>
+                    <th>Abonnements type</th>
+                    <th>Start udelejning</th>
+                    <th>Slut udelejning</th>
+                    <th>månedspris</th>
+                </tr>
+                <tr th:each="b : ${bookedeBiler}">
+                    <td><span th:text="${b.id}">Booking ID</span></td>
+                    <td><span th:text="${b.brugerID}">Bruger ID</span></td>
+                    <td><span th:text="${b.maerke}">Bil Mærke</span></td>
+                    <td><span th:text="${b.model}">Bil Model</span></td>
+                    <td><span th:text="${b.abonnementsType}">type</span></td>
+                    <td><span th:text="${b.slutDato}">type</span></td>
+                    <td><span th:text="${b.startDato}">udleveringsSted</span></td>
+                    <td><span th:text="${b.maanedspris}">månedspris</span>0 kr.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div th:id="cardTilLager">
+        <h3>Forretnings udviklere</h3>
+        <h4>Her kan der ses en oversigt over alle de biler der er booket denne måned.</h4>
+        <div th:id="scroll">
+            <table th:id="kundeTable">
+                <tr>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Bruger ID</th>
+                    <th>Bil Mærke</th>
+                    <th>Bil Model</th>
+                    <th>Abonnements type</th>
+                    <th>Start udelejning</th>
+                    <th>Slut udelejning</th>
+                    <th>månedspris</th>
+                </tr>
+                <tr th:each="b : ${bookedeBiler}">
+                    <td><span th:text="${b.id}">Booking ID</span></td>
+                    <td><span th:text="${b.brugerID}">Bruger ID</span></td>
+                    <td><span th:text="${b.maerke}">Bil Mærke</span></td>
+                    <td><span th:text="${b.model}">Bil Model</span></td>
+                    <td><span th:text="${b.abonnementsType}">type</span></td>
+                    <td><span th:text="${b.slutDato}">type</span></td>
+                    <td><span th:text="${b.startDato}">udleveringsSted</span></td>
+                    <td><span th:text="${b.maanedspris}">månedspris</span>0 kr.</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
