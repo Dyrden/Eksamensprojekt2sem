@@ -5,34 +5,37 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RapportRepositoryTest {
-private RapportRepository rapportRepository = new RapportRepository(); //Ferhat
+    private RapportRepository rapportRepository = new RapportRepository(); //Ferhat
 
-  @Test //Ferhat
-  void skafPrisPaaOverskredetKM() {
+    //Ferhat
+    @Test
+    void skafPrisPaaOverskredetKM() {
 
-    //act
-    double result =  rapportRepository.skafPrisPaaOverskredetKM(121);
+        //act
+        double result = rapportRepository.skafPrisPaaOverskredetKM(121);
 
-    //assert
-    assertEquals(750,result);
+        //assert
+        assertEquals(750, result);
 
-  }
+    }
 
-  @Test //Ferhat
-  void skafAntalMaanederBooket() {
-    //act
-    double result =  rapportRepository.skafAntalMaanederBooket(121);
+    //Ferhat
+    @Test
+    void skafAntalMaanederBooket() {
+        //act
+        double result = rapportRepository.skafAntalMaanederBooket(121);
 
-    //assert
-    assertEquals(35,result);
-  }
+        //assert
+        assertEquals(35, result);
+    }
 
-  @Test //Ferhat
-  void skafKMOverskredet(){
-    //act
-    double result =  rapportRepository.skafKMOverskredet(121);
+    //Ferhat
+    @Test
+    void skafKMOverskredet() {
+        //act
+        double result = rapportRepository.skafKMOverskredet(121);
 
-    //assert
-    assertEquals(1000,result);
-  }
+        //assert
+        assertEquals(1000, result);
+    }
 }
