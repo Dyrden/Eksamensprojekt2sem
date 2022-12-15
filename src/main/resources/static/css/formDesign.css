@@ -933,3 +933,73 @@ fieldset {
     color: #f28c5a;
 "
 }
+
+#cardTilLager input[type="text"], #cardTilLager input[type="email"], #cardTilLager input[type="tel"], #cardTilLager input[type="url"], #cardTilLager textarea, #cardTilLager button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+#cardTilLager {
+    background: #F9F9F9;
+    padding: 65px;
+    margin: 30px;
+    display: block;
+    margin-right: 20px;
+}
+
+#cardTilLager h3 {
+    color: #F96;
+    display: contents;
+    font-size: 50px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+#cardTilLager h4 {
+    margin:5px 0 15px;
+    display:block;
+    font-size:15px;
+}
+
+#cardTilLager input[type="text"], #cardTilLager input[type="email"], #cardTilLager input[type="tel"], #cardTilLager input[type="url"], #cardTilLager textarea {
+    width:100%;
+    border:1px solid #CCC;
+    background:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+}
+
+#cardTilLager input[type="text"]:hover, #cardTilLager input[type="email"]:hover, #cardTilLager input[type="tel"]:hover, #cardTilLager input[type="url"]:hover, #cardTilLager textarea:hover {
+    -webkit-transition:border-color 0.3s ease-in-out;
+    -moz-transition:border-color 0.3s ease-in-out;
+    transition:border-color 0.3s ease-in-out;
+    border:1px solid #AAA;
+}
+
+#cardTilLager textarea {
+    height:100px;
+    max-width:100%;
+    resize:none;
+}
+
+#cardTilLager button[type="submit"] {
+    cursor:pointer;
+    width:100%;
+    border:none;
+    background:#06add9;
+    color:#FFF;
+    margin:15px;
+    padding:10px;
+    font-size:15px;
+}
+
+#cardTilLager button[type="submit"]:hover {
+    background:#09C;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+}
+
+#cardTilLager button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+#cardTilLager input:focus, #cardTilLager textarea:focus {
+    outline:0;
+    border:1px solid #999;
+}

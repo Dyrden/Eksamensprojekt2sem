@@ -41,6 +41,14 @@
       </div>
       <table th:id="totalPrisIRapport">
         <tr>
+          <th>pris for overkørt km</th>
+        </tr>
+        <tr th:each="s : ${pris}">
+          <td> <span th:text="${pris}">totalPris</span> </td>
+        </tr>
+      </table>
+      <table th:id="totalPrisIRapport">
+        <tr>
           <th>Totalpris for skaderne</th>
         </tr>
         <tr th:each="s : ${totalPris}">

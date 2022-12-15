@@ -66,8 +66,11 @@ public class RapporterController {
                 //Derefter hentes en total mængde pris fra skaderne, og sendes ind i html.
                 model.addAttribute("totalPris", skadeRepository.skafTotalPrisFraSkadeListe(skader));
 
+                 model.addAttribute("pris", rapportRepository.skafPrisPaaOverskredetKM(bookingID));
 
-        return "html/rapporter/seSkadesRapport";
+
+
+      return "html/rapporter/seSkadesRapport";
     }
 
 

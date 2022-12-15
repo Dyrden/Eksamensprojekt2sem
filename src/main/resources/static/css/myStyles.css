@@ -78,6 +78,12 @@
     justify-content: space-around;
     scale: 90%;
 }
+.flexLager{
+    display: flex;
+    margin-top: 0;
+    justify-content: space-around;
+    scale: 74%;
+}
 .flexBooking{
     display: flex;
     margin-top: 0;
