@@ -1,4 +1,4 @@
-package com.example.eksamensprojekt_2sem.service;
+package com.example.eksamensprojekt_2sem.utility;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;

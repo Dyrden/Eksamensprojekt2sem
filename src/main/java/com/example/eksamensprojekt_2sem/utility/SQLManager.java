@@ -1,4 +1,4 @@
-package com.example.eksamensprojekt_2sem.service;
+package com.example.eksamensprojekt_2sem.utility;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
