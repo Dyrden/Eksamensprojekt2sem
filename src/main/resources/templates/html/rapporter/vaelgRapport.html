@@ -25,7 +25,7 @@
     <td> <span th:text="${b.id}">Booking</span> </td>
     <td> <span th:text="${b.slutDato}">dato</span> </td>
     <td th:id="blaaKnapTilTable">
-      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seSkadesRapport/' + ${b.id}}">Se skader for bookingen</a> </button>
+      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seSkadesRapport/' + ${b.id}}">Se tilstandsrapport</a> </button>
     </td>
   </tr>
 </table>
