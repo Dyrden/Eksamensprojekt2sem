@@ -130,9 +130,8 @@ public class BookingRepository {
             while (resultSet.next()) {
 
                 double maanedsPris = resultSet.getDouble(1);
-                double maanederUdlejet = resultSet.getInt(2);
 
-                indtaegt += maanedsPris*maanederUdlejet;
+                indtaegt += maanedsPris;
             }
 
         } catch (SQLException | NullPointerException e){

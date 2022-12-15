@@ -37,7 +37,7 @@ class SQLManagerTest {
 
     @Test
     void execute() {
-     String s = "CALL visTilgængeligeBiler()";
+     String s = "CALL skafAlleBiler()";
      ResultSet resultSet = null;
      try {
       PreparedStatement psts = connection.prepareStatement(s);
@@ -51,7 +51,7 @@ class SQLManagerTest {
 
     @Test
     void update() {
-     String s = "CALL lavBooking()";
+     String s = "CALL Bil_Update()" ;
      int resultSet = 0;
      try {
       PreparedStatement psts = connection.prepareStatement(s);
@@ -59,6 +59,6 @@ class SQLManagerTest {
      }catch (SQLException e){
       e.printStackTrace();
      }
-     assertEquals(resultSet>0, 0);
+     assertEquals(resultSet, 0);
     }
     }
