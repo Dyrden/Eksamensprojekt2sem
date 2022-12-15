@@ -3,7 +3,7 @@ package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.*;
 import com.example.eksamensprojekt_2sem.model.bilmodel.*;
-import com.example.eksamensprojekt_2sem.service.SQLManager;
+import com.example.eksamensprojekt_2sem.utility.SQLManager;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;

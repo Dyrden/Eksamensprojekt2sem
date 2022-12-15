@@ -1,12 +1,11 @@
 package com.example.eksamensprojekt_2sem.repository;
 
 import com.example.eksamensprojekt_2sem.model.RapportModel;
-import com.example.eksamensprojekt_2sem.service.SQLManager;
+import com.example.eksamensprojekt_2sem.utility.SQLManager;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.List;
 
