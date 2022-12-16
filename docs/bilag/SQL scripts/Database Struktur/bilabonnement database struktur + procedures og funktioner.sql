@@ -281,7 +281,7 @@ CREATE TABLE `udstyrsniveau` (
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` FUNCTION `maanederBooked`(`$start` date, $slut date) RETURNS int
+CREATE FUNCTION `maanederBooked`(`$start` date, $slut date) RETURNS int
 BEGIN
 -- returnerer de antal måneder mellem 2 datoer rundet op.
 -- Afrundningen sker i det at hvis en bruger har bestilt for 2 og and halv måned så skal den halve stadig betales
@@ -323,7 +323,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Bil_FindAlleUdlejet`()
+CREATE  PROCEDURE `Bil_FindAlleUdlejet`()
 BEGIN
 
 select vognnummer, stelnummer, staalpris, registreringsafgift,
@@ -359,7 +359,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Bil_Opret`(
+CREATE  PROCEDURE `Bil_Opret`(
 IN $vognnummer varchar(255),
 IN $stelnummer varchar(255),
 IN $staalpris varchar(255),
@@ -407,7 +407,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Bil_RedigerStatusTilIkkeUdlejet`(
+CREATE  PROCEDURE `Bil_RedigerStatusTilIkkeUdlejet`(
 IN vognNum varchar(255)
 )
 BEGIN
@@ -432,7 +432,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Bil_RedigerStatusTilIkkeUdlejetBookingID`(
+CREATE  PROCEDURE `Bil_RedigerStatusTilIkkeUdlejetBookingID`(
 IN $booking_ID varchar(10)
 )
 BEGIN
@@ -462,7 +462,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Bil_RedigerStatusTilSolgtBookingID`(
+CREATE  PROCEDURE `Bil_RedigerStatusTilSolgtBookingID`(
 IN $booking_ID varchar(10)
 )
 BEGIN
@@ -492,7 +492,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Bil_RedigerStatusTilTotalskadetBookingID`(
+CREATE  PROCEDURE `Bil_RedigerStatusTilTotalskadetBookingID`(
 IN $booking_ID varchar(10)
 )
 BEGIN
@@ -522,7 +522,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Bil_RedigerStatusTilUdlejet`(
+CREATE  PROCEDURE `Bil_RedigerStatusTilUdlejet`(
 IN vognNum varchar(255)
 )
 BEGIN
@@ -547,7 +547,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Bil_Update`()
+CREATE  PROCEDURE `Bil_Update`()
 BEGIN
 -- bliver kun bruge i update test
 update bil
@@ -572,7 +572,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Booking_Opret`(
+CREATE  PROCEDURE `Booking_Opret`(
 -- Format:
 -- vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
 IN $vognNummer varchar(25),
@@ -623,7 +623,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Bruger_Opret`(
+CREATE  PROCEDURE `Bruger_Opret`(
 IN fornavn varchar(255), IN efternavn varchar(255), IN email varchar(255), IN tlf varchar(255), IN CPR varchar(255)
 )
 BEGIN
@@ -647,7 +647,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Model_Opret`(
+CREATE  PROCEDURE `Model_Opret`(
 IN $model varchar(255),
 IN $energitype varchar(255),
 IN $gearboks varchar(255),
@@ -687,7 +687,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Rapport_OpretFraBookingID`(
+CREATE  PROCEDURE `Rapport_OpretFraBookingID`(
 IN $booking_ID varchar(25)
 )
 BEGIN
@@ -711,7 +711,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Rapport_RedigerSlutKilometerFraRapportID`(
+CREATE  PROCEDURE `Rapport_RedigerSlutKilometerFraRapportID`(
 IN $rapport_ID varchar(25), IN $kilometerSlut varchar(25)
 )
 BEGIN
@@ -736,7 +736,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `saetBookingOvervaaget`(IN $booking_ID int)
+CREATE  PROCEDURE `saetBookingOvervaaget`(IN $booking_ID int)
 BEGIN
 
 UPDATE booking
@@ -759,7 +759,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Skade_Opret`(
+CREATE  PROCEDURE `Skade_Opret`(
 IN $rapport_ID varchar(25), IN $placering varchar(255), IN $beskrivelse varchar(255), IN $pris varchar(10)
 )
 BEGIN
@@ -783,7 +783,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `Skade_Slet`(IN $skade_ID int)
+CREATE  PROCEDURE `Skade_Slet`(IN $skade_ID int)
 BEGIN
 	DELETE FROM skade
 	WHERE ID = $skade_ID COLLATE utf8mb4_0900_ai_ci;
@@ -803,7 +803,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafAbonnementsTyper`()
+CREATE  PROCEDURE `skafAbonnementsTyper`()
 BEGIN
 
 SELECT * FROM abonnementstype;
@@ -824,7 +824,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafAktiveBookingOgBilData`()
+CREATE  PROCEDURE `skafAktiveBookingOgBilData`()
 BEGIN
 SELECT  
 -- Bil information
@@ -914,7 +914,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafAlleBiler`()
+CREATE  PROCEDURE `skafAlleBiler`()
 BEGIN
 	SELECT 
 		vognNummer,
@@ -961,7 +961,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafAlleBrugere`()
+CREATE  PROCEDURE `skafAlleBrugere`()
 BEGIN
 SELECT * FROM bruger;
 END ;;
@@ -980,7 +980,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafAntalMaanederFraBookingID`(
+CREATE  PROCEDURE `skafAntalMaanederFraBookingID`(
 IN $booking_ID varchar(25)
 )
 BEGIN
@@ -1004,7 +1004,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafbileraf1parameter`(IN param1 varchar(50))
+CREATE  PROCEDURE `skafbileraf1parameter`(IN param1 varchar(50))
 BEGIN
 	SELECT 
         vognNummer, 
@@ -1057,7 +1057,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafbileraf2parametre`(IN param1 varchar(50), IN param2 varchar(50))
+CREATE  PROCEDURE `skafbileraf2parametre`(IN param1 varchar(50), IN param2 varchar(50))
 BEGIN
 	SELECT 
         vognNummer, 
@@ -1109,7 +1109,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafbileraf3parametre`(IN param1 varchar(50), IN param2 varchar(50), IN param3 varchar(50))
+CREATE  PROCEDURE `skafbileraf3parametre`(IN param1 varchar(50), IN param2 varchar(50), IN param3 varchar(50))
 BEGIN
 	SELECT 
         vognNummer, 
@@ -1163,7 +1163,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafbileraf4parametre`(IN param1 varchar(50), IN param2 varchar(50), IN param3 varchar(50), IN param4 varchar(50))
+CREATE  PROCEDURE `skafbileraf4parametre`(IN param1 varchar(50), IN param2 varchar(50), IN param3 varchar(50), IN param4 varchar(50))
 BEGIN
 	SELECT 
         vognNummer, 
@@ -1218,7 +1218,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafbileraf5parametre`(IN param1 varchar(50), IN param2 varchar(50), IN param3 varchar(50), IN param4 varchar(50), IN param5 varchar(50))
+CREATE  PROCEDURE `skafbileraf5parametre`(IN param1 varchar(50), IN param2 varchar(50), IN param3 varchar(50), IN param4 varchar(50), IN param5 varchar(50))
 BEGIN
 	SELECT
 		vognNummer, 
@@ -1276,7 +1276,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafBilerManglerOvervaagning`()
+CREATE  PROCEDURE `skafBilerManglerOvervaagning`()
 BEGIN
 SELECT  
 -- Bil information
@@ -1344,7 +1344,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafBilFraBookingID`(IN $Booking_ID varchar(50))
+CREATE  PROCEDURE `skafBilFraBookingID`(IN $Booking_ID varchar(50))
 BEGIN
 	SELECT 
 		vognNummer,
@@ -1396,7 +1396,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafBilFraVognNummer`(IN $vognnummer varchar(50))
+CREATE  PROCEDURE `skafBilFraVognNummer`(IN $vognnummer varchar(50))
 BEGIN
 	SELECT 
 		vognNummer,
@@ -1445,7 +1445,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafBookingerFraVognNum`(
+CREATE  PROCEDURE `skafBookingerFraVognNum`(
 IN $vognNum varchar(255)
 )
 BEGIN
@@ -1482,7 +1482,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafBookingFraID`(
+CREATE  PROCEDURE `skafBookingFraID`(
 IN $booking_ID varchar(255)
 )
 BEGIN
@@ -1519,7 +1519,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafBookingfraRapportID`(
+CREATE  PROCEDURE `skafBookingfraRapportID`(
 IN $rapportID varchar(25)
 )
 BEGIN
@@ -1557,7 +1557,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafBrugerFraCPR`(
+CREATE  PROCEDURE `skafBrugerFraCPR`(
 IN $CPR varchar(25)
 )
 BEGIN
@@ -1589,7 +1589,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafenergityper`()
+CREATE  PROCEDURE `skafenergityper`()
 BEGIN
 	SELECT * 
     FROM energitype;
@@ -1609,7 +1609,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skaffarver`()
+CREATE  PROCEDURE `skaffarver`()
 BEGIN
 	SELECT 
 		* 
@@ -1631,7 +1631,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafForetningsInformationer`()
+CREATE  PROCEDURE `skafForetningsInformationer`()
 BEGIN
 		SELECT  
 		bil.maanedsPris,
@@ -1658,7 +1658,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafgearboks`()
+CREATE  PROCEDURE `skafgearboks`()
 BEGIN
 	SELECT * 
     FROM gearboks;
@@ -1678,7 +1678,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafHoejsteKundeID`()
+CREATE  PROCEDURE `skafHoejsteKundeID`()
 BEGIN
 
 SELECT ID FROM bruger ORDER BY ID DESC LIMIT 1;
@@ -1699,7 +1699,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafIndtaegt`()
+CREATE  PROCEDURE `skafIndtaegt`()
 BEGIN
 		SELECT  
 		bil.maanedsPris,
@@ -1726,7 +1726,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafIndtaegtForDenneMaaned`()
+CREATE  PROCEDURE `skafIndtaegtForDenneMaaned`()
 BEGIN
 		SELECT  
 		bil.maanedsPris,
@@ -1753,7 +1753,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafKilometerKoert`(IN $booking_ID int)
+CREATE  PROCEDURE `skafKilometerKoert`(IN $booking_ID int)
 BEGIN
 
 	SELECT rapport.kilometerSlut-booking.kilometerStart AS kilometerKoert
@@ -1777,7 +1777,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafmaerker`()
+CREATE  PROCEDURE `skafmaerker`()
 BEGIN
 	SELECT 
 		* 
@@ -1799,7 +1799,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafModelMedPraeciseParametre`(
+CREATE  PROCEDURE `skafModelMedPraeciseParametre`(
 IN $model varchar(255),
 IN $energitype varchar(255),
 IN $gearboks varchar(255),
@@ -1837,7 +1837,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafRapportFraBookingID`(
+CREATE  PROCEDURE `skafRapportFraBookingID`(
 IN $bookingID varchar(255)
 )
 BEGIN
@@ -1860,7 +1860,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafRapportHvorVognNummerSpecifik`(
+CREATE  PROCEDURE `skafRapportHvorVognNummerSpecifik`(
 IN $vognNum varchar(255)
 )
 BEGIN
@@ -1889,7 +1889,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafSkaderFraBookingID`(
+CREATE  PROCEDURE `skafSkaderFraBookingID`(
 IN $bookingID varchar(255)
 )
 BEGIN
@@ -1916,7 +1916,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafSkaderFraRapportID`(IN $rapport_ID int)
+CREATE  PROCEDURE `skafSkaderFraRapportID`(IN $rapport_ID int)
 BEGIN
 
 	SELECT 
@@ -1940,7 +1940,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafSlutKilometerFraRapportID`(
+CREATE  PROCEDURE `skafSlutKilometerFraRapportID`(
 IN $rapport_ID varchar(25)
 )
 BEGIN
@@ -1965,7 +1965,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafSpecifikBilFraVognNum`(
+CREATE  PROCEDURE `skafSpecifikBilFraVognNum`(
 IN $vognNum varchar(255)
 )
 BEGIN
@@ -2017,7 +2017,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafTilgængeligeBiler`()
+CREATE  PROCEDURE `skafTilgængeligeBiler`()
 BEGIN
 	SELECT 
 		vognNummer,
@@ -2065,7 +2065,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafUdleveringssteder`()
+CREATE  PROCEDURE `skafUdleveringssteder`()
 BEGIN
 
 SELECT * FROM udleveringssted;
@@ -2086,7 +2086,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafUdregnetKilometerKoertOgOpdaterBilOgRapport`(IN $booking_ID int,IN $indtastetDistance int)
+CREATE  PROCEDURE `skafUdregnetKilometerKoertOgOpdaterBilOgRapport`(IN $booking_ID int,IN $indtastetDistance int)
 BEGIN
 
 -- Assigner variabler
@@ -2134,7 +2134,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO' */ ;
 DELIMITER ;;
-CREATE DEFINER=`Control`@`%` PROCEDURE `skafudstyrsniveau`()
+CREATE  PROCEDURE `skafudstyrsniveau`()
 BEGIN
 	SELECT * 
     FROM udstyrsniveau;
