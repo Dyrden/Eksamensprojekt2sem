@@ -30,7 +30,7 @@ public class SkadeOgUdController {
         this.bookingRepository = bookingRepository;
     }
 
-    @GetMapping("/skadeOgUdbedring") //Bjørn
+    @GetMapping("/skadeOgUdbedring")
     //Ferhat er ansvarlig for denne metode
     public String visSkadeOgUd(Model model) {
         model.addAttribute("biler", bilRepository.visInleveretBiler());
@@ -38,7 +38,8 @@ public class SkadeOgUdController {
         return "html/skadeOgUdbedring/skadeOgUdbedring";
     }
 
-    @GetMapping("/vaelgRapport/{vognNummer}") //Ferhat og Mark
+    @GetMapping("/vaelgRapport/{vognNummer}")
+    //Ferhat og Mark er ansvarlig for denne metode
     public String vaelgRapport(@PathVariable("vognNummer") String vognNummer, Model model, HttpSession session) {
         model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
 
@@ -55,7 +56,8 @@ public class SkadeOgUdController {
     }
 
 
-    @PostMapping("/indtastkm") //Mark
+    @PostMapping("/indtastkm")
+    //Mark er ansvarlig for denne metode
     public String indtastKm(
         @RequestParam("km") int overskredetKM,
         @RequestParam("rapportID") String rapportID) {
@@ -102,20 +104,22 @@ public class SkadeOgUdController {
         return "redirect:/seSkader/" + rapportID;
     }*/
 
-    @PostMapping("/sletSkade/{skadeId}") //Ferhat
-
+    @PostMapping("/sletSkade/{skadeId}")
+    //Ferhat er ansvarlig for denne metode
     public String sletSkade(@PathVariable("skadeId") int skadeId, @RequestParam("bookingID") int bookingID) {
         skadeRepository.sletSkade(skadeId);
         return "redirect:/opretRapport/" + bookingID;
     }
 
-    @PostMapping("/udbedring") //Ferhat
+    @PostMapping("/udbedring")
+    //Ferhat er ansvarlig for denne metode
     public String reUdbedring() {
         return "redirect:/skadeOgUdbedring";
     }
 
 
-    @GetMapping("/opretRapport/{bookingID}") //Mark og Ferhat
+    @GetMapping("/opretRapport/{bookingID}")
+    //Mark og Ferhat er ansvarlig for denne metode
     public String opretRapport(
         @PathVariable("bookingID") int bookingID,
         Model model
@@ -149,7 +153,8 @@ public class SkadeOgUdController {
     }
 
 
-    @PostMapping("/opretSkade") // Mark
+    @PostMapping("/opretSkade")
+    // Mark er ansvarlig for denne metode
     public String opretSkade(
         @RequestParam("bookingID") int bookingID,
         @RequestParam("rapportID") int rapportID,
@@ -168,7 +173,8 @@ public class SkadeOgUdController {
         return "redirect:/opretRapport/" + bookingID;
     }
 
-    @PostMapping("/opretKM") //Mark
+    @PostMapping("/opretKM")
+    //Mark er ansvarlig for denne metode
     public String opretKM(
         @RequestParam("bookingID") int bookingID,
         @RequestParam("rapportID") int rapportID,
@@ -188,7 +194,8 @@ public class SkadeOgUdController {
         return "redirect:/opretRapport/" + bookingID;
     }
 
-    @PostMapping("/saetIkkeUdlejet/{bookingID}")//Mark og Kristian
+    @PostMapping("/saetIkkeUdlejet/{bookingID}")
+    //Mark og Kristian er ansvarlig for denne metode
     public String saetIkkeUdlejet(
         @PathVariable("bookingID") int bookingID
     ) {
@@ -198,7 +205,8 @@ public class SkadeOgUdController {
         return "redirect:/skadeOgUdbedring/";
     }
 
-    @PostMapping("/saetBilTotalskadet/{bookingID}") //Kristian
+    @PostMapping("/saetBilTotalskadet/{bookingID}")
+    //Kristian er ansvarlig for denne metode
     public String saetBilTotalskadet(
             @PathVariable("bookingID") int bookingID
     ) {
@@ -208,7 +216,8 @@ public class SkadeOgUdController {
         return "redirect:/skadeOgUdbedring/";
     }
 
-    @PostMapping("/saetBilSolgt/{bookingID}") //Kristian
+    @PostMapping("/saetBilSolgt/{bookingID}")
+    //Kristian er ansvarlig for denne metode
     public String saetBilSolgt(
             @PathVariable("bookingID") int bookingID
     ) {

@@ -17,9 +17,7 @@ public class BilRepository {
     public BilRepository() {
     }
 
-    //Ansvarlig : Mark Dyrby Denner, Ferhat Baran, Bjørn Uffe Haastrup
-    // Denne metode søger databasen ved hjælp af et procedure til at finde biler
-    // der har statusen "ikke udlejet" og retunerer en liste af dem.
+    //Mark, Ferhat og Bjørn er ansvarlig for denne metode
     public List<BilModel> visTilgaengeligeBiler() {
         //Mark er ansvarlig for denne metode
         List<BilModel> biler = new LinkedList<>();
@@ -56,7 +54,8 @@ public class BilRepository {
 
     }
 
-    public List<BilModel> visAlleBiler() { //Ferhat
+    //Ferhat er ansvarlig for denne metode
+    public List<BilModel> visAlleBiler() {
 
         List<BilModel> biler = new LinkedList<>();
         try {
@@ -91,8 +90,7 @@ public class BilRepository {
 
     }
 
-    //Ansvarlig : Mark Dyrby Denner
-    // Denne metode søger databasen for 'farver' og retunerer en liste af dem
+    //Mark er ansvarlig for denne metode
     public LinkedList<FarveModel> skafFarver() {
         LinkedList<FarveModel> farveModels = new LinkedList<>();
 
@@ -113,8 +111,7 @@ public class BilRepository {
     }
 
 
-    //Ansvarlig : Mark Dyrby Denner
-    // Denne metode søger databasen for 'mærker' og retunerer en liste af dem
+    //Mark er ansvarlig for denne metode
     public LinkedList<MaerkeModel> skafMaerker() {
         LinkedList<MaerkeModel> maerkeModels = new LinkedList<>();
 
@@ -135,8 +132,7 @@ public class BilRepository {
     }
 
 
-    //Ansvarlig : Mark Dyrby Denner
-    // Denne metode søger databasen for 'energityper' og retunerer en liste af dem
+    //Mark er ansvarlig for denne metode
     public LinkedList<EnergiTypeModel> skafEnergiTyper() {
         LinkedList<EnergiTypeModel> energiTypeModels = new LinkedList<>();
 
@@ -156,8 +152,7 @@ public class BilRepository {
         return energiTypeModels;
     }
 
-    //Ansvarlig : Mark Dyrby Denner
-    // Denne metode søger databasen for 'udstyrniveau'r og retunerer en liste af dem
+    //Mark er ansvarlig for denne metode
     public LinkedList<UdstyrsniveauModel> skafUdstyrsNiveau() {
         LinkedList<UdstyrsniveauModel> udstyrsniveauModels = new LinkedList<>();
 
@@ -177,8 +172,7 @@ public class BilRepository {
         return udstyrsniveauModels;
     }
 
-    //Ansvarlig : Mark Dyrby Denner
-    // Denne metode søger databasen for 'gearboks's og retunerer en liste af dem
+    // Mark er ansvarlig for denne metode
     public LinkedList<GearboksModel> skafGearboks() {
         LinkedList<GearboksModel> gearboksModels = new LinkedList<>();
 
@@ -199,7 +193,8 @@ public class BilRepository {
     }
 
 
-    public LinkedList<BilOgBookingModel> visInleveretBiler() { //Mark, Bjørn og Ferhat
+    //Mark, Bjørn og Ferhat er ansvarlig for denne metode
+    public LinkedList<BilOgBookingModel> visInleveretBiler() {
         LinkedList<BilOgBookingModel> biler = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafBilerManglerOvervaagning()");
@@ -223,8 +218,7 @@ public class BilRepository {
     }
 
 
-    //Ansvarlig : Mark Dyrby Denner
-    // Denne metode tager imod en bilmodel og laver en insert call til databasen
+    // Mark er ansvarlig for denne metode
     public void opretBil(String vognnummer,
                          String stelnummer,
                          int modelID,
@@ -249,7 +243,8 @@ public class BilRepository {
     }
 
 
-    public BilModel visSpecifikBil(String vognNummer) {//Ferhat og Kristian er ansvarlig for denne metode
+    //Ferhat og Kristian er ansvarlig for denne metode
+    public BilModel visSpecifikBil(String vognNummer) {
 
         BilModel bil = new BilModel();
         try {
@@ -307,7 +302,8 @@ public class BilRepository {
     }*/
 
 
-    public List<BilModel> vaelgKaldFraParametre(String parameterTekst) { //Kristian og Mark
+    //Kristian og Mark er ansvarlig for denne metode
+    public List<BilModel> vaelgKaldFraParametre(String parameterTekst) {
 
         List<BilModel> biler;
 
@@ -331,7 +327,8 @@ public class BilRepository {
         return biler;
     }
 
-    private List<BilModel> returnerListeBilerAfSpecifikCall(String definéretProcedure) { //Kristian
+    //Kristian er ansvarlig for denne metode
+    private List<BilModel> returnerListeBilerAfSpecifikCall(String definéretProcedure) {
         List<BilModel> biler = new LinkedList<>();
 
         try {
@@ -440,10 +437,7 @@ public class BilRepository {
     }*/
 
 
-    //Ansvarlig : Mark Dyrby Denner
-    // Denne metode bruger en procedure der står for at finde alle 'model's som har præcis
-    // de samme værdier i databasen og returnerer ID'et på denne. Hvis den ikke findes
-    // returneres 0.
+    //Mark er ansvarlig for denne metode
     public int findModel(String model, String energitype, String gearboks, String udstyrsniveau, String maerke, String farve) {
         BilModelModel bilModel = new BilModelModel(model,energitype,gearboks,udstyrsniveau,maerke,farve);
         int modelID = 0;
@@ -466,9 +460,7 @@ public class BilRepository {
     }
 
 
-    //Ansvarlig : Mark Dyrby Denner
-    //Denne metode tager imod en bil's 'model' og, ved brug af en procedure, indsætter den
-    // i databasen
+    //Mark er ansvarlig for denne metode
     public void opretModel(String model, String energiType, String gearboks, String udstyrsniveau, String maerke, String farve) {
         SQLManager.update(
             "CALL Model_Opret(\""
@@ -482,7 +474,8 @@ public class BilRepository {
         System.out.println("lavede model");
     }
 
-    public BilModel skafBilFraBookingID(int bookingID) { //Mark
+    //Mark er ansvarlig for denne metode
+    public BilModel skafBilFraBookingID(int bookingID) {
 
         BilModel bilModel = new BilModel();
         ResultSet resultSet = SQLManager.execute("CALL skafBilFraBookingID(\"" + bookingID + "\")");
@@ -500,6 +493,7 @@ public class BilRepository {
         return bilModel;
     }
 
+    // Mark er ansvarlig for denne metode
     public List<BilModel> visUdlejetBiler() {
         LinkedList<BilModel> bilModels = new LinkedList<>();
 

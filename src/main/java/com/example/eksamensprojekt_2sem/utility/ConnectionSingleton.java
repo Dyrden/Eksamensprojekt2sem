@@ -28,6 +28,7 @@ static {
 
      */
 
+    //Bjørn er ansvarlig for denne metode
     public static Connection connect() {
         if (connection == null) {
             try {

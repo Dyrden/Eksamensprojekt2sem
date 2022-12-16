@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 
 public class SQLManager {
+
+    //Bjørn er ansvarlig for denne metode
     private static PreparedStatement makeStatement(String s){
         //laver en skabelon for Prepared statements, fordi DRY
         PreparedStatement preparedStatement = null;
@@ -17,6 +19,7 @@ public class SQLManager {
         return preparedStatement;
     }
 
+    //Bjørn er ansvarlig for denne metode
     public static ResultSet execute(String s){
         //metode der modtager info fra DB
         ResultSet resultSet = null;
@@ -29,6 +32,7 @@ public class SQLManager {
         return resultSet;
     }
 
+    //Bjørn er ansvarlig for denne metode
     public static void update(String s){
         //metode der sender info til DB
         try {

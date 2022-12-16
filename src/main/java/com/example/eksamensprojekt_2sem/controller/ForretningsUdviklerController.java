@@ -18,7 +18,8 @@ public class ForretningsUdviklerController {
     }
 
 
-    @GetMapping("/forretningsUdviklere") //Ferhat og Bjørn
+    @GetMapping("/forretningsUdviklere")
+    //Ferhat, Bjørn og Mark er ansvarlig for denne metode
     public String visForretningsUdviklere(Model model){
         model.addAttribute("bookedeBiler", bookingRepository.visAktiveBookinger());
         model.addAttribute("samledeIndtaegt", bookingRepository.visSamletIndtaegt());

@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public class SkadeRepository {
 
+    //Ferhat og Kristian er ansvarlig for denne metode
     public List<SkadeModel> skafSkaderFraBookingID(int id) {
-        //Ferhat og Kristian er ansvarlig for denne metode
 
         List<SkadeModel> skader = new LinkedList<>();
         try {
@@ -44,8 +44,8 @@ public class SkadeRepository {
         System.out.println(placering + beskrivelse + pris + rapportID);
     }*/
 
+    //Ferhat er ansvarlig for denne metode
     public void sletSkade(int skadeID) {
-        //Ferhat er ansvarlig for denne metode
         ResultSet resultSet = SQLManager.execute
             ("CALL Skade_Slet(\"" + skadeID + "\")");
     }
@@ -94,7 +94,8 @@ public class SkadeRepository {
         return totalPris;
     }*/
 
-    public void opretSkadePåRapport(int rapportID, SkadeModel skadeModel) { //Mark
+    //Mark er ansvarlig for denne metode
+    public void opretSkadePåRapport(int rapportID, SkadeModel skadeModel) {
         SQLManager.update(
             "CALL Skade_Opret(\""
                 + rapportID + "\",\""
@@ -104,7 +105,8 @@ public class SkadeRepository {
 
     }
 
-    public double skafTotalPrisFraSkadeListe(List<SkadeModel> skadeListe) { //Kristian
+    //Kristian er ansvarlig for denne metode
+    public double skafTotalPrisFraSkadeListe(List<SkadeModel> skadeListe) {
 
         double total = 0;
 

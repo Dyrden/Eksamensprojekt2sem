@@ -42,7 +42,8 @@ public class BookingRepository {
 
     }*/
 
-    public List<BookingModel> skafBookingerFraVognNum(String vognNummer){ //Kristian er ansvarlig for denne metode
+    //Kristian er ansvarlig for denne metode
+    public List<BookingModel> skafBookingerFraVognNum(String vognNummer){
 
         List<BookingModel> bookinger = new LinkedList<>();
         try {
@@ -68,7 +69,8 @@ public class BookingRepository {
         return bookinger;
     }
 
-    public List<BookingModel> skafBookingFraID(int bookingID){ //Kristian er ansvarlig for denne metode
+    //Kristian er ansvarlig for denne metode
+    public List<BookingModel> skafBookingFraID(int bookingID){
 
         List<BookingModel> bookinger = new LinkedList<>();
         try {
@@ -95,7 +97,8 @@ public class BookingRepository {
         return bookinger;
     }
 
-    public double visSamletIndtaegt(){//Ferhat og Mark er ansvarlig for denne metode
+    //Ferhat og Mark er ansvarlig for denne metode
+    public double visSamletIndtaegt(){
 
         //Den viser lige nu samlede indtægt for bookede biler denne måned
 
@@ -119,7 +122,8 @@ public class BookingRepository {
     }
 
 
-    public double visSamletIndtaegtForDenneMåned(){ //Ferhat og Mark er ansvarlig for denne metode
+    //Ferhat og Mark er ansvarlig for denne metode
+    public double visSamletIndtaegtForDenneMåned(){
 
         //Den viser lige nu samlede indtægt for bookede biler denne måned
 
@@ -140,7 +144,10 @@ public class BookingRepository {
         }
         return indtaegt;
     }
-    public List<BilOgBookingModel> visAktiveBookinger(){ //Ferhat er ansvarlig for denne metode
+
+
+    //Ferhat er ansvarlig for denne metode
+    public List<BilOgBookingModel> visAktiveBookinger(){
 
         List<BilOgBookingModel> biler = new LinkedList<>();
         try {
@@ -187,13 +194,15 @@ public class BookingRepository {
         //SQLManager.makeStatement("CALL VisBookningHistorik()");
     }*/
 
-    public void lavBooking(String vognNummer, int BrugerID,int abonnementsType,int sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){ // Kristian
+    // Kristian er ansvarlig for denne metode
+    public void lavBooking(String vognNummer, int BrugerID,int abonnementsType,int sted,String udlejningsStartDato, String udlejningsSlutDato, int kilometerStart){
         // Format:
         // vognnummer,BrugerID,abonnementstype,sted,udlejningsStartDato,udlejningsSlutDato,kilometerStart
         SQLManager.update("CALL Booking_Opret('"+ vognNummer +"','"+ BrugerID +"','"+ abonnementsType +"','"+ sted +"','"+ udlejningsStartDato +"','"+ udlejningsSlutDato +"','"+ kilometerStart +"')");
     }
 
-    public List<UdleveringsstedModel> visAlleUdleveringsSteder() { //Kristian
+    //Kristian er ansvarlig for denne metode
+    public List<UdleveringsstedModel> visAlleUdleveringsSteder() {
         List<UdleveringsstedModel> udleveringssteder = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafUdleveringssteder()");
@@ -211,7 +220,8 @@ public class BookingRepository {
         return udleveringssteder;
     }
 
-    public List<AbonnementsTypeModel> visAlleAbonnementsTyper() { //Kristian
+    //Kristian er ansvarlig for denne metode
+    public List<AbonnementsTypeModel> visAlleAbonnementsTyper() {
         List<AbonnementsTypeModel> abonnementsTyper = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute("CALL skafAbonnementsTyper()");
@@ -231,20 +241,24 @@ public class BookingRepository {
 
     }
 
-    private void sætBookingOvervåget(int bookingID) { //Kristian
+    //Kristian er ansvarlig for denne metode
+    private void sætBookingOvervåget(int bookingID) {
         SQLManager.update("CALL saetBookingOvervaaget('" + bookingID +"')");
     }
 
 
-    public void sætBilTotalskadet(int bookingID) { //Kristian
+    //Kristian er ansvarlig for denne metode
+    public void sætBilTotalskadet(int bookingID) {
         sætBookingOvervåget(bookingID);
         SQLManager.update("CALL Bil_RedigerStatusTilTotalskadetBookingID('" + bookingID +"')");
     }
-    public void sætBilSolgt(int bookingID) { //Kristian
+    //Kristian er ansvarlig for denne metode
+    public void sætBilSolgt(int bookingID) {
         sætBookingOvervåget(bookingID);
         SQLManager.update("CALL Bil_RedigerStatusTilSolgtBookingID('" + bookingID +"')");
     }
-    public void sætBilIkkeUdlejet(int bookingID) { //Kristian
+    //Kristian er ansvarlig for denne metode
+    public void sætBilIkkeUdlejet(int bookingID) {
         sætBookingOvervåget(bookingID);
         SQLManager.update("CALL Bil_RedigerStatusTilIkkeUdlejetBookingID('" + bookingID +"')");
     }

@@ -27,19 +27,21 @@ public class RapporterController {
         this.bookingRepository = bookingRepository;
     }
 
-  @GetMapping("/seRapporter") //Ferhat
+  @GetMapping("/seRapporter")
+  //Ferhat er ansvarlig for denne metode
   public String visRapporter(Model model){
     model.addAttribute("biler", bilRepository.visAlleBiler());
 
     return "html/rapporter/rapporter";
   }
-  @GetMapping("/seRapport/{vognNummer}") //Ferhat
+  @GetMapping("/seRapport/{vognNummer}")
   //Ferhat er ansvarlig for denne metode
   public String seRapport(@PathVariable("vognNummer") String vognNummer, Model model){
     model.addAttribute("bil", bilRepository.visSpecifikBil(vognNummer));
     return "html/rapporter/seRapport";
   }
-  @GetMapping("/vaelgRapportRapporter/{vognNummer}") //(Tidligere Ferhat) Kristian
+  @GetMapping("/vaelgRapportRapporter/{vognNummer}")
+  //(Tidligere Ferhat) Kristian er ansvarlig for denne metode
 
   public String vaelgRapport(@PathVariable("vognNummer") String vognNummer, Model model){
 
@@ -48,7 +50,8 @@ public class RapporterController {
         return "html/rapporter/vaelgRapport";
     }
 
-    @GetMapping("/seSkadesRapport/{bookingID}") // (Tidligere Ferhat) Kristian
+    @GetMapping("/seSkadesRapport/{bookingID}")
+    // (Tidligere Ferhat) Kristian er ansvarlig for denne metode
     public String visSkader(@PathVariable("bookingID") int bookingID, Model model, HttpSession session) {
 
                 //Her hentes skader med booking ID

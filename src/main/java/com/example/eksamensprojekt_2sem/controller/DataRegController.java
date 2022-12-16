@@ -16,8 +16,6 @@ public class DataRegController {
     private final KundeRepository kundeRepository;
     private final BookingRepository bookingRepository;
 
-    //Ansvarlig: Mark Dyrby Denner
-    // konstruktør til
     public DataRegController(
         BilRepository bilRepository,
         KundeRepository kundeRepository,
@@ -44,7 +42,8 @@ public class DataRegController {
         return "html/dataRegistrering/bookingRegistrering";
     }
 
-    @PostMapping("/soegBiler") //Middleway Getmapping. // Kristian
+    @PostMapping("/soegBiler")
+    //Kristian er ansvarlig for denne metode
     public String soegBiler(
             @RequestParam String soegeFelt,
             HttpSession sessionSoeg) {
@@ -59,20 +58,15 @@ public class DataRegController {
 
 
 
-    // Ansvarlig : Mark Dyrby Denner
-    // Denne URL går hen til dataRegistrering.html og viser 2 muligheder; at gå til bilregistrering eller
-    // bookingRegistrering
     @GetMapping("/dataRegistrering")
+    //Mark er ansvarlig for denne metode
     public String visRegistreringer() {
         return "html/dataRegistrering/dataRegistrering";
     }
 
 
-    // Ansvarlig : Mark Dyrby Denner
-    // Action / URL der går til bilRegistrering.html hvor vi lægger informationer med fra databasen
-    // som vi så giver brugeren som en "choose-one" mulighed således taste fejl ikke skal håndteres for disse
-    // konstant værdier
     @GetMapping("/bilRegistrering")
+    //Mark er ansvarlig for denne metode
     public String visBilRegistrering(Model model) {
         model.addAttribute("energiTyper", bilRepository.skafEnergiTyper());
         model.addAttribute("farver", bilRepository.skafFarver());
@@ -83,7 +77,8 @@ public class DataRegController {
 
     }
 
-    @PostMapping("/indsendBilTilRegistrering") // Mark
+    @PostMapping("/indsendBilTilRegistrering")
+    //Mark er ansvarlig for denne metode
     public String indsendBilTilRegistrering(
         @RequestParam("vognnummer") String vognnummer,
         @RequestParam("stelnummer") String stelnummer,
@@ -155,7 +150,9 @@ public class DataRegController {
             return "html/dataRegistrering/kundeRegistrering";
     }
 
-    @PostMapping("/soegKundeMedCPR") //Middleway Getmapping. //Kristian er ansvarlig for denne metode
+
+    @PostMapping("/soegKundeMedCPR")
+    //Kristian er ansvarlig for denne metode
     public String soegKundeMedCPR(
                           @RequestParam String brugerCPR,
                           HttpSession sessionBil,
@@ -172,7 +169,8 @@ public class DataRegController {
     }
 
 
-    @GetMapping("/udstyrValg/{brugerID}") //Kristian
+    //Kristian er ansvarlig for denne metode
+    @GetMapping("/udstyrValg/{brugerID}")
     public String udstyrValg(@PathVariable("brugerID") int brugerID,Model model, HttpSession sessionBrugerID, HttpSession sessionBil) {
 
             sessionBrugerID.setAttribute("brugerID",brugerID);
@@ -187,7 +185,8 @@ public class DataRegController {
         return "html/dataRegistrering/udstyrBooking";
     }
 
-    @PostMapping("/nyBruger") // Kristian
+    @PostMapping("/nyBruger")
+    //Kristian er ansvarlig for denne metode
     public String skabNyBruger(@RequestParam("fornavn") String fornavn,
                                @RequestParam("efternavn") String efternavn,
                                @RequestParam("email") String email,
@@ -206,7 +205,8 @@ public class DataRegController {
         return "redirect:/udstyrValg/" + (int)sessionBrugerID.getAttribute("brugerID");
     }
 
-    @PostMapping("/nyBooking") // Kristian og Ferhat
+    @PostMapping("/nyBooking")
+    //Kristian og Ferhat er ansvarlig for denne metode
     public String nyBooking(
         @RequestParam("udlejningsStartDato") String udlejningsStartDato,
         @RequestParam("udeljningsSlutDato") String udeljningsSlutDato,

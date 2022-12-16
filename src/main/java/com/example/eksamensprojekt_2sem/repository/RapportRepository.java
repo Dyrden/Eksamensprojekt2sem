@@ -12,7 +12,8 @@ import java.util.List;
 @Repository
 public class RapportRepository {
 
-    public List<RapportModel> hentRapporterFraVognNummer(String vognNummer) { //Ferhat
+    //Ferhat er ansvarlig for denne metode
+    public List<RapportModel> hentRapporterFraVognNummer(String vognNummer) {
         List<RapportModel> rapporter = new LinkedList<>();
         try {
             ResultSet resultSet = SQLManager.execute
@@ -58,12 +59,14 @@ public class RapportRepository {
     }*/
 
 
-    public void tilføjNuværrendeKMTilRapport(String rapportID, int km) { //Mark
+    //Mark er ansvarlig for denne metode
+    public void tilføjNuværrendeKMTilRapport(String rapportID, int km) {
         SQLManager.update("CALL RapportKMNuSet(" + rapportID + ", " + km + ")");
     }
 
 
-    public int findRapportIDFraBookingID(int bookingID) { //Mark
+    //Mark er ansvarlig for denne metode
+    public int findRapportIDFraBookingID(int bookingID) {
         int fundetID = 0;
         ResultSet resultSet = SQLManager.execute("CALL skafRapportFraBookingID(\"" + bookingID + "\")");
         try {
@@ -75,11 +78,13 @@ public class RapportRepository {
         return fundetID;
     }
 
-    public void opretRapportFraBookingID(int bookingID) { //Mark
+    //Mark er ansvarlig for denne metode
+    public void opretRapportFraBookingID(int bookingID) {
         SQLManager.update("CALL Rapport_OpretFraBookingID(\"" + bookingID + "\")");
     }
 
-    public int findSlutKMFraRapportID(int rapportID) { //Mark
+    //Mark er ansvarlig for denne metode
+    public int findSlutKMFraRapportID(int rapportID) {
         int slutkm = 0;
         ResultSet resultSet = SQLManager.execute(" CALL skafSlutKilometerFraRapportID(\"" + rapportID + "\")");
         try {
@@ -92,12 +97,14 @@ public class RapportRepository {
 
     }
 
-    public void redigereSlutKMTilRapport(int rapportID, RapportModel rapportModel) {//Mark
+    //Mark er ansvarlig for denne metode
+    public void redigereSlutKMTilRapport(int rapportID, RapportModel rapportModel) {
         SQLManager.update(
             "CALL Rapport_RedigerSlutKilometerFraRapportID(" + rapportID + ", " + rapportModel.getOverskredetKM() + ")");
     }
 
-    public int skafUdregnetKMKørt(int bookingID) {//Mark
+    //Mark er ansvarlig for denne metode
+    public int skafUdregnetKMKørt(int bookingID) {
         int kmkørt = 0;
         ResultSet resultSet = SQLManager.execute(
             "call skafKilometerKoert(" + bookingID + ")");
@@ -112,7 +119,8 @@ public class RapportRepository {
         return kmkørt;
     }
 
-    public double skafPrisPaaOverskredetKM(int bookingID){ //Ferhat
+    //Ferhat er ansvarlig for denne metode
+    public double skafPrisPaaOverskredetKM(int bookingID){
         int antalMånederBooket = 0;
 
         ResultSet resultSet = SQLManager.execute(
@@ -140,7 +148,8 @@ public class RapportRepository {
         return pris;
     }
 
-    public int skafAntalMaanederBooket(int bookingID){ //Ferhat
+    //Ferhat er ansvarlig for denne metode
+    public int skafAntalMaanederBooket(int bookingID){
         int antalMånederBooket = 0;
 
         ResultSet resultSet = SQLManager.execute(
@@ -160,7 +169,8 @@ public class RapportRepository {
         return antalMånederBooket;
     }
 
-    public int skafMaksimumKMTilladt(int bookingID){ // Ferhat er ansvarlig for metoden
+    // Ferhat er ansvarlig for metoden
+    public int skafMaksimumKMTilladt(int bookingID){
 
         int antalMånederBooket = 0;
 
@@ -183,7 +193,8 @@ public class RapportRepository {
         return maksimaltKMTilladt;
     }
 
-    public int skafKMOverskredet(int bookingID) { //Ferhat
+    //Ferhat er ansvarlig for denne metode
+    public int skafKMOverskredet(int bookingID) {
         int antalMånederBooket = 0;
         int kmOvertrådt = 0;
 
@@ -213,7 +224,8 @@ public class RapportRepository {
         return kmOvertrådt;
     }
 
-    public void udregnKilometerKørt(int bookingID,int slutkm) { //Mark
+    //Mark er ansvarlig for denne metode
+    public void udregnKilometerKørt(int bookingID,int slutkm) {
         SQLManager.execute(
             "call skafUdregnetKilometerKoertOgOpdaterBilOgRapport(" + bookingID + ", " + slutkm + ")");
     }
