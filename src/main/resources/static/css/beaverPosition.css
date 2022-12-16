@@ -1,3 +1,9 @@
+/* Billeder hentet fra:
+https://stock.adobe.com/images/cartoon-beaver-businessman/171068684
+https://www.vectorstock.com/royalty-free-vector/animation-beaver-in-an-image-of-the-master-repair-vector-17216816
+https://www.freepik.com/premium-vector/cartoon-cute-beaver-waving-white-background_20307851.htm
+ */
+
 #beaverSkadeOgUdbedring{
     background-image: url(@{/images/beaver.png});
     background-repeat: no-repeat, repeat;
