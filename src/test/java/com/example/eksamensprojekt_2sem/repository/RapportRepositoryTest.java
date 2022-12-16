@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RapportRepositoryTest {
-    private RapportRepository rapportRepository = new RapportRepository(); //Ferhat
+    private RapportRepository rapportRepository = new RapportRepository();
 
-    //Ferhat
+    //Ferhat er ansvarlig for denne test
     @Test
     void skafPrisPaaOverskredetKM() {
 
@@ -19,7 +19,7 @@ class RapportRepositoryTest {
 
     }
 
-    //Ferhat
+    //Ferhat er ansvarlig for denne test
     @Test
     void skafAntalMaanederBooket() {
         //act
@@ -29,7 +29,7 @@ class RapportRepositoryTest {
         assertEquals(35, result);
     }
 
-    //Ferhat
+    //Ferhat er ansvarlig for denne test
     @Test
     void skafKMOverskredet() {
         //act

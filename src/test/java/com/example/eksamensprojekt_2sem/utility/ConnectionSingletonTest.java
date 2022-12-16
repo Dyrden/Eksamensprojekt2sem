@@ -19,8 +19,9 @@ class ConnectionSingletonTest {
     @AfterEach
     void tearDown() {if (connection != null){connection = null;}}//Bjørn
 
+    //Bjørn er ansvarlig for denne test
     @Test
-    void getConnected() throws SQLException{//Bjørn
+    void getConnected() throws SQLException{
        connection = DriverManager.getConnection(System.getenv("Url"),
                 System.getenv("Username"), System.getenv("Password"));
        assertNotNull(connection, "Test DB conn");

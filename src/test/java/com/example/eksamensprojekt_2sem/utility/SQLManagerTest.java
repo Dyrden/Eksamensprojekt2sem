@@ -13,6 +13,7 @@ class SQLManagerTest {
     static Connection connection;
 
     @BeforeAll
+    //Bjørn er ansvarlig for dette kode
     static void setup() throws SQLException { //Bjørn
         connection = DriverManager.getConnection(System.getenv("Url"),
             System.getenv("Username"), System.getenv("Password"));
@@ -24,7 +25,8 @@ class SQLManagerTest {
     }
 
     @Test
-    void makeStatement() {//Bjørn
+    //Bjørn er ansvarlig for denne test
+    void makeStatement() {
         String s = "CALL visTilgængeligeBiler()";
         PreparedStatement preparedStatement = null;
         try {
@@ -36,7 +38,8 @@ class SQLManagerTest {
     }
 
     @Test
-    void execute() {//Bjørn
+    //Bjørn er ansvarlig for denne test
+    void execute() {
         String s = "CALL skafAlleBiler()";
         ResultSet resultSet = null;
         try {
@@ -50,6 +53,7 @@ class SQLManagerTest {
 
 
     @Test
+    //Bjørn er ansvarlig for denne test
     void update() {//Bjørn
         String s = "CALL Bil_Update()";
         int resultSet = 0;
@@ -62,19 +66,16 @@ class SQLManagerTest {
         assertEquals(resultSet, 0);
     }
 
+    //Mark er ansvarlig for denne test
     @Test
-    void NotAllowedToQueryAnythingButStoredProceduresTest() {//Mark
+    void NotAllowedToQueryAnythingButStoredProceduresTest() {
         //Arrange
         String SQL = "Select * from bil;";
-
 
         //act & assert
         assertThrows(SQLException.class, () -> {
             PreparedStatement psts = connection.prepareStatement(SQL);
             ResultSet resultSet = psts.executeQuery();
         });
-
-
-
     }
 }
