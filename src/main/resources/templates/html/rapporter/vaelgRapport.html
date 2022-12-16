@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Skade og Udbedring</title>
+  <title>Valg af rapport</title>
   <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../../static/css/myStyles.css"/>
   <link rel="stylesheet" th:href="@{/css/tableStyle.css}" href="../../../static/css/tableStyle.css"/>
   <link rel="stylesheet" th:href="@{/css/navigationsbar.css}" href="../../../static/css/navigationsbar.css"/>
@@ -25,7 +25,7 @@
     <td> <span th:text="${b.id}">Booking</span> </td>
     <td> <span th:text="${b.slutDato}">dato</span> </td>
     <td th:id="blaaKnapTilTable">
-      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seSkadesRapport/' + ${b.id}}">Se skader for bookingen</a> </button>
+      <button type="submit"> <a th:class="htmlLink" th:href="@{'/seSkadesRapport/' + ${b.id}}">Se tilstandsrapport</a> </button>
     </td>
   </tr>
 </table>

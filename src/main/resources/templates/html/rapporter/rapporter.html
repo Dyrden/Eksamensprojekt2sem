@@ -23,7 +23,7 @@
     <th>Vognnummer</th>
     <th>Stelnummer</th>
     <th>Skades rapport</th>
-    <th>Rapport</th>
+    <th>Bilinformation</th>
   </tr>
   <tr th:each="b : ${biler}">
     <td> <span th:text="${b.maerke}">Mærke</span> </td>
@@ -31,7 +31,7 @@
     <td> <span th:text="${b.vognNummer}">vognnummer</span> </td>
     <td> <span th:text="${b.stelNummer}">stelnummer</span> </td>
     <td th:id="blaaKnapTilTable">
-      <button type="submit"> <a th:class="htmlLink" th:href="@{'/vaelgRapportRapporter/' + ${b.vognNummer}}">Se bookings</a> </button>
+      <button type="submit"> <a th:class="htmlLink" th:href="@{'/vaelgRapportRapporter/' + ${b.vognNummer}}">Se booking og vælg rapport</a> </button>
     </td>
     <td th:id="blaaKnapTilTable">
       <button type="submit"> <a th:class="htmlLink" th:href="@{'/seRapport/' + ${b.vognNummer}}">Se bilinformation</a> </button>
