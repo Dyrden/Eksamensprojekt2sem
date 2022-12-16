@@ -14,13 +14,13 @@ class ConnectionSingletonTest {
     static Connection connection;
 
     @BeforeAll
-    static void setUp(){ connection = null;}
+    static void setUp(){ connection = null;}//Bjørn
 
     @AfterEach
-    void tearDown() {if (connection != null){connection = null;}}
+    void tearDown() {if (connection != null){connection = null;}}//Bjørn
 
     @Test
-    void getConnected() throws SQLException{
+    void getConnected() throws SQLException{//Bjørn
        connection = DriverManager.getConnection(System.getenv("Url"),
                 System.getenv("Username"), System.getenv("Password"));
        assertNotNull(connection, "Test DB conn");
