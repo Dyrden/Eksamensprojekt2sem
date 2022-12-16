@@ -13,18 +13,18 @@ class SQLManagerTest {
     static Connection connection;
 
     @BeforeAll
-    static void setup() throws SQLException {
+    static void setup() throws SQLException { //Bjørn
         connection = DriverManager.getConnection(System.getenv("Url"),
             System.getenv("Username"), System.getenv("Password"));
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown() {//Bjørn
         String s = null;
     }
 
     @Test
-    void makeStatement() {
+    void makeStatement() {//Bjørn
         String s = "CALL visTilgængeligeBiler()";
         PreparedStatement preparedStatement = null;
         try {
@@ -36,7 +36,7 @@ class SQLManagerTest {
     }
 
     @Test
-    void execute() {
+    void execute() {//Bjørn
         String s = "CALL skafAlleBiler()";
         ResultSet resultSet = null;
         try {
@@ -50,7 +50,7 @@ class SQLManagerTest {
 
 
     @Test
-    void update() {
+    void update() {//Bjørn
         String s = "CALL Bil_Update()";
         int resultSet = 0;
         try {
@@ -63,7 +63,7 @@ class SQLManagerTest {
     }
 
     @Test
-    void NotAllowedToQueryAnythingButStoredProceduresTest() {
+    void NotAllowedToQueryAnythingButStoredProceduresTest() {//Mark
         //Arrange
         String SQL = "Select * from bil;";
 
